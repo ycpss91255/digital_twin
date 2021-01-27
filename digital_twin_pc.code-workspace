@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"ros.distro": "noetic",
+		"python.autoComplete.extraPaths": [
+			"/opt/ros/noetic/lib/python3/dist-packages"
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"zovorap.ab-html-formatter",
+			"formulahendry.auto-close-tag",
+			"formulahendry.auto-rename-tag",
+			"jeff-hykin.better-cpp-syntax",
+			"ms-vscode.cpptools",
+			"ms-vscode.cpptools-extension-pack",
+			"hyeon.c-math-viewer",
+			"ms-vscode.cpptools-themes",
+			"twxs.cmake",
+			"ms-azuretools.vscode-docker",
+			"tht13.html-preview-vscode",
+			"ms-toolsai.jupyter",
+			"ritwickdey.liveserver",
+			"ajshort.msg",
+			"ms-python.python",
+			"ms-vscode-remote.remote-containers",
+			"ms-vscode-remote.remote-ssh",
+			"ms-iot.vscode-ros",
+			"pijar.ros-snippets",
+			"sweilz.ros-snippets",
+			"dpkristensen-garmin.udev-rules",
+			"dotjoshjohnson.xml",
+			"foxundermoon.shell-format"
+		]
+	},
+}
