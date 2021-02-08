@@ -15,6 +15,4 @@ docker run --rm \
   -e XAUTHORITY=$home_folder/.Xauthority \
   -e DISPLAY=$DISPLAY \
   -e QT_X11_NO_MITSHM=1 \
-  -it --name "dt-pc-ros" $(id -un)/digital-twin-pc
-
-
+  -it --name "digital-twin-pc" $(id -un)/digital-twin-pc
