@@ -23,21 +23,20 @@ RUN groupadd --gid ${GID} ${GROUP} \
 RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ssh byobu nano git sudo wget \
-    python3-pip \
-    terminator \
+      ssh byobu nano git sudo wget rsync \
+      python3-pip python3-catkin-tools \
+      terminator \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-# setup terminator config
-RUN mkdir -p /home/${USER}/.config/terminator
-COPY config/terminator/config /home/${USER}/.config/terminator
-RUN sudo chown -R ${USER}:${GROUP} /home/${USER}/.config
 # setup custom configuration
 COPY config /home/${USER}/.tmp
 RUN cat /home/${USER}/.tmp/bashrc/config >> /home/${USER}/.bashrc \
+  && pip3 install -r /home/${USER}/.tmp/pip/requirements.txt \
   && rm -rf /home/${USER}/.tmp
-  # && pip3 install -r /home/${USER}/.tmp/pip/requirements.txt \
+# setup terminator config
+COPY config/terminator /home/${USER}/.config/terminator
+RUN sudo chown -R ${USER}:${GROUP} /home/${USER}/.config
 
 # Switch user to ${USER}
 USER ${USER}
