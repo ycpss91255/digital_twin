@@ -10,16 +10,3 @@ else
  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
 unset color_prompt force_color_prompt
-
-# Commonly used
-alias eb='nano ~/.bashrc'
-alias sb='source ~/.bashrc'
-alias wb='source ./devel/setup.bash'
-
-# ros entrypoint
-source /ros_entrypoint.sh
-
-# localhost
-export ROS_MASTER_URI=http://localhost:11311
-export ROS_HOSTNAME=localhost
-export ROS_IP=localhost
