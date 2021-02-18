@@ -1,5 +1,5 @@
 # ros entrypoint
-source /ros_entrypoint.sh
+source "/opt/ros/$ROS_DISTRO/setup.bash"
 
 # localhost
 # export ROS_MASTER_URI=http://localhost:11311
