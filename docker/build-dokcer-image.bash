@@ -8,8 +8,7 @@ group=`id -gn`
 uid=`id -u`
 gid=`id -g`
 
-# export DOCKER_BUILDKIT=1
-
+export DOCKER_BUILDKIT=1
 
 # build docker images
 docker build -t ${user}/digital-twin-pc \

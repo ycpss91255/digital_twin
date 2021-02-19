@@ -7,9 +7,6 @@ ARG GROUP=initial
 ARG UID=1000
 ARG GID=${UID}
 ARG SHELL=/bin/bash
-
-# Replace apt urls
-RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
 # Env vars for the nvidia-container-runtime.
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute
@@ -22,6 +19,8 @@ RUN groupadd --gid ${GID} ${GROUP} \
   && echo "${USER} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${USER}" \
   && chmod 0440 "/etc/sudoers.d/${USER}"
 
+# Replace apt urls
+RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
       ssh byobu nano git sudo wget rsync net-tools \
