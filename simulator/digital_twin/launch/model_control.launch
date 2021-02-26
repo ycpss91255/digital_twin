@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="model_name" default="omwr"/>
+  <rosparam file="$(find model)/$(arg model_name)/config/$(arg model_name).yaml" command="load"/>
+  <!-- load the controllers -->
+  <node name="controller_spawner"
+    pkg="controller_manager"
+    type="spawner"
+    respawn="false"
+    output="screen"
+    ns="/omwr"
+    args="joint_state_controller
+          wheel_joint_1
+          wheel_joint_2
+          wheel_joint_3
+          wheel_joint_4" >
+  </node>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+    <!-- <remap from="/dog" to="/dog/rviz"/> -->
+  </node>
+
+</launch>

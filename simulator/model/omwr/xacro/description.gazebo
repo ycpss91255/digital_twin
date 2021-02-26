@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot>
+  <gazebo reference="omwr_link">
+    <material>Gazebo/Black</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="wheel_link_1">
+    <!-- <material>Gazebo/</material> -->
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="wheel_link_2">
+    <!-- <material>color</material> -->
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="wheel_link_3">
+    <!-- <material>color</material> -->
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="wheel_link_4">
+    <!-- <material>color</material> -->
+    <selfCollide>false</selfCollide>
+  </gazebo>
+</robot>

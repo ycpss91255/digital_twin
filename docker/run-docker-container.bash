@@ -11,6 +11,7 @@ docker run --rm \
   --privileged \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
   -v $HOME/.Xauthority:$docker/.Xauthority \
+  -v /dev:/dev \
   -v $HOME/workspace/digital_twin_pc_ws:$HOME/work \
   -e XAUTHORITY=$home_folder/.Xauthority \
   -e DISPLAY=$DISPLAY \

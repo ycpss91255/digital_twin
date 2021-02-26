@@ -45,3 +45,10 @@ I reference chikuta/chikuta-dockerfiles [github](https://github.com/chikuta/chik
 
 還沒有喇
 ros_master_uri 要手動調整
+
+
+## USB rules
+
+```shell
+$ sudo udevadm control --reload-rules ; udevadm trigger
+```

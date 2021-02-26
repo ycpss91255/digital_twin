@@ -23,10 +23,10 @@ RUN groupadd --gid ${GID} ${GROUP} \
 RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
+      terminator gnome-terminal dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
       ssh byobu nano git sudo wget rsync net-tools \
-      python3-pip python3-catkin-tools \
-      gnome-terminal dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
-      terminator \
+      python3-pip python3-catkin-tools ros-noetic-gazebo-ros-pkgs \
+      ros-noetic-effort-controllers \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -34,10 +34,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY config /home/${USER}/.tmp
 RUN cat /home/${USER}/.tmp/bashrc/* >> /home/${USER}/.bashrc \
   && pip3 install -r /home/${USER}/.tmp/pip/requirements.txt \
+  && mkdir -p /home/${USER}/.config/terminator \
+  && cp -r /home/${USER}/.tmp/terminator /home/${USER}/.config/terminator \
+  && chown -R ${USER}:${GROUP} /home/${USER}/.config \
+  && mkdir -p /etc/udev/rules.d/ \
+  && cp /home/${USER}/.tmp/rule/* /etc/udev/rules.d/ \
   && rm -rf /home/${USER}/.tmp
-# setup terminator config
-COPY config/terminator /home/${USER}/.config/terminator
-RUN sudo chown -R ${USER}:${GROUP} /home/${USER}/.config
 
 # Switch user to ${USER}
 USER ${USER}
@@ -47,7 +49,7 @@ RUN sudo mkdir work
 EXPOSE 22
 
 # Switch to user's HOME folder
-WORKDIR /home/${USER}
+WORKDIR /home/${USER}/work
 
 # ENTRYPOINT ["terminator"]
 ENTRYPOINT ["byobu"]
