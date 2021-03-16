@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>digital_twin</name>
+  <name>strategy</name>
   <version>0.1.0</version>
-  <description>The twin_gazebo package</description>
+  <description>The strategy package</description>
 
   <maintainer email="ycpss91255@gmail.com">YUN-CHIEN CHEN</maintainer>
 

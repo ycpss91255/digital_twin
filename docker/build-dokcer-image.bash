@@ -10,8 +10,10 @@ gid=`id -g`
 
 export DOCKER_BUILDKIT=1
 
+export DOCKER_IMAGE_NAME=digital-twin-pc
+
 # build docker images
-docker build -t ${user}/digital-twin-pc \
+docker build -t ${user}/${DOCKER_IMAGE_NAME} \
     --build-arg USER=${user} \
     --build-arg UID=${uid} \
     --build-arg GROUP=${group} \

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>model</name>
-  <version>0.0.0</version>
+  <version>0.1.0</version>
   <description>This is used to store urdf and xacro exported by Solidworks</description>
 
   <maintainer email="ycpss91255@gmail.com">YUN-CHIEN CHEN</maintainer>
