@@ -7,9 +7,11 @@ ARG GROUP=initial
 ARG UID=1000
 ARG GID=${UID}
 ARG SHELL=/bin/bash
+
 # Env vars for the nvidia-container-runtime.
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute
+
 # Setup users and groups
 RUN groupadd --gid ${GID} ${GROUP} \
   && useradd --gid ${GID} --uid ${UID} -ms ${SHELL} ${USER} \
@@ -21,24 +23,43 @@ RUN groupadd --gid ${GID} ${GROUP} \
 
 # Replace apt urls
 RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
+
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      terminator gnome-terminal dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
-      ssh byobu nano git sudo wget rsync net-tools \
-      python3-pip python3-catkin-tools ros-noetic-gazebo-ros-pkgs \
-      ros-noetic-effort-controllers \
+  sudo \
+  ssh wget rsync net-tools \
+  terminator byobu zsh gnome-terminal \
+  nano vim git \
+  dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
+  # work-tools
+  python3-pip python3-catkin-tools ros-noetic-gazebo-ros-pkgs \
+  ros-noetic-effort-controllers \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 # setup custom configuration
 COPY config /home/${USER}/.tmp
+# bashrc
 RUN cat /home/${USER}/.tmp/bashrc/* >> /home/${USER}/.bashrc \
-  && pip3 install -r /home/${USER}/.tmp/pip/requirements.txt \
+  # zsh
+  && sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- \
+  -t robbyrussell \
+  && mv /home/${USER}/.tmp/zshrc/powerlevel10k /home/${USER}/ \
+  && mv /home/${USER}/.tmp/zshrc/.p10k.zsh /home/${USER}/ \
+  && cat /home/${USER}/.tmp/zshrc/* >> /home/${USER}/.zshrc \
+  # byobu-zsh
+  && mkdir -p /home/${USER}/.byobu \
+  && cat /home/${USER}/.tmp/byobu/* > /home/${USER}/.byobu/.tmux.conf \
+  && chown -R ${USER}:${GROUP} /home/${USER}/.byobu \
+  # usb rule
+  && mkdir -p /etc/udev/rules.d/ \
+  && cp /home/${USER}/.tmp/rule/* /etc/udev/rules.d/
+
+  # python3
+RUN pip3 install -r /home/${USER}/.tmp/pip/requirements.txt \
   && mkdir -p /home/${USER}/.config/terminator \
   && cp -r /home/${USER}/.tmp/terminator /home/${USER}/.config/terminator \
   && chown -R ${USER}:${GROUP} /home/${USER}/.config \
-  && mkdir -p /etc/udev/rules.d/ \
-  && cp /home/${USER}/.tmp/rule/* /etc/udev/rules.d/ \
   && rm -rf /home/${USER}/.tmp
 
 # Switch user to ${USER}
