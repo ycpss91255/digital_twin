@@ -5,9 +5,10 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  geometry_msgs
 )
 catkin_package(
-#  INCLUDE_DIRS include
+ INCLUDE_DIRS include
 #  LIBRARIES ${PROJECT_NAME}
 #  CATKIN_DEPENDS roscpp
 #  DEPENDS system_lib
@@ -18,24 +19,21 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-file(GLOB SRC_LIST "src/*.cpp")
-# message("${SRC_LIST}")
-file(GLOB INCLUDE_LIST "include/*.h")
-# message("${INCLUDE_LIST}")
+add_subdirectory(src)
+add_subdirectory(test)
 
-add_library(
-  ${PROJECT_NAME}
-  ${INCLUDE_LIST}
-  ${SRC_LIST}
-)
+# file(GLOB SRC_LIST "src/*.cpp")
+# message("src_list = ${SRC_LIST}")
 
-target_link_libraries(motion ${catkin_LIBRARIES})
-add_dependencies(motion ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# file(GLOB TEST_LIST "test/*.cpp")
+# message("test_list = ${TEST_LIST}")
 
-# add_executable(four_wheel_kinematics src/four_wheel_kinematics.cpp)
-# target_link_libraries(four_wheel_kinematics ${catkin_LIBRARIES})
-# add_dependencies(talker beginner_tutorials_generate_messages_cpp)
+# file(GLOB INCLUDE_LIST "include/motion/*.h")
+# message("include_list = ${INCLUDE_LIST}")
 
-# add_executable(listener src/listener.cpp)
-# target_link_libraries(listener ${catkin_LIBRARIES})
-# add_dependencies(listener beginner_tutorials_generate_messages_cpp)
+# add_library(
+#   ${PROJECT_NAME}
+#   ${INCLUDE_LIST}
+#   ${SRC_LIST}
+#   ${TEST_LIST}
+# )
