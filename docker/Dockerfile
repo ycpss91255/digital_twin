@@ -27,7 +27,7 @@ RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
   sudo \
-  ssh wget rsync net-tools \
+  ssh wget curl rsync net-tools \
   terminator byobu zsh gnome-terminal \
   nano vim git \
   dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
@@ -42,25 +42,23 @@ COPY config /home/${USER}/.tmp
 # bashrc
 RUN cat /home/${USER}/.tmp/bashrc/* >> /home/${USER}/.bashrc \
   # zsh
-  && sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- \
-  -t robbyrussell \
-  && mv /home/${USER}/.tmp/zshrc/powerlevel10k /home/${USER}/ \
-  && mv /home/${USER}/.tmp/zshrc/.p10k.zsh /home/${USER}/ \
-  && cat /home/${USER}/.tmp/zshrc/* >> /home/${USER}/.zshrc \
+  && mv /home/${USER}/.tmp/zsh/powerlevel10k /home/${USER}/ \
+  && sudo mv /home/${USER}/.tmp/zsh/.p10k.zsh /home/${USER}/ \
+  && cat /home/${USER}/.tmp/zsh/zshrc/* >> /home/${USER}/.zshrc \
   # byobu-zsh
   && mkdir -p /home/${USER}/.byobu \
   && cat /home/${USER}/.tmp/byobu/* > /home/${USER}/.byobu/.tmux.conf \
   && chown -R ${USER}:${GROUP} /home/${USER}/.byobu \
   # usb rule
-  && mkdir -p /etc/udev/rules.d/ \
-  && cp /home/${USER}/.tmp/rule/* /etc/udev/rules.d/
+  && sudo mkdir -p /etc/udev/rules.d/ \
+  && sudo cp /home/${USER}/.tmp/rule/* /etc/udev/rules.d/
 
   # python3
 RUN pip3 install -r /home/${USER}/.tmp/pip/requirements.txt \
   && mkdir -p /home/${USER}/.config/terminator \
   && cp -r /home/${USER}/.tmp/terminator /home/${USER}/.config/terminator \
   && chown -R ${USER}:${GROUP} /home/${USER}/.config \
-  && rm -rf /home/${USER}/.tmp
+  && sudo rm -rf /home/${USER}/.tmp
 
 # Switch user to ${USER}
 USER ${USER}

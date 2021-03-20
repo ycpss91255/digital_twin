@@ -1,5 +1,9 @@
 #!/bin/bash
 
+source $(pwd)/get_graph_card.bash
+
+GRAPHCARD_DEBUG=false
+
 file_dir=`dirname $0`
 
 # get parameter from system
@@ -10,7 +14,7 @@ gid=`id -g`
 
 export DOCKER_BUILDKIT=1
 
-export DOCKER_IMAGE_NAME=digital-twin-pc
+DOCKER_IMAGE_NAME=digital-twin-pc
 
 # build docker images
 docker build -t ${user}/${DOCKER_IMAGE_NAME} \

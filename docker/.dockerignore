@@ -1,0 +1,3 @@
+get_graph_card.bash
+build-dokcer-image.bash
+run-docker-container.bash
