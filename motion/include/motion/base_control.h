@@ -1,10 +1,19 @@
 #ifndef BaseControl_H
 #define BaseControl_H
-
+/*******************************
+ * Include system header
+ ******************************/
 #include <cstdio>
 #include <iostream>
-
-#include <geometry_msgs/Twist.h>
+// #include <iomanip>
+/*******************************
+ * Include header
+ ******************************/
+// #include <geometry_msgs/Twist.h>
+/*******************************
+ * Define
+ ******************************/
+// #define DEBUG
 
 class BaseControl {
 public:
@@ -25,8 +34,9 @@ private:
 
   // variable
 public:
+  // geometry_msgs::Twist p;
+
   // x,y,yaw
-  geometry_msgs::Twist p;
   double Target[3];
   // wheel speed
   double RobotV[4];
