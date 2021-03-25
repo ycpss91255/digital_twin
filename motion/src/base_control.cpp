@@ -12,13 +12,10 @@ void BaseControl::ForwardKinematics() {
       (RobotV[0] + RobotV[1] + RobotV[2] + RobotV[3]) / (4 * this->RobotRadius);
 
 #ifdef DEBUG
-  std::cout << "ForwardKinematics" << std::endl
-            << "input :" << std::endl
-            << "v0 :" << RobotV[0] << " v1 :" << RobotV[1]
-            << " v2 :" << RobotV[2] << " v3 :" << RobotV[3] << std::endl
-            << "output :" << std::endl
-            << " x :" << Target[0] << " y :" << Target[1]
-            << " yaw :" << Target[2] << std::endl;
+  printf("ForwardKinematics\ninput :\n");
+  printf("v0 = %.2f, v1 = %.2f, v2 = %.2f\n", RobotV[0], RobotV[1], RobotV[2]);
+  printf("Output :\n");
+  printf("x = %.2f, y = %.2f, yaw = %.2f\n",Target[0], Target[1], Target[2]);
 #endif
 }
 
@@ -29,13 +26,11 @@ void BaseControl::InverseKinematics() {
   RobotV[1] = Target[0] + this->RobotRadius * Target[2];
 
 #ifdef DEBUG
-  std::cout << "InverseKinematics" << std::endl
-            << "input :" << std::endl
-            << " x :" << Target[0] << " y :" << Target[1]
-            << " yaw :" << Target[2] << std::endl
-            << "output :" << std::endl
-            << "v0 :" << RobotV[0] << " v1 :" << RobotV[1]
-            << " v2 :" << RobotV[2] << " v3 :" << RobotV[3] << std::endl;
+  printf("ForwardKinematics\nInput :\n");
+  printf("x = %.2f, y = %.2f, yaw = %.2f\n",Target[0], Target[1], Target[2]);
+  printf("Output :\n");
+  printf("v0 = %.2f, v1 = %.2f, v2 = %.2f\n", RobotV[0], RobotV[1], RobotV[2]);
+
 #endif
 }
 

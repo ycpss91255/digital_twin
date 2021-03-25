@@ -20,6 +20,8 @@ IntelDockerRun(){
     -v $HOME/.Xauthority:$docker/.Xauthority \
     -v ${WORKSPACE_PATH}:$HOME/work \
     -v /dev:/dev \
+    -v /etc/timezone:/etc/timezone:ro \
+    -v /etc/localtime:/etc/localtime:ro \
     -e XAUTHORITY=$home_folder/.Xauthority \
     -e DISPLAY=$DISPLAY \
     -e QT_X11_NO_MITSHM=1 \
@@ -35,6 +37,8 @@ NvidiaDockerRun(){
     -v $HOME/.Xauthority:$docker/.Xauthority \
     -v ${WORKSPACE_PATH}:$HOME/work \
     -v /dev:/dev \
+    -v /etc/timezone:/etc/timezone:ro \
+    -v /etc/localtime:/etc/localtime:ro \
     -e XAUTHORITY=$home_folder/.Xauthority \
     -e DISPLAY=$DISPLAY \
     -e QT_X11_NO_MITSHM=1 \

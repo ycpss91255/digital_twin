@@ -5,11 +5,6 @@
  ******************************/
 #include <cstdio>
 #include <iostream>
-// #include <iomanip>
-/*******************************
- * Include header
- ******************************/
-// #include <geometry_msgs/Twist.h>
 /*******************************
  * Define
  ******************************/
@@ -24,11 +19,7 @@ public:
 public:
   void ForwardKinematics();
   void InverseKinematics();
-
   // TODO:three wheel kinematics
-  // void ForwardKinematics();
-  // void InverseKinematics();
-
 private:
   // const float
 
