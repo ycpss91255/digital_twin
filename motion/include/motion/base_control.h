@@ -6,34 +6,37 @@
 #include <cstdio>
 #include <iostream>
 /*******************************
+ ** Include header files
+ ******************************/
+#include "motion/motor_data.h"
+/*******************************
  * Define
  ******************************/
-// #define DEBUG
+#define DEBUG
 
 class BaseControl {
-public:
-  BaseControl(double RobotRadius);
+ public:
+  BaseControl();
   ~BaseControl();
 
-  // function
-public:
-  void ForwardKinematics();
-  void InverseKinematics();
-  // TODO:three wheel kinematics
-private:
-  // const float
-
+ public:
   // variable
-public:
-  // geometry_msgs::Twist p;
+  // RobotCommand MotorCmd;
+  RobotSpeed MotorSpeed;
+  RobotCommand MotorCoor;
+  RobotSpeed MotorCur;
 
-  // x,y,yaw
-  double Target[3];
-  // wheel speed
-  double RobotV[4];
+  // function
+  void SetRobotRadius(double);
+  void SetMotorEnc(RobotSpeed);
+  void ForwardKinematics();
+  void InverseKinematics(RobotCommand);
 
-private:
+ private:
+  // variable
   double RobotRadius;
+
+  // function
 };
 
-#endif // BaseControl_H
+#endif  // BaseControl_H

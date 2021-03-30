@@ -6,35 +6,27 @@
 /*******************************
  * Include ros header
  ******************************/
-#include "ros/ros.h"
-
 #include "motion/base_control.h"
+#include "motion/motor_data.h"
+#include "ros/ros.h"
 
 using namespace std;
 
 int main(int argc, char **argv) {
-  BaseControl car(0.0955);
-
-  ros::init(argc, argv, "talker");
+  BaseControl car;
+  car.SetRobotRadius(0.0955);
+  ros::init(argc, argv, "base_control_test");
   ros::NodeHandle nh;
-  // ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME,
-  //                                ros::console::levels::Debug);
-  car.RobotV[0] = 10;
-  car.RobotV[1] = 0;
-  car.RobotV[2] = -10;
-  car.RobotV[3] = 0;
-  // car.RobotV[0] = 10;
+  //   ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME,ros::console::levels::Debug);
+  RobotCommand cmd;
+  cmd.x = 10;
+  car.InverseKinematics(cmd);
+  RobotSpeed enc;
+  enc.w2 = -10;
+  enc.w4 = 10;
+  car.SetMotorEnc(enc);
   car.ForwardKinematics();
-  printf("ForwardKinematics\nx = %.2f, y = %.2f, yaw = %.2f\n", car.Target[0],
-         car.Target[1], car.Target[2]);
-  // x
-  car.Target[0] = 10;
-  // y
-  car.Target[1] = 0;
-  // yaw
-  car.Target[2] = 0;
-  car.InverseKinematics();
-  printf("InverseKinematics\nv0 = %.2f, v1 = %.2f, v2 = %.2f, v3 = %.2f\n",
-         car.RobotV[0], car.RobotV[1], car.RobotV[2], car.RobotV[3]);
+  
+  ros::shutdown();
   return 0;
 }

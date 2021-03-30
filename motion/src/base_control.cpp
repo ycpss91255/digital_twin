@@ -1,39 +1,45 @@
 #include "motion/base_control.h"
 
-BaseControl::BaseControl(double RobotRadius) {
-  this->RobotRadius = RobotRadius;
-}
+BaseControl::BaseControl() {}
 BaseControl::~BaseControl() {}
 
+void BaseControl::SetRobotRadius(double Radius) { this->RobotRadius = Radius; }
+
+void BaseControl::SetMotorEnc(RobotSpeed Cur) {
+  this->MotorCur.w1 = Cur.w1;
+  this->MotorCur.w2 = Cur.w2;
+  this->MotorCur.w3 = Cur.w3;
+  this->MotorCur.w4 = Cur.w4;
+}
+
 void BaseControl::ForwardKinematics() {
-  Target[0] = 0.5 * (RobotV[3] - RobotV[1]);
-  Target[1] = 0.5 * (RobotV[0] - RobotV[2]);
-  Target[2] =
-      (RobotV[0] + RobotV[1] + RobotV[2] + RobotV[3]) / (4 * this->RobotRadius);
+  this->MotorCoor.x = 0.5 * (this->MotorCur.w4 - this->MotorCur.w2);
+  this->MotorCoor.y = 0.5 * (this->MotorCur.w1 - this->MotorCur.w3);
+  this->MotorCoor.yaw = (this->MotorCur.w1 + this->MotorCur.w2 +
+                         this->MotorCur.w3 + this->MotorCur.w4) /
+                        (4 * this->RobotRadius);
 
 #ifdef DEBUG
-  printf("ForwardKinematics\ninput :\n");
-  printf("v0 = %.2f, v1 = %.2f, v2 = %.2f\n", RobotV[0], RobotV[1], RobotV[2]);
+  printf("ForwardKinematics(DEBUG)\ninput :\n");
+  printf("w1 = %.2f, w2 = %.2f, w3 = %.2f, w4 = %.2f\n", this->MotorCur.w1,
+         this->MotorCur.w2, this->MotorCur.w3, this->MotorCur.w4);
   printf("Output :\n");
-  printf("x = %.2f, y = %.2f, yaw = %.2f\n",Target[0], Target[1], Target[2]);
+  printf("x = %.2f, y = %.2f, yaw = %.2f\n", this->MotorCoor.x,
+         this->MotorCoor.y, this->MotorCoor.yaw);
 #endif
 }
 
-void BaseControl::InverseKinematics() {
-  RobotV[0] = Target[1] + this->RobotRadius * Target[2];
-  RobotV[1] = -Target[0] + this->RobotRadius * Target[2];
-  RobotV[2] = Target[1] + this->RobotRadius * Target[2];
-  RobotV[1] = Target[0] + this->RobotRadius * Target[2];
+void BaseControl::InverseKinematics(RobotCommand Cmd) {
+  MotorSpeed.w1 = Cmd.y + Cmd.yaw * this->RobotRadius;
+  MotorSpeed.w2 = -Cmd.x + Cmd.yaw * this->RobotRadius;
+  MotorSpeed.w3 = Cmd.y + Cmd.yaw * this->RobotRadius;
+  MotorSpeed.w4 = Cmd.x + Cmd.yaw * this->RobotRadius;
 
 #ifdef DEBUG
-  printf("ForwardKinematics\nInput :\n");
-  printf("x = %.2f, y = %.2f, yaw = %.2f\n",Target[0], Target[1], Target[2]);
+  printf("ForwardKinematics(DEBUG)\nInput :\n");
+  printf("x = %.2f, y = %.2f, yaw = %.2f\n", Cmd.x, Cmd.y, Cmd.yaw);
   printf("Output :\n");
-  printf("v0 = %.2f, v1 = %.2f, v2 = %.2f\n", RobotV[0], RobotV[1], RobotV[2]);
-
+  printf("w1 = %.2f, w2 = %.2f, w3 = %.2f, w4 = %.2f\n", MotorSpeed.w1,
+         MotorSpeed.w2, MotorSpeed.w3, MotorSpeed.w4);
 #endif
 }
-
-// void BaseControl ::ForwardKinematics() {
-
-// }

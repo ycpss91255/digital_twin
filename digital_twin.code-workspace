@@ -12,7 +12,10 @@
 		"files.associations": {
 			"*.gazebo": "xml",
 			"iostream": "cpp"
-		}
+		},
+		"cSpell.words": [
+			"Coor"
+		]
 	},
 	"extensions": {
 		"recommendations": [
