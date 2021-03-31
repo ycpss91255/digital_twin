@@ -3,6 +3,8 @@
 /*******************************
  * Include system header
  ******************************/
+#include <string.h>
+
 #include <cstdio>
 #include <iostream>
 /*******************************
@@ -13,9 +15,8 @@
 /*******************************
  ** Include header files
  ******************************/
-#include "motion/base_control.h"
+#include "motion/MotorData.h"
 #include "motion/motor_data.h"
-#include "motion/MotorEnc.h"
 /*******************************
  * Define
  ******************************/
@@ -26,7 +27,7 @@
 
 class MotionNodeHandle {
  public:
-  MotionNodeHandle(int, char**);
+  MotionNodeHandle(int, char**, std::string);
   ~MotionNodeHandle();
 
  public:
@@ -35,15 +36,18 @@ class MotionNodeHandle {
   RobotSpeed MotorEnc;
 
   // function
+  void pub_MotorEnc(RobotSpeed);
+  void pub_MotorSpeed(RobotSpeed);
 
  private:
   // variable
   ros::NodeHandle* n;
   ros::Publisher MotorEnc_pub;
+  ros::Publisher MotorSpeed_pub;
   ros::Subscriber CmdVal_sub;
 
   // function
-  void pub_MotorEnc();
+  void init();
   void CmdVelBack(const geometry_msgs::Twist::ConstPtr&);
 };
 

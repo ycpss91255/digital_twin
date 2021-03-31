@@ -21,10 +21,9 @@ class BaseControl {
 
  public:
   // variable
-  // RobotCommand MotorCmd;
   RobotSpeed MotorSpeed;
   RobotCommand MotorCoor;
-  RobotSpeed MotorCur;
+  RobotSpeed MotorCurr;
 
   // function
   void SetRobotRadius(double);
@@ -34,7 +33,7 @@ class BaseControl {
 
  private:
   // variable
-  double RobotRadius;
+  double RobotRadius = 0.0955;
 
   // function
 };

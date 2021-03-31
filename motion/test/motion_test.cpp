@@ -10,20 +10,17 @@
 #include "motion/node_handle.h"
 #include "ros/ros.h"
 
+using namespace std;
+
 int main(int argc, char **argv) {
-  // std::string nn;
-  // nn = "motion2";
-  // MotionNodeHandle Node(argc, argv, nn);
-  MotionNodeHandle Node(argc, argv, "motion");
+  MotionNodeHandle Node(argc, argv,"motion");
+  BaseControl Base;
   ros::Rate loop_rate(5);
-  ROS_INFO("Please uncomment node_handle.h in 'include DEBUG'");
   while (ros::ok()) {
-    RobotSpeed ccc;
-    ccc.w1 = ccc.w4 + 1;
-    ccc.w2 = ccc.w1 + 1;
-    ccc.w3 = ccc.w2 + 1;
-    ccc.w4 = ccc.w3 + 1;
-    Node.pub_MotorEnc(ccc);
+
+    Base.InverseKinematics(Node.MotionCmd);
+
+
     ros::spinOnce();
     loop_rate.sleep();
   }

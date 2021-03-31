@@ -5,22 +5,22 @@ omwr:
     publish_rate: 50
 
   # joint Velocity Controllers ---------------------------------------
-  wheel_joint_1:
+  wheel_1:
     type: effort_controllers/JointVelocityController
     joint: wheel_joint_1
     pid: {p: 0.001, i: 0.0, d: 0.0}
 
-  wheel_joint_2:
+  wheel_2:
     type: effort_controllers/JointVelocityController
     joint: wheel_joint_2
     pid: {p: 0.001, i: 0.0, d: 0.0}
 
-  wheel_joint_3:
+  wheel_3:
     type: effort_controllers/JointVelocityController
     joint: wheel_joint_3
     pid: {p: 0.001, i: 0.0, d: 0.0}
 
-  wheel_joint_4:
+  wheel_4:
     type: effort_controllers/JointVelocityController
     joint: wheel_joint_4
     pid: {p: 0.001, i: 0.0, d: 0.0}

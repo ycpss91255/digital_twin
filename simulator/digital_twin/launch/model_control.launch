@@ -10,10 +10,10 @@
     output="screen"
     ns="/omwr"
     args="joint_state_controller
-          wheel_joint_1
-          wheel_joint_2
-          wheel_joint_3
-          wheel_joint_4" >
+          wheel_1
+          wheel_2
+          wheel_3
+          wheel_4" >
   </node>
 
   <!-- convert joint states to TF transforms for rviz, etc -->

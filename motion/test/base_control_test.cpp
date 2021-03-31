@@ -14,7 +14,7 @@ using namespace std;
 
 int main(int argc, char **argv) {
   BaseControl car;
-  car.SetRobotRadius(0.0955);
+  // car.SetRobotRadius(0.0955);
   ros::init(argc, argv, "base_control_test");
   ros::NodeHandle nh;
   //   ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME,ros::console::levels::Debug);
