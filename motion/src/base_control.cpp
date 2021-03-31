@@ -5,11 +5,11 @@ BaseControl::~BaseControl() {}
 
 void BaseControl::SetRobotRadius(double Radius) { this->RobotRadius = Radius; }
 
-void BaseControl::SetMotorEnc(RobotSpeed Cur) {
-  this->MotorCurr.w1 = Cur.w1;
-  this->MotorCurr.w2 = Cur.w2;
-  this->MotorCurr.w3 = Cur.w3;
-  this->MotorCurr.w4 = Cur.w4;
+void BaseControl::SetMotorEnc(RobotSpeed Curr) {
+  this->MotorCurr.w1 = Curr.w1;
+  this->MotorCurr.w2 = Curr.w2;
+  this->MotorCurr.w3 = Curr.w3;
+  this->MotorCurr.w4 = Curr.w4;
 }
 
 void BaseControl::ForwardKinematics() {

@@ -12,7 +12,7 @@
 /*******************************
  * Define
  ******************************/
-#define DEBUG
+// #define DEBUG
 
 class BaseControl {
  public:

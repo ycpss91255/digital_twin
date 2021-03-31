@@ -16,8 +16,10 @@ int main(int argc, char **argv) {
   // MotionNodeHandle Node(argc, argv, nn);
   MotionNodeHandle Node(argc, argv, "motion");
   ros::Rate loop_rate(5);
-  ROS_INFO("Please uncomment node_handle.h in 'include DEBUG'");
+  ROS_INFO("Please uncomment '#define DEBUG', it in node_handle.h");
+
   while (ros::ok()) {
+    // printf("123\n");
     RobotSpeed ccc;
     ccc.w1 = ccc.w4 + 1;
     ccc.w2 = ccc.w1 + 1;
