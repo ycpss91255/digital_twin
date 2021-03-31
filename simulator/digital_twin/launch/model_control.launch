@@ -8,12 +8,12 @@
     type="spawner"
     respawn="false"
     output="screen"
-    ns="/omwr"
+    ns="/$(arg model_name)"
     args="joint_state_controller
-          wheel_1
-          wheel_2
-          wheel_3
-          wheel_4" >
+          wheel1
+          wheel2
+          wheel3
+          wheel4" >
   </node>
 
   <!-- convert joint states to TF transforms for rviz, etc -->

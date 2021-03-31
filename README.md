@@ -45,6 +45,8 @@ I reference chikuta/chikuta-dockerfiles [github](https://github.com/chikuta/chik
 
 還沒有喇
 ros_master_uri 要手動調整
+命令值 >= 100 會爆炸
+rostopic pub -1 /omwr/wheel1/command std_msgs/Float64 "data: 50.0"
 
 
 ## USB rules

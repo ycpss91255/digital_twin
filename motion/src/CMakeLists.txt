@@ -4,8 +4,8 @@ project(motion)
 # motion
 set(M_LIST
   motion.cpp
-  ../src/node_handle.cpp
-  ../src/base_control.cpp
+  node_handle.cpp
+  base_control.cpp
 )
 add_executable(motion ${M_LIST})
 target_link_libraries(motion ${catkin_LIBRARIES})

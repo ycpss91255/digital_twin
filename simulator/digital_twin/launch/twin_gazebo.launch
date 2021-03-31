@@ -1,36 +1,36 @@
 <launch>
-    <!-- world param -->
-    <arg name="paused" default="false" />
-    <arg name="use_sim_time" default="true" />
-    <arg name="gui" default="true" />
-    <arg name="headless" default="false" />
-    <arg name="debug" default="false" />
-    <arg name="verbose" default="true" />
-    <arg name="physics" default="dart"/>
+  <arg name="paused" default="false" />
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <arg name="debug" default="false" />
+  <arg name="verbose" default="true" />
 
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="paused" value="$(arg paused)"/>
-        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
-        <arg name="gui" value="$(arg gui)"/>
-        <arg name="headless" value="$(arg headless)"/>
-        <arg name="debug" value="$(arg debug)"/>
-        <arg name="physics" value="$(arg physics)"/>
-        <arg name="verbose" value="$(arg verbose)"/>
+  <!-- <arg name="physics" default="ode"/> -->
+  <!-- <arg name="physics" default="bullet"/> -->
+  <!-- <arg name="physics" default="simbody"/> -->
+  <arg name="physics" default="dart"/>
+
+  <include file="$(find digital_twin)/launch/empty_world.launch">
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="physics" value="$(arg physics)"/>
+    <arg name="verbose" value="$(arg verbose)"/>
+  </include>
+
+  <group ns="r1">
+    <arg name="model_name" default="omwr"/>
+
+    <include file="$(find digital_twin)/launch/import_model_xacro.launch">
+      <arg name="model_name" value="$(arg model_name)"/>
     </include>
 
-    <!-- robot config -->
-    <arg name="model_name" default="owmr"/>
-    <arg name="x" default="0"/>
-    <arg name="y" default="0"/>
-    <arg name="z" default="0.0192"/>
-    <arg name="roll" default="0"/>
-    <arg name="pitch" default="0"/>
-    <arg name="yaw" default="0"/>
-
-    <!-- Load the URDF into the ROS Parameter Server -->
-    <param name="robot_description" command="$(find xacro)/xacro '$(find model)/xacro/$(arg model_name)/$(arg model_name).xacro'" />
-
-    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model $(arg model_name) -param robot_description -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)" />
+    <include file="$(find digital_twin)/launch/model_control.launch">
+      <arg name="model_name" value="$(arg model_name)"/>
+    </include>
+  </group>
 
 </launch>
