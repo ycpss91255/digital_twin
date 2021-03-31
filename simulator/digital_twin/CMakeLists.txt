@@ -10,5 +10,8 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package()
 
 include_directories(
+  ${CMAKE_CURRENT_LIST_DIR}/include
   ${catkin_INCLUDE_DIRS}
 )
+
+# add_subdirectory(src)

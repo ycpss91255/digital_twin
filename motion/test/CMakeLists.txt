@@ -17,7 +17,7 @@ set(NHT_LIST
 add_executable(node_handle_test ${NHT_LIST})
 target_link_libraries(node_handle_test ${catkin_LIBRARIES})
 
-# node_handle_test
+# motion_test
 set(MT_LIST
   motion_test.cpp
   ../src/node_handle.cpp
