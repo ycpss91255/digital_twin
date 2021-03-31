@@ -21,10 +21,10 @@ MotionNodeHandle::~MotionNodeHandle() {
 void MotionNodeHandle::pub_MotorEnc() {
   // geometry_msgs::Twist Enc;
 
-  // Enc.linear.x = MotorEnc.x;
-  // Enc.linear.y = MotorEnc.y;
-  // Enc.angular.z = MotorEnc.yaw;
-  // MotorEnc_pub.publish(Enc);
+  // Enc.linear.x = ;
+  // Enc.linear.y = ;
+  // Enc.angular.z = ;
+  // MotorEnc_pub.publish();
 }
 
 void MotionNodeHandle::CmdVelBack(const geometry_msgs::Twist::ConstPtr &msg) {

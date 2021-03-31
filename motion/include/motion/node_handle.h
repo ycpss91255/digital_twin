@@ -15,6 +15,7 @@
  ******************************/
 #include "motion/base_control.h"
 #include "motion/motor_data.h"
+#include "motion/MotorEnc.h"
 /*******************************
  * Define
  ******************************/
