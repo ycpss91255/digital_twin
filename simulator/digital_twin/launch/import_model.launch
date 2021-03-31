@@ -1,7 +1,7 @@
 <launch>
-<arg name="robot_ns" default="robot"/>
+<arg name="robot_ns" default="/robot"/>
 
-  <group ns="$(arg robot_ns)">
+  <!-- <group ns="$(arg robot_ns)"> -->
     <!-- model name -->
     <arg name="model_name" default="omwr"/>
 
@@ -18,14 +18,12 @@
     <param name="robot_description"
       command="$(find xacro)/xacro '$(find model)/$(arg model_name)/xacro/$(arg model_name).xacro'" />
 
-    <!-- TODO:will $(find $(arg pkg_path)) Done, only need to modify after the function is completed pkg_path and model_name-->
-
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
     <node name="urdf_spawner"
       pkg="gazebo_ros"
       type="spawn_model"
       respawn="false"
       output="screen"
-      args="-urdf -model $(arg model_name)  -param robot_description -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) " />
-    </group>
+      args="-urdf -model $(arg model_name) -robot_namespace $(arg robot_ns) -param robot_description -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) " />
+    <!-- </group> -->
 </launch>

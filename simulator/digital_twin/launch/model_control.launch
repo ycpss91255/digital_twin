@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
-<arg name="robot_ns" default="robot"/>
+<arg name="robot_ns" default="/robot"/>
 
-  <group ns="$(arg robot_ns)">
+  <!-- <group ns="$(arg robot_ns)"> -->
     <arg name="model_name" default="omwr"/>
-    <rosparam file="$(find model)/$(arg model_name)/config/$(arg model_name).yaml" command="load"/>
+    <rosparam file="$(find model)/$(arg model_name)/config/$(arg model_name).yaml" command="load" ns="$(arg robot_ns)"/>
     <!-- load the controllers -->
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
-    args="--namespace=/$(arg robot_ns)
+    args=" --namespace $(arg robot_ns)
           joint_state_controller
           wheel1
           wheel2
@@ -19,5 +19,5 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
       <!-- <remap from="/dog" to="/dog/rviz"/> -->
     </node>
-  </group>
+  <!-- </group> -->
 </launch>
