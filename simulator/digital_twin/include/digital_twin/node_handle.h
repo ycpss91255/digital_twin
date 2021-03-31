@@ -19,10 +19,12 @@
 /*******************************
  * Define
  ******************************/
-#define wheel1_topic_name "omwr/wheel1"
-#define motion_topic_name "motion/cmd_val"
-#define motor_enc_topic_name "motion/motor_enc"
-#define motor_speed_topic_name "motion/motor_speed"
+#define wheel1_cmd_topic_name "omwr/wheel1/command"
+#define wheel2_cmd_topic_name "omwr/wheel2/command"
+#define wheel3_cmd_topic_name "omwr/wheel3/command"
+#define wheel4_cmd_topic_name "omwr/wheel4/command"
+
+#define wheel_pos
 
 // #define DEBUG
 

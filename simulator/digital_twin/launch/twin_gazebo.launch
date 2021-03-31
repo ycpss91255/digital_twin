@@ -21,7 +21,9 @@
     <arg name="verbose" value="$(arg verbose)"/>
   </include>
 
-  <group ns="r1">
+  <arg name="robot_ns" default="robot"/>
+
+  <group ns="$(arg robot_ns)">
     <arg name="model_name" default="omwr"/>
 
     <include file="$(find digital_twin)/launch/import_model_xacro.launch">
