@@ -1,30 +1,27 @@
+/*******************************
+ * Include system header
+ ******************************/
+#include <cstdio>
 #include <iostream>
+/*******************************
+ * Include ROS header files
+ ******************************/
+#include "ros/ros.h"
+/*******************************
+ ** Include header files
+ ******************************/
+#include "digital_twin/node_handle.h"
 
-using namespace std;
 
-class test1 {
- public:
-  test1(){};
-  ~test1(){};
-  void DefaultParamFunction(int a, int b = 10) {
-    printf("a + b = %d\n", (a + b));
+
+int main(int argc, char **argv) {
+  SimNodeHandle Node(argc, argv,"digital_twin");
+  ros::Rate loop_rate(1000);
+  while (ros::ok()) {
+
+    ros::spinOnce();
+    loop_rate.sleep();
   }
-};
-class test2 : public test1 {
- public:
-  test2(){};
-  ~test2(){};
-  void DefaultParamFunction2(int a, int b = 10) {
-    printf("a + b = %d\n", (a + b));
-  }
-};
-
-int main() {
-  test2 qq;
-  qq.DefaultParamFunction(2);
-  //   float x[2] = {1, 2};
-  //   x[0] = -x[0];
-  //   std::cout << x[0] << std::endl;
 
   return 0;
 }

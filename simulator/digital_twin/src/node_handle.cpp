@@ -41,7 +41,7 @@ void SimNodeHandle::MotorSpeedBack(
   SpeedMsg.w2 = msg->w2;
   SpeedMsg.w3 = msg->w3;
   SpeedMsg.w4 = msg->w4;
-  pub_MotorSpeed(SpeedMsg);
+  // pub_MotorSpeed(SpeedMsg);
 
 #ifdef DEBUG
   printf("MotorSpeedBack(DEBUG)\n");
@@ -53,10 +53,15 @@ void SimNodeHandle::MotorSpeedBack(
 }
 
 void SimNodeHandle::pub_MotorSpeed(motion::FourMotorStates Cmd) {
-  WheelCmd1_pub.publish(Cmd.w1);
-  WheelCmd2_pub.publish(Cmd.w2);
-  WheelCmd3_pub.publish(Cmd.w3);
-  WheelCmd4_pub.publish(Cmd.w4);
+  std_msgs::Float64 WCmd[4];
+  WCmd[0].data = Cmd.w1;
+  WCmd[1].data = Cmd.w2;
+  WCmd[2].data = Cmd.w3;
+  WCmd[3].data = Cmd.w4;
+  WheelCmd1_pub.publish(WCmd[0]);
+  WheelCmd2_pub.publish(WCmd[1]);
+  WheelCmd3_pub.publish(WCmd[2]);
+  WheelCmd4_pub.publish(WCmd[3]);
 }
 
 void SimNodeHandle::MotorPosBack(const sensor_msgs::JointState::ConstPtr &msg) {
