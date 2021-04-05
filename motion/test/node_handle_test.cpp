@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
 
   while (ros::ok()) {
     // printf("123\n");
-    RobotSpeed ccc;
+    motion::FourMotorStates ccc;
     ccc.w1 = ccc.w4 + 1;
     ccc.w2 = ccc.w1 + 1;
     ccc.w3 = ccc.w2 + 1;

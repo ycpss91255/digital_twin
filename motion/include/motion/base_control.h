@@ -6,9 +6,10 @@
 #include <cstdio>
 #include <iostream>
 /*******************************
- ** Include header files
+ ** Include msg header files
  ******************************/
-#include "motion/motor_data.h"
+#include "geometry_msgs/Twist.h"
+#include "motion/FourMotorStates.h"
 /*******************************
  * Define
  ******************************/
@@ -21,15 +22,15 @@ class BaseControl {
 
  public:
   // variable
-  RobotSpeed MotorSpeed;
-  RobotCommand MotorCoor;
-  RobotSpeed MotorCurr;
+  motion::FourMotorStates MotorSpeed;
+  geometry_msgs::Twist MotorCoor;
+  motion::FourMotorStates MotorCurr;
 
   // function
   void SetRobotRadius(double);
-  void SetMotorEnc(RobotSpeed);
+  void SetMotorEnc(motion::FourMotorStates);
   void ForwardKinematics();
-  void InverseKinematics(RobotCommand);
+  void InverseKinematics(geometry_msgs::Twist);
 
  private:
   // variable

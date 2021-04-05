@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_message_files(
   FILES
-    MotorData.msg
+  FourMotorStates.msg
 )
 generate_messages(
   DEPENDENCIES
@@ -32,19 +32,3 @@ include_directories(
 
 add_subdirectory(src)
 add_subdirectory(test)
-
-# file(GLOB SRC_LIST "src/*.cpp")
-# message("src_list = ${SRC_LIST}")
-
-# file(GLOB TEST_LIST "test/*.cpp")
-# message("test_list = ${TEST_LIST}")
-
-# file(GLOB INCLUDE_LIST "include/motion/*.h")
-# message("include_list = ${INCLUDE_LIST}")
-
-# add_library(
-#   ${PROJECT_NAME}
-#   ${INCLUDE_LIST}
-#   ${SRC_LIST}
-#   ${TEST_LIST}
-# )

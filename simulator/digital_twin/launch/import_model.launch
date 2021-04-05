@@ -1,5 +1,5 @@
 <launch>
-<arg name="robot_ns" default="/robot"/>
+<arg name="robot_ns" default="/digital_twin/robot"/>
 
   <!-- <group ns="$(arg robot_ns)"> -->
     <!-- model name -->

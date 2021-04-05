@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
-<arg name="robot_ns" default="/robot"/>
+<arg name="robot_ns" default="/digital_twin/robot"/>
 
   <!-- <group ns="$(arg robot_ns)"> -->
     <arg name="model_name" default="omwr"/>

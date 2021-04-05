@@ -15,8 +15,8 @@ MotionNodeHandle::~MotionNodeHandle() {
 
 void MotionNodeHandle::init() {
   this->n = new ros::NodeHandle();
-  MotorEnc_pub = n->advertise<motion::MotorData>(motor_enc_topic_name, 1000);
-  MotorSpeed_pub = n->advertise<motion::MotorData>(motor_speed_topic_name, 1000);
+  MotorEnc_pub = n->advertise<motion::FourMotorStates>(motor_enc_topic_name, 1000);
+  MotorSpeed_pub = n->advertise<motion::FourMotorStates>(motor_speed_topic_name, 1000);
   CmdVal_sub = n->subscribe<geometry_msgs::Twist>(
       motion_topic_name, 1000, &MotionNodeHandle::CmdVelBack, this);
 
@@ -25,8 +25,8 @@ void MotionNodeHandle::init() {
 #endif
 }
 
-void MotionNodeHandle::pub_MotorEnc(RobotSpeed Curr) {
-  motion::MotorData EncMsg;
+void MotionNodeHandle::pub_MotorEnc(motion::FourMotorStates Curr) {
+  motion::FourMotorStates EncMsg;
 
   EncMsg.w1 = Curr.w1;
   EncMsg.w2 = Curr.w2;
@@ -43,8 +43,8 @@ void MotionNodeHandle::pub_MotorEnc(RobotSpeed Curr) {
 #endif
 }
 
-void MotionNodeHandle::pub_MotorSpeed(RobotSpeed Speed) {
-  motion::MotorData SpeedMsg;
+void MotionNodeHandle::pub_MotorSpeed(motion::FourMotorStates Speed) {
+  motion::FourMotorStates SpeedMsg;
 
   SpeedMsg.w1 = Speed.w1;
   SpeedMsg.w2 = Speed.w2;
@@ -62,9 +62,9 @@ void MotionNodeHandle::pub_MotorSpeed(RobotSpeed Speed) {
 }
 
 void MotionNodeHandle::CmdVelBack(const geometry_msgs::Twist::ConstPtr &msg) {
-  this->MotionCmd.x = msg->linear.x;
-  this->MotionCmd.y = msg->linear.y;
-  this->MotionCmd.yaw = msg->angular.z;
+  this->MotionCmd.linear.x = msg->linear.x;
+  this->MotionCmd.linear.y = msg->linear.y;
+  this->MotionCmd.angular.z = msg->angular.z;
 
 #ifdef DEBUG
   printf("CmdVelBack(DEBUG)\n");

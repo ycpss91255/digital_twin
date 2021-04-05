@@ -1,22 +1,20 @@
 #ifndef NodeHandle_H
 #define NodeHandle_H
 /*******************************
- * Include system header
+ * Include system header files
  ******************************/
 #include <string.h>
-
 #include <cstdio>
 #include <iostream>
 /*******************************
- * Include ROS
+ * Include ROS header files
  ******************************/
-#include "geometry_msgs/Twist.h"
 #include "ros/ros.h"
 /*******************************
- ** Include header files
+ ** Include msg header files
  ******************************/
-#include "motion/MotorData.h"
-#include "motion/motor_data.h"
+#include "geometry_msgs/Twist.h"
+#include "motion/FourMotorStates.h"
 /*******************************
  * Define
  ******************************/
@@ -33,12 +31,12 @@ class MotionNodeHandle {
 
  public:
   // variable
-  RobotCommand MotionCmd;
-  RobotSpeed MotorEnc;
+  geometry_msgs::Twist MotionCmd;
+  motion::FourMotorStates MotorEnc;
 
   // function
-  void pub_MotorEnc(RobotSpeed);
-  void pub_MotorSpeed(RobotSpeed);
+  void pub_MotorEnc(motion::FourMotorStates);
+  void pub_MotorSpeed(motion::FourMotorStates);
 
  private:
   // variable
@@ -49,7 +47,7 @@ class MotionNodeHandle {
 
   // function
   void init();
-  void CmdVelBack(const geometry_msgs::Twist::ConstPtr&);
+  void CmdVelBack(const geometry_msgs::Twist::ConstPtr &);
 };
 
 #endif  // NodeHandle_H

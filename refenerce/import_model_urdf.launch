@@ -15,8 +15,6 @@
   <param name="robot_description"
     textfile="$(find model)/$(arg model_name)/urdf/$(arg model_name).urdf" />
 
-  <!-- TODO:will $(find $(arg pkg_path)) Done, only need to modify after the function is completed pkg_path and model_name-->
-
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner"
     pkg="gazebo_ros"

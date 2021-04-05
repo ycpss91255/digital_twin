@@ -9,22 +9,27 @@
 /*******************************
  * Include ROS
  ******************************/
-#include "geometry_msgs/Twist.h"
 #include "ros/ros.h"
+/*******************************
+ ** Include msg header files
+ ******************************/
+#include "std_msgs/Float64.h"
+#include "geometry_msgs/Twist.h"
+#include "sensor_msgs/JointState.h"
+#include "motion/FourMotorStates.h"
 /*******************************
  ** Include header files
  ******************************/
-#include "motion/MotorData.h"
-#include "motion/motor_data.h"
+#include "digital_twin/robot_states.h"
 /*******************************
  * Define
  ******************************/
-#define wheel1_cmd_topic_name "omwr/wheel1/command"
-#define wheel2_cmd_topic_name "omwr/wheel2/command"
-#define wheel3_cmd_topic_name "omwr/wheel3/command"
-#define wheel4_cmd_topic_name "omwr/wheel4/command"
-
-#define wheel_pos
+#define wheel1_cmd_topic_name "digital_twin/robot/wheel1/command"
+#define wheel2_cmd_topic_name "digital_twin/robot/wheel2/command"
+#define wheel3_cmd_topic_name "digital_twin/robot/wheel3/command"
+#define wheel4_cmd_topic_name "digital_twin/robot/wheel4/command"
+#define wheel_pos_topic_name "digital_twin/robot/joint_states"
+// #define wheel4_cmd_topic_name "digital_twin/robot/"
 
 // #define DEBUG
 
@@ -35,23 +40,30 @@ class SimNodeHandle {
 
  public:
   // variable
-  RobotCommand MotionCmd;
-  RobotSpeed MotorEnc;
+  motion::FourMotorStates MotorCmd;
+  motion::FourMotorStates MotorEnc;
 
   // function
-  void pub_MotorEnc(RobotSpeed);
-  void pub_MotorSpeed(RobotSpeed);
+  void pub_MotorSpeed(motion::FourMotorStates);
 
  private:
   // variable
   ros::NodeHandle* n;
-  ros::Publisher MotorEnc_pub;
-  ros::Publisher MotorSpeed_pub;
-  ros::Subscriber CmdVal_sub;
+
+  ros::Subscriber MotorSpeed_sub;
+
+  ros::Publisher WheelCmd1_pub;
+  ros::Publisher WheelCmd2_pub;
+  ros::Publisher WheelCmd3_pub;
+  ros::Publisher WheelCmd4_pub;
+
+  ros::Subscriber MotorPos_sub;
+  ros::Publisher MotorPos_pub;
 
   // function
   void init();
-  void CmdVelBack(const geometry_msgs::Twist::ConstPtr&);
+  void MotorSpeedBack(const motion::FourMotorStates::ConstPtr &);
+  void MotorPosBack(const sensor_msgs::JointState::ConstPtr &);
 };
 
 #endif  // NodeHandle_H
