@@ -15,7 +15,7 @@
 int main(int argc, char **argv) {
   MotionNodeHandle Node(argc, argv,"motion");
   BaseControl Base;
-  ros::Rate loop_rate(100);
+  ros::Rate loop_rate(1000);
   while (ros::ok()) {
 
     Base.InverseKinematics(Node.MotionCmd);

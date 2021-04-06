@@ -25,9 +25,10 @@ void SimNodeHandle::init() {
   WheelCmd4_pub = n->advertise<std_msgs::Float64>(wheel4_cmd_topic_name, 1000);
 
   MotorPos_sub = n->subscribe<sensor_msgs::JointState>(
-      wheel_pos_topic_name, 1000, &SimNodeHandle::MotorPosBack, this);
+      joint_states_topic_name, 1000, &SimNodeHandle::MotorPosBack, this);
+// TODO: wait fix wheel1_cmd
   MotorPos_pub =
-      n->advertise<motion::FourMotorStates>(wheel1_cmd_topic_name, 1000);
+      n->advertise<motion::FourMotorStates>(wheel_pos_topic_name, 1000);
 
 #ifdef DEBUG
   printf("Motion_nodeHandle(DEBUG)\n");

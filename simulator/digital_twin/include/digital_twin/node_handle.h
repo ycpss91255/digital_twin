@@ -14,7 +14,6 @@
  ** Include msg header files
  ******************************/
 #include "std_msgs/Float64.h"
-#include "geometry_msgs/Twist.h"
 #include "sensor_msgs/JointState.h"
 #include "motion/FourMotorStates.h"
 /*******************************
@@ -31,7 +30,8 @@
 #define wheel3_cmd_topic_name "digital_twin/robot/wheel3/command"
 #define wheel4_cmd_topic_name "digital_twin/robot/wheel4/command"
 
-#define wheel_pos_topic_name "digital_twin/robot/joint_states"
+#define joint_states_topic_name "digital_twin/robot/joint_states"
+#define wheel_pos_topic_name "digital_twin/robot/pos"
 
 // #define wheel4_cmd_topic_name "digital_twin/robot/"
 // #define motion_topic_name "motion/cmd_val"

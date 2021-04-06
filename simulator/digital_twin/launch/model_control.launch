@@ -19,5 +19,6 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
       <!-- <remap from="/dog" to="/dog/rviz"/> -->
     </node>
+    <!-- <node pkg="digital_twin" type="node_handle_test" name="node_handle_test" output="screen" respawn="false" respawn_delay="0"/> -->
   <!-- </group> -->
 </launch>

@@ -12,8 +12,6 @@
  ******************************/
 #include "digital_twin/node_handle.h"
 
-
-
 int main(int argc, char **argv) {
   SimNodeHandle Node(argc, argv,"digital_twin");
   ros::Rate loop_rate(1000);

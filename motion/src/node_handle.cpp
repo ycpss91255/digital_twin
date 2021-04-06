@@ -73,5 +73,3 @@ void MotionNodeHandle::CmdVelBack(const geometry_msgs::Twist::ConstPtr &msg) {
   printf("z : %f\n", msg->angular.z);
 #endif
 }
-
-// void MotionNodeHandle::Set
