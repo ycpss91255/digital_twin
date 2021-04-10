@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source $(pwd)/get_graph_card.bash
+# source $(pwd)/get_graph_card.bash
 
-GRAPHCARD_DEBUG=false
+# GRAPHCARD_DEBUG=false
 
 file_dir=`dirname $0`
 

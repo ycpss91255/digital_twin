@@ -27,7 +27,7 @@ RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
   sudo \
-  ssh wget curl rsync net-tools \
+  ssh wget curl rsync net-tools tar\
   terminator byobu zsh gnome-terminal \
   nano vim git \
   dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
@@ -37,28 +37,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-# setup custom configuration
-COPY config /home/${USER}/.tmp
-# bashrc
-RUN cat /home/${USER}/.tmp/bashrc/* >> /home/${USER}/.bashrc \
-  # zsh
-  && mv /home/${USER}/.tmp/zsh/powerlevel10k /home/${USER}/ \
-  && sudo mv /home/${USER}/.tmp/zsh/.p10k.zsh /home/${USER}/ \
-  && cat /home/${USER}/.tmp/zsh/zshrc/* >> /home/${USER}/.zshrc \
-  # byobu-zsh
-  && mkdir -p /home/${USER}/.byobu \
-  && cat /home/${USER}/.tmp/byobu/* > /home/${USER}/.byobu/.tmux.conf \
-  && chown -R ${USER}:${GROUP} /home/${USER}/.byobu \
-  # usb rule
-  && sudo mkdir -p /etc/udev/rules.d/ \
-  && sudo cp /home/${USER}/.tmp/rule/* /etc/udev/rules.d/
+WORKDIR /home/${USER}/.tmp
 
-  # python3
-RUN pip3 install -r /home/${USER}/.tmp/pip/requirements.txt \
-  && mkdir -p /home/${USER}/.config/terminator \
-  && cp -r /home/${USER}/.tmp/terminator /home/${USER}/.config/terminator \
-  && chown -R ${USER}:${GROUP} /home/${USER}/.config \
-  && sudo rm -rf /home/${USER}/.tmp
+# setup custom configuration
+COPY config .
+# shell
+RUN bash ./script/bash_setup.bash \
+  && bash ./script/terminator_setup.bash \
+  && bash ./script/zsh_setup.bash \
+  && bash ./script/byobu_setup.bash \
+  # Dependent
+  && bash ./script/rule_setup.bash \
+  && bash ./script/pip_setup.bash \
+  && bash ./script/piscope_setup.bash \
+  && rm -rf /home/${USER}/.tmp
+
+# # copy entrypoint
+# COPY entrypoint.bash /entrypoint.bash
+# RUN chmod 777 /entrypoint.bash
+
+WORKDIR /home/${USER}
 
 # Switch user to ${USER}
 USER ${USER}
