@@ -4,19 +4,19 @@
     <selfCollide>false</selfCollide>
   </gazebo>
   <gazebo reference="wheel_link_1">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Red</material>
     <selfCollide>false</selfCollide>
   </gazebo>
   <gazebo reference="wheel_link_2">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Green</material>
     <selfCollide>false</selfCollide>
   </gazebo>
   <gazebo reference="wheel_link_3">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Blue</material>
     <selfCollide>false</selfCollide>
   </gazebo>
   <gazebo reference="wheel_link_4">
-    <material>Gazebo/Black</material>
+    <material>Gazebo/Yellow</material>
     <selfCollide>false</selfCollide>
   </gazebo>
 </robot>

@@ -4,6 +4,11 @@ joint_state_controller:
   publish_rate: 50
 
 # joint Velocity Controllers ---------------------------------------
+
+# type: effort_controllers/JointVelocityController
+# type: effort_controllers/JointEffortController
+# type: effort_controllers/JointPositionController
+
 wheel1:
   type: effort_controllers/JointVelocityController
   joint: wheel_joint_1

@@ -9,8 +9,8 @@
     <!-- Robot pose -->
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
-    <arg name="z" default="0.034502"/>
-    <arg name="roll" default="0"/>
+    <arg name="z" default="0.147765"/>
+    <arg name="roll" default="3.140666"/>
     <arg name="pitch" default="0"/>
     <arg name="yaw" default="0"/>
 
