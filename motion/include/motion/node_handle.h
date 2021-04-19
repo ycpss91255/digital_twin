@@ -47,7 +47,7 @@ class MotionNodeHandle {
 
   // function
   void init();
-  void CmdVelBack(const geometry_msgs::Twist::ConstPtr &);
+  void CmdVelBack(const geometry_msgs::Twist::ConstPtr&);
 };
 
 #endif  // NodeHandle_H

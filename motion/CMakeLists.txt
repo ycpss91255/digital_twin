@@ -22,6 +22,10 @@ catkin_package(
  INCLUDE_DIRS
   include
  CATKIN_DEPENDS
+  geometry_msgs
+  roscpp
+  rospy
+  std_msgs
   message_runtime
 )
 
