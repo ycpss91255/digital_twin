@@ -4,6 +4,7 @@
  * Include system header
  ******************************/
 #include <string.h>
+
 #include <cstdio>
 #include <iostream>
 /*******************************
@@ -13,9 +14,9 @@
 /*******************************
  ** Include msg header files
  ******************************/
-#include "std_msgs/Float64.h"
-#include "sensor_msgs/JointState.h"
 #include "motion/FourMotorStates.h"
+#include "sensor_msgs/JointState.h"
+#include "std_msgs/Float64.h"
 /*******************************
  ** Include header files
  ******************************/
@@ -23,54 +24,29 @@
 /*******************************
  * Define
  ******************************/
-#define motor_speed_topic_name "motion/motor_speed"
-
-#define wheel1_cmd_topic_name "digital_twin/robot/wheel1/command"
-#define wheel2_cmd_topic_name "digital_twin/robot/wheel2/command"
-#define wheel3_cmd_topic_name "digital_twin/robot/wheel3/command"
-#define wheel4_cmd_topic_name "digital_twin/robot/wheel4/command"
-
-#define joint_states_topic_name "digital_twin/robot/joint_states"
-#define wheel_pos_topic_name "digital_twin/robot/pos"
-
-// #define wheel4_cmd_topic_name "digital_twin/robot/"
-// #define motion_topic_name "motion/cmd_val"
-// #define motor_enc_topic_name "motion/motor_enc"
-
 // #define DEBUG
 
 class SimNodeHandle {
  public:
-  SimNodeHandle(int, char**, std::string);
+  SimNodeHandle(int, char**, std::string, int);
   ~SimNodeHandle();
 
  public:
   // variable
-  // motion::FourMotorStates MotorCmd;
-  // motion::FourMotorStates MotorEnc;
-
+  float MotorPos = 0;
   // function
-  void pub_MotorSpeed(motion::FourMotorStates);
-  void pub_MotorPos(motion::FourMotorStates);
+  void pub_MotorCmd(float);
 
  private:
   // variable
   ros::NodeHandle* n;
-
-  ros::Subscriber MotorSpeed_sub;
-
-  ros::Publisher WheelCmd1_pub;
-  ros::Publisher WheelCmd2_pub;
-  ros::Publisher WheelCmd3_pub;
-  ros::Publisher WheelCmd4_pub;
-
-  ros::Subscriber MotorPos_sub;
-  ros::Publisher MotorPos_pub;
+  ros::Publisher MotorCmd_pub;
+  ros::Subscriber MotorState_sub;
+  int MotorNum;
 
   // function
-  void init();
-  void MotorSpeedBack(const motion::FourMotorStates::ConstPtr &);
-  void MotorPosBack(const sensor_msgs::JointState::ConstPtr &);
+  void init(std::string, int);
+  void MotorStateBack(const sensor_msgs::JointState::ConstPtr&);
 };
 
 #endif  // NodeHandle_H

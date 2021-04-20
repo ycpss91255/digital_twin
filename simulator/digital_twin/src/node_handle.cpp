@@ -1,8 +1,11 @@
 #include "digital_twin/node_handle.h"
 
-SimNodeHandle::SimNodeHandle(int argc, char **argv, std::string NodeName) {
+SimNodeHandle::SimNodeHandle(int argc, char **argv, std::string RobotNS,
+                             int MotorNum) {
+  std::string NodeName = "sim_Motor" + std::to_string(MotorNum);
+
   ros::init(argc, argv, NodeName);
-  init();
+  init(RobotNS, MotorNum);
 }
 
 SimNodeHandle::~SimNodeHandle() {
@@ -13,76 +16,31 @@ SimNodeHandle::~SimNodeHandle() {
 #endif
 }
 
-void SimNodeHandle::init() {
+void SimNodeHandle::init(std::string RobotNS, int MotorNum) {
+  this->MotorNum = MotorNum - 1;
   this->n = new ros::NodeHandle();
+  std::string MotorCmdTopicName =
+      RobotNS + "/wheel" + std::to_string(MotorNum) + "/command";
+  std::string MotorStateTopicName =
+      RobotNS + "/joint_states";
 
-  MotorSpeed_sub = n->subscribe<motion::FourMotorStates>(
-      motor_speed_topic_name, 1000, &SimNodeHandle::MotorSpeedBack, this);
-
-  WheelCmd1_pub = n->advertise<std_msgs::Float64>(wheel1_cmd_topic_name, 1000);
-  WheelCmd2_pub = n->advertise<std_msgs::Float64>(wheel2_cmd_topic_name, 1000);
-  WheelCmd3_pub = n->advertise<std_msgs::Float64>(wheel3_cmd_topic_name, 1000);
-  WheelCmd4_pub = n->advertise<std_msgs::Float64>(wheel4_cmd_topic_name, 1000);
-
-  MotorPos_sub = n->subscribe<sensor_msgs::JointState>(
-      joint_states_topic_name, 1000, &SimNodeHandle::MotorPosBack, this);
-// TODO: wait fix wheel1_cmd
-  MotorPos_pub =
-      n->advertise<motion::FourMotorStates>(wheel_pos_topic_name, 1000);
-
-#ifdef DEBUG
-  printf("Motion_nodeHandle(DEBUG)\n");
-#endif
+  MotorCmd_pub = n->advertise<std_msgs::Float64>(MotorCmdTopicName, 100);
+  MotorState_sub = n->subscribe<sensor_msgs::JointState>(
+      MotorStateTopicName, 100, &SimNodeHandle::MotorStateBack, this);
 }
 
-void SimNodeHandle::MotorSpeedBack(
-    const motion::FourMotorStates::ConstPtr &msg) {
-  motion::FourMotorStates SpeedMsg;
-  SpeedMsg.w1 = msg->w1;
-  SpeedMsg.w2 = msg->w2;
-  SpeedMsg.w3 = msg->w3;
-  SpeedMsg.w4 = msg->w4;
-  // pub_MotorSpeed(SpeedMsg);
+void SimNodeHandle::MotorStateBack(
+    const sensor_msgs::JointState::ConstPtr &msg) {
+  MotorPos = msg->position[this->MotorNum];
 
 #ifdef DEBUG
   printf("MotorSpeedBack(DEBUG)\n");
-  printf("w1 : %f\n", SpeedMsg.w1);
-  printf("w2 : %f\n", SpeedMsg.w2);
-  printf("w3 : %f\n", SpeedMsg.w3);
-  printf("w4 : %f\n", SpeedMsg.w4);
+  printf("Motor%d Pos : %f\n", this->MotorNum, MotorPos);
 #endif
 }
 
-void SimNodeHandle::pub_MotorSpeed(motion::FourMotorStates Cmd) {
-  std_msgs::Float64 WCmd[4];
-  WCmd[0].data = Cmd.w1;
-  WCmd[1].data = Cmd.w2;
-  WCmd[2].data = Cmd.w3;
-  WCmd[3].data = Cmd.w4;
-  WheelCmd1_pub.publish(WCmd[0]);
-  WheelCmd2_pub.publish(WCmd[1]);
-  WheelCmd3_pub.publish(WCmd[2]);
-  WheelCmd4_pub.publish(WCmd[3]);
+void SimNodeHandle::pub_MotorCmd(float cmd) {
+  std_msgs::Float64 msg;
+  msg.data = cmd;
+  MotorCmd_pub.publish(msg);
 }
-
-void SimNodeHandle::MotorPosBack(const sensor_msgs::JointState::ConstPtr &msg) {
-  motion::FourMotorStates Pos;
-  Pos.w1 = msg->position[0];
-  Pos.w2 = msg->position[1];
-  Pos.w3 = msg->position[2];
-  Pos.w4 = msg->position[3];
-  pub_MotorPos(Pos);
-
-#ifdef DEBUG
-  printf("MotorPosBack(DEBUG)\n");
-  printf("w1 : %f\n", Pos.w1);
-  printf("w2 : %f\n", Pos.w2);
-  printf("w3 : %f\n", Pos.w3);
-  printf("w4 : %f\n", Pos.w4);
-#endif
-}
-
-void SimNodeHandle::pub_MotorPos(motion::FourMotorStates Pos) {
-  MotorPos_pub.publish(Pos);
-}
-
