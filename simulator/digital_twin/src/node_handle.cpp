@@ -31,8 +31,12 @@ void SimNodeHandle::init(std::string RobotNS, int MotorNum) {
 
 void SimNodeHandle::MotorStateBack(
     const sensor_msgs::JointState::ConstPtr &msg) {
-  MotorPos = msg->position[this->MotorNum];
-
+  static bool init = true;
+  if(init) {
+    InitPos = msg->position[this->MotorNum];
+    init = false;
+  }
+  MotorPos = msg->position[this->MotorNum] - InitPos;
 #ifdef DEBUG
   printf("MotorSpeedBack(DEBUG)\n");
   printf("Motor%d Pos : %f\n", this->MotorNum, MotorPos);

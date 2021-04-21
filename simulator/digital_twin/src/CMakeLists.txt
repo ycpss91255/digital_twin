@@ -3,7 +3,7 @@ project(digital_twin)
 
 # sim_control
 set(NodeList_1
-  motor_control.cpp
+  motor_node.cpp
   node_handle.cpp
 )
 add_executable(motor_control ${NodeList_1})

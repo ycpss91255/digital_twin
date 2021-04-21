@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
   <arg name="robot_ns" default="/digital_twin/robot"/>
+  <arg name="model_name" default="omwr"/>
 
   <group ns="$(arg robot_ns)">
-    <arg name="model_name" default="omwr"/>
 
     <include file="$(find digital_twin)/launch/import_model.launch">
       <arg name="model_name" value="$(arg model_name)"/>

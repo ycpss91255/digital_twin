@@ -27,7 +27,7 @@ RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
   sudo \
-  ssh wget curl rsync net-tools tar\
+  ssh wget curl rsync net-tools tar \
   terminator byobu zsh gnome-terminal \
   nano vim git \
   dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \

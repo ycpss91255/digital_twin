@@ -11,7 +11,8 @@
 		],
 		"files.associations": {
 			"*.gazebo": "xml",
-			"iostream": "cpp"
+			"iostream": "cpp",
+			"*.ipp": "cpp"
 		},
 		"cSpell.words": [
 			"Coor",
