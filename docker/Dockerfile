@@ -28,9 +28,10 @@ RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y --no-install-recommends \
   sudo \
   ssh wget curl rsync net-tools tar \
-  terminator byobu zsh gnome-terminal \
-  nano vim git \
+  byobu zsh \
+  terminator gnome-terminal libcanberra-gtk3-module \
   dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
+  nano vim git \
   # work-tools
   python3-pip python3-catkin-tools ros-noetic-gazebo-ros-pkgs \
   ros-noetic-effort-controllers \
@@ -41,7 +42,7 @@ WORKDIR /home/${USER}/.tmp
 
 # setup custom configuration
 COPY config .
-# shell
+# Terminal
 RUN bash ./script/bash_setup.bash \
   && bash ./script/terminator_setup.bash \
   && bash ./script/zsh_setup.bash \
@@ -68,5 +69,5 @@ EXPOSE 22
 # Switch to user's HOME folder
 WORKDIR /home/${USER}/work
 
-# ENTRYPOINT ["terminator"]
-ENTRYPOINT ["byobu"]
+ENTRYPOINT ["terminator"]
+# ENTRYPOINT ["byobu"]
