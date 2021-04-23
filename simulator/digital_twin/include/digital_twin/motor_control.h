@@ -14,18 +14,18 @@
 /*******************************
  ** Include msg header files
  ******************************/
-#include "motion/FourMotorStates.h"
-#include "sensor_msgs/JointState.h"
 #include "std_msgs/Float64.h"
 /*******************************
  ** Include header files
  ******************************/
-#include "digital_twin/robot_states.h"
+
 /*******************************
  * Define
  ******************************/
 // #define DEBUG
 
+#define MAX_MOTOR_RPM 1250
+#define MIN_MOTOR_RPM 125
 class MotorControl {
  public:
   MotorControl();
@@ -33,8 +33,9 @@ class MotorControl {
 
  public:
   // variable
-  float MotorPos = 0;
+  float Pos = 0;
   // function
+  void PosControl(float, float, float);
 
  private:
   // variable

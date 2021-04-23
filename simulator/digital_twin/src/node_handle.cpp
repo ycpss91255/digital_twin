@@ -21,8 +21,7 @@ void SimNodeHandle::init(std::string RobotNS, int MotorNum) {
   this->n = new ros::NodeHandle();
   std::string MotorCmdTopicName =
       RobotNS + "/wheel" + std::to_string(MotorNum) + "/command";
-  std::string MotorStateTopicName =
-      RobotNS + "/joint_states";
+  std::string MotorStateTopicName = RobotNS + "/joint_states";
 
   MotorCmd_pub = n->advertise<std_msgs::Float64>(MotorCmdTopicName, 100);
   MotorState_sub = n->subscribe<sensor_msgs::JointState>(
@@ -32,7 +31,7 @@ void SimNodeHandle::init(std::string RobotNS, int MotorNum) {
 void SimNodeHandle::MotorStateBack(
     const sensor_msgs::JointState::ConstPtr &msg) {
   static bool init = true;
-  if(init) {
+  if (init) {
     InitPos = msg->position[this->MotorNum];
     init = false;
   }

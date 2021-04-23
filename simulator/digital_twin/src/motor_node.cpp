@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
     Node.pub_MotorCmd(1);
   printf("motor Pos = %f\n", Node.MotorPos);
 
-    if (Node.MotorPos >= 6.28) {
+    if (Node.MotorPos >= (2 * M_PI)) {
       printf("Bingo\n");
       Node.pub_MotorCmd(0);
       break;
