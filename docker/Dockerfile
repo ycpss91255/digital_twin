@@ -69,5 +69,5 @@ EXPOSE 22
 # Switch to user's HOME folder
 WORKDIR /home/${USER}/work
 
-ENTRYPOINT ["terminator"]
-# ENTRYPOINT ["byobu"]
+# ENTRYPOINT ["terminator"]
+ENTRYPOINT ["byobu"]
