@@ -30,13 +30,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   ssh wget curl rsync net-tools tar \
   byobu zsh \
   terminator gnome-terminal libcanberra-gtk3-module \
-  dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
   nano vim git \
   # work-tools
   python3-pip python3-catkin-tools ros-noetic-gazebo-ros-pkgs \
   ros-noetic-effort-controllers \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
+
+  # dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
 
 WORKDIR /home/${USER}/.tmp
 
