@@ -5,6 +5,7 @@ project(digital_twin)
 set(NodeList_1
   motor_node.cpp
   node_handle.cpp
+  motor_control.cpp
 )
 add_executable(motor_control ${NodeList_1})
 target_link_libraries(motor_control ${catkin_LIBRARIES})

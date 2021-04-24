@@ -2,24 +2,31 @@
 
 MotorControl::MotorControl() {}
 
-MotorControl::~MotorControl() {}
+// MotorControl::~MotorControl() {}
 
-void MotorControl::init() {}
-
-void MotorControl::PosControl(float target, float Kp, float Kd) {
-  // TODO : wait DONE
-  float error = target - Pos;
-  float derivative = error - previous_error;
-  float output = Kp * error + Kd * derivative;
-  previous_error = error;
-  bool dir = (output <= 0) ? 0 : 1;
-
-  Cmd.DIR = dir;
-  ens = abs(ens);
-  Cmd.PWM = (ens < 125)     ? 0
-            : (ens >= 1250) ? 255
-                            : round(ens / 4.902);  // 1250(ens) to 255(gpio max)
-
-  gpio_write(pi, Pin.DIR, Cmd.DIR);
-  set_PWM_dutycycle(pi, Pin.PWM, Cmd.PWM);
+float MotorControl::enc2m(float target) {
+  return (target / MotorEncSum * (2 * M_PI));
 }
+
+float MotorControl::m2enc(float target) {
+  return (target / (2 * M_PI) * MotorEncSum);
+}
+
+void MotorControl::PosControl(float target, float current, float Kp, float Kd) {
+  // target = enc2m(target);
+  current = m2enc(current);
+
+  float error = target - current;
+  float derivative = error - previous_error;
+  this->output = Kp * error + Kd * derivative;
+  previous_error = error;
+  float if_output = abs(output);
+  this->output = (if_output < (MIN_MOTOR_RPM))    ? 0
+                 : (if_output >= (MAX_MOTOR_RPM)) ? MAX_MOTOR_RPM
+                                                  : if_output;
+  this->output = (error <= 0) ? -this->output : this->output;
+  this->output = output / MotorEncSum * (2 * M_PI);
+}
+
+float MotorControl::getOutput() { return this->output; }
+float MotorControl::getEnc() { return this->enc; }

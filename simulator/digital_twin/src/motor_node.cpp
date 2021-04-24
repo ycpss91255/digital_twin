@@ -1,25 +1,27 @@
 #include <cstdio>
 #include <iostream>
 
+#include "digital_twin/motor_control.h"
 #include "digital_twin/node_handle.h"
 #include "ros/ros.h"
 
 int main(int argc, char **argv) {
-  SimNodeHandle Node(argc, argv, "digital_twin/robot", 1);
+  SimNodeHandle Node(argc, argv, "digital/robot", 1);
+  MotorControl Motor;
   // ros::Rate loop_rate(10);
 
   while (ros::ok()) {
-    Node.pub_MotorCmd(1);
-  printf("motor Pos = %f\n", Node.MotorPos);
+    Motor.PosControl(Node.RealMotorFB, Node.MotorPos, 20, 0);
+    float output = Motor.getOutput();
+    Node.pub_MotorCmd(output);
+    float enc = Motor.getEnc();
+    Node.pub_MotorFB(enc);
 
-    if (Node.MotorPos >= (2 * M_PI)) {
-      printf("Bingo\n");
-      Node.pub_MotorCmd(0);
-      break;
-    }
+    // printf("motor Pos = %f %f\n", output, enc);
+
     ros::spinOnce();
     // loop_rate.sleep();
   }
-
+  Node.pub_MotorCmd(0);
   return 0;
 }

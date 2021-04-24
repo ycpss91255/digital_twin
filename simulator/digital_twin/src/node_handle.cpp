@@ -21,29 +21,50 @@ void SimNodeHandle::init(std::string RobotNS, int MotorNum) {
   this->n = new ros::NodeHandle();
   std::string MotorCmdTopicName =
       RobotNS + "/wheel" + std::to_string(MotorNum) + "/command";
+  std::string MotorFBTopicName =
+      RobotNS + "/wheel" + std::to_string(MotorNum) + "/motorFB";
+
   std::string MotorStateTopicName = RobotNS + "/joint_states";
 
   MotorCmd_pub = n->advertise<std_msgs::Float64>(MotorCmdTopicName, 100);
+  MotorFB_pub = n->advertise<std_msgs::Float64>(MotorFBTopicName, 100);
+
   MotorState_sub = n->subscribe<sensor_msgs::JointState>(
       MotorStateTopicName, 100, &SimNodeHandle::MotorStateBack, this);
-}
 
-void SimNodeHandle::MotorStateBack(
-    const sensor_msgs::JointState::ConstPtr &msg) {
-  static bool init = true;
-  if (init) {
-    InitPos = msg->position[this->MotorNum];
-    init = false;
-  }
-  MotorPos = msg->position[this->MotorNum] - InitPos;
-#ifdef DEBUG
-  printf("MotorSpeedBack(DEBUG)\n");
-  printf("Motor%d Pos : %f\n", this->MotorNum, MotorPos);
-#endif
+  // real motor
+  std::string RealMotorFBTopicName = "real/robot/wheel1/motorFB";
+
+  RealMotorFB_sub = n->subscribe<std_msgs::Float64>(
+      RealMotorFBTopicName, 100, &SimNodeHandle::MotorFBBack, this);
 }
 
 void SimNodeHandle::pub_MotorCmd(float cmd) {
   std_msgs::Float64 msg;
   msg.data = cmd;
   MotorCmd_pub.publish(msg);
+}
+// pub enc
+void SimNodeHandle::pub_MotorFB(float motorFB) {
+  std_msgs::Float64 msg;
+  msg.data = motorFB;
+  MotorFB_pub.publish(msg);
+}
+
+void SimNodeHandle::MotorStateBack(
+    const sensor_msgs::JointState::ConstPtr &msg) {
+  static bool init = true;
+  if (init) {
+    this->InitPos = msg->position[this->MotorNum];
+    init = false;
+  }
+  this->MotorPos = msg->position[this->MotorNum] - this->InitPos;
+#ifdef DEBUG
+  printf("MotorSpeedBack(DEBUG)\n");
+  printf("Motor%d Pos : %f\n", this->MotorNum, MotorPos);
+#endif
+}
+
+void SimNodeHandle::MotorFBBack(const std_msgs::Float64::ConstPtr &msg) {
+  this->RealMotorFB = msg->data;
 }

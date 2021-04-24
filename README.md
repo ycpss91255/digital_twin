@@ -62,6 +62,11 @@ sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `ls
 wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install ignition-edifice
-
-
 sudo apt install ros-noetic-ros-ign
+
+
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+     <parent link="world"/>
+     <child link="base_link"/>
+   </joint>
