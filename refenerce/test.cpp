@@ -1,35 +1,54 @@
-// #include <cstdlib>
-// #include <iostream>
-// #include <sstream>
-// // #define exe
-// int main() {
-//   double x = 0.2222;
-//   int y = 1;
-//   if (x >= y) {
-//     printf("X = %d\n", x);
-//   }
-//   return 0;
+#include <inttypes.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+      
+#include <cstdlib>
+#include <ctime>  // clock 函數所需之標頭檔
+#include <iostream>
+#include <sstream>
+#include <vector>
+      
+using namespace std;
+      
+int main() {
+  // uint8_t x = 1;
+  // std::string y = to_string(x);
+  // printf("X = %s\n", y.c_str());
+  uint64_t my_int = 999999999999999999;
+  printf("%ld\n", my_int);
+  return 0;
+}     
+      
+// int main()
+// {  
+//     vector<int> v1 = {5, 6};
+//     // int x = v1.size();
+//     // cout << x << endl;
+//     char *y = "";
+//     string x = x.assign(y);
+//     printf("x = %s\n", x.c_str());
+//     // v1.resize(5);
+//     // for(int i = 0; i < v1.size() ; i++)
+//     // {
+//         // cout << v1[i] << endl;
+//     // }
+//     return 0;
 // }
 
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
-int main()
-{
-    vector<int> v1 = {5, 6};
-    v1.resize(5);
-    for(int i = 0; i < v1.size() ; i++)
-    {
-        cout << v1[i] << endl;
-    }
-    return 0;
-}
-
-// #include <iostream>
-// #include <ctime> // clock 函數所需之標頭檔
-// using namespace std;
+// int main ()
+// {
+//     char szNumbers[] = "2001 60c0c0 -1101110100110100100000 0x6fffff";
+//     char * pEnd;
+//     long int li1, li2, li3, li4;
+//     li1 = strtol (szNumb，ers,&pEnd,10);
+//     li2 = strtol (pEnd,&pEnd,16);
+//     li3 = strtol (pEnd,&pEnd,2);
+//     li4 = strtol (pEnd,NULL,0);
+//     printf ("转换成10进制: %ld、%ld、%ld、%ld\n", li1, li2, li3, li4);
+//     system("pause");
+//     return 0;
+// }
 
 // double pi(int n)
 // {

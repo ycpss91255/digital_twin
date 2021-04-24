@@ -11,8 +11,9 @@ float MotorControl::enc2m(float target) {
 float MotorControl::m2enc(float target) {
   return (target / (2 * M_PI) * MotorEncSum);
 }
-
 void MotorControl::PosControl(float target, float current, float Kp, float Kd) {
+  // XXX : fuck !!!!
+
   // target = enc2m(target);
   current = m2enc(current);
 

@@ -44,7 +44,7 @@ class SimNodeHandle {
   ros::NodeHandle* n;
   ros::Publisher MotorCmd_pub;
   ros::Publisher MotorFB_pub;
-
+// TODO : add real motor command feed back subscriber
   ros::Subscriber MotorState_sub;
 
   // real motor
