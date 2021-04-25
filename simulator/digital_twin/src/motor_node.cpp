@@ -6,21 +6,28 @@
 #include "ros/ros.h"
 
 int main(int argc, char **argv) {
-  SimNodeHandle Node(argc, argv, "digital/robot", 1);
+  SimNodeHandle Node(argc, argv, "/robot", 1);
   MotorControl Motor;
-  // ros::Rate loop_rate(10);
+  ros::Rate loop_rate(10);
+  float initpos = Node.getInitPos();
   // REVIEW : all code
   while (ros::ok()) {
-    Motor.PosControl(Node.RealMotorFB, Node.MotorPos, 20, 0);
+    // change to enc
+    float enc = Node.getMotorPos();
+    float renc = Node.getRealMotorPos();
+    // printf("renc = %f, enc = %f\n", renc + initpos, enc);
+
+    Node.pub_MotorFB(enc);
+
+    Motor.PosControl((renc + initpos), enc, 3.5, 0.5);
+    // Motor.PosControl(-100, enc, 3.5, 0.5);
     float output = Motor.getOutput();
     Node.pub_MotorCmd(output);
-    float enc = Motor.getEnc();
-    Node.pub_MotorFB(enc);
 
     // printf("motor Pos = %f %f\n", output, enc);
 
     ros::spinOnce();
-    // loop_rate.sleep();
+    loop_rate.sleep();
   }
   Node.pub_MotorCmd(0);
   return 0;

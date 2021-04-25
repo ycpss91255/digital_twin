@@ -1,42 +1,32 @@
 #include "digital_twin/node_handle.h"
 
-SimNodeHandle::SimNodeHandle(int argc, char **argv, std::string RobotNS,
-                             int MotorNum) {
-  std::string NodeName = "sim_Motor" + std::to_string(MotorNum);
-
+SimNodeHandle::SimNodeHandle(int argc, char **argv, string RobotName,
+                             uint64_t MotorNum) {
+  this->MotorNum = MotorNum;
+  string NodeName = "digital_wheel" + to_string(MotorNum);
+  this->MotorNS = "/digital" + RobotName + "/wheel" + to_string(MotorNum);
   ros::init(argc, argv, NodeName);
-  init(RobotNS, MotorNum);
+  init(RobotName);
 }
 
-SimNodeHandle::~SimNodeHandle() {
-  ros::shutdown();
+SimNodeHandle::~SimNodeHandle() { ros::shutdown(); }
 
-#ifdef DEBUG
-  printf("~SimNodeHandle(DEBUG)\n");
-#endif
-}
-
-void SimNodeHandle::init(std::string RobotNS, int MotorNum) {
-  this->MotorNum = MotorNum - 1;
+void SimNodeHandle::init(string RobotName) {
   this->n = new ros::NodeHandle();
-  std::string MotorCmdTopicName =
-      RobotNS + "/wheel" + std::to_string(MotorNum) + "/command";
-  std::string MotorFBTopicName =
-      RobotNS + "/wheel" + std::to_string(MotorNum) + "/motorFB";
 
-  std::string MotorStateTopicName = RobotNS + "/joint_states";
+  MotorCmd_pub =
+      this->n->advertise<std_msgs::Float64>((this->MotorNS + "/command"), 1000);
+  MotorFB_pub =
+      this->n->advertise<std_msgs::Float64>((this->MotorNS + "/motorFB"), 1);
 
-  MotorCmd_pub = n->advertise<std_msgs::Float64>(MotorCmdTopicName, 100);
-  MotorFB_pub = n->advertise<std_msgs::Float64>(MotorFBTopicName, 100);
+  string RealMotorTopicName =
+      "/real" + RobotName + "/wheel" + to_string(this->MotorNum) + "/motorFB";
+  RealMotorFB_sub = this->n->subscribe<std_msgs::Float64>(
+      RealMotorTopicName, 100, &SimNodeHandle::RealMotorFBBack, this);
 
-  MotorState_sub = n->subscribe<sensor_msgs::JointState>(
+  string MotorStateTopicName = "/digital" + RobotName + "/joint_states";
+  MotorState_sub = this->n->subscribe<sensor_msgs::JointState>(
       MotorStateTopicName, 100, &SimNodeHandle::MotorStateBack, this);
-
-  // real motor
-  std::string RealMotorFBTopicName = "real/robot/wheel1/motorFB";
-
-  RealMotorFB_sub = n->subscribe<std_msgs::Float64>(
-      RealMotorFBTopicName, 100, &SimNodeHandle::MotorFBBack, this);
 }
 
 void SimNodeHandle::pub_MotorCmd(float cmd) {
@@ -54,17 +44,31 @@ void SimNodeHandle::pub_MotorFB(float motorFB) {
 void SimNodeHandle::MotorStateBack(
     const sensor_msgs::JointState::ConstPtr &msg) {
   static bool init = true;
+  uint64_t num = this->MotorNum - 1;
   if (init) {
-    this->InitPos = msg->position[this->MotorNum];
+    this->InitPos = msg->position[num];
     init = false;
   }
-  this->MotorPos = msg->position[this->MotorNum] - this->InitPos;
+  this->MotorPos = msg->position[num] - this->InitPos;
+
 #ifdef DEBUG
   printf("MotorSpeedBack(DEBUG)\n");
-  printf("Motor%d Pos : %f\n", this->MotorNum, MotorPos);
+  printf("Motor%ld msg Pos : %f\n", this->MotorNum, msg->position[num] - this->InitPos);
 #endif
 }
 
-void SimNodeHandle::MotorFBBack(const std_msgs::Float64::ConstPtr &msg) {
-  this->RealMotorFB = msg->data;
+void SimNodeHandle::RealMotorFBBack(const std_msgs::Float64::ConstPtr &msg) {
+  this->RealMotorPos = msg->data;
 }
+
+float SimNodeHandle::getMotorPos() {
+  float Pos = this->MotorPos / (2 * M_PI) * 102.8;
+  return Pos;
+}
+
+float SimNodeHandle::getInitPos() {
+  float Pos = this->InitPos / (2 * M_PI) * 102.8;
+  return Pos;
+}
+
+float SimNodeHandle::getRealMotorPos() { return this->RealMotorPos; }
