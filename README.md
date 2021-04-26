@@ -70,3 +70,5 @@ sudo apt install ros-noetic-ros-ign
      <parent link="world"/>
      <child link="base_link"/>
    </joint>
+
+<!-- TODO : simulator and real motor sync mode-->
