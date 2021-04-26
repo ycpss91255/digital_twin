@@ -1,12 +1,35 @@
+/*******************************
+ ** Include system header files
+ ******************************/
+#include <stdio.h>
+
 #include <cstdio>
 #include <iostream>
-
+/*******************************
+ * Include ROS header files
+ ******************************/
 #include "digital_twin/motor_control.h"
 #include "digital_twin/node_handle.h"
 #include "ros/ros.h"
+/*******************************
+ * Define
+ ******************************/
+// #define ADJUST
+// #define DEBUG
+/*******************************
+ * Base param
+ ******************************/
+std::string RobotName;
+uint64_t WheelNum;
+bool Mode;
+
+void usage();
+void ParamHandle(int, char **);
 
 int main(int argc, char **argv) {
-  SimNodeHandle Node(argc, argv, "/robot", 1);
+  ParamHandle(argc, argv);
+
+  SimNodeHandle Node(argc, argv, RobotName, WheelNum);
   MotorControl Motor;
   ros::Rate loop_rate(10);
   float initpos = Node.getInitPos();
@@ -31,4 +54,38 @@ int main(int argc, char **argv) {
   }
   Node.pub_MotorCmd(0);
   return 0;
+}
+
+void usage() {
+  fprintf(stderr,
+          "\n"
+          "Usage : motor_control [options] ...\n"
+          "   -r string, robot name\n"
+          "   -n value, wheel num\n"
+          "   -m boolean, 0 : PosControl Mode, 1 : FeedBack Mode\n");
+}
+
+void ParamHandle(int argc, char **argv) {
+  if (argc != 9)
+    usage();
+  else {
+    int opt;
+    while ((opt = getopt(argc, argv, "r:n:m:")) != -1) switch (opt) {
+        case 'r':
+          RobotName.assign(optarg);
+          break;
+
+        case 'n':
+          WheelNum = strtol(optarg, NULL, 0);
+          break;
+
+        case 'm':
+          Mode = strtol(optarg, NULL, 0);
+          break;
+
+        default:
+          usage();
+          exit(EXIT_FAILURE);
+      }
+  }
 }
