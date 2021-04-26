@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
-  <arg name="RobotName" default="/robot"/>
+  <!-- digital and real robot name must be the same-->
+    <arg name="RobotName" default="/robot"/>
   <arg name="WheelNum" default="1"/>
-  <arg name="Mode" default="0"/>
   <!-- 0 : PosControl Mode, 1 : FeedBack Mode -->
+  <arg name="Mode" default="0"/>
+
   <!-- <rosparam command="load" file="$(find gpio_ctrl)/config/motor_pin.yaml" ns="/real$(arg RobotName)"/> -->
 
   <node

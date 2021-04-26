@@ -19,14 +19,15 @@ void SimNodeHandle::init(string RobotName) {
   MotorFB_pub =
       this->n->advertise<std_msgs::Float64>((this->MotorNS + "/motorFB"), 1);
 
+  string MotorStateTopicName = "/digital" + RobotName + "/joint_states";
+  MotorState_sub = this->n->subscribe<sensor_msgs::JointState>(
+      MotorStateTopicName, 100, &SimNodeHandle::MotorStateBack, this);
+
+  // Real motor
   string RealMotorTopicName =
       "/real" + RobotName + "/wheel" + to_string(this->MotorNum) + "/motorFB";
   RealMotorFB_sub = this->n->subscribe<std_msgs::Float64>(
       RealMotorTopicName, 100, &SimNodeHandle::RealMotorFBBack, this);
-
-  string MotorStateTopicName = "/digital" + RobotName + "/joint_states";
-  MotorState_sub = this->n->subscribe<sensor_msgs::JointState>(
-      MotorStateTopicName, 100, &SimNodeHandle::MotorStateBack, this);
 }
 
 void SimNodeHandle::pub_MotorCmd(float cmd) {
