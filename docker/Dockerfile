@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   sudo \
   ssh wget curl rsync net-tools tar \
   byobu zsh \
-  terminator gnome-terminal libcanberra-gtk3-module \
+  terminator gnome-terminal libcanberra-gtk-module libcanberra-gtk3-module \
   nano vim git \
   # work-tools
   python3-pip python3-catkin-tools ros-noetic-gazebo-ros-pkgs \
