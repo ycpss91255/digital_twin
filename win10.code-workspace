@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"verilog-format.path": "D:\\workspace\\digital_twin_pc\\.vscode\\verilog-format.exe"
+	}
+}
