@@ -2,15 +2,15 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-      
+
 #include <cstdlib>
 #include <ctime>  // clock 函數所需之標頭檔
 #include <iostream>
 #include <sstream>
 #include <vector>
-      
+
 using namespace std;
-      
+
 int main() {
   // uint8_t x = 1;
   // std::string y = to_string(x);
@@ -18,10 +18,10 @@ int main() {
   uint64_t my_int = 999999999999999999;
   printf("%ld\n", my_int);
   return 0;
-}     
-      
+}
+
 // int main()
-// {  
+// {
 //     vector<int> v1 = {5, 6};
 //     // int x = v1.size();
 //     // cout << x << endl;

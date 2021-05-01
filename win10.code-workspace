@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"verilog-format.path": "D:\\workspace\\digital_twin_pc\\.vscode\\verilog-format.exe",
+		"verilog.ctags.path": "ctags",
+		"verilog.linting.linter": "iverilog",
+		"verilog.linting.iverilog.arguments": "-i"
+	}
+}
