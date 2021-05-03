@@ -43,15 +43,14 @@ void loop() {
   } else {
     CmdV_msg.data = 0;
   }
-  #ifndef SER_PR
+#ifndef SER_PR
   MotorCmdV_pub.publish(&CmdV_msg);
   nh.spinOnce();
-  #else
+#else
   Serial.print((pos_v > neg_v) ? "+" : "-");
   Serial.print("\t");
   Serial.println(CmdV_msg.data);
-  #endif
-  // delay(100);
+#endif
 }
 
 /*******************************
