@@ -50,7 +50,6 @@ RUN bash ./script/bash_setup.bash \
   && bash ./script/zsh_setup.bash \
   && bash ./script/byobu_setup.bash \
   # Dependent
-  && bash ./script/rule_setup.bash \
   && bash ./script/pip_setup.bash \
   && bash ./script/piscope_setup.bash \
   && rm -rf /home/${USER}/.tmp
@@ -72,4 +71,5 @@ EXPOSE 22
 WORKDIR /home/${USER}/work
 
 # ENTRYPOINT ["terminator"]
+# ENTRYPOINT ["/entrypoint.bash","byobu"]
 ENTRYPOINT ["byobu"]
