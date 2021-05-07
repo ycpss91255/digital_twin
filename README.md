@@ -41,18 +41,15 @@ $ sudo systemctl restart docker.service
 
 I reference chikuta/chikuta-dockerfiles [github](https://github.com/chikuta/chikuta-dockerfiles)
 
-## 使用方法
+## Start
 
-還沒有喇
-ros_master_uri 要手動調整
-命令值 >= 100 會爆炸
-rostopic pub -1 /omwr/wheel1/command std_msgs/Float64 "data: 50.0"
-
+或許要加載 USB rules
 
 ## USB rules
 
+run create_rplidar_rule.sh
 ```shell
-$ sudo udevadm control --reload-rules ; udevadm trigger
+$ ./<rule path>/create_rplidar_rule.sh
 ```
 
 # ros arduino
