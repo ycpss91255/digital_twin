@@ -33,7 +33,6 @@ int main(int argc, char **argv) {
   MotorControl Motor;
   ros::Rate loop_rate(10);
   float initpos = Node.getInitPos();
-  // REVIEW : all code
   while (ros::ok()) {
     // change to enc
     float enc = Node.getMotorPos();

@@ -9,3 +9,10 @@ set(NodeList_1
 )
 add_executable(motor_control ${NodeList_1})
 target_link_libraries(motor_control ${catkin_LIBRARIES})
+
+# sim_control
+set(NodeList_2
+  data_handle.cpp
+)
+add_executable(data_handle ${NodeList_2})
+target_link_libraries(data_handle ${catkin_LIBRARIES})
