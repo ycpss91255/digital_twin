@@ -24,11 +24,14 @@ int main(int argc, char **argv) {
   open_port();
   int i = 0;
   while (1) {
+    char buf[128] = "hello world ";
+
     char num_buf[16];
     sprintf(num_buf, "%d", i);
-    printf("%s", num_buf);
-    char buf[] = "hello world ";
+    strcat(buf, num_buf);
+
     int buf_len = sizeof(buf) / sizeof(char);
+
     int n = write(fd, &buf, buf_len);
     printf("%s\n", buf);
     if (n < 0) {
