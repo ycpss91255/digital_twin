@@ -38,8 +38,6 @@ int open_port(void) {
     tcgetattr(fd, &opt);
 
     fcntl(fd, F_SETFL, 0);
-    // cfsetispeed(&opt, B115200);
-    // cfsetospeed(&opt, B115200);
     cfsetispeed(&opt, B115200);
     cfsetospeed(&opt, B115200);
 
@@ -61,28 +59,36 @@ int open_port(void) {
 
 int main(int argc, char **argv) {
   open_port();
+
   int i = 0;
   char num_buf[16];
-
   char buf[] = "hello world ";
+  char end_buf[] = "\n";
 
   while (1) {
-    // int type to char type
-    sprintf(num_buf, "%d", i);
-    // merge char array
-    // strcat(buf, num_buf);
+    char pub_buf[1024] = {};
+    int pub_len;
 
-    // int buf_len = sizeof(buf) / sizeof(char);
-    int buf_len = 1024;
-    char pub_buf[buf_len] = {};
-    strcpy(pub_buf, buf);
-    strcat(pub_buf, num_buf);
+    strcat(pub_buf, buf);  // merge char array
 
-    int n = write(fd, &pub_buf, buf_len);
-    printf("n = %d, %s\n", n, pub_buf);
+    sprintf(num_buf, "%d", i);  // int type to char type
+    strcat(pub_buf, num_buf);   // merge char array
+    strcat(pub_buf, end_buf);   // merge char array
+    printf("%s\n", pub_buf);
+    for (int i = 0; i < (sizeof(pub_buf) / sizeof(char)); i++) {
+      if (pub_buf[i] == '\n') {
+        pub_len = i + 1;
+        break;
+      }
+    }
 
-    if (n < 0) {
-      printf("n = %d, write() of %d bytes failed!\n", n, buf_len);
+    int n = write(fd, &pub_buf, pub_len);
+
+    if (n > 0) {
+      printf("n = %d, %s", n, pub_buf);
+
+    } else {
+      printf("n = %d, write() of %d bytes failed!\n", n, pub_len);
     }
     sleep(1);
     i++;
