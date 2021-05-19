@@ -79,10 +79,10 @@ int main(int argc, char **argv) {
     strcat(pub_buf, num_buf);
 
     int n = write(fd, &pub_buf, buf_len);
-    printf("%s\n", pub_buf);
+    printf("n = %d, %s\n", n, pub_buf);
 
     if (n < 0) {
-      printf("write() of %d bytes failed!\n", buf_len);
+      printf("n = %d, write() of %d bytes failed!\n", n, buf_len);
     }
     sleep(1);
     i++;
