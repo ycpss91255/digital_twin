@@ -62,8 +62,9 @@ int main(int argc, char **argv) {
 
   int i = 0;
   char num_buf[16];
+  char end_buf = 0xAA;
   char buf[] = "hello world ";
-  char end_buf[] = "\n";
+  char end_buf = 0xEE;
 
   while (1) {
     char pub_buf[1024] = {};
@@ -97,3 +98,12 @@ int main(int argc, char **argv) {
   close(fd);
   return 0;
 }
+
+/* Uart資料:
+* 起始封包(1byte): 0xAA
+* 4顆馬達方向(1bytes): {4'b0000, MD(1bit), MB(1bit), MC(1bit), MA(1bit)}
+* 4顆馬達速度(8bytes): MA(short_uint_2bytes), MB(short_uint_2bytes), MC(short_uint_2bytes), MD(short_uint_2bytes)
+* CRC(1byte): 以上19bytes相加後取最低那個Byte當檢查碼
+* 結束位元(1byte): 0xEE
+* 總共 11bytes
+* */
