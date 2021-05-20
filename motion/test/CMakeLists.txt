@@ -25,3 +25,19 @@ set(MT_LIST
 )
 add_executable(motion_test ${MT_LIST})
 target_link_libraries(motion_test ${catkin_LIBRARIES})
+
+# tx_serial_test
+set(TST_LIST
+  ./serial/tx_serial_test.cpp
+  ../src/serial/serial.cpp
+)
+add_executable(tx_serial_test ${TST_LIST})
+target_link_libraries(tx_serial_test ${catkin_LIBRARIES})
+
+# rx_serial_test
+set(RST_LIST
+  ./serial/rx_serial_test.cpp
+  ../src/serial/serial.cpp
+)
+add_executable(rx_serial_test ${RST_LIST})
+target_link_libraries(rx_serial_test ${catkin_LIBRARIES})
