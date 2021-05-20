@@ -4,8 +4,8 @@
 
 file_dir=`dirname $0`
 
-sudo rm /etc/udev/rules.d/99-rplidar.rules
+sudo cp ${file_dir}/*.rules /etc/udev/rules.d/
 
 sudo udevadm control --reload-rules ; udevadm trigger
 
-echo "delete usb rule complete"
+echo "load usb rule complete"

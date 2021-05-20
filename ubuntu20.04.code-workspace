@@ -12,11 +12,28 @@
 		"files.associations": {
 			"*.gazebo": "xml",
 			"iostream": "cpp",
-			"*.ipp": "cpp"
+			"*.ipp": "cpp",
+			"random": "cpp",
+			"*.tcc": "cpp",
+			"bitset": "cpp",
+			"cstring": "cpp",
+			"string": "cpp",
+			"string_view": "cpp",
+			"fstream": "cpp",
+			"iomanip": "cpp",
+			"istream": "cpp",
+			"ostream": "cpp",
+			"sstream": "cpp",
+			"stdexcept": "cpp",
+			"system_error": "cpp",
+			"typeinfo": "cpp"
 		},
 		"cSpell.words": [
 			"Coor",
 			"omwr"
+		],
+		"python.analysis.extraPaths": [
+			"/opt/ros/noetic/lib/python3/dist-packages"
 		]
 	},
 	"extensions": {
