@@ -9,6 +9,7 @@
 #include <termios.h> /* POSIX terminal control definitions */
 #include <unistd.h>  /* UNIX standard function definitions */
 
+#include <cmath>
 #include <string>
 
 #define DEBUG
@@ -26,11 +27,19 @@ class Serial {
   *@param float [] min to max
 
   * public UART data:
+
   * start packat: 0xAA
-  * 4 motor direction(1 byte ): {4'b0000, MA(1bit), MB(1bit), MC(1bit), MD(1bit)}
-  * 4 motor speed    (4 bytes): {MA(short_uint_2bytes), MB(short_uint_2bytes), MC(short_uint_2bytes), MD(short_uint_2bytes)}
-  * CRC (1 byte ): after adding them up, use the lowest byte as the check code
+
+  * 4 motor direction(1 byte ): {4'b0000, MD(1bit), MB(1bit), MC(1bit),
+  MA(1bit)}
+
+  * 4 motor speed    (8 bytes): {MA(short_uint_2bytes), MB(short_uint_2bytes),
+  MC(short_uint_2bytes), MD(short_uint_2bytes)}
+
+  * CRC (1 byte ): after adding the above 9 bytes, use the lowest byte as the check code
+
   * end packat       (1 byte ): 0xEE
+
   * total 12 bytes
   */
   // AA FF FF FF EE;
