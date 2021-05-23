@@ -12,7 +12,7 @@
 #include <cmath>
 #include <string>
 
-#define DEBUG
+// #define DEBUG
 
 using namespace std;
 
@@ -45,17 +45,20 @@ class Serial {
   // AA FF FF FF EE;
   void pub_motor_pwm(float[]);
 
+  void sub_feedback();
  private:
+  void set_msg(float[]);
   // variables
  public:
  private:
   const char* port = nullptr;
   int fd;
   termios opt;
-
+  // create msg and default values is zero
+  char msg[12] = {0};
   // custon start and end single
-  int start_buf = 0xAA;
-  int end_buf = 0xEE;
+  char start_buf = 0xAA;
+  char end_buf = 0xEE;
 
 #ifdef DEBUG
   void printf_binary(const char*, char);

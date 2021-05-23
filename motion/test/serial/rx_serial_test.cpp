@@ -2,6 +2,9 @@
 
 int main(int argc, char **argv) {
   Serial serial("/dev/ttyUSB0", 115200);
-  float sp[4] = {-10,10,-125,125};
-  serial.pub_motor_pwm(sp);
+  float sp[4] = {100, -100, 50, -50};
+  while (1) {
+    serial.pub_motor_pwm(sp);
+    sleep(1); //
+  }
 }
