@@ -1,6 +1,10 @@
 #include "serial/serial.h"
 
 int main(int argc, char **argv) {
-  int x = 10;
-  return 0;
+  Serial serial("/dev/ttyUSB0", 115200);
+  float sp[4] = {100, -100, 50, -50};
+  while (1) {
+    serial.pub_motor_pwm(sp);
+    sleep(1); //
+  }
 }
