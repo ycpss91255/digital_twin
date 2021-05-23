@@ -1,2 +1,0 @@
-# picospe RPI IP
-export PIGPIO_ADDR=163.13.164.167

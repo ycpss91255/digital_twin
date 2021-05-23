@@ -51,7 +51,6 @@ RUN bash ./script/bash_setup.bash \
   && bash ./script/byobu_setup.bash \
   # Dependent
   && bash ./script/pip_setup.bash \
-  && bash ./script/piscope_setup.bash \
   && rm -rf /home/${USER}/.tmp
 
 # # copy entrypoint
