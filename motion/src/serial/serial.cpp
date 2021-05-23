@@ -101,10 +101,11 @@ void Serial::build_msg(float pwm[4]) {
   this->pub_msg[10] = calculation_crc(this->pub_msg);
 
 #ifdef DEBUG
-  vector<string> text = {
-      "dir     :", "MA H_spd:", "MA L_spd:", "MB H_spd:", "MB L_spd:",
-      "MC H_spd:", "MC L_spd:", "MD H_spd:", "MD L_spd:", "CRC     :"};
-  printf_binary(text, this->pub_msg, 12);
+  // vector<string> text = {
+  //     "dir     :", "MA H_spd:", "MA L_spd:", "MB H_spd:", "MB L_spd:",
+  //     "MC H_spd:", "MC L_spd:", "MD H_spd:", "MD L_spd:", "CRC     :"};
+  // printf_binary(text, this->pub_msg, 12);
+
   printf_hex("pub_msg(hex) :", this->pub_msg, 12);
 
 #endif  // DEBUG
@@ -123,7 +124,17 @@ int Serial::unbuild_msg() {
   // check subscribe message start and end packat is correct
   if (this->sub_msg[0] == 0xAA && this->sub_msg[43] == 0xEE) {
     int crc = calculation_crc(this->sub_msg);
-    return this->sub_msg[42] == crc ? 1 : 0;
+    if (this->sub_msg[42] == crc) {
+#ifdef DEBUG
+      printf_hex("sub_msg :", this->sub_msg, 44);
+#endif  // DEBUG
+      return 1;
+    } else {
+#ifdef DEBUG
+      printf("crc check error");
+#endif  // DEBUG
+      return 0;
+    }
   } else {
     return -1;
   }
