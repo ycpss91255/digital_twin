@@ -14,7 +14,7 @@
 #include <string>
 #include <vector>
 
-#define DEBUG
+// #define DEBUG
 
 using namespace std;
 
@@ -28,7 +28,7 @@ class Serial {
  public:
   /** publish UART data:
 
-  * start packat: 0xAA
+  * start packet: 0xAA
 
   * 4 motor direction(1 byte ): {4'b0000, MD(1bit), MB(1bit), MC(1bit),
   MA(1bit)}
@@ -39,7 +39,7 @@ class Serial {
   * CRC (1 byte ): after adding the above 9 bytes, use the lowest byte as the
   check code
 
-  * end packat       (1 byte ): 0xEE
+  * end packet       (1 byte ): 0xEE
 
   * total 12 bytes
   */
@@ -67,13 +67,13 @@ class Serial {
 
   * 總共 44bytes
   * */
-  int sub_feedback();
+  int sub_feedback(int);
 
   char* get_sub_msg();
 
  private:
   void build_msg(float[]);
-  int unbuild_msg();
+  int unbuild_msg(int);
   int calculation_crc(char*, int);
   // variables
  public:
@@ -83,14 +83,14 @@ class Serial {
   termios opt;
   // pub msg and default values is zero
   char pub_msg[12] = {0};
-  // custom pub start and end packat
+  // custom pub start and end packet
   char pub_start_buf = 0xAA;
   char pub_end_buf = 0xEE;
   // sub msg and default values is zero
   char sub_msg[44] = {0};
   int tmp_msg_len = 0;
 
-  // custom start and end packat
+  // custom start and end packet
   char sub_start_buf = 0xAA;
   char sub_end_buf = 0xEE;
 
