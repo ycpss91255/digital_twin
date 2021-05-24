@@ -18,6 +18,7 @@
 
 using namespace std;
 
+// TODO: char* array convert to char vector
 class Serial {
   // functions
  public:
@@ -73,8 +74,7 @@ class Serial {
  private:
   void build_msg(float[]);
   int unbuild_msg();
-  int calculation_crc(char*);
-
+  int calculation_crc(char*, int);
   // variables
  public:
  private:

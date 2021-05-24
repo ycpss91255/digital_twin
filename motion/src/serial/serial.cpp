@@ -59,13 +59,15 @@ Serial::~Serial() { close(this->fd); }
 * @return  crc code(1 byte) or check status(1/0) or error(-1)
 
 */
-int Serial::calculation_crc(char* msg) {
+int Serial::calculation_crc(char* msg, int len) {
   // CRC Calculation
   int crc = 0;
-  int msg_len = strlen(msg);
-  for (int i = 1; i < (msg_len - 2); i++) {
+  printf("len = %d\n", len);
+  for (int i = 1; i < (len - 2); i++) {
+    printf("msg = %x\n", msg[i]);
     crc += msg[i];
     crc = crc & 0xFF;
+    printf("crc = %x\n", crc);
   }
   return crc;
 }
@@ -91,14 +93,14 @@ void Serial::build_msg(float pwm[4]) {
   }
 
   // write dir to msg[1] low bit
-  this->pub_msg[1] &= 0x0000;
+  this->pub_msg[1] &= 0x00;
   this->pub_msg[1] |= dir[0] << 0;
   this->pub_msg[1] |= dir[2] << 1;
   this->pub_msg[1] |= dir[1] << 2;
   this->pub_msg[1] |= dir[3] << 3;
 
   // write crc
-  this->pub_msg[10] = calculation_crc(this->pub_msg);
+  this->pub_msg[10] = calculation_crc(this->pub_msg, 12);
 
 #ifdef DEBUG
   // vector<string> text = {
@@ -123,7 +125,8 @@ void Serial::pub_motor_pwm(float pwm[4]) {
 int Serial::unbuild_msg() {
   // check subscribe message start and end packat is correct
   if (this->sub_msg[0] == 0xAA && this->sub_msg[43] == 0xEE) {
-    int crc = calculation_crc(this->sub_msg);
+    int crc = calculation_crc(this->sub_msg, 44);
+    printf("crc = %d\n", crc);
     if (this->sub_msg[42] == crc) {
 #ifdef DEBUG
       printf_hex("sub_msg :", this->sub_msg, 44);
@@ -144,10 +147,21 @@ bool Serial::sub_feedback() {
   // Read bytes. The behaviour of read() (e.g. does it block?,
   // how long does it block for?) depends on the configuration
   // settings above, specifically VMIN and VTIME
-  int n = read(this->fd, this->sub_msg, 44);
+  char fuck[12] = {0};
+  int n = read(this->fd, fuck, 12);
+  // int n = read(this->fd, this->sub_msg, 44);
   if (n < 0) {
     printf("n = %d, read() of %d bytes failed!\n", n, 44);
   }
+  // printf_hex("sub_msg :", fuck, 12);
+  printf("fuck : ");
+  for (int i = 0; i < 12; i++) {
+    unsigned char u_msg = fuck[i];
+    printf("%02X ", u_msg);
+  }
+  printf("\n");
+
+  printf_hex("sub_msg :", fuck, 12);
   bool check = unbuild_msg();
 #ifdef DEBUG
   if (check) {
