@@ -62,12 +62,9 @@ Serial::~Serial() { close(this->fd); }
 int Serial::calculation_crc(char* msg, int len) {
   // CRC Calculation
   int crc = 0;
-  printf("len = %d\n", len);
   for (int i = 1; i < (len - 2); i++) {
-    printf("msg = %x\n", msg[i]);
     crc += msg[i];
     crc = crc & 0xFF;
-    printf("crc = %x\n", crc);
   }
   return crc;
 }
