@@ -67,7 +67,7 @@ class Serial {
 
   * 總共 44bytes
   * */
-  bool sub_feedback();
+  int sub_feedback();
 
   char* get_sub_msg();
 
@@ -88,6 +88,8 @@ class Serial {
   char pub_end_buf = 0xEE;
   // sub msg and default values is zero
   char sub_msg[44] = {0};
+  int tmp_msg_len = 0;
+
   // custom start and end packat
   char sub_start_buf = 0xAA;
   char sub_end_buf = 0xEE;

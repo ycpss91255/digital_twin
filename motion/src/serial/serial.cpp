@@ -140,26 +140,33 @@ int Serial::unbuild_msg() {
   }
 }
 
-bool Serial::sub_feedback() {
+int Serial::sub_feedback() {
   // Read bytes. The behaviour of read() (e.g. does it block?,
   // how long does it block for?) depends on the configuration
   // settings above, specifically VMIN and VTIME
+  int check = 0;
+  int buf_len = sizeof(sub_msg);
+  char tmp_msg[buf_len];
+
   char fuck[12] = {0};
-  int n = read(this->fd, fuck, 12);
-  // int n = read(this->fd, this->sub_msg, 44);
+  int n = read(this->fd, tmp_msg, 12);
   if (n < 0) {
     printf("n = %d, read() of %d bytes failed!\n", n, 44);
-  }
-  // printf_hex("sub_msg :", fuck, 12);
-  printf("fuck : ");
-  for (int i = 0; i < 12; i++) {
-    unsigned char u_msg = fuck[i];
-    printf("%02X ", u_msg);
-  }
-  printf("\n");
+    return -1;
+  } else {
+    for (int i = 0; i < n; i++) {
+      sub_msg[i + tmp_msg_len] = tmp_msg[i];
+    }
 
-  printf_hex("sub_msg :", fuck, 12);
-  bool check = unbuild_msg();
+    tmp_msg_len = 0;
+  }
+
+  // if (n < buf_len ) {
+  //   for (int i = 0; i < buf_len; i++) {
+  //   }
+  // }
+  // }
+  unbuild_msg();
 #ifdef DEBUG
   if (check) {
   }
