@@ -30,15 +30,15 @@ Serial::Serial(const char* port, unsigned int baud) {
         tcflush(this->fd, TCIOFLUSH);
       }
     }
-
     opt.c_cflag |= (CLOCAL | CREAD);
     opt.c_cflag &= ~PARENB;
     opt.c_cflag &= ~CSTOPB;
     opt.c_cflag &= ~CSIZE;
     opt.c_cflag |= CS8;
-    opt.c_cflag &= ~CRTSCTS;
+    opt.c_cflag &= ~CRTSCTS;  // dis 硬體控制
     opt.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
     opt.c_iflag &= ~INPCK;
+    opt.c_iflag &= ~(INLCR | ICRNL);
     opt.c_iflag &= ~(IXON | IXOFF | IXANY);
     opt.c_oflag &= ~OPOST;
 
@@ -59,14 +59,15 @@ Serial::~Serial() { close(this->fd); }
 * @return  crc code(1 byte) or check status(1/0) or error(-1)
 
 */
-int Serial::calculation_crc(char* msg, int len) {
+char Serial::calculation_crc(char* msg, int len) {
   // CRC Calculation
   int crc = 0;
   for (int i = 1; i < (len - 2); i++) {
     crc += msg[i];
-    crc = crc & 0xFF;
+    // printf("msg[%d]: %02X\n", i, msg[i]);
   }
-  return crc;
+  crc = crc & 0xFF;
+  return (char)crc;
 }
 
 void Serial::build_msg(float pwm[4]) {
@@ -122,24 +123,35 @@ void Serial::pub_motor_pwm(float pwm[4]) {
 int Serial::unbuild_msg(int byte) {
 // check subscribe message start and end packet is correct
 #ifdef DEBUG
-  printf("msg [0] = %02X\n", this->sub_msg[0]);
-  printf("msg [%d] = %02X\n", byte - 1, this->sub_msg[byte - 1]);
+  printf("packet start and end = %02X, %02X\n", (uint8_t)this->sub_msg[0],
+         (uint8_t)this->sub_msg[byte - 1]);
 #endif  // DEBUG
   if (this->sub_msg[0] == this->sub_start_buf &&
       this->sub_msg[byte - 1] == this->sub_end_buf) {
-    int crc = calculation_crc(this->sub_msg, byte);
+    char crc = calculation_crc(this->sub_msg, byte);
+    // printf()
 #ifdef DEBUG
-    printf("crc = %X\n", crc);
+    printf("data = %02X, crc = %02X, A : %d\n",
+           (unsigned char)this->sub_msg[byte - 2], (unsigned char)crc,
+           (this->sub_msg[byte - 2] == crc) ? 1 : 0);
+    //  printf("this->sub_msg[byte - 2] type = %s\n");
+    printf("msg = %s, %02X, crc = %s, %02X",
+           typeid(this->sub_msg[byte - 2]).name(),
+           (int8_t)this->sub_msg[byte - 2], typeid(crc).name(), (int8_t)crc);
+
 #endif  // DEBUG
+
     if (this->sub_msg[byte - 2] == crc) {
 #ifdef DEBUG
       printf_hex("sub_msg :", this->sub_msg, byte);
 #endif  // DEBUG
+
       return 1;
     } else {
 #ifdef DEBUG
       printf("crc check error\n");
 #endif  // DEBUG
+
       return -1;
     }
   } else {
@@ -155,14 +167,30 @@ int Serial::sub_feedback(int byte) {
     printf("n = %d, read() of %d bytes failed!\n", n, 1);
     return -1;
   } else {
-    this->sub_msg[tmp_msg_len] = msg;
-    if (this->tmp_msg_len != byte - 1) {
-      this->tmp_msg_len++;
-      return 0;
+    // #ifdef DEBUG
+    //     printf("msg[%d] = 0x%02X\n", this->tmp_msg_len, (uint8_t)msg);
+    // #endif  // DEBUG
+
+    if ((msg == (char)0xAA) || this->sub_start) {
+      sub_start = true;
+      this->sub_msg[this->tmp_msg_len] = msg;
+      // printf("msg %d = %02X\n", this->tmp_msg_len, (uint8_t)msg);
+      if (this->tmp_msg_len != byte - 1) {
+        this->tmp_msg_len++;
+        return 0;
+      } else {
+        this->tmp_msg_len = 0;
+        this->sub_start = false;
+
+        int status = unbuild_msg(byte);
+        return status;
+      }
     } else {
-      this->tmp_msg_len = 0;
-      int status = unbuild_msg(byte);
-      return status;
+#ifdef DEBUG
+      printf("msg %02X = 0xAA ? %d, sub_start = %d\n", (uint8_t)msg,
+             (msg == (char)0xAA), this->sub_start);
+#endif  // DEBUG
+      return -2;
     }
   }
 }

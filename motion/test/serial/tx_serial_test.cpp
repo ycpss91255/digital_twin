@@ -1,12 +1,12 @@
 #include "serial/serial.h"
 
-int set_time = 1000; // (ms)
+int set_time = 25; // (ms)
 
 int main(int argc, char **argv) {
   Serial serial("/dev/ttyUSB0", 115200);
-  float sp[4] = {100, -100, 50, -50};
+  float sp[4] = {5.098039216, -5.098039216, 50, -50};
 
-  clock_t start = clock(), end, end2;
+  clock_t start = clock(), end;
   while (1) {
     end = clock();
 

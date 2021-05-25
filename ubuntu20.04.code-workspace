@@ -26,7 +26,8 @@
 			"sstream": "cpp",
 			"stdexcept": "cpp",
 			"system_error": "cpp",
-			"typeinfo": "cpp"
+			"typeinfo": "cpp",
+			"cstddef": "cpp"
 		},
 		"cSpell.words": [
 			"Coor",

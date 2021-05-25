@@ -10,14 +10,16 @@
 #include <unistd.h>  /* UNIX standard function definitions */
 
 #include <cmath>
+#include <iostream>
 #include <stdexcept>  // std::out_of_range
 #include <string>
 #include <vector>
 
-// #define DEBUG
+#define DEBUG
 
 using namespace std;
 
+template <typename T> string type_name();
 // TODO: char* array convert to char vector
 class Serial {
   // functions
@@ -74,7 +76,7 @@ class Serial {
  private:
   void build_msg(float[]);
   int unbuild_msg(int);
-  int calculation_crc(char*, int);
+  char calculation_crc(char*, int);
   // variables
  public:
  private:
@@ -86,10 +88,11 @@ class Serial {
   // custom pub start and end packet
   char pub_start_buf = 0xAA;
   char pub_end_buf = 0xEE;
+
   // sub msg and default values is zero
   char sub_msg[44] = {0};
   int tmp_msg_len = 0;
-
+  bool sub_start = false;
   // custom start and end packet
   char sub_start_buf = 0xAA;
   char sub_end_buf = 0xEE;
