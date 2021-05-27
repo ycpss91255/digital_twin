@@ -16,7 +16,7 @@
 
 #include "serial/parameter.h"
 
-#define DEBUG
+// #define DEBUG
 #define P_PUBLISH
 #define P_SUBSCRIBE
 

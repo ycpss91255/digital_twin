@@ -113,8 +113,7 @@ void Serial::pub_motor_pwm(vector<float>& pwm) {
   build_msg(pwm);
 
   for (int i = 0, n = 0; i < this->pub_msg.size(); i++) {
-    int8_t msg = (int8_t)this->pub_msg.at(i);
-    n += write(this->fd, &msg, 1);
+    n += write(this->fd, &this->pub_msg.at(i), 1);
     if (n < 0) {
       // TODO : If remove the USB device, will enter this loop, causing a crash
       printf("write() of %d/%d bytes failed!\n", n, PUB_MSG_LEN);
@@ -152,7 +151,7 @@ void Serial::build_msg(vector<float>& pwm) {
   this->pub_msg[1] |= dir[3] << 3;
 
   // write last data crc check is it right or not, 0 = right, 1 = not
-  this->pub_msg[10] = this->check_status;
+  this->pub_msg[PUB_MSG_LEN - 3] = this->check_status;
   // write crc
   this->pub_msg[PUB_MSG_LEN - 2] = calculation_crc(this->pub_msg);
 
@@ -166,12 +165,8 @@ void Serial::build_msg(vector<float>& pwm) {
  * @return subscribe status, -1 = error, 0 = receiving, 1 = right
  */
 int Serial::sub_feedback() {
-  // uint8_t msg = 0x00;
-  // int n = read(this->fd, &msg, 1);
-
   uint8_t msg = 0x00;
   int n = read(this->fd, &msg, 1);
-  printf("msg = %02X\n", msg);
 
   if (n < 0) {
     // receive msg error, clear current msg, wait next message
@@ -186,12 +181,16 @@ int Serial::sub_feedback() {
       this->sub_msg[this->tmp_msg_len] = msg;
       // printf("msg %d = %02X\n", this->tmp_msg_len, (uint8_t)msg);
       if (this->tmp_msg_len != SUB_MSG_LEN - 1) {
+#ifdef DEBUG
         printf("the msg buf is not full, %d/%d\n", this->tmp_msg_len + 1,
                SUB_MSG_LEN);
+#endif  // DEBUG
         this->tmp_msg_len++;
         return 0;
       } else {
+#ifdef DEBUG
         printf("the msg buf full");
+#endif  // DEBUG
         this->tmp_msg_len = 0;
         this->sub_start_flag = false;
         int status = unbuild_msg();
@@ -199,8 +198,7 @@ int Serial::sub_feedback() {
       }
     } else {
 #ifdef DEBUG
-      printf("msg %02X = 0xAA ? %d, sub_start_flag = %d\n", (uint8_t)msg,
-             (msg == SUB_START_PACKET), this->sub_start_flag);
+      printf("msg %02X, sub_start_flag = %d\n", msg, this->sub_start_flag);
 #endif  // DEBUG
       return -2;
     }
