@@ -84,10 +84,11 @@ class Serial {
   void data_init();
 
   void build_msg(vector<float>&);
-  int unbuild_msg();
+  int check_msg();
   uint8_t calculation_crc(vector<uint8_t>&);
-  void printf_hex(const char*, vector<uint8_t>&);
 
+  void unbuild_msg();
+  void printf_hex(const char*, vector<uint8_t>&);
   // variables
  public:
  private:
@@ -106,7 +107,6 @@ class Serial {
   int tmp_msg_len = 0;
   bool sub_start_flag = false;
   char check_status = 0x00;
-
 };
 
 #endif  // SERIAL_H

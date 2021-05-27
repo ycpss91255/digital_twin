@@ -189,11 +189,11 @@ int Serial::sub_feedback() {
         return 0;
       } else {
 #ifdef DEBUG
-        printf("the msg buf full");
+        printf("the msg buf \n");
 #endif  // DEBUG
         this->tmp_msg_len = 0;
         this->sub_start_flag = false;
-        int status = unbuild_msg();
+        int status = check_msg();
         return status;
       }
     } else {
@@ -206,10 +206,10 @@ int Serial::sub_feedback() {
 }
 
 /**
- * @brief unbuild Nios feed back message
+ * @brief check Nios feed back message
  * @return message check status
  */
-int Serial::unbuild_msg() {
+int Serial::check_msg() {
   // confirm that the start and end packets of the subscription message are
   // correct
   if (this->sub_msg[0] == SUB_START_PACKET &&
@@ -231,6 +231,14 @@ int Serial::unbuild_msg() {
            this->sub_msg[0], this->sub_msg[SUB_MSG_LEN - 1]);
     return -1;
   }
+}
+
+// TODO : wait Nios
+/**
+ * @brief unbuild Nios feed back message
+ */
+void Serial::unbuild_msg(){
+
 }
 
 /**

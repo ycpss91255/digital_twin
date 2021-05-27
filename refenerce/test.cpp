@@ -5,18 +5,22 @@
 #include <termios.h> /* POSIX terminal control definitions */
 #include <unistd.h>  /* UNIX standard function definitions */
 // # include <stdlib.h> /* General purpose standard library */
-
 #include <iostream>
+#include <vector>
 
 using namespace std;
+void prrr(vector<float> &speed) {
+  for (int i = 0, j = 0; i < speed.size(); i++) {
+    printf("bingo%f\n", speed.at(i));
+  }
+}
+
 
 int main(int argc, char **argv) {
-  int x = 0xEE;
-  int y = 0xFD;
-
-  unsigned char test;
-  sprintf(test, "%x", x);
-  printf("0x%x\n", test);
-
+  vector<float> speed(3,1);
+  // speed.resize(3);
+  speed.at(1) = -1;
+  prrr(speed);
   return 0;
 }
+
