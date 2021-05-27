@@ -1,0 +1,11 @@
+#ifndef PARAMETER_H
+#define PARAMETER_H
+
+#define PUB_MSG_LEN 13
+#define PUB_START_PACKET 0xAA
+#define PUB_END_PACKET 0xEE
+
+#define SUB_MSG_LEN 14
+#define SUB_START_PACKET 0xAA
+#define SUB_END_PACKET 0xEE
+#endif  // PARAMETER_H
