@@ -16,7 +16,7 @@
 
 #include "serial/parameter.h"
 // ROS msg header files
-#include "motion/Imu.h"
+#include "motion/IMU.h"
 #include "motion/MotorStates.h"
 
 #define DEBUG
@@ -114,7 +114,7 @@ class Serial {
   int time_stamp = 0;
   int crc_status = 0;
   vector<motion::MotorStates> M_data;
-  motion::Imu imu_data;
+  motion::IMU imu_data;
 };
 
 #endif  // SERIAL_H

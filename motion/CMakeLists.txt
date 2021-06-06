@@ -14,7 +14,7 @@ add_message_files(
   FourMotorCmd.msg
   Vector3.msg
   MotorStates.msg
-  Imu.msg
+  IMU.msg
 )
 generate_messages(
   DEPENDENCIES

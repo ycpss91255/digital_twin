@@ -33,6 +33,8 @@ set(TST_LIST
 )
 add_executable(tx_serial_test ${TST_LIST})
 target_link_libraries(tx_serial_test ${catkin_LIBRARIES})
+add_dependencies(tx_serial_test ${catkin_EXPORTED_TARGETS})
+add_dependencies(tx_serial_test ${PROJECT_NAME}_gencpp)
 
 # rx_serial_test
 set(RST_LIST
@@ -41,3 +43,4 @@ set(RST_LIST
 )
 add_executable(rx_serial_test ${RST_LIST})
 target_link_libraries(rx_serial_test ${catkin_LIBRARIES})
+add_dependencies(rx_serial_test ${PROJECT_NAME}_gencpp)
