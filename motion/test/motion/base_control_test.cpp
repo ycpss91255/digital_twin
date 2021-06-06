@@ -11,7 +11,7 @@
  ** Include msg header files
  ******************************/
 #include "geometry_msgs/Twist.h"
-#include "motion/FourMotorStates.h"
+#include "motion/FourMotorCmd.h"
 /*******************************
  ** Include header files
  ******************************/
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
   geometry_msgs::Twist cmd;
   cmd.linear.x = 10;
   car.InverseKinematics(cmd);
-  motion::FourMotorStates enc;
+  motion::FourMotorCmd enc;
   enc.w2 = -10;
   enc.w4 = 10;
   car.SetMotorEnc(enc);

@@ -14,7 +14,7 @@
  ** Include msg header files
  ******************************/
 #include "geometry_msgs/Twist.h"
-#include "motion/FourMotorStates.h"
+#include "motion/FourMotorCmd.h"
 /*******************************
  * Define
  ******************************/
@@ -32,11 +32,11 @@ class MotionNodeHandle {
  public:
   // variable
   geometry_msgs::Twist MotionCmd;
-  motion::FourMotorStates MotorEnc;
+  motion::FourMotorCmd MotorEnc;
 
   // function
-  void pub_MotorEnc(motion::FourMotorStates);
-  void pub_MotorSpeed(motion::FourMotorStates);
+  void pub_MotorEnc(motion::FourMotorCmd);
+  void pub_MotorSpeed(motion::FourMotorCmd);
 
  private:
   // variable

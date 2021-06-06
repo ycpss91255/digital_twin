@@ -5,7 +5,7 @@ BaseControl::~BaseControl() {}
 
 void BaseControl::SetRobotRadius(double Radius) { this->RobotRadius = Radius; }
 
-void BaseControl::SetMotorEnc(motion::FourMotorStates Curr) {
+void BaseControl::SetMotorEnc(motion::FourMotorCmd Curr) {
   this->MotorCurr.w1 = Curr.w1;
   this->MotorCurr.w2 = Curr.w2;
   this->MotorCurr.w3 = Curr.w3;

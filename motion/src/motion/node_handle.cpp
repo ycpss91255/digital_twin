@@ -15,8 +15,8 @@ MotionNodeHandle::~MotionNodeHandle() {
 
 void MotionNodeHandle::init() {
   this->n = new ros::NodeHandle();
-  MotorEnc_pub = n->advertise<motion::FourMotorStates>(motor_enc_topic_name, 1000);
-  MotorSpeed_pub = n->advertise<motion::FourMotorStates>(motor_speed_topic_name, 1000);
+  MotorEnc_pub = n->advertise<motion::FourMotorCmd>(motor_enc_topic_name, 1000);
+  MotorSpeed_pub = n->advertise<motion::FourMotorCmd>(motor_speed_topic_name, 1000);
   CmdVal_sub = n->subscribe<geometry_msgs::Twist>(
       motion_topic_name, 1000, &MotionNodeHandle::CmdVelBack, this);
 
@@ -25,8 +25,8 @@ void MotionNodeHandle::init() {
 #endif
 }
 
-void MotionNodeHandle::pub_MotorEnc(motion::FourMotorStates Curr) {
-  motion::FourMotorStates EncMsg;
+void MotionNodeHandle::pub_MotorEnc(motion::FourMotorCmd Curr) {
+  motion::FourMotorCmd EncMsg;
 
   EncMsg.w1 = Curr.w1;
   EncMsg.w2 = Curr.w2;
@@ -43,8 +43,8 @@ void MotionNodeHandle::pub_MotorEnc(motion::FourMotorStates Curr) {
 #endif
 }
 
-void MotionNodeHandle::pub_MotorSpeed(motion::FourMotorStates Speed) {
-  motion::FourMotorStates SpeedMsg;
+void MotionNodeHandle::pub_MotorSpeed(motion::FourMotorCmd Speed) {
+  motion::FourMotorCmd SpeedMsg;
 
   SpeedMsg.w1 = Speed.w1;
   SpeedMsg.w2 = Speed.w2;

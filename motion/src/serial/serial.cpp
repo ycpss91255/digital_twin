@@ -116,7 +116,7 @@ void Serial::pub_motor_pwm(vector<float>& pwm) {
   for (int i = 0, n = 0; i < this->pub_msg.size(); i++) {
     n += write(this->fd, &this->pub_msg.at(i), 1);
     if (n < 0) {
-      // TODO : If remove the USB device, will enter this loop, causing a crash
+      // If remove the USB device, will enter this loop, causing a crash
       printf("write() of %d/%d bytes failed!\n", n, PUB_MSG_LEN);
     }
   }
@@ -238,7 +238,6 @@ int Serial::check_msg() {
  * @brief unbuild Nios feed back message
  */
 void Serial::unbuild_msg() {
-  try {
     this->time_stamp = this->sub_msg[TIME_STAMP_ORDER + 2] << 16 |
                        this->sub_msg[TIME_STAMP_ORDER + 1] << 8 |
                        this->sub_msg[TIME_STAMP_ORDER];

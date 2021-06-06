@@ -9,7 +9,7 @@
  ** Include msg header files
  ******************************/
 #include "geometry_msgs/Twist.h"
-#include "motion/FourMotorStates.h"
+#include "motion/FourMotorCmd.h"
 /*******************************
  * Define
  ******************************/
@@ -22,13 +22,13 @@ class BaseControl {
 
  public:
   // variable
-  motion::FourMotorStates MotorSpeed;
+  motion::FourMotorCmd MotorSpeed;
   geometry_msgs::Twist MotorCoor;
-  motion::FourMotorStates MotorCurr;
+  motion::FourMotorCmd MotorCurr;
 
   // function
   void SetRobotRadius(double);
-  void SetMotorEnc(motion::FourMotorStates);
+  void SetMotorEnc(motion::FourMotorCmd);
   void ForwardKinematics();
   void InverseKinematics(geometry_msgs::Twist);
 

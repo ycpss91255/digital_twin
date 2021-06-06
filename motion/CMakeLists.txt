@@ -11,11 +11,16 @@ find_package(catkin REQUIRED COMPONENTS
 
 add_message_files(
   FILES
-  FourMotorStates.msg
+  FourMotorCmd.msg
+  Vector3.msg
+  MotorStates.msg
+  Imu.msg
 )
 generate_messages(
   DEPENDENCIES
+  geometry_msgs
   std_msgs  # Or other packages containing msgs
+  motion
 )
 
 catkin_package(

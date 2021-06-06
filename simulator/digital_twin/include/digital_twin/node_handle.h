@@ -15,7 +15,7 @@
 /*******************************
  ** Include msg header files
  ******************************/
-#include "motion/FourMotorStates.h"
+#include "motion/FourMotorCmd.h"
 #include "sensor_msgs/JointState.h"
 #include "std_msgs/Float64.h"
 /*******************************
