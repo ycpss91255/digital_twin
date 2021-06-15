@@ -15,10 +15,9 @@ MotionNodeHandle::~MotionNodeHandle() {
 
 void MotionNodeHandle::init() {
   this->n = new ros::NodeHandle();
-  MotorEnc_pub = n->advertise<motion::FourMotorCmd>(motor_enc_topic_name, 1000);
-  MotorSpeed_pub = n->advertise<motion::FourMotorCmd>(motor_speed_topic_name, 1000);
+  MotorSpeed_pub = n->advertise<motion::FourMotorCmd>(MOTOR_SPEED_TOPIC_NAME, 1000);
   CmdVal_sub = n->subscribe<geometry_msgs::Twist>(
-      motion_topic_name, 1000, &MotionNodeHandle::CmdVelBack, this);
+      MOTION_TOPIC_NAME, 1000, &MotionNodeHandle::CmdVelBack, this);
 
 #ifdef DEBUG
   printf("Motion_nodeHandle(DEBUG)\n");

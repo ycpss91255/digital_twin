@@ -16,11 +16,12 @@
 #include "geometry_msgs/Twist.h"
 #include "motion/FourMotorCmd.h"
 /*******************************
+ * Include header files
+ ******************************/
+#include "motion/parameter.h"
+/*******************************
  * Define
  ******************************/
-#define motion_topic_name "motion/cmd_val"
-#define motor_enc_topic_name "motion/motor_enc"
-#define motor_speed_topic_name "motion/motor_speed"
 
 // #define DEBUG
 

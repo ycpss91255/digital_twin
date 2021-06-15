@@ -17,7 +17,6 @@ int main(int argc, char **argv) {
   BaseControl Base;
   ros::Rate loop_rate(1000);
   while (ros::ok()) {
-
     Base.InverseKinematics(Node.MotionCmd);
     Node.pub_MotorSpeed(Base.MotorSpeed);
 

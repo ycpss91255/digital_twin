@@ -44,3 +44,23 @@ set(RST_LIST
 add_executable(rx_serial_test ${RST_LIST})
 target_link_libraries(rx_serial_test ${catkin_LIBRARIES})
 add_dependencies(rx_serial_test ${PROJECT_NAME}_gencpp)
+
+# ros_tx_serial_test
+set(RTST_LIST
+  ./serial/ros_tx_serial_test.cpp
+  ../src/serial/serial.cpp
+  ../src/serial/node_handle.cpp
+)
+add_executable(ros_tx_serial_test ${RTST_LIST})
+target_link_libraries(ros_tx_serial_test ${catkin_LIBRARIES})
+add_dependencies(ros_tx_serial_test ${PROJECT_NAME}_gencpp)
+
+# ros_rx_serial_test
+set(RRST_LIST
+  ./serial/ros_rx_serial_test.cpp
+  ../src/serial/serial.cpp
+  ../src/serial/node_handle.cpp
+)
+add_executable(ros_rx_serial_test ${RTST_LIST})
+target_link_libraries(ros_rx_serial_test ${catkin_LIBRARIES})
+add_dependencies(ros_rx_serial_test ${PROJECT_NAME}_gencpp)

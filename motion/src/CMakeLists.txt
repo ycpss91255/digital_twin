@@ -8,3 +8,12 @@ set(M_LIST
 )
 add_executable(motion ${M_LIST})
 target_link_libraries(motion ${catkin_LIBRARIES})
+
+# # serial
+# set(S_LIST
+#   motion.cpp
+#   ./serial/node_handle.cpp
+#   ./serial/serial.cpp
+# )
+# add_executable(motion ${M_LIST})
+# target_link_libraries(motion ${catkin_LIBRARIES})

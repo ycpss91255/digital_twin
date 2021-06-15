@@ -27,11 +27,13 @@
 			"stdexcept": "cpp",
 			"system_error": "cpp",
 			"typeinfo": "cpp",
-			"cstddef": "cpp"
+			"cstddef": "cpp",
+			"vector": "cpp"
 		},
 		"cSpell.words": [
 			"Coor",
 			"Nios",
+			"SIGDSUSP",
 			"omwr"
 		],
 		"python.analysis.extraPaths": [

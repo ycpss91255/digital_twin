@@ -1,75 +1,60 @@
 #include "serial/node_handle.h"
-
-MotionNodeHandle::MotionNodeHandle(int argc, char **argv, std::string NodeName) {
+SerialNodeHandle::SerialNodeHandle(int argc, char **argv,
+                                   std::string NodeName) {
   ros::init(argc, argv, NodeName);
-  init();
+  ROS_init();
+  Data_init();
 }
 
-MotionNodeHandle::~MotionNodeHandle() {
-  ros::shutdown();
+SerialNodeHandle::~SerialNodeHandle() { ros::shutdown(); }
 
-#ifdef DEBUG
-  printf("~Motion_nodeHandle(DEBUG)\n");
-#endif
-}
 
-void MotionNodeHandle::init() {
+/**
+ * @brief initial
+ */
+void SerialNodeHandle::ROS_init() {
   this->n = new ros::NodeHandle();
-  MotorEnc_pub = n->advertise<motion::FourMotorCmd>(motor_enc_topic_name, 1000);
-  MotorSpeed_pub = n->advertise<motion::FourMotorCmd>(motor_speed_topic_name, 1000);
-  CmdVal_sub = n->subscribe<geometry_msgs::Twist>(
-      motion_topic_name, 1000, &MotionNodeHandle::CmdVelBack, this);
-
-#ifdef DEBUG
-  printf("Motion_nodeHandle(DEBUG)\n");
-#endif
+  // ROS publisher
+  MotorState_pub =
+      this->n->advertise<motion::MotorStates>(MOTOR_STATE_TOPIC_NAME, 1000);
+  IMU_State_pub = this->n->advertise<motion::IMU>(IMU_STATE_TOPIC_NAME, 1000);
+  // ROS subscriber
+  MotorSpeed_sub = this->n->subscribe<motion::FourMotorCmd>(
+      MOTOR_SPEED_TOPIC_NAME, 1000, &SerialNodeHandle::sub_MotorSpeed, this);
 }
 
-void MotionNodeHandle::pub_MotorEnc(motion::FourMotorCmd Curr) {
-  motion::FourMotorCmd EncMsg;
+/**
+ * @brief initial data related
+ */
+void SerialNodeHandle::Data_init() { this->MotorCmd.resize(4); }
 
-  EncMsg.w1 = Curr.w1;
-  EncMsg.w2 = Curr.w2;
-  EncMsg.w3 = Curr.w3;
-  EncMsg.w4 = Curr.w4;
-  MotorEnc_pub.publish(EncMsg);
-
-#ifdef DEBUG
-  printf("pub_MotorEnc(DEBUG)\n");
-  printf("w1 : %f\n", EncMsg.w1);
-  printf("w2 : %f\n", EncMsg.w2);
-  printf("w3 : %f\n", EncMsg.w3);
-  printf("w4 : %f\n", EncMsg.w4);
-#endif
+/**
+ * @brief publish msg to IMU_State_pub topic
+ */
+void SerialNodeHandle::pub_IMU_State(motion::IMU msg) {
+  IMU_State_pub.publish(msg);
 }
 
-void MotionNodeHandle::pub_MotorSpeed(motion::FourMotorCmd Speed) {
-  motion::FourMotorCmd SpeedMsg;
-
-  SpeedMsg.w1 = Speed.w1;
-  SpeedMsg.w2 = Speed.w2;
-  SpeedMsg.w3 = Speed.w3;
-  SpeedMsg.w4 = Speed.w4;
-  MotorSpeed_pub.publish(SpeedMsg);
-
-#ifdef DEBUG
-  printf("pub_MotorEnc(DEBUG)\n");
-  printf("w1 : %f\n", SpeedMsg.w1);
-  printf("w2 : %f\n", SpeedMsg.w2);
-  printf("w3 : %f\n", SpeedMsg.w3);
-  printf("w4 : %f\n", SpeedMsg.w4);
-#endif
+/**
+ * @brief publish msg to MotorState_pub topic
+ */
+void SerialNodeHandle::pub_MotorState(motion::MotorStates msg) {
+  MotorState_pub.publish(msg);
 }
 
-void MotionNodeHandle::CmdVelBack(const geometry_msgs::Twist::ConstPtr &msg) {
-  this->MotionCmd.linear.x = msg->linear.x;
-  this->MotionCmd.linear.y = msg->linear.y;
-  this->MotionCmd.angular.z = msg->angular.z;
-
-#ifdef DEBUG
-  printf("CmdVelBack(DEBUG)\n");
-  printf("x : %f\n", msg->linear.x);
-  printf("y : %f\n", msg->linear.y);
-  printf("z : %f\n", msg->angular.z);
-#endif
+/**
+ * @brief handle MotorSpeed_sub msg
+ */
+void SerialNodeHandle::sub_MotorSpeed(
+    const motion::FourMotorCmd::ConstPtr &msg) {
+  MotorCmd.at(0) = msg->w1;
+  MotorCmd.at(1) = msg->w2;
+  MotorCmd.at(2) = msg->w3;
+  MotorCmd.at(3) = msg->w4;
 }
+
+/**
+ * @brief get motor cmd
+ * @return vector<float>, MotorCmd
+ */
+vector<float> SerialNodeHandle::get_MotorCmd() { return this->MotorCmd; }

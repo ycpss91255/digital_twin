@@ -4,8 +4,10 @@
  * Include system header files
  ******************************/
 #include <string.h>
+
 #include <cstdio>
 #include <iostream>
+#include <vector>
 /*******************************
  * Include ROS header files
  ******************************/
@@ -13,38 +15,50 @@
 /*******************************
  ** Include msg header files
  ******************************/
+#include "motion/FourMotorCmd.h"
 #include "motion/IMU.h"
 #include "motion/MotorStates.h"
+/*******************************
+ * Include header files
+ ******************************/
+#include "motion/parameter.h"
 /*******************************
  * Define
  ******************************/
 
 // #define DEBUG
-
-class MotionNodeHandle {
+using namespace std;
+class SerialNodeHandle {
  public:
-  MotionNodeHandle(int, char**, std::string);
-  ~MotionNodeHandle();
-
+  SerialNodeHandle(int, char**, std::string);
+  ~SerialNodeHandle();
+  /* variable */
  public:
-  // variable
-  geometry_msgs::Twist MotionCmd;
-  motion::FourMotorCmd MotorEnc;
-
-  // function
-  void pub_MotorEnc(motion::FourMotorCmd);
-  void pub_MotorSpeed(motion::FourMotorCmd);
+  motion::FourMotorCmd Cmd;
 
  private:
-  // variable
   ros::NodeHandle* n;
-  ros::Publisher MotorEnc_pub;
-  ros::Publisher MotorSpeed_pub;
-  ros::Subscriber CmdVal_sub;
+  // ROS publisher
+  ros::Publisher MotorState_pub;
+  ros::Publisher IMU_State_pub;
+  // ROS subscriber
+  ros::Subscriber MotorSpeed_sub;
+  // Temp Data
+  vector<float> MotorCmd;
 
-  // function
-  void init();
-  void CmdVelBack(const geometry_msgs::Twist::ConstPtr&);
+  /* function */
+ public:
+  void sub_MotorSpeed(motion::FourMotorCmd);
+  // ROS publisher function
+  void pub_IMU_State(motion::IMU);
+  void pub_MotorState(motion::MotorStates);
+  vector<float> get_MotorCmd();
+
+ private:
+  void ROS_init();
+  void Data_init();
+  // ROS subscriber function
+  void sub_MotorSpeed(const motion::FourMotorCmd::ConstPtr&);
 };
 
 #endif  // NodeHandle_H
