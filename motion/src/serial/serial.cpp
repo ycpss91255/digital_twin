@@ -141,18 +141,18 @@ void Serial::build_msg(vector<float>& pwm) {
     int pwm_msg = abs_pwm > 100 ? 65535 : int(round(abs_pwm * 655.35));
     // int = 4 bytes, but char = 1 byte, so disassemble int into HIGH and
     // Low byte
-    this->pub_msg[i * 2 + 2] = (pwm_msg & 0xFF00) >> 8;
-    this->pub_msg[i * 2 + 3] = pwm_msg & 0x00FF;
+    this->pub_msg[i * 2 + 3] = (pwm_msg & 0xFF00) >> 8;
+    this->pub_msg[i * 2 + 4] = pwm_msg & 0x00FF;
   }
   // clear old direction and write new direction
-  this->pub_msg[1] &= 0x00;
-  this->pub_msg[1] |= dir[0] << 0;
-  this->pub_msg[1] |= dir[2] << 1;
-  this->pub_msg[1] |= dir[1] << 2;
-  this->pub_msg[1] |= dir[3] << 3;
+  this->pub_msg[2] &= 0x00;
+  this->pub_msg[2] |= dir[0] << 0;
+  this->pub_msg[2] |= dir[2] << 1;
+  this->pub_msg[2] |= dir[1] << 2;
+  this->pub_msg[2] |= dir[3] << 3;
 
   // write last data crc check is it right or not, 0 = right, 1 = not
-  this->pub_msg[PUB_MSG_LEN - 3] = this->check_status;
+  this->pub_msg[1] = this->check_status;
   // write crc
   this->pub_msg[PUB_MSG_LEN - 2] = calculation_crc(this->pub_msg);
 
@@ -182,8 +182,8 @@ int Serial::sub_feedback() {
       this->sub_msg[this->tmp_msg_len] = msg;
       if (this->tmp_msg_len != SUB_MSG_LEN - 1) {
 #ifdef DEBUG
-        printf("the msg buf is not full, %d/%d\n", this->tmp_msg_len + 1,
-               SUB_MSG_LEN);
+        // printf("the msg buf is not full, %d/%d\n", this->tmp_msg_len + 1,
+        //        SUB_MSG_LEN);
 #endif  // DEBUG
         this->tmp_msg_len++;
         return 0;
@@ -214,7 +214,7 @@ int Serial::check_msg() {
   // correct
   if (this->sub_msg[0] == SUB_START_PACKET &&
       this->sub_msg[SUB_MSG_LEN - 1] == SUB_END_PACKET) {
-    char crc = calculation_crc(this->sub_msg);
+    uint8_t crc = calculation_crc(this->sub_msg);
     if (this->sub_msg[SUB_MSG_LEN - 2] == crc) {
 #ifdef P_SUBSCRIBE
       printf_hex("sub_msg :", this->sub_msg);
@@ -223,6 +223,8 @@ int Serial::check_msg() {
     } else {
       printf("Incorrect crc check, msg = %02X, crc = %02X\n",
              this->sub_msg[SUB_MSG_LEN - 2], crc);
+      printf_hex("sub_msg :", this->sub_msg);
+
       this->check_status = 0x01;
       return -1;
     }
