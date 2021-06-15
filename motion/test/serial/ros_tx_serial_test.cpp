@@ -7,7 +7,7 @@
 int set_time = 25;  // (ms)
 
 int main(int argc, char **argv) {
-  SerialNodeHandle node(argc, argv, "serial");
+  SerialNodeHandle node(argc, argv, "serial_tx");
   Serial serial("/dev/ttyUSB0", 115200);
   vector<float> speed = {5.098039216, -5.098039216, 50, -50};
 

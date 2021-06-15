@@ -88,6 +88,8 @@ class Serial {
 
   // get functions
   vector<uint8_t> get_sub_msg();
+  motion::IMU get_IMU_data();
+  motion::MotorStates get_MotorStates(int);
 
  private:
   void serial_init(const char*, uint32_t);

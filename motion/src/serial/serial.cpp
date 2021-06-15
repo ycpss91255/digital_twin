@@ -350,6 +350,8 @@ uint8_t Serial::calculation_crc(vector<uint8_t>& msg) {
 }
 
 vector<uint8_t> Serial::get_sub_msg() { return this->sub_msg; }
+motion::IMU Serial::get_IMU_data() { return this->imu_data; }
+motion::MotorStates Serial::get_MotorStates(int index) {return this->M_data.at(index);}
 
 void Serial::printf_hex(const char* text, vector<uint8_t>& msg) {
   printf("%s\n", text);

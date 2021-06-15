@@ -6,21 +6,17 @@
 int set_time = 25;  // (ms)
 
 int main(int argc, char **argv) {
-  SerialNodeHandle Node(argc, argv, "serial");
+  SerialNodeHandle node(argc, argv, "serial_rx");
   Serial serial("/dev/ttyUSB0", 115200);
-  vector<float> speed = {5.098039216, -5.098039216, 50, -50};
 
-  while (1) {
+  while (ros::ok()) {
     // linux clock(us), windows clock(ms)
     int status = serial.sub_feedback();
     if (status == 1) {
       vector<uint8_t> msg = serial.get_sub_msg();
-      // for (int i = 0; i < msg.size(); i++) {
-      //   printf("%02X ", (uint8_t)msg.at(i));
-      // }
-      // printf("\n\n");
-    } else {
-      // printf("status = %d\n", status);
+  // TODO : wait done publish rx data
+      // node.
     }
+    ros::spinOnce();
   }
 }
