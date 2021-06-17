@@ -20,6 +20,11 @@ Serial::~Serial() { close(this->fd); }
  * @param baud_rate universal baud rate
  */
 void Serial::serial_init(const char* port, uint32_t baud_rate) {
+  /**
+   * O_RDWR    : Read and write mode
+   * O_NOCTTY  : Does not control the TTY interface
+   * O_NDELAY  : Ignore the status of the RS-232 DCD singal
+   */
   this->fd = open(port, O_RDWR | O_NOCTTY | O_NDELAY);
 
   if (this->fd == -1) {
@@ -27,11 +32,11 @@ void Serial::serial_init(const char* port, uint32_t baud_rate) {
     exit(EXIT_FAILURE);
   } else {
     /* install the signal handler before making the device asynchronous */
-    // saio.sa_handler = signal_handler_IO;
-    // sigemptyset(&saio.sa_mask);  // saio.sa_mask = 0;
-    // saio.sa_flags = 0;
-    // saio.sa_restorer = NULL;
-    // sigaction(SIGIO, &saio, NULL);
+    saio.sa_handler = signal_handler_IO;
+    sigemptyset(&saio.sa_mask);
+    saio.sa_flags = 0;
+    saio.sa_restorer = NULL;
+    sigaction(SIGIO, &saio, NULL);
 
     vector<int> speed_vec = {B0,    B50,   B75,    B110,   B134,   B150,
                              B200,  B300,  B600,   B1200,  B1800,  B2400,
@@ -42,11 +47,11 @@ void Serial::serial_init(const char* port, uint32_t baud_rate) {
 
     tcgetattr(this->fd, &opt);  // get serial port config
 
-    // Serial not blocking
-    fcntl(this->fd, F_SETFL, 0);
-    // fcntl(this->fd, F_SETFL, FASYNC);
-    // Serial not blocking
-    // fcntl(this->fd, F_SETFL, FNDELAY);
+    // allow the process to receive SIGIO
+    fcntl(this->fd, F_SETOWN, getpid());
+    // Serial non-blocking
+    // fcntl(this->fd, F_SETFL, 0);
+    fcntl(this->fd, F_SETFL, FASYNC);
 
     for (int i = 0; i < speed_vec.size(); i++) {
       if (baud_rate == name_vec[i]) {
@@ -82,13 +87,15 @@ void Serial::serial_init(const char* port, uint32_t baud_rate) {
      * ECHO    : Echoing of input characters
      * ECHOE   : Echo erase character as BS-SP-BS
      * ISIG    : SIGINTR, SIGSUSP, SIGDSUSP, and SIGQUIT signals
+     */
+    opt.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
+    /**
      * INPCK   : parity check
      * ICRNL   : Map CR to NL
      * IXON    : Software flow control (outgoing)
      * IXOFF   : Software flow control (incoming)
      * IXANY   : Allow any character to start flow again
      */
-    opt.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
     opt.c_iflag &= ~INPCK;
     opt.c_iflag &= ~(INLCR | ICRNL);
     opt.c_iflag &= ~(IXON | IXOFF | IXANY);
@@ -96,6 +103,7 @@ void Serial::serial_init(const char* port, uint32_t baud_rate) {
      * OPOST   : Postprocess output (not set = raw output)
      */
     opt.c_oflag &= ~OPOST;
+    tcflush(this->fd, TCIOFLUSH);
 
     int status = tcsetattr(this->fd, TCSANOW, &opt);  // set Serial port config
     if (status != 0) {
@@ -370,10 +378,10 @@ uint8_t Serial::calculation_crc(vector<uint8_t>& msg) {
   return (uint8_t)crc;
 }
 
-// void Serial::signal_handler_IO(int Status) {
-//   printf("received SIGIO signal.\n");
-//   this->wait_flag = false;
-// }
+void Serial::signal_handler_IO(int Status) {
+  printf("received SIGIO signal.\n");
+  // this->wait_flag = false;
+}
 
 /**
  * @brief get all sub msg

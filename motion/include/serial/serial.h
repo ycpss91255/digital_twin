@@ -1,6 +1,8 @@
 #ifndef SERIAL_H
 #define SERIAL_H
-
+/*******************************
+ * Include system header files
+ ******************************/
 #include <errno.h> /* Error number definitions */
 #include <fcntl.h> /* File control definitions */
 #include <stdio.h> /* Standard input/output definitions */
@@ -15,14 +17,19 @@
 #include <stdexcept>  // std::out_of_range
 #include <string>
 #include <vector>
-
-#include "serial/parameter.h"
-// ROS msg header files
+/*******************************
+ ** Include msg header files
+ ******************************/
 #include "motion/IMU.h"
 #include "motion/MotorStates.h"
-
+/*******************************
+ * Include header files
+ ******************************/
+#include "serial/parameter.h"
+/*******************************
+ * Define
+ ******************************/
 #define _POSIX_SOURCE 1 /* POSIX compliant source */
-
 
 #define DEBUG
 #define P_PUBLISH
@@ -103,7 +110,7 @@ class Serial {
   void build_msg(vector<float>&);
   int check_msg();
   uint8_t calculation_crc(vector<uint8_t>&);
-  // void signal_handler_IO(int); /* definition of signal handler */
+  static void signal_handler_IO(int); /* definition of signal handler */
 
   void unbuild_msg();
   void printf_hex(const char*, vector<uint8_t>&);
