@@ -5,6 +5,8 @@
 #include <fcntl.h> /* File control definitions */
 #include <stdio.h> /* Standard input/output definitions */
 #include <stdlib.h>
+#include <sys/signal.h>
+#include <sys/types.h>
 #include <termios.h> /* POSIX terminal control definitions */
 #include <unistd.h>  /* UNIX standard function definitions */
 
@@ -18,6 +20,9 @@
 // ROS msg header files
 #include "motion/IMU.h"
 #include "motion/MotorStates.h"
+
+#define _POSIX_SOURCE 1 /* POSIX compliant source */
+
 
 #define DEBUG
 #define P_PUBLISH
@@ -98,6 +103,7 @@ class Serial {
   void build_msg(vector<float>&);
   int check_msg();
   uint8_t calculation_crc(vector<uint8_t>&);
+  // void signal_handler_IO(int); /* definition of signal handler */
 
   void unbuild_msg();
   void printf_hex(const char*, vector<uint8_t>&);
@@ -105,7 +111,9 @@ class Serial {
  public:
  private:
   int fd;
-  termios opt;
+  struct termios opt;
+  struct sigaction saio; /* definition of signal action */
+  bool wait_flag = true;
 
   vector<uint8_t> pub_msg;
   vector<uint8_t> sub_msg;

@@ -26,6 +26,13 @@ void Serial::serial_init(const char* port, uint32_t baud_rate) {
     perror("Unable to open designated serial port - ");
     exit(EXIT_FAILURE);
   } else {
+    /* install the signal handler before making the device asynchronous */
+    // saio.sa_handler = signal_handler_IO;
+    // sigemptyset(&saio.sa_mask);  // saio.sa_mask = 0;
+    // saio.sa_flags = 0;
+    // saio.sa_restorer = NULL;
+    // sigaction(SIGIO, &saio, NULL);
+
     vector<int> speed_vec = {B0,    B50,   B75,    B110,   B134,   B150,
                              B200,  B300,  B600,   B1200,  B1800,  B2400,
                              B4800, B9600, B19200, B38400, B57600, B115200};
@@ -37,6 +44,7 @@ void Serial::serial_init(const char* port, uint32_t baud_rate) {
 
     // Serial not blocking
     fcntl(this->fd, F_SETFL, 0);
+    // fcntl(this->fd, F_SETFL, FASYNC);
     // Serial not blocking
     // fcntl(this->fd, F_SETFL, FNDELAY);
 
@@ -113,7 +121,7 @@ void Serial::data_init() {
 void Serial::pub_motor_pwm(vector<float>& pwm) {
   if (pwm.size() == 4) {
     build_msg(pwm);
-
+    // max 31
     for (int i = 0, n = 0; i < this->pub_msg.size(); i++) {
       n += write(this->fd, &this->pub_msg.at(i), 1);
       if (n < 0) {
@@ -126,7 +134,7 @@ void Serial::pub_motor_pwm(vector<float>& pwm) {
 
 /**
  * @brief build strategy commamd save to publish buffer
- * @param pwm range -100 ~ 100
+ * @param pwm range -31 ~ 31
  */
 void Serial::build_msg(vector<float>& pwm) {
   // write start and end packet
@@ -139,8 +147,8 @@ void Serial::build_msg(vector<float>& pwm) {
     dir[i] = (pwm[i] > 0 ? 1 : 0);
 
     float abs_pwm = abs(pwm[i]);
-    // speed 0 ~ 100 conversion to 0 ~ 65535 (msg data = 2bytes)
-    int pwm_msg = abs_pwm > 100 ? 65535 : int(round(abs_pwm * 655.35));
+    int pwm_msg = abs_pwm > 31 ? 31 : abs_pwm;
+    // int pwm_msg = abs_pwm > 100 ? 65535 : int(round(abs_pwm * 655.35));
     // int = 4 bytes, but char = 1 byte, so disassemble int into HIGH and
     // Low byte
     this->pub_msg[i * 2 + 3] = (pwm_msg & 0xFF00) >> 8;
@@ -174,31 +182,36 @@ int Serial::sub_feedback() {
   if (n < 0) {
     // receive msg error, clear current msg, wait next message
     printf("n = %d, read() of 1 bytes failed!\n", n);
-    for (int i = 0; i < SUB_MSG_LEN; i++) this->sub_msg[i] = 0;
+    for (int i = 0; i < SUB_MSG_LEN; i++) this->sub_msg.at(i) = 0x00;
     this->sub_start_flag = false;
     return -1;
-  } else {
+  }
+
+  else {
     // Confirm whether the first msg matches
     if ((msg == SUB_START_PACKET) || this->sub_start_flag) {
       this->sub_start_flag = true;
       this->sub_msg[this->tmp_msg_len] = msg;
+
+      // msg buffer is not full
       if (this->tmp_msg_len != SUB_MSG_LEN - 1) {
 #ifdef DEBUG
-        // printf("the msg buf is not full, %d/%d\n", this->tmp_msg_len + 1,
-        //        SUB_MSG_LEN);
+        printf("the msg buf is not full, %d/%d\n", this->tmp_msg_len + 1,
+               SUB_MSG_LEN);
 #endif  // DEBUG
         this->tmp_msg_len++;
         return 0;
-      } else {
-#ifdef DEBUG
-        printf("the msg buf \n");
-#endif  // DEBUG
+      }
+      // msg buffer is full
+      else {
         this->tmp_msg_len = 0;
         this->sub_start_flag = false;
         int status = check_msg();
         return status;
       }
-    } else {
+    }
+    // msg is not start packet and sub start flag = 0
+    else {
 #ifdef DEBUG
       printf("msg %02X, sub_start_flag = %d\n", msg, this->sub_start_flag);
 #endif  // DEBUG
@@ -221,23 +234,25 @@ int Serial::check_msg() {
 #ifdef P_SUBSCRIBE
       printf_hex("sub_msg :", this->sub_msg);
 #endif  // P_SUBSCRIBE
+      this->check_status = 0x00;
       return 1;
     } else {
       printf("Incorrect crc check, msg = %02X, crc = %02X\n",
              this->sub_msg[SUB_MSG_LEN - 2], crc);
       printf_hex("sub_msg :", this->sub_msg);
-
       this->check_status = 0x01;
+
       return -1;
     }
   } else {
     printf("Incorrect start and end packet, packet = %02X, %02X\n",
            this->sub_msg[0], this->sub_msg[SUB_MSG_LEN - 1]);
+    this->check_status = 0x01;
+
     return -1;
   }
 }
 
-// TODO : wait Nios
 /**
  * @brief unbuild Nios feed back message
  */
@@ -273,8 +288,7 @@ void Serial::unbuild_msg() {
   this->M_data[2].DIR = (this->sub_msg[MOTOR_DIR_ORDER] & (0x01 << 1)) >> 1;
   this->M_data[3].DIR = (this->sub_msg[MOTOR_DIR_ORDER] & (0x01 << 3)) >> 3;
 
-  // IMU data is 10 bit, MSB is symbol
-
+  /* IMU data is 10 bit, MSB is symbol */
   // Combine the Accelerometer information in sub_msg
   int accel_byte = this->sub_msg[IMU_ACCELEROMETER_ORDER + 3] << 24 |
                    this->sub_msg[IMU_ACCELEROMETER_ORDER + 2] << 16 |
@@ -331,9 +345,16 @@ void Serial::unbuild_msg() {
   this->imu_data.Magneticmeter.z = ((accel_byte & 0x200 << 20) >> 29) == 0
                                        ? this->imu_data.Magneticmeter.z
                                        : -this->imu_data.Magneticmeter.z;
-}
 
-// AA 03 0D 0D 0D 0D 80 00 80 00 00 37 EE
+#ifdef DEBUG
+  for (int i = 0; i < 4; i++) {
+    printf("motor %d : PWM %d, DIR %d, Enc %d, Spd %d V %d C %d\n", i,
+           M_data.at(i).PWM, M_data.at(i).DIR, M_data.at(i).Encoder,
+           M_data.at(i).Speed, M_data.at(i).Voltage, M_data.at(i).Current);
+  }
+  printf("\n");
+#endif  // DEBUG
+}
 
 /**
  * @brief  calculation crc code or check crc status
@@ -349,9 +370,27 @@ uint8_t Serial::calculation_crc(vector<uint8_t>& msg) {
   return (uint8_t)crc;
 }
 
+// void Serial::signal_handler_IO(int Status) {
+//   printf("received SIGIO signal.\n");
+//   this->wait_flag = false;
+// }
+
+/**
+ * @brief get all sub msg
+ */
 vector<uint8_t> Serial::get_sub_msg() { return this->sub_msg; }
+
+/**
+ * @brief get IMU data
+ */
 motion::IMU Serial::get_IMU_data() { return this->imu_data; }
-motion::MotorStates Serial::get_MotorStates(int index) {return this->M_data.at(index);}
+
+/**
+ * @brief get motor states
+ */
+motion::MotorStates Serial::get_MotorStates(int index) {
+  return this->M_data.at(index);
+}
 
 void Serial::printf_hex(const char* text, vector<uint8_t>& msg) {
   printf("%s\n", text);

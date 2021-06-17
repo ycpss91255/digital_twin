@@ -1,20 +1,13 @@
-#include <errno.h> /* Error number definitions */
-#include <fcntl.h> /* File control definitions */
-#include <stdio.h> /* Standard input/output definitions */
-#include <stdlib.h>
+
+#include <fcntl.h>
+#include <stdio.h>
 #include <sys/signal.h>
 #include <sys/types.h>
-#include <termios.h> /* POSIX terminal control definitions */
-#include <unistd.h>  /* UNIX standard function definitions */
-
-#include <cmath>
-#include <iostream>
-#include <stdexcept>  // std::out_of_range
-#include <string>
-#include <vector>
+#include <termios.h>
+#include <unistd.h>
 
 #define BAUDRATE B38400
-#define MODEMDEVICE "/dev/ttyUSB0"
+#define MODEMDEVICE "/dev/ttyS1"
 #define _POSIX_SOURCE 1 /* POSIX compliant source */
 #define FALSE 0
 #define TRUE 1
@@ -24,7 +17,7 @@ volatile int STOP = FALSE;
 void signal_handler_IO(int status); /* definition of signal handler */
 int wait_flag = TRUE;               /* TRUE while no signal received */
 
-int main() {
+main() {
   int fd, c, res;
   struct termios oldtio, newtio;
   struct sigaction saio; /* definition of signal action */
@@ -38,11 +31,13 @@ int main() {
   }
 
   /* install the signal handler before making the device asynchronous */
-  saio.sa_handler = signal_handler_IO;
-  sigemptyset(&saio.sa_mask);  // saio.sa_mask = 0;
-  saio.sa_flags = 0;
-  saio.sa_restorer = NULL;
-  sigaction(SIGIO, &saio, NULL);
+   saio.sa_handler = signal_handler_IO;
+   sigemptyset(&saio.sa_mask);   //saio.sa_mask = 0;
+   saio.sa_flags = 0;
+   saio.sa_restorer = NULL;
+   sigaction(SIGIO,&saio,NULL);
+
+
 
   /* allow the process to receive SIGIO */
   fcntl(fd, F_SETOWN, getpid());
@@ -63,9 +58,8 @@ int main() {
 
   /* loop while waiting for input. normally we would do something
      useful here */
-  uint64_t i = 0;
   while (STOP == FALSE) {
-    printf("%ld\n",i++);
+    printf(".\n");
     usleep(100000);
     /* after receiving SIGIO, wait_flag = FALSE, input is available
        and can be read */
