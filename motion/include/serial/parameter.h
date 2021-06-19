@@ -7,7 +7,7 @@
 
 #define SUB_START_PACKET 0xAA
 #define SUB_END_PACKET 0xEE
-#define SUB_MSG_LEN 64
+#define SUB_MSG_LEN 13
 
 // msg buffer order
 #define TIME_STAMP_ORDER 1          // LEN = 3

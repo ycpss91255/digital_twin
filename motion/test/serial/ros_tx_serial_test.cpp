@@ -8,8 +8,7 @@ int set_time = 25;  // (ms)
 
 int main(int argc, char **argv) {
   SerialNodeHandle node(argc, argv, "serial_tx");
-  Serial serial("/dev/ttyUSB0", 115200);
-  vector<float> speed = {5.098039216, -5.098039216, 50, -50};
+  SerialInit("/dev/ttyUSB0", 115200);
 
   clock_t start = clock(), end;
   while (ros::ok()) {
@@ -18,7 +17,7 @@ int main(int argc, char **argv) {
 
     // linux clock(us), windows clock(ms)
     if ((double)(end - start) >= (set_time * 1000)) {
-      serial.pub_motor_pwm(speed);
+      pub_MotorSpeed(speed);
       start = end;
     }
     ros::spinOnce();
