@@ -10,10 +10,6 @@ int main(int argc, char** argv) {
     int status = sub_FeedBack();
     if (status == 1) {
       vector<uint8_t> msg = get_sub_msg();
-      for (int i = 0; i < msg.size(); i++) {
-        printf("%02X ", (uint8_t)msg.at(i));
-      }
-      printf("\n\n");
     } else {
       // printf("status = %d\n", status);
     }

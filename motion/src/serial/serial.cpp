@@ -201,7 +201,6 @@ int sub_FeedBack() {
     if (n < 0) {
       // receive msg error, clear current msg, wait next message
       printf("n = %d, read() of 1 bytes failed!\n", n);
-      fill(sub_msg.begin(), sub_msg.end(), 0);
       sub_start_flag = false;
       return -1;
     } else {
@@ -216,19 +215,21 @@ int sub_FeedBack() {
         } else {
           // msg buffer is full
           sub_start_flag = false;
+          tmp_msg_len = 0;
           wait_flag = true;
           int status = check_msg();
+          unbuild_msg();
           return status;
         }
-      }
-      // msg is not start packet and sub start flag = 0
-      else {
+      } else {
+        // msg is not start packet and sub start flag = 0
 #ifdef DEBUG
         printf("msg %02X, sub_start_flag = %d\n", msg, sub_start_flag);
 #endif  // DEBUG
         fill(sub_msg.begin(), sub_msg.end(), 0x00);
         wait_flag = true;
         tmp_msg_len = 0;
+        tcflush(fd, TCIFLUSH);
         return -1;
       }
     }
@@ -256,6 +257,7 @@ int check_msg() {
       printf_hex("sub_msg :", sub_msg);
 #endif  // P_SUBSCRIBE
       fill(sub_msg.begin(), sub_msg.end(), 0);
+      tcflush(fd, TCIFLUSH);
       check_status = 0x01;
       return -1;
     }
@@ -265,6 +267,7 @@ int check_msg() {
 #ifdef P_SUBSCRIBE
     printf_hex("sub_msg :", sub_msg);
 #endif  // P_SUBSCRIBE
+    tcflush(fd, TCIFLUSH);
     fill(sub_msg.begin(), sub_msg.end(), 0);
     return -1;
   }
@@ -274,38 +277,53 @@ int check_msg() {
  * @brief unbuild Nios feed back message
  */
 void unbuild_msg() {
-  time_stamp = sub_msg[TIME_STAMP_ORDER + 2] << 16 |
-               sub_msg[TIME_STAMP_ORDER + 1] << 8 | sub_msg[TIME_STAMP_ORDER];
-  crc_status = sub_msg[STATUS_ORDER] & 0x01;
+  time_stamp = sub_msg.at(TIME_STAMP_ORDER) << 16 |
+               sub_msg.at(TIME_STAMP_ORDER + 1) << 8 |
+               sub_msg.at(TIME_STAMP_ORDER + 2);
+
+  crc_status = sub_msg.at(STATUS_ORDER) & 0x01;
 
   for (int i = 0; i < 4; i++) {
-    M_data[i].PWM = sub_msg[MOTOR_PWM_ORDER + i];
+    M_data[i].PWM = sub_msg.at(MOTOR_PWM_ORDER + i);
 
-    M_data[i].Encoder = sub_msg[MOTOR_ENABLE_ORDER + (i * 4) + 3] << 24 |
-                        sub_msg[MOTOR_ENABLE_ORDER + (i * 4) + 2] << 16 |
-                        sub_msg[MOTOR_ENABLE_ORDER + (i * 4) + 1] << 8 |
-                        sub_msg[MOTOR_ENABLE_ORDER + (i * 4)];
+    M_data[i].Encoder = sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4)) << 24 |
+                        sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4) + 1) << 16 |
+                        sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4) + 2) << 8 |
+                        sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4) + 3);
 
-    M_data[i].Speed = sub_msg[MOTOR_SPEED_ORDER + (i * 2) + 1] << 8 |
-                      sub_msg[MOTOR_SPEED_ORDER + (i * 2)];
+    // BEEF = not update
+    printf("%04X\n", (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2))));
+    cout << typeid((sub_msg.at(MOTOR_SPEED_ORDER + (i * 2)))).name() << endl;
+    printf("%d\n", (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2))) == (uint8_t)0xBF);
+    // TODO : test uint8_t value
+    printf("%04X\n", sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1));
+    printf("%d\n\n",
+           sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1) == (uint8_t)0xEF);
 
-    M_data[i].Voltage = sub_msg[MOTOR_VOLTAGE_ORDER + (i * 2)] << 8 |
-                        sub_msg[MOTOR_VOLTAGE_ORDER + (i * 2)];
+    if (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2)) == 0xBF &&
+        sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1) == 0xEF) {
+      printf("BEEF\n");
+    } else {
+      M_data[i].Speed = sub_msg.at(MOTOR_SPEED_ORDER + (i * 2)) << 8 |
+                        sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1);
+    }
+    M_data[i].Voltage = sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) << 8 |
+                        sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2));
 
-    M_data[i].Current = sub_msg[MOTOR_CURRENT_ORDER + (i * 2)] << 8 |
-                        sub_msg[MOTOR_CURRENT_ORDER + (i * 2)];
+    M_data[i].Current = sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2)) << 8 |
+                        sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2));
   }
-  M_data[0].DIR = sub_msg[MOTOR_DIR_ORDER] & (0x01 << 0);
-  M_data[1].DIR = (sub_msg[MOTOR_DIR_ORDER] & (0x01 << 2)) >> 2;
-  M_data[2].DIR = (sub_msg[MOTOR_DIR_ORDER] & (0x01 << 1)) >> 1;
-  M_data[3].DIR = (sub_msg[MOTOR_DIR_ORDER] & (0x01 << 3)) >> 3;
+  M_data[0].DIR = sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 0);
+  M_data[1].DIR = (sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 2)) >> 2;
+  M_data[2].DIR = (sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 1)) >> 1;
+  M_data[3].DIR = (sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 3)) >> 3;
 
   /* IMU data is 10 bit, MSB is symbol */
   // Combine the Accelerometer information in sub_msg
-  int accel_byte = sub_msg[IMU_ACCELEROMETER_ORDER + 3] << 24 |
-                   sub_msg[IMU_ACCELEROMETER_ORDER + 2] << 16 |
-                   sub_msg[IMU_ACCELEROMETER_ORDER + 1] << 8 |
-                   sub_msg[IMU_ACCELEROMETER_ORDER];
+  int accel_byte = sub_msg.at(IMU_ACCELEROMETER_ORDER + 3) << 24 |
+                   sub_msg.at(IMU_ACCELEROMETER_ORDER + 2) << 16 |
+                   sub_msg.at(IMU_ACCELEROMETER_ORDER + 1) << 8 |
+                   sub_msg.at(IMU_ACCELEROMETER_ORDER);
 
   // Get accelerometer data
   imu_data.Accelerometer.x = accel_byte & 0x1FF;
@@ -322,10 +340,10 @@ void unbuild_msg() {
                                  ? imu_data.Accelerometer.z
                                  : -imu_data.Accelerometer.z;
   // Combine the Gyroscope information in sub_msg
-  int gyro_byte = sub_msg[IMU_GYROSCOPE_ORDER + 3] << 24 |
-                  sub_msg[IMU_GYROSCOPE_ORDER + 2] << 16 |
-                  sub_msg[IMU_GYROSCOPE_ORDER + 1] << 8 |
-                  sub_msg[IMU_GYROSCOPE_ORDER];
+  int gyro_byte = sub_msg.at(IMU_GYROSCOPE_ORDER + 3) << 24 |
+                  sub_msg.at(IMU_GYROSCOPE_ORDER + 2) << 16 |
+                  sub_msg.at(IMU_GYROSCOPE_ORDER + 1) << 8 |
+                  sub_msg.at(IMU_GYROSCOPE_ORDER);
   // Get accelerometer data
   imu_data.Gyroscope.x = gyro_byte & 0x1FF;
   imu_data.Gyroscope.y = gyro_byte & 0x1FF << 10;
@@ -341,10 +359,10 @@ void unbuild_msg() {
                              ? imu_data.Gyroscope.z
                              : -imu_data.Gyroscope.z;
   // Combine the Magneticmeter information in sub_msg
-  int magnetic_byte = sub_msg[IMU_MAGNETICMETER_ORDER + 3] << 24 |
-                      sub_msg[IMU_MAGNETICMETER_ORDER + 2] << 16 |
-                      sub_msg[IMU_MAGNETICMETER_ORDER + 1] << 8 |
-                      sub_msg[IMU_MAGNETICMETER_ORDER];
+  int magnetic_byte = sub_msg.at(IMU_MAGNETICMETER_ORDER + 3) << 24 |
+                      sub_msg.at(IMU_MAGNETICMETER_ORDER + 2) << 16 |
+                      sub_msg.at(IMU_MAGNETICMETER_ORDER + 1) << 8 |
+                      sub_msg.at(IMU_MAGNETICMETER_ORDER);
   imu_data.Magneticmeter.x = magnetic_byte & 0x1FF;
   imu_data.Magneticmeter.y = magnetic_byte & 0x1FF << 10;
   imu_data.Magneticmeter.z = magnetic_byte & 0x1FF << 20;
@@ -358,13 +376,12 @@ void unbuild_msg() {
   imu_data.Magneticmeter.z = ((magnetic_byte & 0x200 << 20) >> 29) == 0
                                  ? imu_data.Magneticmeter.z
                                  : -imu_data.Magneticmeter.z;
-
 #ifdef P_SUBSCRIBE
   if (crc_status == 0x01) {
     printf("last data error\n");
-    printf_hex("sub_msg :", sub_msg);
   }
   // MOTOR Data
+  printf_hex("sub_msg :", sub_msg);
   for (int i = 0; i < 4; i++) {
     printf("motor %d : PWM %d, DIR %d, Enc %d, Spd %d, V %d, C %d\n", i,
            M_data.at(i).PWM, M_data.at(i).DIR, M_data.at(i).Encoder,
@@ -386,7 +403,7 @@ void unbuild_msg() {
 
 /**
  * @brief  calculation crc code or check crc status
- * @param  msg, message to be calculated
+ * @param  msg message to be calculated
  * @return  crc code(1 byte) or check status(1/0) or error(-1)
  */
 uint8_t calculation_crc(vector<uint8_t>& msg) {
@@ -397,7 +414,10 @@ uint8_t calculation_crc(vector<uint8_t>& msg) {
   return crc;
 }
 
-void signal_handler_IO(int Status) { wait_flag = false; }
+void signal_handler_IO(int Status) {
+  // printf("123\n");
+  wait_flag = false;
+}
 
 /**
  * @brief get all sub msg
@@ -418,6 +438,12 @@ void printf_hex(const char* text, vector<uint8_t>& msg) {
   printf("%s\n", text);
   for (int i = 0; i < msg.size(); i++) {
     printf("%02X ", msg.at(i));
+
+    if ((i + 1) % 16 == 0) {
+      printf("\n");
+    } else if ((i + 1) % 8 == 0) {
+      printf("   ");
+    }
   }
-  printf("\n\n");
+  printf("\n");
 }

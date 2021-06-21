@@ -28,7 +28,12 @@
 			"system_error": "cpp",
 			"typeinfo": "cpp",
 			"cstddef": "cpp",
-			"vector": "cpp"
+			"vector": "cpp",
+			"array": "cpp",
+			"hash_map": "cpp",
+			"hash_set": "cpp",
+			"initializer_list": "cpp",
+			"utility": "cpp"
 		},
 		"cSpell.words": [
 			"Coor",
