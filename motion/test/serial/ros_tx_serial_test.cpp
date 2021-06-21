@@ -8,7 +8,7 @@ int set_time = 25;  // (ms)
 
 int main(int argc, char **argv) {
   SerialNodeHandle node(argc, argv, "serial_tx");
-  SerialInit("/dev/ttyUSB0", 115200);
+  SerialInit("/dev/ttyUSB1", 115200);
 
   clock_t start = clock(), end;
   while (ros::ok()) {

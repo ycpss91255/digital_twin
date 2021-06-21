@@ -201,7 +201,7 @@ int sub_FeedBack() {
     if (n < 0) {
       // receive msg error, clear current msg, wait next message
       printf("n = %d, read() of 1 bytes failed!\n", n);
-      for (int i = 0; i < SUB_MSG_LEN; i++) sub_msg.at(i) = 0x00;
+      fill(sub_msg.begin(), sub_msg.end(), 0);
       sub_start_flag = false;
       return -1;
     } else {
@@ -209,11 +209,12 @@ int sub_FeedBack() {
       if ((msg == SUB_START_PACKET) || sub_start_flag) {
         sub_start_flag = true;
         sub_msg[tmp_msg_len] = msg;
-        if (tmp_msg_len != SUB_MSG_LEN - 1) {  // msg buffer is not full
+        if (tmp_msg_len != SUB_MSG_LEN - 1) {
+          // msg buffer is not full
           tmp_msg_len++;
           return 0;
-        } else {  // msg buffer is full
-          tmp_msg_len = 0;
+        } else {
+          // msg buffer is full
           sub_start_flag = false;
           wait_flag = true;
           int status = check_msg();
@@ -225,7 +226,9 @@ int sub_FeedBack() {
 #ifdef DEBUG
         printf("msg %02X, sub_start_flag = %d\n", msg, sub_start_flag);
 #endif  // DEBUG
+        fill(sub_msg.begin(), sub_msg.end(), 0x00);
         wait_flag = true;
+        tmp_msg_len = 0;
         return -1;
       }
     }
@@ -252,12 +255,17 @@ int check_msg() {
 #ifdef P_SUBSCRIBE
       printf_hex("sub_msg :", sub_msg);
 #endif  // P_SUBSCRIBE
+      fill(sub_msg.begin(), sub_msg.end(), 0);
       check_status = 0x01;
       return -1;
     }
   } else {
     printf("Incorrect start and end packet, packet = %02X, %02X\n", sub_msg[0],
            sub_msg[SUB_MSG_LEN - 1]);
+#ifdef P_SUBSCRIBE
+    printf_hex("sub_msg :", sub_msg);
+#endif  // P_SUBSCRIBE
+    fill(sub_msg.begin(), sub_msg.end(), 0);
     return -1;
   }
 }
