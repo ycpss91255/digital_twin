@@ -292,26 +292,24 @@ void unbuild_msg() {
                         sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4) + 3);
 
     // BEEF = not update
-    printf("%04X\n", (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2))));
-    cout << typeid((sub_msg.at(MOTOR_SPEED_ORDER + (i * 2)))).name() << endl;
-    printf("%d\n", (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2))) == (uint8_t)0xBF);
-    // TODO : test uint8_t value
-    printf("%04X\n", sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1));
-    printf("%d\n\n",
-           sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1) == (uint8_t)0xEF);
-
-    if (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2)) == 0xBF &&
-        sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1) == 0xEF) {
-      printf("BEEF\n");
-    } else {
-      M_data[i].Speed = sub_msg.at(MOTOR_SPEED_ORDER + (i * 2)) << 8 |
+    if (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2)) >> 7) {
+      M_data[i].Speed = (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2))) & !0x80 << 8 |
                         sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1);
     }
-    M_data[i].Voltage = sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) << 8 |
-                        sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2));
-
-    M_data[i].Current = sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2)) << 8 |
-                        sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2));
+    // printf("123 %02x,%02x %02x\n",
+    //        sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) >> 7,
+    //        sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) & !0x80 << 8,
+    //        sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)));
+    if (sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) >> 7) {
+      M_data[i].Voltage = sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) & !0x80
+                                                                          << 8 |
+                          sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2) + 1);
+    }
+    if (sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2)) >> 7) {
+      M_data[i].Current = sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2)) & !0x80
+                                                                          << 8 |
+                          sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2) + 1);
+    }
   }
   M_data[0].DIR = sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 0);
   M_data[1].DIR = (sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 2)) >> 2;
@@ -320,62 +318,68 @@ void unbuild_msg() {
 
   /* IMU data is 10 bit, MSB is symbol */
   // Combine the Accelerometer information in sub_msg
-  int accel_byte = sub_msg.at(IMU_ACCELEROMETER_ORDER + 3) << 24 |
-                   sub_msg.at(IMU_ACCELEROMETER_ORDER + 2) << 16 |
-                   sub_msg.at(IMU_ACCELEROMETER_ORDER + 1) << 8 |
-                   sub_msg.at(IMU_ACCELEROMETER_ORDER);
+  if (sub_msg.at(IMU_ACCELEROMETER_ORDER) >> 7) {
+    int accel_byte = sub_msg.at(IMU_ACCELEROMETER_ORDER) << 24 |
+                     sub_msg.at(IMU_ACCELEROMETER_ORDER + 1) << 16 |
+                     sub_msg.at(IMU_ACCELEROMETER_ORDER + 2) << 8 |
+                     sub_msg.at(IMU_ACCELEROMETER_ORDER + 3);
 
-  // Get accelerometer data
-  imu_data.Accelerometer.x = accel_byte & 0x1FF;
-  imu_data.Accelerometer.y = accel_byte & 0x1FF << 10;
-  imu_data.Accelerometer.z = accel_byte & 0x1FF << 20;
-  // Judging positive and negative
-  imu_data.Accelerometer.x = ((accel_byte & 0x200) >> 9) == 0
-                                 ? imu_data.Accelerometer.x
-                                 : -imu_data.Accelerometer.x;
-  imu_data.Accelerometer.y = ((accel_byte & 0x200 << 10) >> 19) == 0
-                                 ? imu_data.Accelerometer.y
-                                 : -imu_data.Accelerometer.y;
-  imu_data.Accelerometer.z = ((accel_byte & 0x200 << 20) >> 29) == 0
-                                 ? imu_data.Accelerometer.z
-                                 : -imu_data.Accelerometer.z;
-  // Combine the Gyroscope information in sub_msg
-  int gyro_byte = sub_msg.at(IMU_GYROSCOPE_ORDER + 3) << 24 |
-                  sub_msg.at(IMU_GYROSCOPE_ORDER + 2) << 16 |
-                  sub_msg.at(IMU_GYROSCOPE_ORDER + 1) << 8 |
-                  sub_msg.at(IMU_GYROSCOPE_ORDER);
-  // Get accelerometer data
-  imu_data.Gyroscope.x = gyro_byte & 0x1FF;
-  imu_data.Gyroscope.y = gyro_byte & 0x1FF << 10;
-  imu_data.Gyroscope.z = gyro_byte & 0x1FF << 20;
-  // Judging positive and negative
-  imu_data.Gyroscope.x = ((gyro_byte & 0x200) >> 9) == 0
-                             ? imu_data.Gyroscope.x
-                             : -imu_data.Gyroscope.x;
-  imu_data.Gyroscope.y = ((gyro_byte & 0x200 << 10) >> 19) == 0
-                             ? imu_data.Gyroscope.y
-                             : -imu_data.Gyroscope.y;
-  imu_data.Gyroscope.z = ((gyro_byte & 0x200 << 20) >> 29) == 0
-                             ? imu_data.Gyroscope.z
-                             : -imu_data.Gyroscope.z;
-  // Combine the Magneticmeter information in sub_msg
-  int magnetic_byte = sub_msg.at(IMU_MAGNETICMETER_ORDER + 3) << 24 |
-                      sub_msg.at(IMU_MAGNETICMETER_ORDER + 2) << 16 |
-                      sub_msg.at(IMU_MAGNETICMETER_ORDER + 1) << 8 |
-                      sub_msg.at(IMU_MAGNETICMETER_ORDER);
-  imu_data.Magneticmeter.x = magnetic_byte & 0x1FF;
-  imu_data.Magneticmeter.y = magnetic_byte & 0x1FF << 10;
-  imu_data.Magneticmeter.z = magnetic_byte & 0x1FF << 20;
-  // Judging positive and negative
-  imu_data.Magneticmeter.x = ((magnetic_byte & 0x200) >> 9) == 0
-                                 ? imu_data.Magneticmeter.x
-                                 : -imu_data.Magneticmeter.x;
-  imu_data.Magneticmeter.y = ((magnetic_byte & 0x200 << 10) >> 19) == 0
-                                 ? imu_data.Magneticmeter.y
-                                 : -imu_data.Magneticmeter.y;
-  imu_data.Magneticmeter.z = ((magnetic_byte & 0x200 << 20) >> 29) == 0
-                                 ? imu_data.Magneticmeter.z
-                                 : -imu_data.Magneticmeter.z;
+    // Get accelerometer data
+    imu_data.Accelerometer.x = accel_byte & 0x1FF;
+    imu_data.Accelerometer.y = accel_byte & 0x1FF << 10;
+    imu_data.Accelerometer.z = accel_byte & 0x1FF << 20;
+    // Judging positive and negative
+    imu_data.Accelerometer.x = ((accel_byte & 0x200) >> 9) == 0
+                                   ? imu_data.Accelerometer.x
+                                   : -imu_data.Accelerometer.x;
+    imu_data.Accelerometer.y = ((accel_byte & 0x200 << 10) >> 19) == 0
+                                   ? imu_data.Accelerometer.y
+                                   : -imu_data.Accelerometer.y;
+    imu_data.Accelerometer.z = ((accel_byte & 0x200 << 20) >> 29) == 0
+                                   ? imu_data.Accelerometer.z
+                                   : -imu_data.Accelerometer.z;
+  }
+  if (sub_msg.at(IMU_GYROSCOPE_ORDER) >> 7) {
+    // Combine the Gyroscope information in sub_msg
+    int gyro_byte = sub_msg.at(IMU_GYROSCOPE_ORDER) << 24 |
+                    sub_msg.at(IMU_GYROSCOPE_ORDER + 1) << 16 |
+                    sub_msg.at(IMU_GYROSCOPE_ORDER + 2) << 8 |
+                    sub_msg.at(IMU_GYROSCOPE_ORDER + 3);
+    // Get accelerometer data
+    imu_data.Gyroscope.x = gyro_byte & 0x1FF;
+    imu_data.Gyroscope.y = gyro_byte & 0x1FF << 10;
+    imu_data.Gyroscope.z = gyro_byte & 0x1FF << 20;
+    // Judging positive and negative
+    imu_data.Gyroscope.x = ((gyro_byte & 0x200) >> 9) == 0
+                               ? imu_data.Gyroscope.x
+                               : -imu_data.Gyroscope.x;
+    imu_data.Gyroscope.y = ((gyro_byte & 0x200 << 10) >> 19) == 0
+                               ? imu_data.Gyroscope.y
+                               : -imu_data.Gyroscope.y;
+    imu_data.Gyroscope.z = ((gyro_byte & 0x200 << 20) >> 29) == 0
+                               ? imu_data.Gyroscope.z
+                               : -imu_data.Gyroscope.z;
+  }
+  if (sub_msg.at(IMU_MAGNETICMETER_ORDER) >> 7) {
+    // Combine the Magneticmeter information in sub_msg
+    int magnetic_byte = sub_msg.at(IMU_MAGNETICMETER_ORDER) << 24 |
+                        sub_msg.at(IMU_MAGNETICMETER_ORDER + 1) << 16 |
+                        sub_msg.at(IMU_MAGNETICMETER_ORDER + 2) << 8 |
+                        sub_msg.at(IMU_MAGNETICMETER_ORDER + 3);
+    imu_data.Magneticmeter.x = magnetic_byte & 0x1FF;
+    imu_data.Magneticmeter.y = magnetic_byte & 0x1FF << 10;
+    imu_data.Magneticmeter.z = magnetic_byte & 0x1FF << 20;
+    // Judging positive and negative
+    imu_data.Magneticmeter.x = ((magnetic_byte & 0x200) >> 9) == 0
+                                   ? imu_data.Magneticmeter.x
+                                   : -imu_data.Magneticmeter.x;
+    imu_data.Magneticmeter.y = ((magnetic_byte & 0x200 << 10) >> 19) == 0
+                                   ? imu_data.Magneticmeter.y
+                                   : -imu_data.Magneticmeter.y;
+    imu_data.Magneticmeter.z = ((magnetic_byte & 0x200 << 20) >> 29) == 0
+                                   ? imu_data.Magneticmeter.z
+                                   : -imu_data.Magneticmeter.z;
+  }
 #ifdef P_SUBSCRIBE
   if (crc_status == 0x01) {
     printf("last data error\n");
@@ -396,7 +400,7 @@ void unbuild_msg() {
   printf("x : %d, y : %d, z : %d\n", imu_data.Gyroscope.x, imu_data.Gyroscope.y,
          imu_data.Gyroscope.z);
   printf("Magneticmeter :\n");
-  printf("x : %d, y : %d, z : %d\n", imu_data.Magneticmeter.x,
+  printf("x : %d, y : %d, z : %d\n\n", imu_data.Magneticmeter.x,
          imu_data.Magneticmeter.y, imu_data.Magneticmeter.z);
 #endif  // P_SUBSCRIBE
 }

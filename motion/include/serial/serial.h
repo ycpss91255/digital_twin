@@ -78,6 +78,7 @@ MD(int_4bytes)
 
 * 4顆馬達速度(8bytes): MA(short_uint_2bytes), MB(short_uint_2bytes),
 MC(short_uint_2bytes), MD(short_uint_2bytes)
+* 最高位元為資料是否有更新
 
 * 4顆馬達電壓(8bytes): MA(short_uint_2bytes), MB(short_uint_2bytes),
 MC(short_uint_2bytes), MD(short_uint_2bytes)
