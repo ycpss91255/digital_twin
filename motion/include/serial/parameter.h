@@ -5,9 +5,9 @@
 #define PUB_START_PACKET 0xAA
 #define PUB_END_PACKET 0xEE
 
-#define PUB_STATUS_ORDER 1              // LEN = 1
-#define PUB_MOTOR_DIR_ORDER 2           // LEN = 1
-#define PUB_MOTOR_SPEED_ORDER 3         // LEN = 8
+#define PUB_STATUS_ORDER 1       // LEN = 1
+#define PUB_MOTOR_DIR_ORDER 2    // LEN = 1
+#define PUB_MOTOR_SPEED_ORDER 3  // LEN = 8
 
 #define SUB_START_PACKET 0xAA
 #define SUB_END_PACKET 0xEE

@@ -14,4 +14,5 @@ int main(int argc, char** argv) {
       // printf("status = %d\n", status);
     }
   }
+  SerialClose();
 }

@@ -1,30 +1,45 @@
 #include "serial/node_handle.h"
-SerialNodeHandle::SerialNodeHandle(int argc, char **argv,
-                                   std::string NodeName) {
+
+/**
+ * @brief Build serial node handler
+ * @param NodeName ROS node name
+ * @param mode is TX_MODE or RX_MODE
+ */
+SerialNodeHandle::SerialNodeHandle(int argc, char **argv, std::string NodeName,
+                                   bool mode) {
   ros::init(argc, argv, NodeName);
-  ROS_init();
+  ROS_init(mode);
   Data_init();
 }
 
+/**
+ * @brief Unbuild Serial node handler
+ */
 SerialNodeHandle::~SerialNodeHandle() { ros::shutdown(); }
 
-
 /**
- * @brief initial
+ * @brief initial ROS related stuff
+ * @param mode is TX_MODE or RX_MODE
  */
-void SerialNodeHandle::ROS_init() {
+void SerialNodeHandle::ROS_init(bool mode) {
   this->n = new ros::NodeHandle();
-  // ROS publisher
-  MotorState_pub =
-      this->n->advertise<motion::MotorStates>(MOTOR_STATE_TOPIC_NAME, 1000);
-  IMU_State_pub = this->n->advertise<motion::IMU>(IMU_STATE_TOPIC_NAME, 1000);
-  // ROS subscriber
-  MotorSpeed_sub = this->n->subscribe<motion::FourMotorCmd>(
-      MOTOR_SPEED_TOPIC_NAME, 1000, &SerialNodeHandle::sub_MotorSpeed, this);
+  if (mode == RX_MODE) {
+    MotorState_pub =
+        this->n->advertise<motion::MotorStates>(MOTOR_STATE_TOPIC_NAME, 1000);
+    IMU_State_pub = this->n->advertise<motion::IMU>(IMU_STATE_TOPIC_NAME, 1000);
+  }
+  if (mode == TX_MODE) {
+    MotorSpeed_sub = this->n->subscribe<motion::FourMotorCmd>(
+        MOTOR_SPEED_TOPIC_NAME, 1000, &SerialNodeHandle::sub_MotorSpeed, this);
+  }
+  if (mode != TX_MODE || mode != RX_MODE) {
+    printf("Node mode is not TX_MODE or RX_MODE\n");
+    exit(EXIT_FAILURE);
+  }
 }
 
 /**
- * @brief initial data related
+ * @brief initial data related stuff
  */
 void SerialNodeHandle::Data_init() { this->MotorCmd.resize(4); }
 

@@ -25,14 +25,17 @@
 /*******************************
  * Define
  ******************************/
-
+#define TX_MODE 0
+#define RX_MODE 1
 // #define DEBUG
 using namespace std;
 class SerialNodeHandle {
  public:
-  SerialNodeHandle(int, char**, std::string);
+  SerialNodeHandle(int, char**, std::string, bool);
   ~SerialNodeHandle();
-  /* variable */
+  /*******************************
+   ** Variable
+   ******************************/
  public:
   motion::FourMotorCmd Cmd;
 
@@ -46,7 +49,9 @@ class SerialNodeHandle {
   // Temp Data
   vector<float> MotorCmd;
 
-  /* function */
+  /*******************************
+   ** Function
+   ******************************/
  public:
   void sub_MotorSpeed(motion::FourMotorCmd);
   // ROS publisher function
@@ -55,7 +60,7 @@ class SerialNodeHandle {
   vector<float> get_MotorCmd();
 
  private:
-  void ROS_init();
+  void ROS_init(bool);
   void Data_init();
   // ROS subscriber function
   void sub_MotorSpeed(const motion::FourMotorCmd::ConstPtr&);

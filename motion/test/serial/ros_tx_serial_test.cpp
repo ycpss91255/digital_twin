@@ -7,7 +7,7 @@
 int set_time = 25;  // (ms)
 
 int main(int argc, char **argv) {
-  SerialNodeHandle node(argc, argv, "serial_tx");
+  SerialNodeHandle node(argc, argv, "serial_tx", TX_MODE);
   SerialInit("/dev/ttyUSB0", 115200);
 
   clock_t start = clock(), end;
@@ -22,4 +22,5 @@ int main(int argc, char **argv) {
     }
     ros::spinOnce();
   }
+  SerialClose();
 }
