@@ -33,7 +33,8 @@
 			"hash_map": "cpp",
 			"hash_set": "cpp",
 			"initializer_list": "cpp",
-			"utility": "cpp"
+			"utility": "cpp",
+			"cstdlib": "cpp"
 		},
 		"cSpell.words": [
 			"Coor",

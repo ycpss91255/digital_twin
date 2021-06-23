@@ -1,5 +1,7 @@
 #include "serial/serial.h"
-
+/*******************************
+ ** Variable
+ ******************************/
 int fd;                 // file descriptor
 struct termios opt;     // serial config
 struct sigaction saio;  // definition of signal action
@@ -15,6 +17,9 @@ int crc_status = 0;  // last data status
 vector<motion::MotorStates> M_data;
 motion::IMU imu_data;
 
+/*******************************
+ ** Function
+ ******************************/
 /**
  * @brief create a serial port and setup config
  * @param port serial port
@@ -30,7 +35,10 @@ void SerialInit(const char* port, uint32_t baud_rate) {
   fd = open(port, O_RDWR | O_NOCTTY | O_NDELAY);
 
   if (fd == -1) {
-    perror("Unable to open designated serial port - ");
+    char text[70] = {0};
+    strcat(text, port);
+    strcat(text, " serial port Unable to open ");
+    perror(text);
     exit(EXIT_FAILURE);
   } else {
     /* install the signal handler before making the device asynchronous */
@@ -57,14 +65,9 @@ void SerialInit(const char* port, uint32_t baud_rate) {
 
     for (int i = 0; i < speed_vec.size(); i++) {
       if (baud_rate == name_vec[i]) {
-        tcflush(fd, TCIOFLUSH);  // clear input and output
-        try {
-          cfsetispeed(&opt, speed_vec.at(i));  // publish baud rate
-          cfsetospeed(&opt, speed_vec.at(i));  // subscribe baud rate
-        } catch (const out_of_range& e) {
-          perror("not find baud rate reference!");
-          exit(EXIT_FAILURE);
-        }
+        tcflush(fd, TCIOFLUSH);              // clear input and output
+        cfsetispeed(&opt, speed_vec.at(i));  // publish baud rate
+        cfsetospeed(&opt, speed_vec.at(i));  // subscribe baud rate
         tcflush(fd, TCIOFLUSH);
       }
     }
@@ -107,7 +110,8 @@ void SerialInit(const char* port, uint32_t baud_rate) {
     opt.c_oflag &= ~OPOST;
     tcflush(fd, TCIOFLUSH);
 
-    int status = tcsetattr(fd, TCSANOW, &opt);  // set Serial port config
+    // set Serial port current config
+    int status = tcsetattr(fd, TCSANOW, &opt);
     if (status != 0) {
       perror("tcsetattr fd");
       exit(EXIT_FAILURE);
@@ -154,37 +158,32 @@ void pub_MotorSpeed(vector<float>& speed) {
 vector<uint8_t> BuildMsg(vector<float>& speed) {
   /* Build msg */
   vector<uint8_t> pub_msg(PUB_MSG_LEN, 0x00);
-  vector<bool> dir(4, false);
 
   // write start and end packet
   pub_msg.at(0) = PUB_START_PACKET;
   pub_msg.at(PUB_MSG_LEN - 1) = PUB_END_PACKET;
 
+  // clear old direction
+  pub_msg.at(PUB_MOTOR_DIR_ORDER) &= 0x00;
   for (int i = 0; i < 4; i++) {
-    dir.at(i) = (speed.at(i) > 0 ? 1 : 0);
+    // write new direction
+    pub_msg.at(PUB_MOTOR_DIR_ORDER) |= (speed.at(i) > 0 ? 1 : 0) << i;
 
-    float abs_spd = abs(speed.at(i));
-    int pwm_msg = abs_spd > 31 ? 31 : abs_spd;
+    int pwm_msg = abs(speed.at(i)) > 31 ? 31 : abs(speed.at(i));
 
     // int = 4 bytes, but char = 1 byte, so disassemble int into HIGH and Low
     // byte
-    pub_msg.at(i * 2 + 3) = (pwm_msg & 0xFF00) >> 8;
-    pub_msg.at(i * 2 + 4) = pwm_msg & 0x00FF;
+    pub_msg.at(PUB_MOTOR_SPEED_ORDER + i * 2) = (pwm_msg & 0xFF00) >> 8;
+    pub_msg.at(PUB_MOTOR_SPEED_ORDER + i * 2 + 1) = pwm_msg & 0x00FF;
   }
-  // clear old direction and write new direction
-  pub_msg.at(2) &= 0x00;
-  pub_msg.at(2) |= dir.at(0) << 0;
-  pub_msg.at(2) |= dir.at(2) << 1;
-  pub_msg.at(2) |= dir.at(1) << 2;
-  pub_msg.at(2) |= dir.at(3) << 3;
 
   // write last data crc check is it right or not, 0 = right, 1 = not
-  pub_msg.at(1) = check_status;
+  pub_msg.at(PUB_STATUS_ORDER) = check_status;
   // write crc
   pub_msg.at(PUB_MSG_LEN - 2) = calculation_crc(pub_msg);
 
 #ifdef P_PUBLISH
-  printf_hex("pub_msg :", pub_msg);
+  printf_hex(pub_msg, "pub_msg :");
 #endif  // P_PUBLISH
 
   return pub_msg;
@@ -223,9 +222,9 @@ int sub_FeedBack() {
         }
       } else {
         // msg is not start packet and sub start flag = 0
-#ifdef DEBUG
+#ifdef P_SUBSCRIBE
         printf("msg %02X, sub_start_flag = %d\n", msg, sub_start_flag);
-#endif  // DEBUG
+#endif  // P_SUBSCRIBE
         fill(sub_msg.begin(), sub_msg.end(), 0x00);
         wait_flag = true;
         tmp_msg_len = 0;
@@ -254,7 +253,7 @@ int check_msg() {
       printf("Incorrect crc check, msg = %02X, crc = %02X\n",
              sub_msg[SUB_MSG_LEN - 2], crc);
 #ifdef P_SUBSCRIBE
-      printf_hex("sub_msg :", sub_msg);
+      printf_hex(sub_msg, "sub_msg :");
 #endif  // P_SUBSCRIBE
       fill(sub_msg.begin(), sub_msg.end(), 0);
       tcflush(fd, TCIFLUSH);
@@ -265,7 +264,7 @@ int check_msg() {
     printf("Incorrect start and end packet, packet = %02X, %02X\n", sub_msg[0],
            sub_msg[SUB_MSG_LEN - 1]);
 #ifdef P_SUBSCRIBE
-    printf_hex("sub_msg :", sub_msg);
+    printf_hex(sub_msg, "sub_msg :");
 #endif  // P_SUBSCRIBE
     tcflush(fd, TCIFLUSH);
     fill(sub_msg.begin(), sub_msg.end(), 0);
@@ -277,52 +276,42 @@ int check_msg() {
  * @brief unbuild Nios feed back message
  */
 void unbuild_msg() {
-  time_stamp = sub_msg.at(TIME_STAMP_ORDER) << 16 |
-               sub_msg.at(TIME_STAMP_ORDER + 1) << 8 |
-               sub_msg.at(TIME_STAMP_ORDER + 2);
+  time_stamp = sub_msg.at(SUB_TIME_STAMP_ORDER) << 16 |
+               sub_msg.at(SUB_TIME_STAMP_ORDER + 1) << 8 |
+               sub_msg.at(SUB_TIME_STAMP_ORDER + 2);
 
-  crc_status = sub_msg.at(STATUS_ORDER) & 0x01;
+  crc_status = sub_msg.at(SUB_STATUS_ORDER) & 0x01;
 
   for (int i = 0; i < 4; i++) {
-    M_data[i].PWM = sub_msg.at(MOTOR_PWM_ORDER + i);
+    M_data[i].PWM = sub_msg.at(SUB_MOTOR_PWM_ORDER + i);
 
-    M_data[i].Encoder = sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4)) << 24 |
-                        sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4) + 1) << 16 |
-                        sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4) + 2) << 8 |
-                        sub_msg.at(MOTOR_ENABLE_ORDER + (i * 4) + 3);
+    M_data[i].DIR = sub_msg.at(SUB_MOTOR_DIR_ORDER) & (0x01 << i) >> i;
 
-    // BEEF = not update
-    if (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2)) >> 7) {
-      M_data[i].Speed = (sub_msg.at(MOTOR_SPEED_ORDER + (i * 2))) & !0x80 << 8 |
-                        sub_msg.at(MOTOR_SPEED_ORDER + (i * 2) + 1);
+    M_data[i].Encoder = sub_msg.at(SUB_MOTOR_ENABLE_ORDER + (i * 4)) << 24 |
+                        sub_msg.at(SUB_MOTOR_ENABLE_ORDER + (i * 4) + 1) << 16 |
+                        sub_msg.at(SUB_MOTOR_ENABLE_ORDER + (i * 4) + 2) << 8 |
+                        sub_msg.at(SUB_MOTOR_ENABLE_ORDER + (i * 4) + 3);
+
+    if (sub_msg.at(SUB_MOTOR_SPEED_ORDER + (i * 2)) >> 7) {
+      M_data[i].Speed =
+          (sub_msg.at(SUB_MOTOR_SPEED_ORDER + (i * 2))) & !0x80 << 8 |
+          sub_msg.at(SUB_MOTOR_SPEED_ORDER + (i * 2) + 1);
     }
-    // printf("123 %02x,%02x %02x\n",
-    //        sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) >> 7,
-    //        sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) & !0x80 << 8,
-    //        sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)));
-    if (sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) >> 7) {
-      M_data[i].Voltage = sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2)) & !0x80
-                                                                          << 8 |
-                          sub_msg.at(MOTOR_VOLTAGE_ORDER + (i * 2) + 1);
-    }
-    if (sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2)) >> 7) {
-      M_data[i].Current = sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2)) & !0x80
-                                                                          << 8 |
-                          sub_msg.at(MOTOR_CURRENT_ORDER + (i * 2) + 1);
-    }
+
+    M_data[i].Voltage = sub_msg.at(SUB_MOTOR_VOLTAGE_ORDER + (i * 2)) << 8 |
+                        sub_msg.at(SUB_MOTOR_VOLTAGE_ORDER + (i * 2) + 1);
+
+    M_data[i].Current = sub_msg.at(SUB_MOTOR_CURRENT_ORDER + (i * 2)) << 8 |
+                        sub_msg.at(SUB_MOTOR_CURRENT_ORDER + (i * 2) + 1);
   }
-  M_data[0].DIR = sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 0);
-  M_data[1].DIR = (sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 2)) >> 2;
-  M_data[2].DIR = (sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 1)) >> 1;
-  M_data[3].DIR = (sub_msg.at(MOTOR_DIR_ORDER) & (0x01 << 3)) >> 3;
 
   /* IMU data is 10 bit, MSB is symbol */
   // Combine the Accelerometer information in sub_msg
-  if (sub_msg.at(IMU_ACCELEROMETER_ORDER) >> 7) {
-    int accel_byte = sub_msg.at(IMU_ACCELEROMETER_ORDER) << 24 |
-                     sub_msg.at(IMU_ACCELEROMETER_ORDER + 1) << 16 |
-                     sub_msg.at(IMU_ACCELEROMETER_ORDER + 2) << 8 |
-                     sub_msg.at(IMU_ACCELEROMETER_ORDER + 3);
+  if (sub_msg.at(SUB_IMU_ACCELEROMETER_ORDER) >> 7) {
+    int accel_byte = sub_msg.at(SUB_IMU_ACCELEROMETER_ORDER) << 24 |
+                     sub_msg.at(SUB_IMU_ACCELEROMETER_ORDER + 1) << 16 |
+                     sub_msg.at(SUB_IMU_ACCELEROMETER_ORDER + 2) << 8 |
+                     sub_msg.at(SUB_IMU_ACCELEROMETER_ORDER + 3);
 
     // Get accelerometer data
     imu_data.Accelerometer.x = accel_byte & 0x1FF;
@@ -339,12 +328,12 @@ void unbuild_msg() {
                                    ? imu_data.Accelerometer.z
                                    : -imu_data.Accelerometer.z;
   }
-  if (sub_msg.at(IMU_GYROSCOPE_ORDER) >> 7) {
+  if (sub_msg.at(SUB_IMU_GYROSCOPE_ORDER) >> 7) {
     // Combine the Gyroscope information in sub_msg
-    int gyro_byte = sub_msg.at(IMU_GYROSCOPE_ORDER) << 24 |
-                    sub_msg.at(IMU_GYROSCOPE_ORDER + 1) << 16 |
-                    sub_msg.at(IMU_GYROSCOPE_ORDER + 2) << 8 |
-                    sub_msg.at(IMU_GYROSCOPE_ORDER + 3);
+    int gyro_byte = sub_msg.at(SUB_IMU_GYROSCOPE_ORDER) << 24 |
+                    sub_msg.at(SUB_IMU_GYROSCOPE_ORDER + 1) << 16 |
+                    sub_msg.at(SUB_IMU_GYROSCOPE_ORDER + 2) << 8 |
+                    sub_msg.at(SUB_IMU_GYROSCOPE_ORDER + 3);
     // Get accelerometer data
     imu_data.Gyroscope.x = gyro_byte & 0x1FF;
     imu_data.Gyroscope.y = gyro_byte & 0x1FF << 10;
@@ -360,12 +349,12 @@ void unbuild_msg() {
                                ? imu_data.Gyroscope.z
                                : -imu_data.Gyroscope.z;
   }
-  if (sub_msg.at(IMU_MAGNETICMETER_ORDER) >> 7) {
+  if (sub_msg.at(SUB_IMU_MAGNETICMETER_ORDER) >> 7) {
     // Combine the Magneticmeter information in sub_msg
-    int magnetic_byte = sub_msg.at(IMU_MAGNETICMETER_ORDER) << 24 |
-                        sub_msg.at(IMU_MAGNETICMETER_ORDER + 1) << 16 |
-                        sub_msg.at(IMU_MAGNETICMETER_ORDER + 2) << 8 |
-                        sub_msg.at(IMU_MAGNETICMETER_ORDER + 3);
+    int magnetic_byte = sub_msg.at(SUB_IMU_MAGNETICMETER_ORDER) << 24 |
+                        sub_msg.at(SUB_IMU_MAGNETICMETER_ORDER + 1) << 16 |
+                        sub_msg.at(SUB_IMU_MAGNETICMETER_ORDER + 2) << 8 |
+                        sub_msg.at(SUB_IMU_MAGNETICMETER_ORDER + 3);
     imu_data.Magneticmeter.x = magnetic_byte & 0x1FF;
     imu_data.Magneticmeter.y = magnetic_byte & 0x1FF << 10;
     imu_data.Magneticmeter.z = magnetic_byte & 0x1FF << 20;
@@ -385,22 +374,25 @@ void unbuild_msg() {
     printf("last data error\n");
   }
   // MOTOR Data
-  printf_hex("sub_msg :", sub_msg);
+  printf_hex(sub_msg, "sub_msg :");
+
   for (int i = 0; i < 4; i++) {
-    printf("motor %d : PWM %d, DIR %d, Enc %d, Spd %d, V %d, C %d\n", i,
-           M_data.at(i).PWM, M_data.at(i).DIR, M_data.at(i).Encoder,
-           M_data.at(i).Speed, M_data.at(i).Voltage, M_data.at(i).Current);
+    printf(
+        "motor %d : PWM = %3d, DIR = %d, Enc = %10d, Spd = %2d, V = %4d, C = "
+        "%2d\n",
+        i, M_data.at(i).PWM, M_data.at(i).DIR, M_data.at(i).Encoder,
+        M_data.at(i).Speed, M_data.at(i).Voltage, M_data.at(i).Current);
   }
   printf("\n");
   // IMU Data
   printf("Accelerometer :\n");
-  printf("x : %d, y : %d, z : %d\n", imu_data.Accelerometer.x,
+  printf("x = %4d, y = %4d, z = %4d\n", imu_data.Accelerometer.x,
          imu_data.Accelerometer.y, imu_data.Accelerometer.z);
   printf("Gyroscope :\n");
-  printf("x : %d, y : %d, z : %d\n", imu_data.Gyroscope.x, imu_data.Gyroscope.y,
-         imu_data.Gyroscope.z);
+  printf("x = %4d, y = %4d, z = %4d\n", imu_data.Gyroscope.x,
+         imu_data.Gyroscope.y, imu_data.Gyroscope.z);
   printf("Magneticmeter :\n");
-  printf("x : %d, y : %d, z : %d\n\n", imu_data.Magneticmeter.x,
+  printf("x = %4d, y = %4d, z = %4d\n\n", imu_data.Magneticmeter.x,
          imu_data.Magneticmeter.y, imu_data.Magneticmeter.z);
 #endif  // P_SUBSCRIBE
 }
@@ -417,11 +409,10 @@ uint8_t calculation_crc(vector<uint8_t>& msg) {
   }
   return crc;
 }
-
-void signal_handler_IO(int Status) {
-  // printf("123\n");
-  wait_flag = false;
-}
+/**
+ * @brief Singal interrupt handler
+ */
+void signal_handler_IO(int Status) { wait_flag = false; }
 
 /**
  * @brief get all sub msg
@@ -438,11 +429,10 @@ motion::IMU get_IMU_data() { return imu_data; }
  */
 motion::MotorStates get_MotorStates(int index) { return M_data.at(index); }
 
-void printf_hex(const char* text, vector<uint8_t>& msg) {
+void printf_hex(vector<uint8_t>& msg, const char* text) {
   printf("%s\n", text);
   for (int i = 0; i < msg.size(); i++) {
     printf("%02X ", msg.at(i));
-
     if ((i + 1) % 16 == 0) {
       printf("\n");
     } else if ((i + 1) % 8 == 0) {
@@ -451,3 +441,28 @@ void printf_hex(const char* text, vector<uint8_t>& msg) {
   }
   printf("\n");
 }
+
+void printf_hex(vector<uint8_t>& msg) {
+  for (int i = 0; i < msg.size(); i++) {
+    printf("%02X ", msg.at(i));
+    if ((i + 1) % 16 == 0) {
+      printf("\n");
+    } else if ((i + 1) % 8 == 0) {
+      printf("   ");
+    }
+  }
+  printf("\n");
+}
+
+// void printf_hex(const char* text, vector<uint8_t>& msg) {
+//   printf("%s\n", text);
+//   for (int i = 0; i < msg.size(); i++) {
+//     printf("%02X ", msg.at(i));
+//     if ((i + 1) % 16 == 0) {
+//       printf("\n");
+//     } else if ((i + 1) % 8 == 0) {
+//       printf("   ");
+//     }
+//   }
+//   printf("\n");
+// }
