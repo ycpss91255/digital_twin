@@ -285,7 +285,7 @@ void unbuild_msg() {
   for (int i = 0; i < 4; i++) {
     M_data[i].PWM = sub_msg.at(SUB_MOTOR_PWM_ORDER + i);
 
-    M_data[i].DIR = sub_msg.at(SUB_MOTOR_DIR_ORDER) & (0x01 << i) >> i;
+    M_data[i].DIR = (sub_msg.at(SUB_MOTOR_DIR_ORDER) & (0x01 << i)) >> i;
 
     M_data[i].Encoder = sub_msg.at(SUB_MOTOR_ENABLE_ORDER + (i * 4)) << 24 |
                         sub_msg.at(SUB_MOTOR_ENABLE_ORDER + (i * 4) + 1) << 16 |
