@@ -13,8 +13,8 @@ int main(int argc, char **argv) {
     // linux clock(us), windows clock(ms)
     int status = sub_FeedBack();
     if (status == 1) {
-      vector<uint8_t> msg = get_sub_msg();
       for (int i = 0; i < 4; i++) {
+        state = get_MotorStates(i);
         node.pub_MotorState(i, state);
       }
 
