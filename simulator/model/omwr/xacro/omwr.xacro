@@ -7,16 +7,10 @@
   <xacro:include filename="$(find model)/omwr/xacro/description.gazebo" />
   <xacro:include filename="$(find model)/omwr/xacro/controller.gazebo" />
 
-  <link name="world"/>
+  <!-- <link name="world"/>
   <joint name="world_joint" type="fixed">
      <parent link="world"/>
      <child link="base_link"/>
-  </joint>
-
-  <!-- <link name="dummy"/>
-   <joint name="dummy_joint" type="fixed">
-      <parent link="dummy"/>
-      <child link="base_link"/>
   </joint> -->
 
   <link name="base_link">

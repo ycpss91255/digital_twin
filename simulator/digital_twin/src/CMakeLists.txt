@@ -16,3 +16,10 @@ set(NodeList_2
 )
 add_executable(data_handle ${NodeList_2})
 target_link_libraries(data_handle ${catkin_LIBRARIES})
+
+# sim_roobot_control
+set(NodeList_3
+  robot_control.cpp
+)
+add_executable(robot_control ${NodeList_3})
+target_link_libraries(robot_control ${catkin_LIBRARIES})
