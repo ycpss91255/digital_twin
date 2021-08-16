@@ -22,7 +22,8 @@ RUN groupadd --gid ${GID} ${GROUP} \
   && chmod 0440 "/etc/sudoers.d/${USER}"
 
 # Replace apt urls
-RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw/@g' /etc/apt/sources.list
+RUN sed -i 's@archive.ubuntu.com@tw.archive.ubuntu.com@g' /etc/apt/sources.list
+# RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw@g' /etc/apt/sources.list
 
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
