@@ -8,6 +8,8 @@ set(BCT_LIST
 )
 add_executable(base_control_test ${BCT_LIST})
 target_link_libraries(base_control_test ${catkin_LIBRARIES})
+add_dependencies(base_control_test ${catkin_EXPORTED_TARGETS})
+add_dependencies(base_control_test ${PROJECT_NAME}_gencpp)
 
 # node_handle_test
 set(NHT_LIST
