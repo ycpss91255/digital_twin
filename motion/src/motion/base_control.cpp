@@ -32,7 +32,7 @@ void BaseControl::ForwardKinematics() {
 void BaseControl::InverseKinematics(geometry_msgs::Twist Cmd) {
   MotorSpeed.w1 = Cmd.linear.y + Cmd.angular.z * this->RobotRadius;
   MotorSpeed.w2 = -Cmd.linear.x + Cmd.angular.z * this->RobotRadius;
-  MotorSpeed.w3 = Cmd.linear.y + Cmd.angular.z * this->RobotRadius;
+  MotorSpeed.w3 = -Cmd.linear.y + Cmd.angular.z * this->RobotRadius;
   MotorSpeed.w4 = Cmd.linear.x + Cmd.angular.z * this->RobotRadius;
 
 #ifdef DEBUG
