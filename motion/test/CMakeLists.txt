@@ -66,3 +66,10 @@ set(RRST_LIST
 add_executable(ros_rx_serial_test ${RRST_LIST})
 target_link_libraries(ros_rx_serial_test ${catkin_LIBRARIES})
 add_dependencies(ros_rx_serial_test ${PROJECT_NAME}_gencpp)
+
+set(PT_LIST
+  ./pub_topic.cpp
+)
+add_executable(pub_topic ${PT_LIST})
+target_link_libraries(pub_topic ${catkin_LIBRARIES})
+add_dependencies(pub_topic ${PROJECT_NAME}_gencpp)
