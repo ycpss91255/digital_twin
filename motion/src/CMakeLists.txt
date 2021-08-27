@@ -8,7 +8,8 @@ set(M_LIST
 )
 add_executable(motion ${M_LIST})
 target_link_libraries(motion ${catkin_LIBRARIES})
-
+add_dependencies(motion ${catkin_EXPORTED_TARGETS})
+add_dependencies(motion ${PROJECT_NAME}_gencpp)
 # # serial
 # set(S_LIST
 #   motion.cpp
