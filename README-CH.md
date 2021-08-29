@@ -1,8 +1,7 @@
 # 第一次需要設置
 
 1. 新增 USB 規則
-
-   1. 確認 De0-nano UART裝置序列號(Serial)為 `0002`
+   1. 確認 De0-nano UART 裝置序列號(Serial)為 `0002`
 
         - 相機類，`video*`，基本上這是筆電內建相機
         - USB 類，`ttyUSB*`，例如：LaDAR、USB 相機...
@@ -29,3 +28,15 @@
             # <path to usb_rule> 替換為到工作區usb_rule的路徑
             $ ./<path to usb_rule>/create_rule.sh
         ```
+
+<!--
+2. 下載 Git 子模組(submodule)
+
+    - powerlevel10k(zsh 主題)
+
+    ```bash
+        # 初始化子模組
+        $ git submodule init
+        # 更新子模組
+        $ git submodule update
+    ``` -->

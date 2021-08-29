@@ -40,7 +40,9 @@
 			"Coor",
 			"Nios",
 			"SIGDSUSP",
-			"omwr"
+			"UART",
+			"omwr",
+			"submodule"
 		],
 		"python.analysis.extraPaths": [
 			"/opt/ros/noetic/lib/python3/dist-packages"
