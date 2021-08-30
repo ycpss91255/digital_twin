@@ -1,7 +1,8 @@
 # 第一次需要設置
 
 1. 新增 USB 規則
-   1. 確認 De0-nano UART 裝置序列號(Serial)為 `0002`
+
+    1. 確認 De0-nano UART 裝置序列號(Serial)為 `0002`
 
         - 相機類，`video*`，基本上這是筆電內建相機
         - USB 類，`ttyUSB*`，例如：LaDAR、USB 相機...
@@ -22,7 +23,7 @@
 
         - 如果序列號(Serial)不是 `0002`，需要尋找 **CP210xSetIDs.exe** 軟體，通常會在 **CP210x_LegacyUtilities.zip** 裏面，接者到 `Windows` 進行相關設定
 
-   2. 新增 USB 規則
+    2. 新增 USB 規則
 
         ```bash
             # <path to usb_rule> 替換為到工作區usb_rule的路徑
@@ -30,6 +31,8 @@
         ```
 
 2. 確認本地端的開發環境與 `docker_variable.sh` 中設定是否相同
+
+3. 安裝 Docker
 
 <!--
 1. 下載 Git 子模組(submodule)
