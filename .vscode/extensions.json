@@ -37,7 +37,9 @@
 		"redhat.vscode-commons",
 		"ipatalas.vscode-postfix-ts",
 		"redhat.vscode-xml",
-		"redhat.vscode-yaml"
+		"redhat.vscode-yaml",
+		"hars.cppsnippets",
+		"cschlosser.doxdocgen"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []

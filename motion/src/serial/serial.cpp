@@ -395,7 +395,6 @@ void unbuild_msg() {
          imu_data.Magneticmeter.y, imu_data.Magneticmeter.z);
 #endif  // P_SUBSCRIBE
 }
-
 /**
  * @brief  calculation crc code or check crc status
  * @param  msg message to be calculated
@@ -452,16 +451,3 @@ void printf_hex(vector<uint8_t>& msg) {
   }
   printf("\n");
 }
-
-// void printf_hex(const char* text, vector<uint8_t>& msg) {
-//   printf("%s\n", text);
-//   for (int i = 0; i < msg.size(); i++) {
-//     printf("%02X ", msg.at(i));
-//     if ((i + 1) % 16 == 0) {
-//       printf("\n");
-//     } else if ((i + 1) % 8 == 0) {
-//       printf("   ");
-//     }
-//   }
-//   printf("\n");
-// }
