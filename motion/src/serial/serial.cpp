@@ -126,6 +126,7 @@ void SerialInit(const char* port, uint32_t baud_rate) {
 void DataInit() {
   sub_msg.resize(SUB_MSG_LEN);
   M_data.resize(4);
+  old_speed.resize(4);
 }
 
 /**
@@ -153,25 +154,35 @@ void pub_MotorSpeed(vector<float>& speed) {
 
 /**
  * @brief build motor commamd save to publish buffer
- * @param speed range -31 ~ 31, 31 is motor 12v max feedback pulse value
+ * @param speed the index value is from MA(small) to MD(large), numder range is
+ * -31 ~ 31
  */
 vector<uint8_t> BuildMsg(vector<float>& speed) {
   /* Build msg */
   vector<uint8_t> pub_msg(PUB_MSG_LEN, 0x00);
-
   // write start and end packet
   pub_msg.at(0) = PUB_START_PACKET;
   pub_msg.at(PUB_MSG_LEN - 1) = PUB_END_PACKET;
 
   // clear old direction
-  pub_msg.at(PUB_MOTOR_DIR_ORDER) &= 0x00;
-  for (int i = 0; i < 4; i++) {
+  // if () {
+  // pub_msg.at(PUB_MOTOR_DIR_ORDER) &= 0x00;
+  // }
+  for (uint8_t temp, i = 0; i < 4; i++) {
     // write new direction
-    pub_msg.at(PUB_MOTOR_DIR_ORDER) |= (speed.at(i) > 0 ? 1 : 0) << i;
+    if (speed.at(i) != 0) {
+      temp |= (speed.at(i) > 0 ? 1 : 0) << i;
+    } else {
+      temp |= (old_speed.at(i) > 0 ? 1 : 0) << i;
+    }
+    old_speed.at(i) = speed.at(i);
+    pub_msg.at(PUB_MOTOR_DIR_ORDER) = temp;
+  }
 
+  for (int i = 0; i < 4; i++) {
     int pwm_msg = abs(speed.at(i)) > 31 ? 31 : abs(speed.at(i));
 
-    // int = 4 bytes, but char = 1 byte, so disassemble int into HIGH and Low
+    // int = 4 bytes, but char = 1 byte, so disassemble int into High and Low
     // byte
     pub_msg.at(PUB_MOTOR_SPEED_ORDER + i * 2) = (pwm_msg & 0xFF00) >> 8;
     pub_msg.at(PUB_MOTOR_SPEED_ORDER + i * 2 + 1) = pwm_msg & 0x00FF;
@@ -395,6 +406,7 @@ void unbuild_msg() {
          imu_data.Magneticmeter.y, imu_data.Magneticmeter.z);
 #endif  // P_SUBSCRIBE
 }
+
 /**
  * @brief  calculation crc code or check crc status
  * @param  msg message to be calculated
@@ -407,6 +419,7 @@ uint8_t calculation_crc(vector<uint8_t>& msg) {
   }
   return crc;
 }
+
 /**
  * @brief Singal interrupt handler
  */

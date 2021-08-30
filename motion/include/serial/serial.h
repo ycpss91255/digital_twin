@@ -49,6 +49,7 @@ extern bool wait_flag;
 extern int tmp_msg_len;
 extern bool sub_start_flag;
 extern uint8_t check_status;
+extern vector<uint8_t> old_speed;
 
 extern int time_stamp;
 extern int crc_status;  // last data status
