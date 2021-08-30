@@ -23,7 +23,7 @@ RUN sed -i 's@archive.ubuntu.com@tw.archive.ubuntu.com@g' /etc/apt/sources.list
 
 # Install packages
 RUN apt update && apt-get install -y --no-install-recommends \
-    sudo git htop \
+    sudo git htop wget curl \
     # Shell
     byobu zsh terminator \
     # Editing tools
@@ -80,7 +80,7 @@ RUN bash ./script/shell_setup.sh \
 
 
 # Copy entrypoint
-COPY ./ubuntu20.04_arrch86/entrypoint.sh /entrypoint.sh
+COPY ./ubuntu20.04_arrch64/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 # # copy entrypoint
 # COPY entrypoint.bash /entrypoint.bash
