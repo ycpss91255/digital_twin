@@ -18,6 +18,8 @@ set(NHT_LIST
 )
 add_executable(node_handle_test ${NHT_LIST})
 target_link_libraries(node_handle_test ${catkin_LIBRARIES})
+add_dependencies(node_handle_test ${catkin_EXPORTED_TARGETS})
+add_dependencies(node_handle_test ${PROJECT_NAME}_gencpp)
 
 # motion_test
 set(MT_LIST
