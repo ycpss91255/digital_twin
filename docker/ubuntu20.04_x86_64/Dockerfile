@@ -62,7 +62,7 @@ RUN bash ./script/shell_setup.sh \
     && rm -rf /home/${USER}/.tmp
 
 # Copy entrypoint
-COPY ./ubuntu20.04_x86/entrypoint.sh /entrypoint.sh
+COPY ./ubuntu20.04_x86_64/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
 WORKDIR /home/${USER}
