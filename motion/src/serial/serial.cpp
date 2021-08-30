@@ -165,18 +165,14 @@ vector<uint8_t> BuildMsg(vector<float>& speed) {
   pub_msg.at(0) = PUB_START_PACKET;
   pub_msg.at(PUB_MSG_LEN - 1) = PUB_END_PACKET;
 
-  // clear old direction
-  // if () {
-  // pub_msg.at(PUB_MOTOR_DIR_ORDER) &= 0x00;
-  // }
   for (uint8_t temp, i = 0; i < 4; i++) {
     // write new direction
     if (speed.at(i) != 0) {
       temp |= (speed.at(i) > 0 ? 1 : 0) << i;
+      old_speed.at(i) = speed.at(i);
     } else {
       temp |= (old_speed.at(i) > 0 ? 1 : 0) << i;
     }
-    old_speed.at(i) = speed.at(i);
     pub_msg.at(PUB_MOTOR_DIR_ORDER) = temp;
   }
 

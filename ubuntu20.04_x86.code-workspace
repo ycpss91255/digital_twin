@@ -2,10 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"name": "SSH FS - digital_twin_ws",
-			"uri": "ssh://raspberry_pi_4/home/iclab/workspace/digital_twin_ws/src"
 		}
 	],
 	"settings": {
@@ -51,16 +47,7 @@
 		"python.analysis.extraPaths": [
 			"/opt/ros/noetic/lib/python3/dist-packages"
 		],
-		"sshfs.configs": [
-			{
-				"name": "raspberry_pi_4",
-				"username": "iclab",
-				"password": "aa",
-				"host": "10.42.0.2",
-				"root": "~/workspace/digital_twin_ws/src",
-				"label": "digital_twin_ws"
-			}
-		]
+		"sshfs.configs": []
 	},
 	"extensions": {
 		"recommendations": [
