@@ -11,6 +11,7 @@ bool wait_flag = true;
 int tmp_msg_len = 0;
 bool sub_start_flag = false;
 uint8_t check_status = 0x00;
+vector<uint8_t> old_speed;
 
 int time_stamp = 0;
 int crc_status = 0;  // last data status

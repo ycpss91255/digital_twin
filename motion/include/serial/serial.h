@@ -38,25 +38,6 @@
 
 using namespace std;
 /*******************************
- ** Variable
- ******************************/
-extern int fd;                 // file descriptor
-extern struct termios opt;     // serial config
-extern struct sigaction saio;  // definition of signal action
-
-extern vector<uint8_t> sub_msg;
-extern bool wait_flag;
-extern int tmp_msg_len;
-extern bool sub_start_flag;
-extern uint8_t check_status;
-extern vector<uint8_t> old_speed;
-
-extern int time_stamp;
-extern int crc_status;  // last data status
-extern vector<motion::MotorStates> M_data;
-extern motion::IMU imu_data;
-
-/*******************************
  ** Function
  ******************************/
 // Initial function
