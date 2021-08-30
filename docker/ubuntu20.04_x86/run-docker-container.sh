@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Get script path
 file_dir=$(dirname $0)
 
 source ${file_dir}/docker_variable.sh

@@ -30,7 +30,7 @@ RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw@g' /etc/apt/sources.list
 
 # Install packages
 RUN apt update && apt-get install -y --no-install-recommends \
-    sudo git htop \
+    sudo git htop wget curl \
     # Shell
     byobu zsh terminator \
     # Editing tools
