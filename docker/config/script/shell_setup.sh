@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 #### function ####
+
 # $1 = shell type
 ShellConfig_fn() {
     SHELL=$(echo ${1} | tr [A-Z] [a-z])
@@ -18,7 +19,6 @@ ShellConfig_fn() {
         # display git branch
         cat ./shell/bash/git_config.sh >>/home/${USER}/.${SHELL}rc
     fi
-    echo "/home/${USER}/.${SHELL}rc"
 
     echo "alias eb='nano ~/.${SHELL}rc'" >>/home/${USER}/.${SHELL}rc
     echo "alias sb='source ~/.${SHELL}rc'" >>/home/${USER}/.${SHELL}rc
@@ -34,7 +34,7 @@ ROSConfig_fn() {
 
     if [ ${ROS_TYPE} == "MASTER" ]; then
         echo "export ROS_HOSTNAME=${3}" >>/home/${USER}/.${SHELL}rc
-    else
+    elif [ ${ROS_TYPE} == "SLAVE" ]; then
         echo "export ROS_HOSTNAME=${4}" >>/home/${USER}/.${SHELL}rc
     fi
 }
@@ -46,6 +46,7 @@ BybouConfig_fn() {
 }
 
 ####main####
+
 # bash
 ShellConfig_fn "bash"
 ROSConfig_fn "bash" ${ROS_TYPE} ${ROS_MASTER_IP} ${ROS_SLAVE_IP}

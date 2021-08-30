@@ -29,8 +29,10 @@
             $ ./<path to usb_rule>/create_rule.sh
         ```
 
+2. 確認本地端的開發環境與 `docker_variable.sh` 中設定是否相同
+
 <!--
-2. 下載 Git 子模組(submodule)
+1. 下載 Git 子模組(submodule)
 
     - powerlevel10k(zsh 主題)
 
