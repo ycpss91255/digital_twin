@@ -27,6 +27,8 @@ set(MT_LIST
 )
 add_executable(motion_test ${MT_LIST})
 target_link_libraries(motion_test ${catkin_LIBRARIES})
+add_dependencies(motion_test ${catkin_EXPORTED_TARGETS})
+add_dependencies(motion_test ${PROJECT_NAME}_gencpp)
 
 # tx_serial_test
 set(TST_LIST
