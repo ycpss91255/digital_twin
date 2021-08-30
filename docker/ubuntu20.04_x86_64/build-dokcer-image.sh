@@ -19,6 +19,7 @@ docker build -t ${user}/${DOCKER_IMAGE_NAME} \
     --build-arg UID=${uid} \
     --build-arg GROUP=${group} \
     --build-arg GID=${gid} \
+    --progress=plain \
     -f ${file_dir}/Dockerfile ${file_dir}/..
 
 #     --progress=plain \

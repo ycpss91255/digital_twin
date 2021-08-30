@@ -57,6 +57,7 @@ ARG ROS_MASTER_IP=10.42.0.1
 ARG ROS_SLAVE_IP=10.42.0.2
 
 RUN bash ./script/shell_setup.sh \
+    && bash ./script/editor_setup.sh \
     # Dependent
     && bash ./script/pip_setup.sh \
     && rm -rf /home/${USER}/.tmp

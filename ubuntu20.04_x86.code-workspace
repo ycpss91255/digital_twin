@@ -2,10 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"name": "SSH FS - raspberry_pi_4",
-			"uri": "ssh://raspberry_pi_4/home/iclab/workspace/digital_twin_ws/src"
 		}
 	],
 	"settings": {
