@@ -27,7 +27,7 @@
  ******************************/
 // #define DEBUG
 using namespace std;
-// TODO: wait reset
+// REFACTOR : wait reset
 class SimNodeHandle {
  public:
   SimNodeHandle(int, char **, string, uint64_t);

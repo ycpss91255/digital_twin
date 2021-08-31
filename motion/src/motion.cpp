@@ -11,7 +11,6 @@
 #include "ros/ros.h"
 
 // using namespace std;
-// TODO: wait done
 int main(int argc, char **argv) {
   MotionNodeHandle Node(argc, argv,"motion");
   BaseControl Base;
