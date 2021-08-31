@@ -74,4 +74,5 @@ WORKDIR /home/${USER}/work
 # ENTRYPOINT ["terminator"]
 # ENTRYPOINT ["zsh"]
 # ENTRYPOINT ["bash"]
+# ENTRYPOINT ["/entrypoint.sh"]
 ENTRYPOINT ["/entrypoint.sh","byobu"]
