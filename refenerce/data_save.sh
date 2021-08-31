@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source ~/work/devel/setup.bash
 
@@ -6,9 +6,9 @@ cd ~/work/data
 
 start=$(date +%s)
 
-rosbag record -O motor_cmd_30min.bag --duration=33m motion/motor_speed &
+rosbag record -O motor_cmd_5min.bag --duration=5m motion/motor_speed &
 
-rosbag record -O motor_data_30min.bag --duration=33m motion/motor_state0 motion/motor_state1 motion/motor_state2 motion/motor_state3 &
+rosbag record -O motor_data_5min.bag --duration=5m motion/motor_state0 motion/motor_state1 motion/motor_state2 motion/motor_state3 &
 
 end=$(date +%s)
 after=$((end - start))
@@ -42,8 +42,8 @@ w2: 0.0
 w3: 0.0
 w4: 0.0"
 
-rostopic echo -b ~/work/data/motor_cmd_30min.bag -p motion/motor_speed >motor_cmd_30min.csv
-rostopic echo -b ~/work/data/motor_data_30min.bag -p motion/motor_state0 >motor0_data_30min.csv
-rostopic echo -b ~/work/data/motor_data_30min.bag -p motion/motor_state1 >motor1_data_30min.csv
-rostopic echo -b ~/work/data/motor_data_30min.bag -p motion/motor_state2 >motor2_data_30min.csv
-rostopic echo -b ~/work/data/motor_data_30min.bag -p motion/motor_state3 >motor3_data_30min.csv
+rostopic echo -b ~/work/data/motor_cmd_5min.bag -p motion/motor_speed >motor_cmd_5min.csv
+rostopic echo -b ~/work/data/motor_data_5min.bag -p motion/motor_state0 >motor0_data_5min.csv
+rostopic echo -b ~/work/data/motor_data_5min.bag -p motion/motor_state1 >motor1_data_5min.csv
+rostopic echo -b ~/work/data/motor_data_5min.bag -p motion/motor_state2 >motor2_data_5min.csv
+rostopic echo -b ~/work/data/motor_data_5min.bag -p motion/motor_state3 >motor3_data_5min.csv

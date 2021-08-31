@@ -145,6 +145,7 @@ void pub_MotorSpeed(vector<float>& speed) {
     /* Publish msg to serial */
     for (int i = 0, n = 0; i < msg.size(); i++) {
       n += write(fd, &msg.at(i), 1);
+      // BUG: n = -1
       if (n < 0) {
         // If remove the USB device, will enter this loop, causing a crash
         printf("write() of %d/%d bytes failed!\n", n, PUB_MSG_LEN);
@@ -205,6 +206,7 @@ int sub_FeedBack() {
   uint8_t msg = 0x00;
   if (wait_flag != true) {
     int n = read(fd, &msg, 1);
+    // BUG: n = -1
     if (n < 0) {
       // receive msg error, clear current msg, wait next message
       printf("n = %d, read() of 1 bytes failed!\n", n);
