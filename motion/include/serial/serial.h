@@ -33,8 +33,8 @@
 #define _POSIX_SOURCE 1 /* POSIX compliant source */
 
 #define DEBUG
-#define P_PUBLISH
-#define P_SUBSCRIBE
+// #define P_PUBLISH
+// #define P_SUBSCRIBE
 
 using namespace std;
 /*******************************

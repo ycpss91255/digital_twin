@@ -11,11 +11,22 @@ target_link_libraries(motion ${catkin_LIBRARIES})
 add_dependencies(motion ${catkin_EXPORTED_TARGETS})
 add_dependencies(motion ${PROJECT_NAME}_gencpp)
 
-# # serial
-# set(S_LIST
-#   motion.cpp
-#   ./serial/node_handle.cpp
-#   ./serial/serial.cpp
-# )
-# add_executable(motion ${M_LIST})
-# target_link_libraries(motion ${catkin_LIBRARIES})
+# serial_tx
+set(ST_LIST
+  ./serial/serial_tx.cpp
+  ./serial/serial.cpp
+  ./serial/node_handle.cpp
+)
+add_executable(serial_tx ${ST_LIST})
+target_link_libraries(serial_tx ${catkin_LIBRARIES})
+add_dependencies(serial_tx ${PROJECT_NAME}_gencpp)
+
+# serial_rx
+set(SR_LIST
+  ./serial/serial_rx.cpp
+  ./serial/serial.cpp
+  ./serial/node_handle.cpp
+)
+add_executable(serial_rx ${SR_LIST})
+target_link_libraries(serial_rx ${catkin_LIBRARIES})
+add_dependencies(serial_rx ${PROJECT_NAME}_gencpp)
