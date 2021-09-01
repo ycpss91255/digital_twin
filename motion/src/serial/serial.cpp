@@ -158,7 +158,8 @@ void SerialClose() { close(fd); }
  * @brief publish motor speed command
  * @param speed range -31 ~ 31
  */
-// TODO : float change to int
+// TODO : float change to int, and change to mode function version
+
 void pub_MotorSpeed(vector<float>& speed) {
   if (speed.size() == 4) {
     vector<uint8_t> msg = BuildMsg(speed, 1);
@@ -218,7 +219,7 @@ vector<uint8_t> BuildMsg(vector<float>& speed) {
   return pub_msg;
 }
 
-// TODO : add pid mode
+// TODO : float change to int, and change to mode function version
 vector<uint8_t> BuildMsg(vector<float>& speed, bool mode) {
   /* Build msg */
   vector<uint8_t> pub_msg(PUB_MSG_LEN, 0x00);

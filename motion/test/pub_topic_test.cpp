@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
   ros::NodeHandle n;
 
   chatter_pub = n.advertise<geometry_msgs::Twist>(MOTION_TOPIC_NAME, 1000);
-
+  // w0_pub = n.advertise;
   sleep(1);
 
   float speed = 100.0;
