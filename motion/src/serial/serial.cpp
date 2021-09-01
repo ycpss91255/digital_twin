@@ -135,24 +135,24 @@ void DataInit() {
  */
 void SerialClose() { close(fd); }
 
-/**
- * @brief publish motor speed command
- * @param speed range -31 ~ 31
- */
-void pub_MotorSpeed(vector<float>& speed) {
-  if (speed.size() == 4) {
-    vector<uint8_t> msg = BuildMsg(speed);
-    /* Publish msg to serial */
-    for (int i = 0, n = 0; i < msg.size(); i++) {
-      n += write(fd, &msg.at(i), 1);
-      // BUG: n = -1
-      if (n < 0) {
-        // If remove the USB device, will enter this loop, causing a crash
-        printf("write() of %d/%d bytes failed!\n", n, PUB_MSG_LEN);
-      }
-    }
-  }
-}
+// /**
+//  * @brief publish motor speed command
+//  * @param speed range -31 ~ 31
+//  */
+// void pub_MotorSpeed(vector<float>& speed) {
+//   if (speed.size() == 4) {
+//     vector<uint8_t> msg = BuildMsg(speed);
+//     /* Publish msg to serial */
+//     for (int i = 0, n = 0; i < msg.size(); i++) {
+//       n += write(fd, &msg.at(i), 1);
+//       // BUG: n = -1
+//       if (n < 0) {
+//         // If remove the USB device, will enter this loop, causing a crash
+//         printf("write() of %d/%d bytes failed!\n", n, PUB_MSG_LEN);
+//       }
+//     }
+//   }
+// }
 
 /**
  * @brief publish motor speed command
@@ -218,6 +218,7 @@ vector<uint8_t> BuildMsg(vector<float>& speed) {
   return pub_msg;
 }
 
+// TODO : add pid mode
 vector<uint8_t> BuildMsg(vector<float>& speed, bool mode) {
   /* Build msg */
   vector<uint8_t> pub_msg(PUB_MSG_LEN, 0x00);
@@ -250,7 +251,7 @@ vector<uint8_t> BuildMsg(vector<float>& speed, bool mode) {
   }
 
   // write last data crc check is it right or not, 0 = right, 1 = not
-  pub_msg.at(PUB_STATUS_ORDER) = check_status;
+  // pub_msg.at(PUB_STATUS_ORDER) = check_status;
   // write crc
   pub_msg.at(PUB_MSG_LEN - 2) = calculation_crc(pub_msg);
 

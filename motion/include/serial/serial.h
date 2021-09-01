@@ -12,10 +12,10 @@
 #include <termios.h> /* POSIX terminal control definitions */
 #include <unistd.h>  /* UNIX standard function definitions */
 
-#include <charconv>     // Char conversion
+#include <charconv>  // Char conversion
 #include <cmath>
 #include <iostream>
-#include <stdexcept>    // std::out_of_range
+#include <stdexcept>  // std::out_of_range
 #include <string>
 #include <vector>
 /*******************************
@@ -34,7 +34,7 @@
 
 #define DEBUG
 #define P_PUBLISH
-#define P_SUBSCRIBE
+// #define P_SUBSCRIBE
 
 using namespace std;
 /*******************************
@@ -48,7 +48,8 @@ void SerialClose();
 // Publish and subscribe functions
 /** 起始封包(1byte): 0xAA
 
-* 狀態位元(1Byte): bit0: 上一筆的 Nios 的 TX 資料 CRC 有錯, bit1: 啟動/禁用 PID 控制
+* 狀態位元(1Byte): bit0: 上一筆的 Nios 的 TX 資料 CRC 有錯, bit1: 啟動/禁用 PID
+控制
 
 * 4顆馬達方向(1bytes): {4'b0000, MD(1bit), MC(1bit), MB(1bit), MA(1bit)}
 
@@ -107,6 +108,7 @@ int sub_FeedBack();
 
 // Support functions
 vector<uint8_t> BuildMsg(vector<float>&);
+vector<uint8_t> BuildMsg(vector<float>&, bool);
 void unbuild_msg();
 int check_msg();
 uint8_t calculation_crc(vector<uint8_t>&);

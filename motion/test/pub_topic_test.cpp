@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 
   sleep(1);
 
-  float speed = 10.0;
+  float speed = 100.0;
   float time = 3;
   printf("+y\n");
   pub_fn(0, speed, 0, time);
