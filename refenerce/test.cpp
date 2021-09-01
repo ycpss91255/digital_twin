@@ -17,10 +17,13 @@
 #include <vector>
 
 int main(int argc, char *argv[]) {
-  uint8_t a1 = 0xff;
-  uint8_t a2 = 0xf >> 4 << 3;
+  uint8_t a1 = 0x00;
+  // uint8_t a2 = a1    0x01;
+  printf("0x%02X\n", a2);
+  // al = 1 << 1;
+  // uint8_t a2 = 0xf >> 4 << 3;
 
-  printf("%02X\n", a2);
+  // printf("%02X\n", a1);
   // printf("%02X\n", a3);
   return 0;
 }

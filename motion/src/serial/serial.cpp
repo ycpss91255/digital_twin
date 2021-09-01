@@ -155,6 +155,26 @@ void pub_MotorSpeed(vector<float>& speed) {
 }
 
 /**
+ * @brief publish motor speed command
+ * @param speed range -31 ~ 31
+ */
+// TODO : float change to int
+void pub_MotorSpeed(vector<float>& speed) {
+  if (speed.size() == 4) {
+    vector<uint8_t> msg = BuildMsg(speed, 1);
+    /* Publish msg to serial */
+    for (int i = 0, n = 0; i < msg.size(); i++) {
+      n += write(fd, &msg.at(i), 1);
+      // BUG: n = -1
+      if (n < 0) {
+        // If remove the USB device, will enter this loop, causing a crash
+        printf("write() of %d/%d bytes failed!\n", n, PUB_MSG_LEN);
+      }
+    }
+  }
+}
+
+/**
  * @brief build motor commamd save to publish buffer
  * @param speed the index value is from MA(small) to MD(large), numder range is
  * -31 ~ 31
@@ -179,6 +199,49 @@ vector<uint8_t> BuildMsg(vector<float>& speed) {
 
   for (int i = 0; i < 4; i++) {
     int pwm_msg = abs(speed.at(i)) > 31 ? 31 : abs(speed.at(i));
+
+    // int = 4 bytes, but char = 1 byte, so disassemble int into High and Low
+    // byte
+    pub_msg.at(PUB_MOTOR_SPEED_ORDER + i * 2) = (pwm_msg & 0xFF00) >> 8;
+    pub_msg.at(PUB_MOTOR_SPEED_ORDER + i * 2 + 1) = pwm_msg & 0x00FF;
+  }
+
+  // write last data crc check is it right or not, 0 = right, 1 = not
+  pub_msg.at(PUB_STATUS_ORDER) = check_status;
+  // write crc
+  pub_msg.at(PUB_MSG_LEN - 2) = calculation_crc(pub_msg);
+
+#ifdef P_PUBLISH
+  printf_hex(pub_msg, "pub_msg :");
+#endif  // P_PUBLISH
+
+  return pub_msg;
+}
+
+vector<uint8_t> BuildMsg(vector<float>& speed, bool mode) {
+  /* Build msg */
+  vector<uint8_t> pub_msg(PUB_MSG_LEN, 0x00);
+  // write start and end packet
+  pub_msg.at(0) = PUB_START_PACKET;
+  pub_msg.at(PUB_MSG_LEN - 1) = PUB_END_PACKET;
+  pub_msg.at(PUB_STATUS_ORDER) = 0b0010;
+  for (uint8_t temp, i = 0; i < 4; i++) {
+    // write new direction
+    if (speed.at(i) != 0) {
+      temp |= (speed.at(i) > 0 ? 1 : 0) << i;
+      old_speed.at(i) = speed.at(i);
+    } else {
+      temp |= (old_speed.at(i) > 0 ? 1 : 0) << i;
+    }
+    pub_msg.at(PUB_MOTOR_DIR_ORDER) = temp;
+  }
+
+  for (int pwm_msg, i = 0; i < 4; i++) {
+    if (mode == PWM_MODE) {
+      pwm_msg = abs(speed.at(i)) > 100 ? 100 : abs(speed.at(i));
+    } else {
+      pwm_msg = abs(speed.at(i)) > 31 ? 31 : abs(speed.at(i));
+    }
 
     // int = 4 bytes, but char = 1 byte, so disassemble int into High and Low
     // byte
@@ -290,7 +353,9 @@ void unbuild_msg() {
                sub_msg.at(SUB_TIME_STAMP_ORDER + 1) << 8 |
                sub_msg.at(SUB_TIME_STAMP_ORDER + 2);
 
-  crc_status = sub_msg.at(SUB_STATUS_ORDER) & 0x01;
+  // uint8_t temp = ;
+  // BUG : crc status
+  // crc_status = sub_msg.at(SUB_STATUS_ORDER) & 0x01;
 
   for (int i = 0; i < 4; i++) {
     M_data[i].PWM = sub_msg.at(SUB_MOTOR_PWM_ORDER + i);

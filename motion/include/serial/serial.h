@@ -33,8 +33,8 @@
 #define _POSIX_SOURCE 1 /* POSIX compliant source */
 
 #define DEBUG
-// #define P_PUBLISH
-// #define P_SUBSCRIBE
+#define P_PUBLISH
+#define P_SUBSCRIBE
 
 using namespace std;
 /*******************************
@@ -48,12 +48,14 @@ void SerialClose();
 // Publish and subscribe functions
 /** 起始封包(1byte): 0xAA
 
-* 狀態位元(1Byte): bit0: 上一筆的Nios的TX資料 CRC有錯
+* 狀態位元(1Byte): bit0: 上一筆的 Nios 的 TX 資料 CRC 有錯, bit1: 啟動/禁用 PID 控制
 
 * 4顆馬達方向(1bytes): {4'b0000, MD(1bit), MC(1bit), MB(1bit), MA(1bit)}
 
 * 4顆馬達速度(8bytes): MA(short_uint_2bytes), MB(short_uint_2bytes),
 MC(short_uint_2bytes), MD(short_uint_2bytes)
+
+* 如果 PID 功能關閉則馬達速度變成馬達PWM
 
 * CRC (1 byte ): 所有資料的 bytes 相加後取最低的 Byte 當檢查碼，不包含(封包頭)
 
@@ -61,13 +63,14 @@ MC(short_uint_2bytes), MD(short_uint_2bytes)
 
 * 以上host封包總共13Bytes
 */
-
 void pub_MotorSpeed(vector<float>&);
+void pub_MotorSpeed(vector<float>&, bool);
+
 /** 起始封包(1byte): 0xAA
 
 * TimeStamp(3Byte): 時間戳記(MSB,...,LSB)
 
-* 狀態位元(1Byte): bit0: 上一筆的Host的TX資料 CRC有錯
+* 狀態位元(1Byte): bit0: 上一筆的 Host 的 TX 資料 CRC 有錯
 
 * 4顆馬達PWM(4bytes): MA(1Bytes), MB(1Bytes), MC(1Bytes), MD(1Bytes)
 

@@ -26,4 +26,7 @@
 #define SUB_IMU_GYROSCOPE_ORDER 54      // LEN = 4
 #define SUB_IMU_MAGNETICMETER_ORDER 58  // LEN = 4
 
+#define PWM_MODE 1
+#define SPEED_MODE 0
+
 #endif  // PARAMETER_H
