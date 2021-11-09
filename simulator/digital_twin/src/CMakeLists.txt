@@ -9,6 +9,7 @@ set(NodeList_1
 )
 add_executable(motor_control ${NodeList_1})
 target_link_libraries(motor_control ${catkin_LIBRARIES})
+add_dependencies(motor_control ${catkin_EXPORTED_TARGETS})
 
 # sim_control
 set(NodeList_2
@@ -16,6 +17,7 @@ set(NodeList_2
 )
 add_executable(data_handle ${NodeList_2})
 target_link_libraries(data_handle ${catkin_LIBRARIES})
+add_dependencies(data_handle ${catkin_EXPORTED_TARGETS})
 
 # sim_roobot_control
 set(NodeList_3
@@ -23,3 +25,4 @@ set(NodeList_3
 )
 add_executable(robot_control ${NodeList_3})
 target_link_libraries(robot_control ${catkin_LIBRARIES})
+add_dependencies(robot_control ${catkin_EXPORTED_TARGETS})
