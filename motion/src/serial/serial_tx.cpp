@@ -9,7 +9,8 @@ int main(int argc, char **argv) {
   // Initialize ROS serial node
   SerialNodeHandle node(argc, argv, "serial_tx", TX_MODE);
   // Instantiate serial class
-  SerialInit("/dev/ttyUSB0", 115200);
+  // nano_uart ATTRS{serial}=="0002"
+  SerialInit("/dev/nano_uart", 115200);
 
   // time variable
   clock_t start = clock(), end;
