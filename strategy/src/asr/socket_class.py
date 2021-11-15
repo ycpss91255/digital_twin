@@ -10,7 +10,6 @@ import socket
 Module can use host, IPv4 or IPv6 as socket
 """
 
-
 class socket_node(object):
     def __init__(self, family="IPv4", type="TCP"):
         """ Create socket interface
