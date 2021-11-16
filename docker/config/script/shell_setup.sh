@@ -8,7 +8,7 @@ ShellConfig_fn() {
     if [ ${SHELL} == "zsh" ]; then
         echo "alias ll='ls -alF'" >>/home/${USER}/.${SHELL}rc
         echo "alias la='ls -A'" >>/home/${USER}/.${SHELL}rc
-        echo "alias l='ls -CF'" >>/home/${USER}/.${SHELL}rc
+        printf "alias l='ls -CF'\n" >>/home/${USER}/.${SHELL}rc
 
         # zsh theme - Powerlevel10k
         echo "source ~/.powerlevel10k/powerlevel10k.zsh-theme" >>/home/${USER}/.${SHELL}rc
@@ -20,9 +20,10 @@ ShellConfig_fn() {
         cat ./shell/bash/git_config.sh >>/home/${USER}/.${SHELL}rc
     fi
 
-    echo "alias eb='nano ~/.${SHELL}rc'" >>/home/${USER}/.${SHELL}rc
+    echo "alias eb='vim ~/.${SHELL}rc'" >>/home/${USER}/.${SHELL}rc
     echo "alias sb='source ~/.${SHELL}rc'" >>/home/${USER}/.${SHELL}rc
     echo "alias wb='source ./devel/setup.${SHELL}'" >>/home/${USER}/.${SHELL}rc
+    chown ${USER}:${GROUP} /home/${USER}/.${SHELL}rc
 
 }
 # $1 = shell type $2 = ROS_TYPE $3 = ROS_MASTER_IP $4 = ROS_SLAVE_IP
