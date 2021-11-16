@@ -10,8 +10,9 @@ import socket
 Module can use host, IPv4 or IPv6 as socket
 """
 
+
 class socket_node(object):
-    def __init__(self, family="IPv4", type="TCP"):
+    def __init__(self, family: str = "IPv4", type: str = "TCP"):
         """ Create socket interface
 
         If the creation fails, the program will be closed
@@ -38,7 +39,7 @@ class socket_node(object):
         elif socket_type == "none":
             sys.exit("Socket type value is not correct")
         else:
-            self.s = socket.socket(family, type)
+            self.s = socket.socket(socket_family, socket_type)
 
     def server(self, host: "x.x.x.x", port: int, conn_num: int = 1):
         """ Set the socket module type to the server
