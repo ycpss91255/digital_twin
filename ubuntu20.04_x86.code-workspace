@@ -39,10 +39,11 @@
 		"cSpell.words": [
 			"Coor",
 			"Nios",
-			"SIGDSUSP",
-			"UART",
 			"omwr",
-			"submodule"
+			"rospy",
+			"SIGDSUSP",
+			"submodule",
+			"UART"
 		],
 		"python.analysis.extraPaths": [
 			"/opt/ros/noetic/lib/python3/dist-packages"

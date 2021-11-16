@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(strategy)
 
-catkin_install_python(
-    PROGRAMS
-    socket_class.py
-    test/server.py
-    test/client.py
-    ros_server.py
-    ros_client.py
-    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+# catkin_python_setup()
+
+# catkin_install_python(
+#     PROGRAMS
+#     socket_class.py
+#     test/server.py
+#     test/client.py
+#     asr_cmd_val
+#     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
 

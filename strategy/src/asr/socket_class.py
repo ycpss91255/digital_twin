@@ -50,12 +50,21 @@ class socket_node(object):
             conn_num: client connection number
         """
         # TODO : check host and port is correct
+
+        # Close the used port directly after closing the socket
+        self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        # Server Ip and port location
+        print("1234:")
         self.s.bind((host, port))
+        # Maximum connection client
         self.s.listen(conn_num)
+
         self.type = "server"
         print('server start at: %s:%s' % (host, port))
         print('wait for connection...')
 
+    def scan_client(self):
+        """Scan the client, can put it in while, rescan when client is interrupted """
         self.client_conn, self.client_addr = self.s.accept()
         print("Connected by " + str(self.client_addr))
 

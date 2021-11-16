@@ -15,15 +15,24 @@ print('wait for connection...')
 
 while True:
     conn, addr = s.accept()
-    print('connected by ' + str(addr))
+    print('connected by ' + str(addr) + ': ' + str(conn))
+    indata = conn.recv(1024)
+    if len(indata) == 0:  # connection closed
+        conn.close()
+        print('client closed connection.')
+        break
+    print('recv: ' + indata.decode())
 
-    while True:
-        indata = conn.recv(1024)
-        if len(indata) == 0:  # connection closed
-            conn.close()
-            print('client closed connection.')
-            break
-        print('recv: ' + indata.decode())
+    outdata = 'echo ' + indata.decode()
+    conn.send(outdata.encode())
 
-        outdata = 'echo ' + indata.decode()
-        conn.send(outdata.encode())
+# while True:
+    #     indata = conn.recv(1024)
+    #     if len(indata) == 0:  # connection closed
+    #         conn.close()
+    #         print('client closed connection.')
+    #         break
+    #     print('recv: ' + indata.decode())
+
+    #     outdata = 'echo ' + indata.decode()
+    #     conn.send(outdata.encode())
