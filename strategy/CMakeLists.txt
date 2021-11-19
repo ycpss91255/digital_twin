@@ -8,9 +8,12 @@ find_package(catkin REQUIRED COMPONENTS
   motion
 )
 
+catkin_python_setup()
+
 catkin_package()
+
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_subdirectory(src/asr)
+add_subdirectory(node/asr)

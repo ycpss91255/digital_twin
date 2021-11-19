@@ -54,7 +54,6 @@ class socket_node(object):
         # Close the used port directly after closing the socket
         self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         # Server Ip and port location
-        print("1234:")
         self.s.bind((host, port))
         # Maximum connection client
         self.s.listen(conn_num)
@@ -64,9 +63,34 @@ class socket_node(object):
         print('wait for connection...')
 
     def scan_client(self):
-        """Scan the client, can put it in while, rescan when client is interrupted """
+        """ Scan the client, can put it in while, rescan when client is interrupted """
+
         self.client_conn, self.client_addr = self.s.accept()
         print("Connected by " + str(self.client_addr))
+        self.client_status = True
+
+    def get_msg(self):
+        """ The server gets the message sent by the client
+
+        Under normal circumstances, the received message will be returned,
+        if the message length is 0, the channel will be closed
+
+        Returns:
+            Under normal return server get message,
+            if the message length is 0, return -1
+        """
+
+        indata = self.client_conn.recv(1024)
+        if len(indata) == 0:  # connection closed
+            self.client_conn.shutdown()
+            print('client closed connection')
+            self.client_status = False
+            return -1
+        if self.client_status == True:  # return msg and send back msg
+            print("send :" + indata.decode())
+            outdata = 'echo ' + indata.decode()
+            self.client_conn.send(outdata.encode())
+            return indata.decode()
 
     def client(self, host: "x.x.x.x", port: int):
         """ Set the socket module type to the client
@@ -109,6 +133,6 @@ class socket_node(object):
         """ Close socket interface """
 
         if self.type == "server":
-            self.client_conn.close()
+            self.client_conn.shutdown()
         elif self.type == "client":
-            self.s.close()
+            self.s.shutdown()
