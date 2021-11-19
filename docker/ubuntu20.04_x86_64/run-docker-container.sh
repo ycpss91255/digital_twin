@@ -7,7 +7,7 @@ source ${file_dir}/docker_variable.sh
 source ${file_dir}/get_graph_card.sh
 
 # Start sharing xhost
-xhost +local:root
+# xhost +local:root
 
 IntelDockerRun() {
     docker run --rm \
@@ -45,10 +45,10 @@ NvidiaDockerRun() {
 
 GetGraphCard false
 
-if [ $GraphicsCard == "INTEL" ]; then
-    IntelDockerRun
-elif [ $GraphicsCard == "NVIDIA" ]; then
+if [ $GraphicsCard == "NVIDIA" ]; then
     NvidiaDockerRun
+
 else
-    echo "Error : Unknown Graphics Card!!"
+    IntelDockerRun
+#   echo "Error : Unknown Graphics Card!!"
 fi
