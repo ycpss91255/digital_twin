@@ -30,7 +30,7 @@ RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw@g' /etc/apt/sources.list
 
 # Install packages
 RUN apt update && apt-get install -y --no-install-recommends \
-    sudo git htop wget curl \
+    sudo git htop wget curl psmisc \
     # Shell
     byobu zsh terminator \
     # Editing tools
@@ -53,7 +53,10 @@ COPY config .
 # ROS Arguments
 # Is the computer master or slave in ROS
 ARG ROS_TYPE=MASTER
-ARG ROS_MASTER_IP=10.42.0.1
+# ARG ROS_MASTER_IP=10.42.0.1
+# ARG ROS_SLAVE_IP=10.42.0.2
+
+ARG ROS_MASTER_IP=127.0.0.1
 ARG ROS_SLAVE_IP=10.42.0.2
 
 RUN bash ./script/shell_setup.sh \
