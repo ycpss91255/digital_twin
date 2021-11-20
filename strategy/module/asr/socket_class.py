@@ -82,7 +82,7 @@ class socket_node(object):
 
         indata = self.client_conn.recv(1024)
         if len(indata) == 0:  # connection closed
-            self.client_conn.shutdown()
+            self.client_conn.close()
             print('client closed connection')
             self.client_status = False
             return -1
@@ -133,6 +133,6 @@ class socket_node(object):
         """ Close socket interface """
 
         if self.type == "server":
-            self.client_conn.shutdown()
+            self.client_conn.close()
         elif self.type == "client":
             self.s.shutdown()

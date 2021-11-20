@@ -22,7 +22,7 @@ def main():
 
     # Initialize socket node
     SocketNode = socket_node('IPv4', 'TCP')
-    SocketNode.server('127.0.0.1', 8080)
+    SocketNode.server('127.10.0.1', 8080)
 
     while not rospy.is_shutdown():
         print("\nto close this node, you need ctrl + c, and then close the client node to close it")
@@ -37,12 +37,12 @@ def main():
         while (not rospy.is_shutdown() and SocketNode.client_status):
             cmd_val = SocketNode.get_msg()
             val = 5
-            if cmd_val == "going":
+            if cmd_val == "go":
                 msg.linear.x = 0
                 msg.linear.y = val
                 msg.linear.z = 0
 
-            elif cmd_val == "move left":
+            elif cmd_val == "left":
                 msg.linear.x = -val
                 msg.linear.y = 0
                 msg.linear.z = 0
@@ -52,7 +52,7 @@ def main():
                 msg.linear.y = -val
                 msg.linear.z = 0
 
-            elif cmd_val == "move right":
+            elif cmd_val == "right":
                 msg.linear.x = val
                 msg.linear.y = 0
                 msg.linear.z = 0
