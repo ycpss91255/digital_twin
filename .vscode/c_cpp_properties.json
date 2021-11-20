@@ -10,7 +10,11 @@
         "/opt/ros/noetic/include/**",
         "/usr/include/**",
         "${workspaceFolder}/../**"
-      ]
+      ],
+      // "intelliSenseMode": "gcc-x64",
+      // "compilerPath": "/usr/bin/clang",
+      // "cStandard": "c11",
+      // "cppStandard": "c++14"
     }
   ],
   "version": 4

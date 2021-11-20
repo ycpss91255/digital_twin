@@ -1,93 +1,55 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"ros.distro": "noetic",
-		"python.autoComplete.extraPaths": [
-			"/opt/ros/noetic/lib/python3/dist-packages"
-		],
-		"files.associations": {
-			"*.gazebo": "xml",
-			"iostream": "cpp",
-			"*.ipp": "cpp",
-			"random": "cpp",
-			"*.tcc": "cpp",
-			"bitset": "cpp",
-			"cstring": "cpp",
-			"string": "cpp",
-			"string_view": "cpp",
-			"fstream": "cpp",
-			"iomanip": "cpp",
-			"istream": "cpp",
-			"ostream": "cpp",
-			"sstream": "cpp",
-			"stdexcept": "cpp",
-			"system_error": "cpp",
-			"typeinfo": "cpp",
-			"cstddef": "cpp",
-			"vector": "cpp",
-			"array": "cpp",
-			"hash_map": "cpp",
-			"hash_set": "cpp",
-			"initializer_list": "cpp",
-			"utility": "cpp",
-			"cstdlib": "cpp"
-		},
-		"cSpell.words": [
-			"Coor",
-			"Nios",
-			"omwr",
-			"rospy",
-			"SIGDSUSP",
-			"submodule",
-			"UART"
-		],
-		"python.analysis.extraPaths": [
-			"/opt/ros/noetic/lib/python3/dist-packages"
-		],
-		"sshfs.configs": []
-	},
-	"extensions": {
-		"recommendations": [
-			"zovorap.ab-html-formatter",
-			"formulahendry.auto-close-tag",
-			"formulahendry.auto-rename-tag",
-			"jeff-hykin.better-cpp-syntax",
-			"ms-vscode.cpptools",
-			"ms-vscode.cpptools-extension-pack",
-			"hyeon.c-math-viewer",
-			"twxs.cmake",
-			"ms-azuretools.vscode-docker",
-			"ajshort.msg",
-			"ms-vscode-remote.remote-containers",
-			"ms-vscode-remote.remote-ssh",
-			"ms-iot.vscode-ros",
-			"pijar.ros-snippets",
-			"sweilz.ros-snippets",
-			"dpkristensen-garmin.udev-rules",
-			"dotjoshjohnson.xml",
-			"foxundermoon.shell-format",
-			"slevesque.vscode-3dviewer",
-			"anseki.vscode-color",
-			"github.vscode-pull-request-github",
-			"ecmel.vscode-html-css",
-			"tht13.html-preview-vscode",
-			"abusaidm.html-snippets",
-			"zignd.html-css-class-completion",
-			"xabikos.javascriptsnippets",
-			"ms-toolsai.jupyter",
-			"ms-python.vscode-pylance",
-			"ms-python.python",
-			"kevinrose.vsc-python-indent",
-			"redhat.vscode-commons",
-			"ipatalas.vscode-postfix-ts",
-			"redhat.vscode-xml",
-			"redhat.vscode-yaml",
-			"hars.cppsnippets",
-			"cschlosser.doxdocgen"
-		]
-	},
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "ros.distro": "noetic",
+        "python.autoComplete.extraPaths": [
+            "/opt/ros/noetic/lib/python3/dist-packages"
+        ],
+        "python.analysis.extraPaths": [
+            "/opt/ros/noetic/lib/python3/dist-packages",
+            "${workspaceFolder}/strategy/module"
+        ],
+        "cmake.configureOnOpen": false,
+        "files.associations": {
+            "*.gazebo": "xml",
+            "iostream": "cpp",
+            "*.ipp": "cpp",
+            "random": "cpp",
+            "*.tcc": "cpp",
+            "bitset": "cpp",
+            "cstring": "cpp",
+            "string": "cpp",
+            "string_view": "cpp",
+            "fstream": "cpp",
+            "iomanip": "cpp",
+            "istream": "cpp",
+            "ostream": "cpp",
+            "sstream": "cpp",
+            "stdexcept": "cpp",
+            "system_error": "cpp",
+            "typeinfo": "cpp",
+            "cstddef": "cpp",
+            "vector": "cpp",
+            "array": "cpp",
+            "hash_map": "cpp",
+            "hash_set": "cpp",
+            "initializer_list": "cpp",
+            "utility": "cpp",
+            "cstdlib": "cpp"
+        },
+        "cSpell.words": [
+            "cmake",
+            "Coor",
+            "Nios",
+            "omwr",
+            "rospy",
+            "SIGDSUSP",
+            "submodule",
+            "UART"
+        ],
+    },
 }
