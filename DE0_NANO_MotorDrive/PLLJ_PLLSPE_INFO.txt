@@ -1,0 +1,5 @@
+PLL_Name	sopc:u0|sopc_altpll_0:altpll_0|sopc_altpll_0_altpll_0vn2:sd1|pll7
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+

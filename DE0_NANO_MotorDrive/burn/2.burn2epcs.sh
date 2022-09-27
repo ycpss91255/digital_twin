@@ -1,0 +1,2 @@
+nios2-flash-programmer "DE0_NANO.flash" --base=0x0 --epcs --sidp=0x0  --accept-bad-sysid --device=1 --instance=0 '--cable=USB-Blaster on localhost [USB-0]' --program --verbose  --override=nios2-flash-override.txt
+nios2-flash-programmer "robot_motor.flash" --base=0 --epcs --sidp=0x0   --accept-bad-sysid --device=1 --instance=0 '--cable=USB-Blaster on localhost [USB-0]' --program --verbose --override=nios2-flash-override.txt

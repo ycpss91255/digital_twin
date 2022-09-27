@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable>
+  <columns>
+   <connections preferredWidth="191" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="411" />
+   <clocksource preferredWidth="409" />
+   <frequency preferredWidth="393" />
+  </columns>
+ </clocktable>
+ <window width="1699" height="903" x="137" y="103" />
+ <library expandedCategories="Project,Library" />
+ <hdlexample language="VERILOG" />
+ <generation path="qsys" block_symbol_file="0" />
+</preferences>
