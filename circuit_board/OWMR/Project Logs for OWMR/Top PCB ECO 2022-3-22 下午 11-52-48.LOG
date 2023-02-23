@@ -1,0 +1,12 @@
+Added Component: Designator=De1(De10-Nano)
+Added Pin To Net: NetName=D_GND Pin=De1-1
+Added Pin To Net: NetName=D_GND Pin=De1-1
+Added Pin To Net: NetName=D_GND Pin=De1-1
+Added Pin To Net: NetName=D_GND Pin=De1-1
+Add Pin To Net: Unknown Pin: Pin J1-1A
+Add Pin To Net: Unknown Pin: Pin J1-1B
+Add Pin To Net: Unknown Pin: Pin J1-2A
+Add Pin To Net: Unknown Pin: Pin J1-2B
+Add Pin To Net: Unknown Pin: Pin J1-3A
+Add Pin To Net: Unknown Pin: Pin J1-3B
+Added Member To Class: ClassName=Communication Member=Component De1 De10-Nano

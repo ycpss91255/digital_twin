@@ -1,0 +1,14 @@
+[ProjectGroup]
+Version=1.0
+[Project1]
+ProjectPath=OWMR\OWMR.PrjPcb
+[Project2]
+ProjectPath=Libraries\OWMR.LibPkg
+[Project3]
+ProjectPath=Power\Power.PrjPcb
+[Project4]
+ProjectPath=MotorCtrl\MotorCtrl.PrjPcb
+[Project5]
+ProjectPath=Communication\Communication.PrjPcb
+[Project6]
+ProjectPath=Simulation\Simulation.PrjPcb

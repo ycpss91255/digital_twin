@@ -1,0 +1,16 @@
+Added Component: Designator=D1(0603F104M500NT)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "08-Jul-2005"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Mech Layer 1 removed."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "LED; 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "LED-0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=T2(Small Voltage regulator module)
+Add component (AddParameter): Name = "BuyLink"; Value = "https://www.ruten.com.tw/item/show?21817939184609"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=GND Pin=D1-2
+Added Pin To Net: NetName=D_3P3 Pin=T2-1
+Added Pin To Net: NetName=GND Pin=T2-2
+Added Pin To Net: NetName=D_5V Pin=T2-3
+Added Member To Class: ClassName=Power Member=Component D1 0603 LED(G)
+Added Member To Class: ClassName=Power Member=Component T2 Small Power Supply

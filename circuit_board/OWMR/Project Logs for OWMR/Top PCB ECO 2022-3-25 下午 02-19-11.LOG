@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=5V Pin=R10-2
+Removed Pin From Net: NetName=5V Pin=R11-2
+Added Pin To Net: NetName=De10-Power Pin=R10-2
+Added Pin To Net: NetName=NetF4_2 Pin=R11-2
+Added Member To Class: ClassName=Communication Member=Component D4 0805 LED(G)
+Added Member To Class: ClassName=Communication Member=Component R10 0603
+Added Member To Class: ClassName=De10_power Member=Wire NetD4_1
+Added Rule: Name=Schematic Clearance Constraint_5
+Change Rule Scope 1 : Old Scope=InNet('NetT1_4') New Scope=InNet('D_GND')
+Change Rule Scope 1 : Old Scope=InNet('MA2_2') New Scope=InNet('MB2_1')
+Change Rule Scope 1 : Old Scope=InNet('A_GND') New Scope=InNet('NetC3_1')
+Change Rule Scope 1 : Old Scope=InNet('MB1_2') New Scope=InNet('MB2_2')
+Change Rule Scope 1 : Old Scope=InNet('MB2_2') New Scope=InNet('MA1_2')
+Change Rule Scope 1 : Old Scope=InNet('MA1_2') New Scope=InNet('MB1_1')

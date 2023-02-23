@@ -1,0 +1,82 @@
+Removed Pin From Net: NetName=B_12V Pin=D2-2
+Removed Pin From Net: NetName=NetF1_1 Pin=F1-1
+Removed Member From Class: ClassName=Battery_Power Member=NetF2_1
+Change Component Footprint: Designator=R2_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R2_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R3_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R3_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R4_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R4_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R5_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R5_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R6_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R6_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R7_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R7_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R8_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R8_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R9_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R9_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R10_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R10_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R11_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R11_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R12_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R12_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R13_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R13_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R14_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R14_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R15_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R15_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R16_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R16_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R17_1 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Footprint: Designator=R17_2 Old Footprint=0603 SMD RES New Footprint=0402 SMD Res
+Change Component Designator: OldDesignator=D3 NewDesignator=D2
+Change Component Designator: OldDesignator=De10 NewDesignator=De1
+Change Component Designator: OldDesignator=F2 NewDesignator=F1
+Change Component Designator: OldDesignator=F? NewDesignator=F3
+Change Component Designator: OldDesignator=P7 NewDesignator=P6
+Change Component Designator: OldDesignator=P8 NewDesignator=P7
+Added Component: Designator=D3(SK54)
+Add component (AddParameter): Name = "Code_JEDEC"; Value = "DO-214-AB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "DO-214-AB/SMC; 2 C-Bend Leads; Body 7.9 x 5.9 mm, inc. leads (LxW)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "SMC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageVersion"; Value = "Sep-1996"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=F2(SMD Fuses Holder)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Thru-Hole; 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "PIN-W2/E2.8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "220V 5A"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=B_12V Pin=D3-2
+Added Pin To Net: NetName=NetF1_1 Pin=F2-1
+Add Pin To Net: Unknown Pin: Pin J1-1A
+Add Pin To Net: Unknown Pin: Pin J1-1B
+Add Pin To Net: Unknown Pin: Pin J1-2A
+Add Pin To Net: Unknown Pin: Pin J1-2B
+Add Pin To Net: Unknown Pin: Pin J1-3A
+Add Pin To Net: Unknown Pin: Pin J1-3B
+Change Net Name : Old Net Name=B_12V New Net Name=NetC1_1
+Change Net Name : Old Net Name=NetD3_1 New Net Name=NetD2_1
+Change Net Name : Old Net Name=NetF1_1 New Net Name=B_12V
+Change Net Name : Old Net Name=NetF2_1 New Net Name=NetF1_1
+Added Pin To Net: NetName=NetD3_1 Pin=D3-1
+Added Pin To Net: NetName=NetD3_1 Pin=F2-2
+Added Net: Name=NetD3_1
+Added Class: Name=Analog_Power
+Added Member To Class: ClassName=Battery_Power Member=Wire B_12V
+Added Room: Name=Communication
+Added Room: Name=MotorCtrl1
+Added Room: Name=MotorCtrl2
+Added Room: Name=Power
+Added Room: Name=Top
+Added Rule: Name=Schematic Routing Via Style
+Added Rule: Name=Schematic Width Constraint_2

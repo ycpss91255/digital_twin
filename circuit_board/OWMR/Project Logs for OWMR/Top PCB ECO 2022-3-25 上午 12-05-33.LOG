@@ -1,0 +1,124 @@
+Added Component: Designator=MD1_1(MOTOR_DRIVER)
+Add component (AddParameter): Name = "buy_link"; Value = "https://www.ruten.com.tw/item/show?21811773783671"; VariantName = "[No Variations]"
+Added Component: Designator=MD1_2(MOTOR_DRIVER)
+Add component (AddParameter): Name = "buy_link"; Value = "https://www.ruten.com.tw/item/show?21811773783671"; VariantName = "[No Variations]"
+Added Component: Designator=P3_1(S6B-XH-A)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=P3_2(S6B-XH-A)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=P4_1(S6B-XH-A)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=P4_2(S6B-XH-A)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=U2_1(MBRD1035CTL)
+Add component (AddParameter): Name = "buy_link"; Value = "https://www.ruten.com.tw/item/show?21744290003226"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "datasheet"; Value = "https://datasheet.ciiva.com/905/mbrd1035ctl-d-905952.pdf?src-supplier=Digi-Key"; VariantName = "[No Variations]"
+Added Component: Designator=U2_2(MBRD1035CTL)
+Add component (AddParameter): Name = "buy_link"; Value = "https://www.ruten.com.tw/item/show?21744290003226"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "datasheet"; Value = "https://datasheet.ciiva.com/905/mbrd1035ctl-d-905952.pdf?src-supplier=Digi-Key"; VariantName = "[No Variations]"
+Added Component: Designator=U3_1(MBRD1035CTL)
+Add component (AddParameter): Name = "buy_link"; Value = "https://www.ruten.com.tw/item/show?21744290003226"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "datasheet"; Value = "https://datasheet.ciiva.com/905/mbrd1035ctl-d-905952.pdf?src-supplier=Digi-Key"; VariantName = "[No Variations]"
+Added Component: Designator=U3_2(MBRD1035CTL)
+Add component (AddParameter): Name = "buy_link"; Value = "https://www.ruten.com.tw/item/show?21744290003226"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "datasheet"; Value = "https://datasheet.ciiva.com/905/mbrd1035ctl-d-905952.pdf?src-supplier=Digi-Key"; VariantName = "[No Variations]"
+Add Pin To Net: Unknown Pin: Pin J1-1A
+Add Pin To Net: Unknown Pin: Pin J1-1B
+Add Pin To Net: Unknown Pin: Pin J1-2A
+Add Pin To Net: Unknown Pin: Pin J1-2B
+Add Pin To Net: Unknown Pin: Pin J1-3A
+Add Pin To Net: Unknown Pin: Pin J1-3B
+Added Pin To Net: NetName=D_GND Pin=MD1_1-1
+Added Pin To Net: NetName=MA_DIR1 Pin=MD1_1-2
+Added Pin To Net: NetName=MA_PWM1 Pin=MD1_1-3
+Added Pin To Net: NetName=MB_DIR1 Pin=MD1_1-4
+Added Pin To Net: NetName=MB_PWM1 Pin=MD1_1-5
+Added Pin To Net: NetName=Drive_EN1 Pin=MD1_1-6
+Added Pin To Net: NetName=CSA_Origin_1 Pin=MD1_1-7
+Added Pin To Net: NetName=CSB_Origin_1 Pin=MD1_1-8
+Added Pin To Net: NetName=12V Pin=MD1_1-9
+Added Pin To Net: NetName=12V Pin=MD1_1-9
+Added Pin To Net: NetName=MA1_1 Pin=MD1_1-10
+Added Pin To Net: NetName=MA1_1 Pin=MD1_1-10
+Added Pin To Net: NetName=MA2_1 Pin=MD1_1-11
+Added Pin To Net: NetName=MA2_1 Pin=MD1_1-11
+Added Pin To Net: NetName=MB1_1 Pin=MD1_1-12
+Added Pin To Net: NetName=MB1_1 Pin=MD1_1-12
+Added Pin To Net: NetName=MB2_1 Pin=MD1_1-13
+Added Pin To Net: NetName=MB2_1 Pin=MD1_1-13
+Added Pin To Net: NetName=A_GND Pin=MD1_1-14
+Added Pin To Net: NetName=A_GND Pin=MD1_1-14
+Added Pin To Net: NetName=D_GND Pin=MD1_2-1
+Added Pin To Net: NetName=MA_DIR2 Pin=MD1_2-2
+Added Pin To Net: NetName=MA_PWM2 Pin=MD1_2-3
+Added Pin To Net: NetName=MB_DIR2 Pin=MD1_2-4
+Added Pin To Net: NetName=MB_PWM2 Pin=MD1_2-5
+Added Pin To Net: NetName=Drive_EN2 Pin=MD1_2-6
+Added Pin To Net: NetName=CSA_Origin_2 Pin=MD1_2-7
+Added Pin To Net: NetName=CSB_Origin_2 Pin=MD1_2-8
+Added Pin To Net: NetName=12V Pin=MD1_2-9
+Added Pin To Net: NetName=12V Pin=MD1_2-9
+Added Pin To Net: NetName=MA1_2 Pin=MD1_2-10
+Added Pin To Net: NetName=MA1_2 Pin=MD1_2-10
+Added Pin To Net: NetName=MA2_2 Pin=MD1_2-11
+Added Pin To Net: NetName=MA2_2 Pin=MD1_2-11
+Added Pin To Net: NetName=MB1_2 Pin=MD1_2-12
+Added Pin To Net: NetName=MB1_2 Pin=MD1_2-12
+Added Pin To Net: NetName=MB2_2 Pin=MD1_2-13
+Added Pin To Net: NetName=MB2_2 Pin=MD1_2-13
+Added Pin To Net: NetName=A_GND Pin=MD1_2-14
+Added Pin To Net: NetName=A_GND Pin=MD1_2-14
+Added Pin To Net: NetName=MA1_1 Pin=P3_1-1
+Added Pin To Net: NetName=D_GND Pin=P3_1-2
+Added Pin To Net: NetName=MA_phaseA1 Pin=P3_1-3
+Added Pin To Net: NetName=MA_phaseB1 Pin=P3_1-4
+Added Pin To Net: NetName=3P3 Pin=P3_1-5
+Added Pin To Net: NetName=MA2_1 Pin=P3_1-6
+Added Pin To Net: NetName=MA1_2 Pin=P3_2-1
+Added Pin To Net: NetName=D_GND Pin=P3_2-2
+Added Pin To Net: NetName=MA_phaseA2 Pin=P3_2-3
+Added Pin To Net: NetName=MA_phaseB2 Pin=P3_2-4
+Added Pin To Net: NetName=3P3 Pin=P3_2-5
+Added Pin To Net: NetName=MA2_2 Pin=P3_2-6
+Added Pin To Net: NetName=MB1_1 Pin=P4_1-1
+Added Pin To Net: NetName=D_GND Pin=P4_1-2
+Added Pin To Net: NetName=MB_phaseA1 Pin=P4_1-3
+Added Pin To Net: NetName=MB_phaseB1 Pin=P4_1-4
+Added Pin To Net: NetName=3P3 Pin=P4_1-5
+Added Pin To Net: NetName=MB2_1 Pin=P4_1-6
+Added Pin To Net: NetName=MB1_2 Pin=P4_2-1
+Added Pin To Net: NetName=D_GND Pin=P4_2-2
+Added Pin To Net: NetName=MB_phaseA2 Pin=P4_2-3
+Added Pin To Net: NetName=MB_phaseB2 Pin=P4_2-4
+Added Pin To Net: NetName=3P3 Pin=P4_2-5
+Added Pin To Net: NetName=MB2_2 Pin=P4_2-6
+Added Pin To Net: NetName=MA1_1 Pin=U2_1-1
+Added Pin To Net: NetName=MA2_1 Pin=U2_1-3
+Added Pin To Net: NetName=VSA_Origin_1 Pin=U2_1-4
+Added Pin To Net: NetName=MA1_2 Pin=U2_2-1
+Added Pin To Net: NetName=MA2_2 Pin=U2_2-3
+Added Pin To Net: NetName=VSA_Origin_2 Pin=U2_2-4
+Added Pin To Net: NetName=MB1_1 Pin=U3_1-1
+Added Pin To Net: NetName=MB2_1 Pin=U3_1-3
+Added Pin To Net: NetName=VSB_Origin_1 Pin=U3_1-4
+Added Pin To Net: NetName=MB1_2 Pin=U3_2-1
+Added Pin To Net: NetName=MB2_2 Pin=U3_2-3
+Added Pin To Net: NetName=VSB_Origin_2 Pin=U3_2-4
+Added Member To Class: ClassName=MotorCtrl1 Member=Component MD1_1 (MD1) MD02
+Added Member To Class: ClassName=MotorCtrl2 Member=Component MD1_2 (MD1) MD02
+Added Member To Class: ClassName=MotorCtrl1 Member=Component P3_1 (P3) MA_Pin
+Added Member To Class: ClassName=MotorCtrl2 Member=Component P3_2 (P3) MA_Pin
+Added Member To Class: ClassName=MotorCtrl1 Member=Component P4_1 (P4) MB_Pin
+Added Member To Class: ClassName=MotorCtrl2 Member=Component P4_2 (P4) MB_Pin
+Added Member To Class: ClassName=MotorCtrl1 Member=Component U2_1 (U2) MBRD1035CTL
+Added Member To Class: ClassName=MotorCtrl2 Member=Component U2_2 (U2) MBRD1035CTL
+Added Member To Class: ClassName=MotorCtrl1 Member=Component U3_1 (U3) MBRD1035CTL
+Added Member To Class: ClassName=MotorCtrl2 Member=Component U3_2 (U3) MBRD1035CTL

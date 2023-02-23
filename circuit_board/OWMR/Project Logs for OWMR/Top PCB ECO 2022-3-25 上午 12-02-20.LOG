@@ -1,0 +1,10 @@
+Add Pin To Net: Unknown Pin: Pin J1-1A
+Add Pin To Net: Unknown Pin: Pin J1-1B
+Add Pin To Net: Unknown Pin: Pin J1-2A
+Add Pin To Net: Unknown Pin: Pin J1-2B
+Add Pin To Net: Unknown Pin: Pin J1-3A
+Add Pin To Net: Unknown Pin: Pin J1-3B
+Added Member To Class: ClassName=MotorCtrl1 Member=Component R6_1 (R6) 120k
+Added Member To Class: ClassName=MotorCtrl2 Member=Component R6_2 (R6) 120k
+Added Member To Class: ClassName=MotorCtrl1 Member=Component R7_1 (R7) 33k
+Added Member To Class: ClassName=MotorCtrl2 Member=Component R7_2 (R7) 33k

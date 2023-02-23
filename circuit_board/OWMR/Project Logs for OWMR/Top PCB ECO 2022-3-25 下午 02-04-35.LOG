@@ -1,0 +1,15 @@
+Removed Member From Class: ClassName=digital_power_in Member=CSA_FeedBack1
+Removed Member From Class: ClassName=digital_power_in Member=CSA_FeedBack2
+Removed Member From Class: ClassName=digital_power_in Member=CSA_Origin_1
+Removed Member From Class: ClassName=digital_power_in Member=CSA_Origin_2
+Removed Member From Class: ClassName=digital_power_in Member=CSB_FeedBack1
+Removed Member From Class: ClassName=digital_power_in Member=CSB_FeedBack2
+Removed Member From Class: ClassName=digital_power_in Member=CSB_Origin_1
+Removed Member From Class: ClassName=digital_power_in Member=CSB_Origin_2
+Removed Member From Class: ClassName=digital_power_in Member=D_GND
+Added Class: Name=De10_power
+Added Rule: Name=Schematic Clearance Constraint_24
+Added Rule: Name=Schematic Routing Via Style_4
+Added Rule: Name=Schematic Width Constraint_25
+Change Rule Scope 1 : Old Scope=InNet('3P3') New Scope=InNetClass('digital_3P3v')
+Change Rule Scope 1 : Old Scope=InNet('NetC3_1') New Scope=InNet('A_GND')

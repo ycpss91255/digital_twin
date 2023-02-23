@@ -1,0 +1,61 @@
+Removed Pin From Net: NetName=5V Pin=F3-1
+Removed Pin From Net: NetName=De10-Power Pin=F3-2
+Removed Member From Class: ClassName=Communication Member=F3
+Added Component: Designator=De10(De10-Nano)
+Added Component: Designator=F?(SMD Fuses Holder)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Thru-Hole; 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "PIN-W2/E2.8"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "220V 2.5A"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=D_GND Pin=De10-0
+Added Pin To Net: NetName=D_GND Pin=De10-0
+Added Pin To Net: NetName=D_GND Pin=De10-0
+Added Pin To Net: NetName=D_GND Pin=De10-0
+Added Pin To Net: NetName=De10-Power Pin=De10-1
+Added Pin To Net: NetName=MA_V1 Pin=De10-2
+Added Pin To Net: NetName=MA_V2 Pin=De10-3
+Added Pin To Net: NetName=MB_V1 Pin=De10-4
+Added Pin To Net: NetName=MB_V2 Pin=De10-5
+Added Pin To Net: NetName=CSA_FeedBack1 Pin=De10-6
+Added Pin To Net: NetName=CSA_FeedBack2 Pin=De10-7
+Added Pin To Net: NetName=CSB_FeedBack1 Pin=De10-8
+Added Pin To Net: NetName=CSB_FeedBack2 Pin=De10-9
+Added Pin To Net: NetName=D_GND Pin=De10-10
+Added Pin To Net: NetName=MA_DIR1 Pin=De10-12
+Added Pin To Net: NetName=UART_RX Pin=De10-13
+Added Pin To Net: NetName=MA_PWM1 Pin=De10-14
+Added Pin To Net: NetName=UART_TX Pin=De10-15
+Added Pin To Net: NetName=MB_DIR1 Pin=De10-16
+Added Pin To Net: NetName=IMU_SCL Pin=De10-17
+Added Pin To Net: NetName=MB_PWM1 Pin=De10-18
+Added Pin To Net: NetName=IMU_SDA Pin=De10-19
+Added Pin To Net: NetName=Drive_EN1 Pin=De10-20
+Added Pin To Net: NetName=De10-Power Pin=De10-21
+Added Pin To Net: NetName=D_GND Pin=De10-22
+Added Pin To Net: NetName=MA_phaseA1 Pin=De10-24
+Added Pin To Net: NetName=MA_phaseB1 Pin=De10-26
+Added Pin To Net: NetName=MB_phaseA1 Pin=De10-28
+Added Pin To Net: NetName=MB_phaseB1 Pin=De10-30
+Added Pin To Net: NetName=MA_DIR2 Pin=De10-32
+Added Pin To Net: NetName=MA_PWM2 Pin=De10-34
+Added Pin To Net: NetName=MB_DIR2 Pin=De10-36
+Added Pin To Net: NetName=MB_PWM2 Pin=De10-38
+Added Pin To Net: NetName=D_GND Pin=De10-40
+Added Pin To Net: NetName=Drive_EN2 Pin=De10-42
+Added Pin To Net: NetName=MA_phaseA2 Pin=De10-44
+Added Pin To Net: NetName=MA_phaseB2 Pin=De10-46
+Added Pin To Net: NetName=MB_phaseA2 Pin=De10-48
+Added Pin To Net: NetName=MB_phaseB2 Pin=De10-50
+Added Pin To Net: NetName=5V Pin=F?-1
+Added Pin To Net: NetName=De10-Power Pin=F?-2
+Add Pin To Net: Unknown Pin: Pin J1-1A
+Add Pin To Net: Unknown Pin: Pin J1-1B
+Add Pin To Net: Unknown Pin: Pin J1-2A
+Add Pin To Net: Unknown Pin: Pin J1-2B
+Add Pin To Net: Unknown Pin: Pin J1-3A
+Add Pin To Net: Unknown Pin: Pin J1-3B
+Added Member To Class: ClassName=Communication Member=Component De10 De10-Nano
+Added Member To Class: ClassName=Communication Member=Component F? Fuse Holder

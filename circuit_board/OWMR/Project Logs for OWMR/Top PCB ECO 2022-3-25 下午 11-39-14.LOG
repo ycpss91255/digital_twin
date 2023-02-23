@@ -1,0 +1,24 @@
+Added Component: Designator=C6(RB4-8)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "buy_link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://shopee.tw/(%E5%85%83%E8%80%80)-%E7%9B%B4%E6%8F%92-%E9%9B%BB%E8%A7%A3%E9%9B%BB%E5%AE%B9-47uF~1000uF-16V~50V-%E9%AB%94%E7%A9%8D-8*14.5mm~10*19.5mm(5%E9%A1%86%E4%B8%80%E6%A8%99)-i.140576581.2524079905?sp_atk=ccd45567-e386-4bfb-a6e8-2480335a57a5"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Polarized Capacitor (Radial); 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RB7.6-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1000uF"; VariantName = "[No Variations]"
+Added Component: Designator=T2(Samll Power Supply)
+Add component (AddParameter): Name = "BuyLink"; Value = "https://www.ruten.com.tw/item/show?21817939184609"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5V Pin=C6-1
+Added Pin To Net: NetName=D_GND Pin=C6-2
+Added Pin To Net: NetName=3P3 Pin=T2-1
+Added Pin To Net: NetName=D_GND Pin=T2-2
+Added Pin To Net: NetName=5V Pin=T2-3
+Added Member To Class: ClassName=Power Member=Component C6 25V 220uF
+Added Member To Class: ClassName=Power Member=Component T2 Small Power Supply
+Added Room: Name=Communication
+Added Room: Name=MotorCtrl1
+Added Room: Name=MotorCtrl2
+Added Room: Name=Power
+Added Room: Name=Top

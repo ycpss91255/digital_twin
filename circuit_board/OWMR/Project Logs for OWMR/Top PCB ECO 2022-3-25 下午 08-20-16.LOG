@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=MB_V1 Pin=De1-4
+Removed Pin From Net: NetName=MB_V2 Pin=De1-5
+Removed Pin From Net: NetName=CSA_FeedBack1 Pin=De1-6
+Removed Pin From Net: NetName=CSA_FeedBack2 Pin=De1-7
+Added Pin To Net: NetName=CSA_FeedBack1 Pin=De1-4
+Added Pin To Net: NetName=CSA_FeedBack2 Pin=De1-5
+Added Pin To Net: NetName=MB_V1 Pin=De1-6
+Added Pin To Net: NetName=MB_V2 Pin=De1-7
+Change Net Color : Old Net Color=Yellow New Net Color=Yellow
+Change Net Color : Old Net Color=RGB(255, 110, 255) New Net Color=RGB(255, 110, 255)
+Change Net Color : Old Net Color=RGB(255, 110, 110) New Net Color=RGB(255, 110, 110)
+Change Net Color : Old Net Color=RGB(0, 190, 0) New Net Color=RGB(0, 190, 0)
+Change Net Color : Old Net Color=RGB(255, 110, 110) New Net Color=RGB(255, 110, 110)
+Change Net Color : Old Net Color=RGB(0, 156, 202) New Net Color=RGB(110, 255, 110)
+Change Net Color : Old Net Color=RGB(255, 110, 110) New Net Color=RGB(255, 110, 110)
+Change Net Color : Old Net Color=RGB(255, 110, 110) New Net Color=RGB(255, 110, 110)
+Change Net Color : Old Net Color=RGB(255, 110, 110) New Net Color=RGB(255, 110, 110)
+Change Net Color : Old Net Color=RGB(255, 110, 110) New Net Color=RGB(255, 110, 110)
+Change Net Color : Old Net Color=RGB(255, 110, 110) New Net Color=RGB(255, 110, 110)
+Change Net Color : Old Net Color=RGB(255, 110, 110) New Net Color=RGB(255, 110, 110)
+Added Member To Class: ClassName=Power Member=Component C6 25V 220uF
+Added Member To Class: ClassName=MotorCtrl1 Member=Component P3_1 (P3) MA_Pin
+Added Member To Class: ClassName=MotorCtrl1 Member=Component P4_1 (P4) MB_Pin
