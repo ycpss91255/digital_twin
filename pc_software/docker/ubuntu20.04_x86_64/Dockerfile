@@ -1,12 +1,14 @@
 # syntax = docker/dockerfile:experimental
 FROM osrf/ros:noetic-desktop-full-focal
 
+############################## SYSTEM PARAMETERS ##############################
 # Arguments
 ARG USER=initial
 ARG GROUP=initial
 ARG UID=1000
 ARG GID=${UID}
 ARG SHELL=/bin/bash
+ARG HARDWARE=x86_64
 
 # Env vars for the nvidia-container-runtime.
 ENV NVIDIA_VISIBLE_DEVICES all
@@ -28,23 +30,36 @@ RUN groupadd --gid ${GID} ${GROUP} \
 # Change to tku
 RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw@g' /etc/apt/sources.list
 
+############################### INSTALL #######################################
 # Install packages
-RUN apt update && apt-get install -y --no-install-recommends \
-    sudo git htop wget curl psmisc \
-    # Shell
-    byobu zsh terminator \
-    # Editing tools
-    nano vim \
-    gnome-terminal libcanberra-gtk-module libcanberra-gtk3-module \
-    python3-pip python3-dev python3-setuptools \
-    # Work tools
-    python3-catkin-tools ros-noetic-gazebo-ros-pkgs \
-    ros-noetic-effort-controllers \
+RUN apt update \
+    && apt-get install -y --no-install-recommends \
+        sudo git htop wget curl psmisc \
+        # Shell
+        byobu \
+        # zsh \
+        # terminator \
+        # Editing tools
+        nano \
+        vim \
+        # base tools
+        gnome-terminal \
+        libcanberra-gtk-module \
+        libcanberra-gtk3-module \
+        python3-pip \
+        python3-dev \
+        python3-setuptools \
+        # Work tools
+        python3-catkin-tools \
+        ros-noetic-gazebo-ros-pkgs \
+        ros-noetic-effort-controllers \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
 
+############################### INSTALL #######################################
+# Switch workspace to /home/${USER}/.tmp
 WORKDIR /home/${USER}/.tmp
 
 # Copy custom configuration
@@ -55,7 +70,6 @@ COPY config .
 ARG ROS_TYPE=MASTER
 # ARG ROS_MASTER_IP=10.42.0.1
 # ARG ROS_SLAVE_IP=10.42.0.2
-
 ARG ROS_MASTER_IP=10.42.0.1
 ARG ROS_SLAVE_IP=10.42.0.2
 
@@ -66,7 +80,7 @@ RUN bash ./script/shell_setup.sh \
     && rm -rf /home/${USER}/.tmp
 
 # Copy entrypoint
-COPY ./ubuntu20.04_x86_64/entrypoint.sh /entrypoint.sh
+COPY ./ubuntu20.04_${HARDWARE}/entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
 WORKDIR /home/${USER}
@@ -84,4 +98,4 @@ WORKDIR /home/${USER}/work
 # ENTRYPOINT ["terminator"]
 # ENTRYPOINT ["zsh"]
 # ENTRYPOINT ["bash"]
-ENTRYPOINT ["/entrypoint.sh","byobu"]
+ENTRYPOINT ["/entrypoint.sh", "byobu"]

@@ -1,3 +1,0 @@
-Added Member To Class: ClassName=battery_power Member=Wire A_GND
-Added Member To Class: ClassName=digital_power_in Member=Wire A_GND
-Change Rule Scope 1 : Old Scope=InNet('A_GND') New Scope=InNet('NetC1_1')
