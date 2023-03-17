@@ -66,8 +66,10 @@ COPY config .
 # * ROS Arguments
 # ? Is the computer master or slave in ROS
 ARG ROS_TYPE=MASTER
-ARG ROS_MASTER_IP=10.42.0.1
-ARG ROS_SLAVE_IP=10.42.0.2
+ARG ROS_MASTER_IP=localhost
+ARG ROS_SLAVE_IP=localhost
+# ARG ROS_MASTER_IP=192.168.1.110
+# ARG ROS_SLAVE_IP=192.168.1.123
 # ARG ROS_MASTER_IP=10.42.0.1
 # ARG ROS_SLAVE_IP=10.42.0.2
 
@@ -92,6 +94,6 @@ EXPOSE 22
 WORKDIR /home/${USER}/work
 
 # ENTRYPOINT [ "/entrypoint.sh", "terminator" ]
-ENTRYPOINT [ "/entrypoint.sh", "bash" ]
-# ENTRYPOINT [ "/entrypoint.sh", "byobu" ]
+# ENTRYPOINT [ "/entrypoint.sh", "bash" ]
+ENTRYPOINT [ "/entrypoint.sh", "byobu" ]
 # ENTRYPOINT [ "/entrypoint.sh" ]
