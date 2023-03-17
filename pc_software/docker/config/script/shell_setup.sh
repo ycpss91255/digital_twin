@@ -1,67 +1,55 @@
 #!/usr/bin/env bash
 
-#### function ####
+# ${1}: LIKE_SHELL
 
-# $1 = shell type
-ShellConfig_fn() {
-    SHELL=$(echo ${1} | tr [A-Z] [a-z])
-    if [ ${SHELL} == "zsh" ]; then
-        echo "alias ll='ls -alF'" >>/home/${USER}/.${SHELL}rc
-        echo "alias la='ls -A'" >>/home/${USER}/.${SHELL}rc
-        printf "alias l='ls -CF'\n" >>/home/${USER}/.${SHELL}rc
+# ${2}: ROS_TYPE
+# ${3}: ROS_MASTER_IP
+# ${4}: ROS_SLAVE_IP
 
-        # zsh theme - Powerlevel10k
-        echo "source ~/.powerlevel10k/powerlevel10k.zsh-theme" >>/home/${USER}/.${SHELL}rc
-        echo "source ~/.p10k.zsh" >>/home/${USER}/.${SHELL}rc
-        mv ./shell/zsh/powerlevel10k /home/${USER}/.powerlevel10k
-        mv ./shell/zsh/.p10k.zsh /home/${USER}/
-    elif [ ${SHELL} == "bash" ]; then
-        # display git branch
-        cat ./shell/bash/git_config.sh >>/home/${USER}/.${SHELL}rc
-    fi
+##### bash config #####
+# add Hello Docker to bash config
+echo "echo 'Hello Docker!'" >> /home/"${USER}"/.bashrc
 
-    echo "alias eb='vim ~/.${SHELL}rc'" >>/home/${USER}/.${SHELL}rc
-    echo "alias sb='source ~/.${SHELL}rc'" >>/home/${USER}/.${SHELL}rc
-    echo "alias wb='source ./devel/setup.${SHELL}'" >>/home/${USER}/.${SHELL}rc
-    chown ${USER}:${GROUP} /home/${USER}/.${SHELL}rc
+# add common bash aliase to bash config
+echo -e "alias eb='vim ~/.bashrc'\n\
+alias sb='source ~/.bashrc'\n\
+alias wb='source ~/work/devel/setup.bash'\n" >>/home/"${USER}"/.bashrc
 
-}
-# $1 = shell type $2 = ROS_TYPE $3 = ROS_MASTER_IP $4 = ROS_SLAVE_IP
-ROSConfig_fn() {
-    SHELL=$(echo ${1} | tr [A-Z] [a-z])
-    ROS_TYPE=$(echo ${2} | tr [a-z] [A-Z])
-    echo "source /opt/ros/$ROS_DISTRO/setup.${SHELL}" >>/home/$USER/.${SHELL}rc
-    echo "export ROS_MASTER_URI=http://${3}:11311" >>/home/$USER/.${SHELL}rc
+# add color and git branch to bash config
+echo -e "force_color_prompt=yes\n\
+color_prompt=yes\n\
+parse_git_branch() {\n\
+    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'\n\
+}\n\
+if [ \"\$color_prompt\" = yes ]; then\n\
+    PS1='\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]\$(parse_git_branch)\[\033[00m\]\$ '\n\
+else\n\
+    PS1='\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\$(parse_git_branch)\$ '\n\
+fi\n\
+unset color_prompt force_color_prompt" >>/home/${USER}/.bashrc
 
-    if [ ${ROS_TYPE} == "MASTER" ]; then
-        echo "export ROS_HOSTNAME=${3}" >>/home/${USER}/.${SHELL}rc
-    elif [ ${ROS_TYPE} == "SLAVE" ]; then
-        echo "export ROS_HOSTNAME=${4}" >>/home/${USER}/.${SHELL}rc
-    fi
-}
-# $1  = shell type
-BybouConfig_fn() {
-    echo "set -g default-shell /bin/${1}" >/home/${USER}/.byobu/.tmux.conf
-    echo "set -g default-command /bin/${1}" >>/home/${USER}/.byobu/.tmux.conf
+chown ${USER}:${GROUP} /home/${USER}/.bashrc
 
-}
+# add ROS env setting to bash config
+ROS_TYPE=$(echo ${2} | tr [a-z] [A-Z])
+echo "source /opt/ros/"${ROS_DISTRO}"/setup.bash" >>/home/"${USER}"/.bashrc
+echo "export ROS_MASTER_URI=http://${3}:11311" >>/home/"${USER}"/.bashrc
 
-####main####
+if [ ${ROS_TYPE} == "MASTER" ]; then
+    echo "export ROS_HOSTNAME=${3}" >>/home/${USER}/.bashrc
+elif [ ${ROS_TYPE} == "SLAVE" ]; then
+    echo "export ROS_HOSTNAME=${4}" >>/home/${USER}/.bashrc
+fi
 
-# bash
-ShellConfig_fn "bash"
-ROSConfig_fn "bash" ${ROS_TYPE} ${ROS_MASTER_IP} ${ROS_SLAVE_IP}
+##### byobu #####
+mkdir -p /home/${USER}/.byobu &&
+    chown -R ${USER}:${GROUP} /home/${USER}/.byobu
 
-# zsh
-ShellConfig_fn "zsh"
-ROSConfig_fn "zsh" ${ROS_TYPE} ${ROS_MASTER_IP} ${ROS_SLAVE_IP}
+echo -e "set -g default-shell /bin/${1}\n\
+set -g default-command /bin/${1}" >/home/${USER}/.byobu/.tmux.conf
+echo "unbind-key -n C-a" >>/home/${USER}/.byobu/keybindings.tmux
 
-# byobu
-mkdir -p /home/${USER}/.byobu
-BybouConfig_fn "zsh"
-chown -R ${USER}:${GROUP} /home/${USER}/.byobu
-
-# terminator
+##### terminator #####
 mkdir -p /home/${USER}/.config/
 cp -r ./shell/terminator /home/${USER}/.config/
 chown -R ${USER}:${GROUP} /home/${USER}/.config
