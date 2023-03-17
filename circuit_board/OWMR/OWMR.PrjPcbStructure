@@ -1,6 +1,0 @@
-Record=TopLevelDocument|FileName=Top.SchDoc|SheetNumber=1
-Record=SheetSymbol|SourceDocument=Top.SchDoc|Designator=Communication|SchDesignator=Communication|FileName=Communication.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=Communication.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=Top.SchDoc|Designator=MotorCtrl1|SchDesignator=Repeat(MotorCtrl,1,2)|FileName=MotorCtrl.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=MotorCtrl.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=Top.SchDoc|Designator=MotorCtrl2|SchDesignator=Repeat(MotorCtrl,1,2)|FileName=MotorCtrl.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=MotorCtrl.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=SheetSymbol|SourceDocument=Top.SchDoc|Designator=Power|SchDesignator=Power|FileName=Power.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=Power.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
-Record=NoMainPathDocument|SourceDocument=Top.SchDoc|FileName=Simulation.SchDoc|SheetNumber=5
