@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<launch>
-  <node pkg="motion" type="serial_tx" name="serial_tx" output="screen" respawn="false" respawn_delay="0" />
-
-  <node pkg="motion" type="serial_rx" name="serial_rx" output="screen" respawn="false" respawn_delay="0" />
-
-</launch>
