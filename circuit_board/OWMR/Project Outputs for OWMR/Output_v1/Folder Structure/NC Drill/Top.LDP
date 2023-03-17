@@ -1,4 +1,0 @@
-Layer Pairs Export File for PCB: E:\source_code\digital_twin-Hardware\OWMR\Top.PcbDoc
-LayersSetName=Top_Bot_Thru_Holes|DrillFile=top-roundholes.txt|DrillLayers=gtl,gbl
-LayersSetName=Top_Bot_Slot_Holes|DrillFile=top-slotholes.txt|DrillLayers=gtl,gbl
-LayersSetName=Top_Bot_Rect_Holes|DrillFile=top-rectholes.txt|DrillLayers=gtl,gbl
