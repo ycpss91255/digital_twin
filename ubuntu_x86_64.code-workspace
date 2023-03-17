@@ -52,4 +52,9 @@
             "UART"
         ],
     },
+    "extensions": {
+        "recommendations": [
+            "aaron-bond.better-comments"
+        ]
+    },
 }
