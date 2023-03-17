@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo "hello docker!!"
+# echo "hello docker!!"
 
 exec $@

@@ -3,8 +3,6 @@
 # Get dependent parameters
 source $(dirname $(readlink -f $0))/get_param.sh
 
-export DOCKER_BUILDKIT=1
-
 # Build docker images
 docker build -t ${user}/${IMAGE} \
     --build-arg USER=${user} \
