@@ -81,6 +81,7 @@ RUN bash ./script/shell_setup.sh \
 # * Copy entrypoint
 COPY --chmod=0777 ./"entrypoint_${HARDWARE}.sh" /entrypoint.sh
 
+# * Switch workspace to /home/${USER}
 WORKDIR /home/${USER}
 
 # * Switch user to ${USER}
@@ -90,7 +91,7 @@ RUN sudo mkdir work
 # * Make SSH available
 EXPOSE 22
 
-# * Switch to user's HOME folder
+# * Switch workspace to ~/work
 WORKDIR /home/${USER}/work
 
 # ENTRYPOINT [ "/entrypoint.sh", "terminator" ]
