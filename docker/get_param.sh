@@ -82,9 +82,9 @@ function check_nvidia() {
     if (lspci | grep -q VGA ||
         lspci | grep -iq NVIDIA ||
         lsmod | grep -q nvidia ||
-        nvidia-smi -L | grep -iq nvidia) &&
-        (command -v nvidia-smi >/dev/null 2>&1 ||
-            command -v nvidia-docker >/dev/null 2>&1 ||
+        nvidia-smi -L | grep -iq nvidia||
+        command -v nvidia-smi >/dev/null 2>&1) &&
+        (command -v nvidia-docker >/dev/null 2>&1 ||
             dpkg -l | grep -q nvidia-container-toolkit); then
         GPU_FLAG="--gpus all"
     else
@@ -114,7 +114,7 @@ function get_system_info() {
     # Try to retrieve the current user from Docker using the `docker info` command and store it in the `user` variable
     # If that fails, fall back to using the `id` command to get the current user
     user=$(docker info 2>/dev/null | grep Username | awk -F '[: ]' '{print $2}')
-    user=${${user}:-$(id -un)}
+    user=${user:-$(id -un)}
 
     # Retrieve the group of the current user using the `id` command and store it in the `group` variable
     group=$(id -gn)
@@ -126,6 +126,7 @@ function get_system_info() {
     gid=$(id -g)
 
     # Retrieve the hardware architecture of the current system using the `uname` command and store it in the `hardware` variable
+    # TODO: add comfirm dockerfile steps
     hardware=$(uname -m)
 
     # Print out the values of user, group, uid, gid and hardware
