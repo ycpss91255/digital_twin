@@ -6,18 +6,16 @@
 #   None
 #
 # Returns:
-#   None
+#   FILE_DIR: the directory of the current script
+#   IMAGE: the name of the Docker image to use
+#   CONTAINER: the name of the Docker container to create
+#   WS_PATH: the path to the workspace directory to use
 #
-# Outputs the following variables:
-#     FILE_DIR: the directory of the current script
-#     IMAGE: the name of the Docker image to use
-#     CONTAINER: the name of the Docker container to create
-#     WS_PATH: the path to the workspace directory to use
-#
-function set_docker_name() {
+function set_docker_image_container() {
     # Use workspace name as image and container name
     FILE_DIR=$(dirname $(readlink -f $0))
 
+    # TODO: first run WS_PATH set to _ws
     # Check if the `docker` folder has a suffix, such as `docker_xxx`
     # If yes, extract the suffix and store it in the `IMAGE` variable
     IMAGE=$(echo "${FILE_DIR}" | awk -F/ '{
@@ -46,6 +44,7 @@ function set_docker_name() {
                 }
             }')
 
+        # TODO: adjust function maybe reference IMAGE function
         WS_PATH=$(echo "${FILE_DIR}" | awk -v ws=${IMAGE}_ws -F/ 'BEGIN {found=0} {
                 for (i=1; i<=NF; i++) {
                     if ($i == ws){
@@ -82,9 +81,9 @@ function check_nvidia() {
     if (lspci | grep -q VGA ||
         lspci | grep -iq NVIDIA ||
         lsmod | grep -q nvidia ||
-        nvidia-smi -L | grep -iq nvidia||
-        command -v nvidia-smi >/dev/null 2>&1) &&
-        (command -v nvidia-docker >/dev/null 2>&1 ||
+        nvidia-smi -L | grep -iq nvidia) &&
+        (command -v nvidia-smi >/dev/null 2>&1 ||
+            command -v nvidia-docker >/dev/null 2>&1 ||
             dpkg -l | grep -q nvidia-container-toolkit); then
         GPU_FLAG="--gpus all"
     else
@@ -101,14 +100,11 @@ function check_nvidia() {
 #   None
 #
 # Returns:
-#   None
-#
-# Outputs the following variables:
-#     user: the user of the current Docker environment or the user of the current system
-#     group: the group of the current user
-#     uid: the UID of the current user
-#     gid: the GID of the current user
-#     hardware: the hardware architecture of the current system
+#   user: the user of the current Docker environment or the user of the current system
+#   group: the group of the current user
+#   uid: the UID of the current user
+#   gid: the GID of the current user
+#   hardware: the hardware architecture of the current system
 #
 function get_system_info() {
     # Try to retrieve the current user from Docker using the `docker info` command and store it in the `user` variable
@@ -126,11 +122,51 @@ function get_system_info() {
     gid=$(id -g)
 
     # Retrieve the hardware architecture of the current system using the `uname` command and store it in the `hardware` variable
-    # TODO: add comfirm dockerfile steps
     hardware=$(uname -m)
 
     # Print out the values of user, group, uid, gid and hardware
     printf "%s %s %d %d %s" "${user}" "${group}" "${uid}" "${gid}" "${hardware}"
+}
+
+# This function sets the Dockerfile name based on the directory path and hardware architecture
+#
+# Parameters:
+#   1. FILE_DIR: the directory path to search for the Dockerfile
+#   2. hardware: the hardware architecture
+#
+# Returns:
+#   The name of the Dockerfile to be used
+#
+# If no Dockerfile is found in the directory, an error message is displayed and the script exits.
+# If only one Dockerfile is found, it is returned.
+# If a Dockerfile with the architecture suffix is found, it is returned.
+# Otherwise, the default Dockerfile is returned.
+#
+function set_dockerfile() {
+    # TODO: entrypoint.sh wait done
+    file_list=($(ls ${1} | grep Dockerfile))
+
+    # Check if there is no Dockerfile file
+    if [[ ${#file_list[@]} == 0 ]]; then
+        echo "Not found Dockerfile file"
+        exit 1
+    # Check if  there is only only one Dockerfile file
+    elif [[ ${#file_list[@]} == 1 ]]; then
+        DOCKERFILE_NAME="${file_list[0]}"
+    # Check if there is a Dockerfile_xxx file
+    elif [[ -e "${1}/Dockerfile_${2}" ]]; then
+        DOCKERFILE_NAME="Dockerfile_${2}"
+    # Use the default Dockerfile file
+    elif [[ -e "${1}/Dockerfile" ]]; then
+        DOCKERFILE_NAME="Dockerfile"
+    # If none of the above conditions are true, print an error message and exit
+    else
+        echo "Unknown Dockerfile file name"
+        exit 1
+    fi
+
+    # Print out the values of DOCKERFILE_NAME
+    printf "%s" "${DOCKERFILE_NAME}"
 }
 
 # Analyze the user input parameters to make thecorresponding action
@@ -148,7 +184,7 @@ while true; do
         ;;
     -h | --help)
         # TODO: wait write help
-        echo "Usage: $0 [OPTION]"
+        echo "Usage: ${0} [OPTION]"
         echo " Options:"
         echo " -d, --debug    Enable debug mode"
         echo " -h, --help     Show this help massage and exit"
@@ -173,8 +209,8 @@ done
 
 read -r GPU_FLAG <<<"$(check_nvidia)"
 read -r user group uid gid hardware <<<"$(get_system_info)"
-read -r FILE_DIR IMAGE CONTAINER WS_PATH <<<"$(set_docker_name)"
-
+read -r FILE_DIR IMAGE CONTAINER WS_PATH <<<"$(set_docker_image_container)"
+read -r DOCKERFILE_NAME <<<"$(set_dockerfile "${FILE_DIR}" "${hardware}")"
 
 if [ "$DEBUG" = true ]; then
     echo -e "GPU_FLAG=${GPU_FLAG}\n"
@@ -187,6 +223,7 @@ if [ "$DEBUG" = true ]; then
 
     echo "FILE_DIR=${FILE_DIR}"
     echo "WS_PATH=${WS_PATH}"
+    echo "DOCKERFILE_NAME=${DOCKERFILE_NAME}"
     echo "IMAGE=${IMAGE}"
     echo -e "CONTAINER=${CONTAINER}\n"
 fi

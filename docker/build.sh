@@ -10,7 +10,7 @@ docker build -t ${user}/${IMAGE} \
     --build-arg GROUP=${group} \
     --build-arg GID=${gid} \
     --build-arg HARDWARE=${hardware} \
-    -f ${FILE_DIR}/"Dockerfile_${hardware}" ${FILE_DIR}
+    -f ${FILE_DIR}/${DOCKERFILE_NAME} ${FILE_DIR}
 
 #     --progress=plain \
 #     --no-cache \
