@@ -1,81 +1,102 @@
 #!/usr/bin/env bash
 
-# Function to set the Docker image, container, and workspace path based on the directory of the current script
+# Function to set the Docker image name based on the directory path
 #
 # Parameters:
-#   None
+#    ${1}: the directory path to search for the Dockerfile
 #
 # Returns:
-#   FILE_DIR: the directory of the current script
-#   IMAGE: the name of the Docker image to use
-#   CONTAINER: the name of the Docker container to create
-#   WS_PATH: the path to the workspace directory to use
+#    IMAGE: The name of the Docker image to be used
 #
-function set_docker_image_container() {
-    # Use workspace name as image and container name
-    FILE_DIR=$(dirname $(readlink -f $0))
-
-    # TODO: first run WS_PATH set to _ws
+# This function first checks if the `docker` folder has a suffix, such as `docker_xxx`, and extracts the suffix
+# and store it in the `IMAGE` variable. If the `docker` folder has no suffix, it checks if the workspace folder
+# has a prefix, such as `xxx_ws`, and extracts the prefix and store it in the `IMAGE` variable. If the workspace
+# folder has no prefix/suffix, the image name is set to `unknown`. The function then returns the image name.
+#
+# If no Dockerfile is found in the directory, the function will not work correctly and will return an incorrect
+# image name.
+#
+function set_image_name() {
     # Check if the `docker` folder has a suffix, such as `docker_xxx`
     # If yes, extract the suffix and store it in the `IMAGE` variable
-    IMAGE=$(echo "${FILE_DIR}" | awk -F/ '{
+    IMAGE=$(echo "${1}" | awk -F/ '{
             for (i=NF; i>0; i--) {
                 if ($i ~ /^docker_/) {
                     sub(/^docker_/,"",$i);
                     print $i;
-                    exit
+                    exit;
                 }
             }
         }')
 
-    # Extract the path of the workspace folder and store it in the `WS_PATH` variable
-    WS_PATH=$(echo "${FILE_DIR}" | rev | cut -d '/' -f 2- | rev)
-
     # If the `docker` folder has no suffix, check if the workspace folder has a prefix, such as `xxx_ws`
     # If yes, extract the prefix and store it in the `IMAGE` variable, and update the `WS_PATH` variable accordingly
     if [[ -z "${IMAGE}" ]]; then
-        IMAGE=$(echo "${FILE_DIR}" | awk -F/ '{
+        IMAGE=$(echo "${1}" | awk -F/ '{
                 for (i=NF; i>0; i--) {
                     if ($i ~ /_ws$/) {
                         sub(/_ws$/,"",$i);
                         print $i;
-                        exit
+                        exit;
                     }
                 }
-            }')
-
-        # TODO: adjust function maybe reference IMAGE function
-        WS_PATH=$(echo "${FILE_DIR}" | awk -v ws=${IMAGE}_ws -F/ 'BEGIN {found=0} {
-                for (i=1; i<=NF; i++) {
-                    if ($i == ws){
-                        found=1;
-                        break;
-                    }
-                    printf "%s/", $i
-                }
-                if (found) printf "%s/", ws
             }')
     fi
 
     # If the workspace folder has no prefix/suffix, set the image name to `unknown`
     # and the workspace path to the current directory
     IMAGE=${IMAGE:-unknown}
-    WS_PATH=${WS_PATH:-${FILE_DIR}}
 
-    # Set the container name to be the same as the image name
-    CONTAINER=${IMAGE}
+    # Print out the values of IMAGE
+    printf "%s" "${IMAGE}"
+}
 
-    # Print out the values of FILE_DIR, IMAGE, CONTAINER, and WS_PATH
-    printf "%s %s %s %s" "${FILE_DIR}" "${IMAGE}" "${CONTAINER}" "${WS_PATH}"
+# Function to extract the path of the workspace folder
+# and store it in the `WS_PATH` variable
+#
+# Parameters:
+#    ${1}: the directory path to extract the workspace folder from
+#    ${2}: the prefix of the workspace folder to search for
+#
+# Returns:
+#    WS_PATH: the path to the workspace folder
+#
+# If a workspace folder with the given prefix is found,
+# its path is stored in the `WS_PATH` variable.
+# Otherwise, the `WS_PATH` variable is set to the parent directory
+# of the given directory path.
+#
+function get_workdir() {
+    # Extract the path of the workspace folder and store it in the `WS_PATH` variable
+    WS_PATH=$(echo "${1}" | awk -v ws="${2}_ws" -v found=0 -F/ '{
+            for (i=1; i<=NF; i++) {
+                if ($i ~ /_ws$/){
+                    found=1;
+                    break;
+                }
+                printf "%s/", $i
+            }
+            if (found) printf "%s/", ws
+        }')
+
+    # If no workspace folder is found based on the provided prefix, extract the path to the parent directory
+    WS_PATH=${WS_PATH:-$(echo "${1}" | rev | cut -d '/' -f 2- | rev)}
+
+    # TODO: wait check
+    # If the parent directory cannot be found (i.e. the input is already the root directory), set the `WS_PATH` variable to the input path
+    WS_PATH=${WS_PATH:-${1}}
+
+    # Print out the values of WS_PATH
+    printf "%s" "${WS_PATH}"
 }
 
 # Function to check if GraphicsCard is NVIDIA and nvidia-docker2 or nvidia-container-runtime is installed
 #
 # Parameters:
-#   None
+#    None
 #
 # Returns:
-#   '--gpus all' if NVIDIA graphics card and nvidia-docker2 or nvidia-container-runtime is installed, empty string otherwise
+#    GPU_FLAG: if NVIDIA graphics card and nvidia-docker2 or nvidia-container-runtime is installed, empty string otherwise
 #
 function check_nvidia() {
     if (lspci | grep -q VGA ||
@@ -97,14 +118,14 @@ function check_nvidia() {
 # Function to get system parameter, including user, group, UID, GID, hardware architecture
 #
 # Parameters:
-#   None
+#    None
 #
 # Returns:
-#   user: the user of the current Docker environment or the user of the current system
-#   group: the group of the current user
-#   uid: the UID of the current user
-#   gid: the GID of the current user
-#   hardware: the hardware architecture of the current system
+#    user: the user of the current Docker environment or the user of the current system
+#    group: the group of the current user
+#    uid: the UID of the current user
+#    gid: the GID of the current user
+#    hardware: the hardware architecture of the current system
 #
 function get_system_info() {
     # Try to retrieve the current user from Docker using the `docker info` command and store it in the `user` variable
@@ -131,11 +152,11 @@ function get_system_info() {
 # This function sets the Dockerfile name based on the directory path and hardware architecture
 #
 # Parameters:
-#   1. FILE_DIR: the directory path to search for the Dockerfile
-#   2. hardware: the hardware architecture
+#    ${1}: the directory path to search for the Dockerfile
+#    ${2}: the hardware architecture
 #
 # Returns:
-#   The name of the Dockerfile to be used
+#    DOCKERFILE_NAME: The name of the Dockerfile to be used
 #
 # If no Dockerfile is found in the directory, an error message is displayed and the script exits.
 # If only one Dockerfile is found, it is returned.
@@ -207,10 +228,18 @@ done
 # Start sharing xhost
 # xhost +local:root
 
+FILE_DIR=$(dirname $(readlink -f $0))
+
 read -r GPU_FLAG <<<"$(check_nvidia)"
 read -r user group uid gid hardware <<<"$(get_system_info)"
-read -r FILE_DIR IMAGE CONTAINER WS_PATH <<<"$(set_docker_image_container)"
+read -r IMAGE <<<"$(set_image_name "${FILE_DIR}")"
+read -r WS_PATH <<<"$(get_workdir "${FILE_DIR}" "${IMAGE}")"
+# read -r WS_PATH <<<"$(get_workdir "${FILE_DIR}" "${IMAGE}")"
 read -r DOCKERFILE_NAME <<<"$(set_dockerfile "${FILE_DIR}" "${hardware}")"
+
+# get_workdir "${FILE_DIR}" "${IMAGE}"
+# Set the container name to be the same as the image name
+CONTAINER=${IMAGE}
 
 if [ "$DEBUG" = true ]; then
     echo -e "GPU_FLAG=${GPU_FLAG}\n"
