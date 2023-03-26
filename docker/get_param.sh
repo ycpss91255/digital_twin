@@ -136,7 +136,7 @@ function check_nvidia() {
 function get_system_info() {
     # Try to retrieve the current user from Docker using the `docker info` command and store it in the `user` variable
     # If that fails, fall back to using the `id` command to get the current user
-    user=$(docker info 2>/dev/null | grep Username | awk -F '[: ]' '{print $2}')
+    user=$(docker info 2>/dev/null | grep Username | awk -F '[: ]' '{print $3}')
     user=${user:-$(id -un)}
 
     # Retrieve the group of the current user using the `id` command and store it in the `group` variable
