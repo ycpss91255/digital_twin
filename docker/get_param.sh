@@ -56,7 +56,6 @@ function set_image_name() {
 #
 # Parameters:
 #    ${1}: the directory path to extract the workspace folder from
-#    ${2}: the prefix of the workspace folder to search for
 #
 # Returns:
 #    WS_PATH: the path to the workspace folder
@@ -67,24 +66,31 @@ function set_image_name() {
 # of the given directory path.
 #
 function get_workdir() {
-    # Extract the path of the workspace folder and store it in the `WS_PATH` variable
-    WS_PATH=$(echo "${1}" | awk -v ws="${2}_ws" -v found=0 -F/ '{
-            for (i=1; i<=NF; i++) {
-                if ($i ~ /_ws$/){
-                    found=1;
-                    break;
+    WS_NAME=$(echo "${1}" | awk -F/ '{
+            for (i=NF; i>0; i--) {
+                if ($i ~ /_ws$/) {
+                    print $i;
+                    exit;
                 }
-                printf "%s/", $i
             }
-            if (found) printf "%s/", ws
         }')
 
-    # If no workspace folder is found based on the provided prefix, extract the path to the parent directory
-    WS_PATH=${WS_PATH:-$(echo "${1}" | rev | cut -d '/' -f 2- | rev)}
-
-    # TODO: wait check
-    # If the parent directory cannot be found (i.e. the input is already the root directory), set the `WS_PATH` variable to the input path
-    WS_PATH=${WS_PATH:-${1}}
+    if [[ -n "${WS_NAME}" ]]; then
+        # Extract the path of the workspace folder and store it in the `WS_PATH` variable
+        WS_PATH=$(echo "${1}" | awk -v ws="${WS_NAME}" -v found=0 -F/ '{
+                for (i=1; i<=NF; i++) {
+                    if ($i ~ /_ws$/){
+                        found=1;
+                        break;
+                    }
+                    printf "%s/", $i
+                }
+                if (found) printf "%s", ws
+            }')
+    else
+        # If no workspace folder is found based on the provided prefix, extract the path to the parent directory
+        WS_PATH=$(echo "${1}" | rev | cut -d '/' -f 2- | rev)
+    fi
 
     # Print out the values of WS_PATH
     printf "%s" "${WS_PATH}"
@@ -207,7 +213,7 @@ while true; do
         # TODO: wait write help
         echo "Usage: ${0} [OPTION]"
         echo " Options:"
-        echo " -d, --debug    Enable debug mode"
+        echo "     --debug    Enable debug mode"
         echo " -h, --help     Show this help massage and exit"
         exit 0
         ;;
@@ -234,10 +240,8 @@ read -r GPU_FLAG <<<"$(check_nvidia)"
 read -r user group uid gid hardware <<<"$(get_system_info)"
 read -r IMAGE <<<"$(set_image_name "${FILE_DIR}")"
 read -r WS_PATH <<<"$(get_workdir "${FILE_DIR}" "${IMAGE}")"
-# read -r WS_PATH <<<"$(get_workdir "${FILE_DIR}" "${IMAGE}")"
 read -r DOCKERFILE_NAME <<<"$(set_dockerfile "${FILE_DIR}" "${hardware}")"
 
-# get_workdir "${FILE_DIR}" "${IMAGE}"
 # Set the container name to be the same as the image name
 CONTAINER=${IMAGE}
 
