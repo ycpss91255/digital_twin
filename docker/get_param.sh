@@ -194,7 +194,7 @@ function set_dockerfile() {
     # Print out the values of DOCKERFILE_NAME
     printf "%s" "${DOCKERFILE_NAME}"
 }
-
+################################ MAIN ##########################################
 # Analyze the user input parameters to make thecorresponding action
 ARGS=$(getopt \
     -o h \
@@ -209,7 +209,6 @@ while true; do
         shift
         ;;
     -h | --help)
-        # TODO: wait write help
         echo "Usage: ${0} [OPTION]"
         echo " Options:"
         echo "     --debug    Enable debug mode"
