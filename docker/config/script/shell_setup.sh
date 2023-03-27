@@ -2,10 +2,6 @@
 
 # ${1}: LIKE_SHELL
 
-# ${2}: ROS_TYPE
-# ${3}: ROS_MASTER_IP
-# ${4}: ROS_SLAVE_IP
-
 ##### bash config #####
 # add Hello Docker to bash config
 echo "echo 'Hello Docker!'" >> /home/"${USER}"/.bashrc
@@ -29,17 +25,6 @@ fi\n\
 unset color_prompt force_color_prompt" >>/home/${USER}/.bashrc
 
 chown ${USER}:${GROUP} /home/${USER}/.bashrc
-
-# add ROS env setting to bash config
-ROS_TYPE=$(echo ${2} | tr [a-z] [A-Z])
-echo "source /opt/ros/"${ROS_DISTRO}"/setup.bash" >>/home/"${USER}"/.bashrc
-echo "export ROS_MASTER_URI=http://${3}:11311" >>/home/"${USER}"/.bashrc
-
-if [ ${ROS_TYPE} == "MASTER" ]; then
-    echo "export ROS_HOSTNAME=${3}" >>/home/${USER}/.bashrc
-elif [ ${ROS_TYPE} == "SLAVE" ]; then
-    echo "export ROS_HOSTNAME=${4}" >>/home/${USER}/.bashrc
-fi
 
 ##### byobu #####
 mkdir -p /home/${USER}/.byobu &&
