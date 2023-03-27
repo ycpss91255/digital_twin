@@ -7,8 +7,8 @@ ARG GROUP=initial
 ARG UID=1000
 ARG GID=${UID}
 ARG SHELL=/bin/bash
-# TODO: wait check
 ARG HARDWARE=x86_64
+ARG ENTRYPOINT_FILE=entrypint.sh
 
 # * Env vars for the nvidia-container-runtime.
 ENV NVIDIA_VISIBLE_DEVICES all
@@ -80,8 +80,7 @@ RUN bash ./script/shell_setup.sh \
     && rm -rf /home/${USER}/.tmp
 
 # * Copy entrypoint
-# TODO: wait check
-COPY --chmod=0777 ./"entrypoint_${HARDWARE}.sh" /entrypoint.sh
+COPY --chmod=0775 ./${ENTRYPOINT_FILE} /entrypoint.sh
 
 # * Switch workspace to /home/${USER}
 WORKDIR /home/${USER}
@@ -97,6 +96,6 @@ EXPOSE 22
 WORKDIR /home/${USER}/work
 
 # ENTRYPOINT [ "/entrypoint.sh", "terminator" ]
-# ENTRYPOINT [ "/entrypoint.sh", "bash" ]
-ENTRYPOINT [ "/entrypoint.sh", "byobu" ]
+ENTRYPOINT [ "/entrypoint.sh", "bash" ]
+# ENTRYPOINT [ "/entrypoint.sh", "byobu" ]
 # ENTRYPOINT [ "/entrypoint.sh" ]

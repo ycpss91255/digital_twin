@@ -136,10 +136,18 @@ function check_nvidia() {
 function get_system_info() {
     # Try to retrieve the current user from Docker using the `docker info` command and store it in the `user` variable
     # If that fails, fall back to using the `id` command to get the current user
-    user=$(docker info 2>/dev/null | grep Username | cut -d ' ' -f 3 || id -un)
+    docker_info_name=$(docker info 2>/dev/null | grep Username | cut -d ' ' -f 3)
+    if [[ -z "${docker_info_name}" ]]; then
+        user=$(id -un)
+        group=$(id -gn)
+    else
+        user=${docker_info_name}
+        group=${docker_info_name}
+    fi
+    # user=$(docker info 2>/dev/null | grep Username | cut -d ' ' -f 3 || id -un)
 
     # Retrieve the group of the current user using the `id` command and store it in the `group` variable
-    group=$(docker info 2>/dev/null | grep Username | cut -d ' ' -f 3 || id -gn)
+    # group=$(docker info 2>/dev/null | grep Username | cut -d ' ' -f 3 || id -gn)
 
     # Retrieve the UID of the current user using the `id` command and store it in the `uid` variable
     uid=$(id -u)
@@ -169,7 +177,6 @@ function get_system_info() {
 # Otherwise, the default Dockerfile is returned.
 #
 function set_dockerfile() {
-    # TODO: entrypoint.sh wait done
     file_list=($(ls ${1} | grep Dockerfile))
 
     # Check if there is no Dockerfile file
@@ -193,6 +200,47 @@ function set_dockerfile() {
 
     # Print out the values of DOCKERFILE_NAME
     printf "%s" "${DOCKERFILE_NAME}"
+}
+
+
+# This function sets the entrypoint.sh name based on the directory path and hardware architecture
+#
+# Parameters:
+#    ${1}: the directory path to search for the entrypoint.sh
+#    ${2}: the hardware architecture
+#
+# Returns:
+#    ENTRYPOINT_FILE: The name of the entrypoint.sh to be used
+#
+# If no entrypoint.sh is found in the directory, an error message is displayed and the script exits.
+# If only one entrypoint.sh is found, it is returned.
+# If a entrypoint.sh with the architecture suffix is found, it is returned.
+# Otherwise, the default entrypoint.sh is returned.
+#
+function set_entrypoint() {
+    file_list=($(ls ${1} | grep entrypoint))
+
+    # Check if there is no entrypoint file
+    if [[ ${#file_list[@]} == 0 ]]; then
+        echo "Not found entrypoint file"
+        exit 1
+    # Check if  there is only only one entrypoint file
+    elif [[ ${#file_list[@]} == 1 ]]; then
+        ENTRYPOINT_FILE="${file_list[0]}"
+    # Check if there is a entrypoint_xxx file
+    elif [[ -e "${1}/entrypoint_${2}.sh" ]]; then
+        ENTRYPOINT_FILE="entrypoint_${2}.sh"
+    # Use the default entrypoint file
+    elif [[ -e "${1}/entrypoint.sh" ]]; then
+        ENTRYPOINT_FILE="entrypoint.sh"
+    # If none of the above conditions are true, print an error message and exit
+    else
+        echo "Unknown entrypoint file name"
+        exit 1
+    fi
+
+    # Print out the values of ENTRYPOINT_FILE
+    printf "%s" "${ENTRYPOINT_FILE}"
 }
 ################################ MAIN ##########################################
 # Analyze the user input parameters to make thecorresponding action
@@ -239,6 +287,7 @@ read -r user group uid gid hardware <<<"$(get_system_info)"
 read -r IMAGE <<<"$(set_image_name "${FILE_DIR}")"
 read -r WS_PATH <<<"$(get_workdir "${FILE_DIR}" "${IMAGE}")"
 read -r DOCKERFILE_NAME <<<"$(set_dockerfile "${FILE_DIR}" "${hardware}")"
+read -r ENTRYPOINT_FILE <<<"$(set_entrypoint "${FILE_DIR}" "${hardware}")"
 
 # Set the container name to be the same as the image name
 CONTAINER=${IMAGE}
@@ -254,7 +303,9 @@ if [ "$DEBUG" = true ]; then
 
     echo "FILE_DIR=${FILE_DIR}"
     echo "WS_PATH=${WS_PATH}"
-    echo "DOCKERFILE_NAME=${DOCKERFILE_NAME}"
     echo "IMAGE=${IMAGE}"
     echo -e "CONTAINER=${CONTAINER}\n"
+
+    echo "DOCKERFILE_NAME=${DOCKERFILE_NAME}"
+    echo -e "ENTRYPOINT_FILE=${ENTRYPOINT_FILE}"
 fi
