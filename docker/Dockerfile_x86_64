@@ -67,10 +67,10 @@ COPY config .
 # * ROS Arguments
 # ? Is the computer master or slave in ROS
 ARG ROS_TYPE=MASTER
-# ARG ROS_MASTER_IP=localhost
-# ARG ROS_SLAVE_IP=localhost
-ARG ROS_MASTER_IP=192.168.1.110
-ARG ROS_SLAVE_IP=192.168.1.123
+ARG ROS_MASTER_IP=localhost
+ARG ROS_SLAVE_IP=localhost
+# ARG ROS_MASTER_IP=192.168.1.110
+# ARG ROS_SLAVE_IP=192.168.1.123
 
 RUN bash ./script/shell_setup.sh "bash" \
     && ./script/ros_setup.sh \
