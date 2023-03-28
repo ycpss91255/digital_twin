@@ -1,0 +1,123 @@
+FROM nvidia/cuda:12.0.1-cudnn8-runtime-ubuntu22.04
+
+############################## SYSTEM PARAMETERS ##############################
+# * Arguments
+ARG USER=initial
+ARG GROUP=initial
+ARG UID=1000
+ARG GID=${UID}
+ARG SHELL=/bin/bash
+ARG HARDWARE=x86_64
+ARG ENTRYPOINT_FILE=entrypint.sh
+
+# * Env vars for the nvidia-container-runtime.
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES all
+# ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute
+
+# * Setup users and groups
+RUN groupadd --gid ${GID} ${GROUP} \
+    && useradd --gid ${GID} --uid ${UID} -ms ${SHELL} ${USER} \
+    && mkdir -p /etc/sudoers.d \
+    && echo "${USER}:x:${UID}:${UID}:${USER},,,:$HOME:${shell}" >> /etc/passwd \
+    && echo "${USER}:x:${UID}:" >> /etc/group \
+    && echo "${USER} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${USER}" \
+    && chmod 0440 "/etc/sudoers.d/${USER}"
+
+# * Replace apt urls
+# ? Change to tku
+RUN sed -i 's@archive.ubuntu.com@ftp.tku.edu.tw@g' /etc/apt/sources.list
+# ? Change to Taiwan
+# RUN sed -i 's@archive.ubuntu.com@tw.archive.ubuntu.com@g' /etc/apt/sources.list
+
+ENV TZ=Asia/Taipei
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+############################### INSTALL #######################################
+# * Install packages
+RUN apt update \
+    && apt install -y --no-install-recommends \
+        sudo \
+        git \
+        htop \
+        wget \
+        curl \
+        xz-utils \
+        psmisc \
+        # * Shell
+        byobu \
+        terminator \
+        # * base tools
+        python3-pip \
+        python3-dev \
+        python3-setuptools \
+        # * coppeliasim dep
+        libgl1-mesa-glx \
+        libqt5gui5 \
+        # * ros2
+        software-properties-common \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# gnome-terminal libcanberra-gtk-module libcanberra-gtk3-module \
+# dbus-x11 libglvnd0 libgl1 libglx0 libegl1 libxext6 libx11-6 \
+
+# * Install coppeliasim
+RUN wget -q -O coppeliasim.tar.xz \
+        https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_4_0_rev0_Ubuntu22_04.tar.xz \
+    && mkdir -p /home/${USER}/coppeliasim_ws/src \
+    && tar Jvxf coppeliasim.tar.xz -C /home/${USER}/coppeliasim_ws/src --strip-components=1 \
+    && rm coppeliasim.tar.xz
+
+# * Install ROS2
+RUN add-apt-repository universe -y \
+    && curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" \
+    | tee /etc/apt/sources.list.d/ros2.list > /dev/null \
+    && apt update \
+    && apt install -y --no-install-recommends \
+        ros-humble-desktop \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
+############################# USER SETUP ######################################
+# * Switch workspace to /home/${USER}/.tmp
+WORKDIR /home/${USER}/.tmp
+
+# * Copy custom configuration
+COPY config .
+
+# * ROS Arguments
+ARG ROS_DISTRO=humble
+# LOCALHOST or GLOBAL
+# ARG ROS_TYPE=GLOBAL
+ARG ROS_TYPE=LOCALHOST
+# ? https://docs.ros.org/en/humble/Concepts/About-Domain-ID.html
+# short 0~101
+ARG ROS_ID=0
+
+RUN bash ./script/shell_setup.sh "bash" \
+    && ./script/ros2_setup.sh "${ROS_DISTRO}" "${ROS_TYPE}" "${ROS_ID}" \
+    && bash ./script/pip_setup.sh \
+    && rm -rf /home/${USER}/.tmp
+
+# * Copy entrypoint
+COPY --chmod=0775 ./${ENTRYPOINT_FILE} /entrypoint.sh
+
+# * Switch workspace to /home/${USER}
+WORKDIR /home/${USER}
+
+# * Switch user to ${USER}
+USER ${USER}
+RUN sudo mkdir work
+
+# * Make SSH available
+EXPOSE 22
+
+# * Switch workspace to ~/work
+WORKDIR /home/${USER}/work
+
+# ENTRYPOINT [ "/entrypoint.sh", "terminator" ]
+# ENTRYPOINT [ "/entrypoint.sh", "byobu" ]
+ENTRYPOINT [ "/entrypoint.sh", "bash" ]
+# ENTRYPOINT [ "/entrypoint.sh" ]
