@@ -8,8 +8,7 @@ echo "echo 'Hello Docker!'" >> /home/"${USER}"/.bashrc
 
 # add common bash aliase to bash config
 echo -e "alias eb='vim ~/.bashrc'\n\
-alias sb='source ~/.bashrc && echo \"You source user config!\"'\n\
-alias wb='source ~/work/devel/setup.bash && echo \"You source workspace config!\"'\n" >>/home/"${USER}"/.bashrc
+alias sb='source ~/.bashrc && echo \"You source user config!\"'\n" >>/home/"${USER}"/.bashrc
 
 # add color and git branch to bash config
 echo -e "force_color_prompt=yes\n\

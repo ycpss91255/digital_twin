@@ -14,3 +14,4 @@ if [ ${ROS_TYPE} == "MASTER" ]; then
 elif [ ${ROS_TYPE} == "SLAVE" ]; then
     echo "export ROS_HOSTNAME=${3}" >> /home/${USER}/.bashrc
 fi
+echo "alias wb='source ~/work/devel/setup.bash && echo \"You source workspace config!\"'" >> /home/${USER}/.bashrc
