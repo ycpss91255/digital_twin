@@ -97,7 +97,7 @@ ARG ROS_TYPE=LOCALHOST
 ARG ROS_ID=0
 
 RUN bash ./script/shell_setup.sh "bash" \
-    && ./script/ros2_setup.sh "${ROS_DISTRO}" "${ROS_TYPE}" "${ROS_ID}" \
+    && bash ./script/ros2_setup.sh "${ROS_DISTRO}" "${ROS_TYPE}" "${ROS_ID}" \
     && bash ./script/pip_setup.sh \
     && rm -rf /home/${USER}/.tmp
 
