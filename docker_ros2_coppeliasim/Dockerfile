@@ -69,7 +69,7 @@ RUN wget -q -O coppeliasim.tar.xz \
     && tar Jvxf coppeliasim.tar.xz -C /home/${USER}/coppeliasim_ws/src --strip-components=1 \
     && rm coppeliasim.tar.xz
 
-# * Install ROS2
+# * Install ROS2 (root)
 RUN add-apt-repository universe -y \
     && curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" \
@@ -77,8 +77,13 @@ RUN add-apt-repository universe -y \
     && apt update \
     && apt install -y --no-install-recommends \
         ros-humble-desktop \
+        python3-rosdep \
+        python3-colcon-common-extensions \
     && apt clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rosdep init \
+    && sudo -u ${USER} bash -c "rosdep update"
+
 
 ############################# USER SETUP ######################################
 # * Switch workspace to /home/${USER}/.tmp
@@ -118,6 +123,6 @@ EXPOSE 22
 WORKDIR /home/${USER}/work
 
 # ENTRYPOINT [ "/entrypoint.sh", "terminator" ]
-# ENTRYPOINT [ "/entrypoint.sh", "byobu" ]
-ENTRYPOINT [ "/entrypoint.sh", "bash" ]
+ENTRYPOINT [ "/entrypoint.sh", "byobu" ]
+# ENTRYPOINT [ "/entrypoint.sh", "bash" ]
 # ENTRYPOINT [ "/entrypoint.sh" ]
