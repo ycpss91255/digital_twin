@@ -1,3 +1,44 @@
-# Set the default behavior, in case people don't have core.autocrlf set.
+# The line endings of the file are automatically converted. If it is a text
+# file, when it is added to git, the line ending will be automatically converted
+# to LF. It won't convert if already in git.
+* text=auto
 
-* text eol=lf
+# text file
+## C++
+*.cpp eol=lf
+*.hpp eol=lf
+
+## C
+*.c   eol=lf
+*.h   eol=lf
+
+## Python
+*.py  eol=lf
+
+## Shell script
+*.sh  eol=lf
+*.bash  eol=lf
+
+## Javascript
+*.js eol=lf
+
+## Web
+*.html eol=lf
+*.css eol=lf
+*.php eol=lf
+
+## Configuration file
+*.ini eol=lf
+*.conf eol=lf
+*.yaml eol=lf
+*.json eol=lf
+
+## Label file
+*.yml eol=lf
+*.xml eol=lf
+
+## Logs
+*.log eol=lf
+
+# not text file
+* -text
