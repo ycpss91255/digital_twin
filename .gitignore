@@ -54,8 +54,9 @@ qtcreator-*
 # .vscode
 
 # Circuit boardk
-circuit_board/*/History/
-circuit_board/*/Project Logs for */
+*/History/
+*/Project Logs for */
+*/__Previews
 
 # De0 nano
 de0_nano\DE0_NANO_MotorDrive/*.done
