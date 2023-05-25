@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=NetR4_2 Pin=S2-1
+Removed Pin From Net: NetName=NetR3_2 Pin=S2-3
+Added Pin To Net: NetName=NetR3_2 Pin=S2-1
+Added Pin To Net: NetName=NetR4_2 Pin=S2-3
+Added Member To Class: ClassName=Power Member=Component D2 LED(G)
+Added Member To Class: ClassName=Power Member=Component R2 1k
+Added Member To Class: ClassName=Power Member=Component R3 10k
+Added Member To Class: ClassName=Power Member=Component R4 10k
+Added Member To Class: ClassName=Power Member=Component R5 150k
+Added Member To Class: ClassName=Power Member=Component R7 1k
+Added Member To Class: ClassName=Power Member=Component R8 1k

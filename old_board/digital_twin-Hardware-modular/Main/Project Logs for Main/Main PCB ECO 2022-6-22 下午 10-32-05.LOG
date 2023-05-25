@@ -1,0 +1,47 @@
+Removed Pin From Net: NetName=NetR3_2 Pin=S2-1
+Removed Pin From Net: NetName=NetR2_1 Pin=S2-2
+Removed Pin From Net: NetName=NetR4_2 Pin=S2-3
+Removed Pin From Net: NetName=NetR4_1 Pin=U1-1
+Removed Pin From Net: NetName=NetR4_2 Pin=U1-2
+Removed Pin From Net: NetName=NetR3_1 Pin=U1-3
+Removed Pin From Net: NetName=NetR3_2 Pin=U1-4
+Removed Pin From Net: NetName=D_5V Pin=U1-5
+Removed Pin From Net: NetName=D_5V Pin=U1-6
+Removed Pin From Net: NetName=D_5V Pin=U1-7
+Removed Pin From Net: NetName=D_5V Pin=U1-8
+Removed Pin From Net: NetName=RPi_Power Pin=U2-1
+Removed Pin From Net: NetName=NetR8_1 Pin=U2-2
+Removed Pin From Net: NetName=FPGA_Power Pin=U2-3
+Removed Pin From Net: NetName=NetR7_1 Pin=U2-4
+Removed Member From Class: ClassName=Power Member=S2
+Removed Member From Class: ClassName=Power Member=U1
+Added Component: Designator=S?(ST-0-102-C03-N003-RS)
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.apem.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "05-Dec-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Dec-2003"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Schematic revised, PCB Footprint replaced."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Switch; 4 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "TL36WW15050"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "24-Mar-1999"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=U?(HSM3214)
+Added Component: Designator=U?(HSM3214)
+Added Pin To Net: NetName=NetR4_2 Pin=S?-1
+Added Pin To Net: NetName=NetR2_1 Pin=S?-2
+Added Pin To Net: NetName=NetR3_2 Pin=S?-3
+Added Pin To Net: NetName=FPGA_Power Pin=U2-1
+Added Pin To Net: NetName=NetR7_1 Pin=U2-2
+Added Pin To Net: NetName=RPi_Power Pin=U2-3
+Added Pin To Net: NetName=NetR8_1 Pin=U2-4
+Added Pin To Net: NetName=NetR3_1 Pin=U?-1
+Added Pin To Net: NetName=NetR3_2 Pin=U?-2
+Added Pin To Net: NetName=NetR4_1 Pin=U?-3
+Added Pin To Net: NetName=NetR4_2 Pin=U?-4
+Added Pin To Net: NetName=D_5V Pin=U?-5
+Added Pin To Net: NetName=D_5V Pin=U?-6
+Added Pin To Net: NetName=D_5V Pin=U?-7
+Added Pin To Net: NetName=D_5V Pin=U?-8
+Added Member To Class: ClassName=Power Member=Component S? Digital EMS
+Added Member To Class: ClassName=Power Member=Component U? HSM3214
+Added Member To Class: ClassName=Power Member=Component U? HSM3214

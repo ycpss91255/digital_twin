@@ -1,0 +1,36 @@
+Removed Pin From Net: NetName=MA2 Pin=C26-1
+Removed Pin From Net: NetName=A_GND Pin=C26-2
+Removed Pin From Net: NetName=MB2 Pin=C28-1
+Removed Pin From Net: NetName=A_GND Pin=C28-2
+Removed Pin From Net: NetName=MC2 Pin=C34-1
+Removed Pin From Net: NetName=A_GND Pin=C34-2
+Removed Pin From Net: NetName=MD2 Pin=C36-1
+Removed Pin From Net: NetName=A_GND Pin=C36-2
+Change Component Footprint: Designator=C23 Old Footprint=1210B104K500NT New Footprint=CL10B104KA8NNNC
+Change Component Footprint: Designator=C24 Old Footprint=1210B104K500NT New Footprint=CL10B104KA8NNNC
+Change Component Footprint: Designator=C31 Old Footprint=1210B104K500NT New Footprint=CL10B104KA8NNNC
+Change Component Footprint: Designator=C32 Old Footprint=1210B104K500NT New Footprint=CL10B104KA8NNNC
+Change Component Footprint: Designator=C25 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
+Change Component Footprint: Designator=C26 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
+Change Component Footprint: Designator=C27 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
+Change Component Footprint: Designator=C28 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
+Change Component Footprint: Designator=C33 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
+Change Component Footprint: Designator=C34 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
+Change Component Footprint: Designator=C35 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
+Change Component Footprint: Designator=C36 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
+Change Component Designator: OldDesignator=R5 NewDesignator=R3
+Change Component Designator: OldDesignator=R6 NewDesignator=R4
+Change Component Designator: OldDesignator=R7 NewDesignator=R5
+Change Component Designator: OldDesignator=R8 NewDesignator=R6
+Added Pin To Net: NetName=A_GND Pin=C26-1
+Added Pin To Net: NetName=MA2 Pin=C26-2
+Added Pin To Net: NetName=A_GND Pin=C28-1
+Added Pin To Net: NetName=MB2 Pin=C28-2
+Added Pin To Net: NetName=A_GND Pin=C34-1
+Added Pin To Net: NetName=MC2 Pin=C34-2
+Added Pin To Net: NetName=A_GND Pin=C36-1
+Added Pin To Net: NetName=MD2 Pin=C36-2
+Change Net Name : Old Net Name=NetR5_2 New Net Name=NetR3_2
+Change Net Name : Old Net Name=NetR7_1 New Net Name=NetR5_1
+Change Net Name : Old Net Name=NetR7_2 New Net Name=NetR5_2
+Change Net Name : Old Net Name=NetR8_1 New Net Name=NetR6_1

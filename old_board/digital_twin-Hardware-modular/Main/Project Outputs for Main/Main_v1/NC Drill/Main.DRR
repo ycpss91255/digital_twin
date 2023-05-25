@@ -1,0 +1,52 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Main.PcbDoc   2022/6/28  ¤U¤È 08:01:30
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : Main-RoundHoles.TXT
+ASCII SlotHoles File : Main-SlotHoles.TXT
+ASCII RectHoles File : Main-RectHoles.TXT
+EIA File   : Main.DRL
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      0.3mm (12mil)                                             Round             1004      PTH        5627.72mm (221.56inch)
+T2      0.6mm (24mil)                                             Round             55        PTH        893.56mm (35.18inch)
+T3      0.6mm (24mil)                                             Rectangle         2         PTH        29.24mm (1.15inch)
+T4      0.9mm (35mil)                                             Round             76        PTH        356.79mm (14.05inch)
+T5      1mm (39mil)                                               Round             2         PTH        5.50mm (0.22inch)
+T6      1mm (39mil)             +/-0mm (0mil)                     Slot              1         PTH        2.50mm (0.10inch)
+T7      1mm (39mil)                                               Slot              2         PTH        14.13mm (0.56inch)
+T8      1.016mm (40mil)                                           Round             43        PTH        436.87mm (17.20inch)
+T9      1.02mm (40mil)                                            Round             50        PTH        394.79mm (15.54inch)
+T10     1.06mm (42mil)                                            Round             16        PTH        127.00mm (5.00inch)
+T11     1.1mm (43mil)                                             Round             5         PTH        15.24mm (0.60inch)
+T12     1.1mm (43mil)                                             Rectangle         4         PTH        37.38mm (1.47inch)
+T13     1.8mm (71mil)                                             Round             4         PTH        61.46mm (2.42inch)
+T14     1.83mm (72mil)                                            Round             8         PTH        65.56mm (2.58inch)
+T15     2.8mm (110mil)                                            Round             2         PTH        7.20mm (0.28inch)
+T16     3mm (118mil)                                              Round             8         PTH        297.85mm (11.73inch)
+T17     3.2mm (126mil)                                            Round             16        PTH        855.71mm (33.69inch)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              1298
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              1298
+CounterHole : Counterholes Top
+ASCII RoundHoles File : Main-RoundHoles.TX4
+ASCII SlotHoles File : Main-SlotHoles.TX4
+ASCII RectHoles File : Main-RectHoles.TX4
+EIA File   : Main-CounterHole.DR4
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel              Depth          Angle
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+T18     3.254mm (128mil)                                          Round             2         PTH        58.00mm (2.28inch)      1.627mm (64.055mil)  90¢X
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              2
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+CounterHole Totals                                                                  2
+
+Two holes at same point : 1
+-----------------------
+2210,1583
+
+Total Processing Time (hh:mm:ss) : 00:00:01

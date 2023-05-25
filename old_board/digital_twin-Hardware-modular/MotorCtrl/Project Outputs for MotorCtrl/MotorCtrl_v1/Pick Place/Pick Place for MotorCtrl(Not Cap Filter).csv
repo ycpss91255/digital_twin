@@ -1,0 +1,32 @@
+Altium Designer Pick and Place Locations,,,,,,,
+D:\source_code\digital_twin-hardware\MotorCtrl\Project Outputs for MotorCtrl\MotorCtrl_v1\Pick Place\Pick Place for MotorCtrl(Not Cap Filter).csv,,,,,,,
+,,,,,,,
+========================================================================================================================,,,,,,,
+File Design Information:,,,,,,,
+,,,,,,,
+Date:       28/06/22,,,,,,,
+Time:       20:25,,,,,,,
+Revision:   bbbd0f808a6212e50b36289ca31e4c13722e796c,,,,,,,
+Variant:    Not Cap Filter,,,,,,,
+Units used: mm,,,,,,,
+,,,,,,,
+Designator,Comment,Layer,Footprint,Center-X(mm),Center-Y(mm),Rotation,Description
+DU2,MBRD1035CTLT4G,TopLayer,MBRD1035CTLT4G,-7.225,-0.36,90,35V 470mV@5A 5A TO-252-2(DPAK) Schottky Barrier Diodes (SBD) ROHS
+DU1,MBRD1035CTLT4G,TopLayer,MBRD1035CTLT4G,-7.225,10.31,90,35V 470mV@5A 5A TO-252-2(DPAK) Schottky Barrier Diodes (SBD) ROHS
+U1,OPA4277UA/2K5,TopLayer,OPA4277UA/2K5,-25.0175,6.4525,0,"790£gA 1MHz 4 4V~36V,¡Ó2V~18V 0.8 V/us General Purpose SOIC-14  Precision OpAmps ROHS"
+C1,220uF,TopLayer,VZT221M1ETR-0607,-24.1945,17.7045,0,"-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+C2,0.1uF,TopLayer,CL10B104KA8NNNC,-24.9675,12.8475,180,25V 100nF X7R ¡Ó10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS
+C3,220uF,TopLayer,VZT221M1ETR-0607,-7.75,18.1,180,"-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+C4,0.1uF,TopLayer,1210B104K500NT,0,19.025,270,50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS
+P1,Header 7,BottomLayer,KH-2.54PH180-1X7P-L11.5,-32.2775,10.1225,270,"3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 7 3mm 2.54mm Black 1x7P Plugin,P=2.54mm  Pin Headers ROHS"
+P2,Header 12,BottomLayer,KH-2.54PH180-1X12P-L11.5_(PAD_LINKED),3.2825,6.3125,270,"3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 12 3mm 2.54mm Black 1x12P Plugin,P=2.54mm  Pin Headers ROHS"
+P3,Header 4,BottomLayer,KH-2.54PH180-1X4P-L11.5,-28.4675,-7.6575,0,"3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 4 3mm 2.54mm Black 1x4P Plugin,P=2.54mm  Pin Headers ROHS"
+R1,12k,TopLayer,PTFR0603B12K0N9,-17.6405,6.1745,0,Resistor
+R2,12k,TopLayer,PTFR0603B12K0N9,-17.6405,7.6745,0,Resistor
+R3,12k,TopLayer,PTFR0603B12K0N9,-17.6405,3.2745,0,Resistor
+R4,12k,TopLayer,PTFR0603B12K0N9,-17.6405,10.5745,0,Resistor
+R5,3.3k,TopLayer,0603WAF3301T5E,-17.6905,4.7245,0,Resistor
+R6,3.3k,TopLayer,0603WAF3301T5E,-17.6905,9.1245,0,Resistor
+R7,3.3k,TopLayer,0603WAF3301T5E,-17.6905,1.8245,180,Resistor
+R8,3.3k,TopLayer,0603WAF3301T5E,-17.6905,12.0245,180,Resistor
+MD1,MD02,TopLayer,MD02,-14.4975,6.3125,0,MD02 17A 2 cheel motor driver

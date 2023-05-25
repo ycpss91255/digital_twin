@@ -1,0 +1,30 @@
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Change Net Color : Old Net Color=RGB(23, 39, 33) New Net Color=Default
+Added Member To Class: ClassName=battery_power Member=Wire A_GND
+Added Member To Class: ClassName=digital_power_in Member=Wire A_GND
+Change Rule Scope 1 : Old Scope=InNet('NetC1_1') New Scope=InNet('A_GND')

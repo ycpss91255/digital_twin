@@ -1,0 +1,55 @@
+Removed Pin From Net: NetName=CSA_Origin_1 Pin=R10_1-1
+Removed Pin From Net: NetName=CSA_Origin_2 Pin=R10_2-1
+Removed Pin From Net: NetName=D_GND Pin=R11_1-2
+Removed Pin From Net: NetName=D_GND Pin=R11_2-2
+Removed Pin From Net: NetName=CSB_Origin_1 Pin=R12_1-1
+Removed Pin From Net: NetName=CSB_Origin_2 Pin=R12_2-1
+Removed Pin From Net: NetName=D_GND Pin=R13_1-2
+Removed Pin From Net: NetName=D_GND Pin=R13_2-2
+Removed Pin From Net: NetName=CSA_FeedBack1 Pin=R14_1-2
+Removed Pin From Net: NetName=CSA_FeedBack2 Pin=R14_2-2
+Removed Pin From Net: NetName=D_GND Pin=R15_1-1
+Removed Pin From Net: NetName=D_GND Pin=R15_2-1
+Removed Pin From Net: NetName=CSB_FeedBack1 Pin=R16_1-2
+Removed Pin From Net: NetName=CSB_FeedBack2 Pin=R16_2-2
+Removed Pin From Net: NetName=D_GND Pin=R17_1-1
+Removed Pin From Net: NetName=D_GND Pin=R17_2-1
+Removed Member From Class: ClassName=MotorCtrl1 Member=R10_1
+Removed Member From Class: ClassName=MotorCtrl2 Member=R10_2
+Removed Member From Class: ClassName=MotorCtrl1 Member=R11_1
+Removed Member From Class: ClassName=MotorCtrl2 Member=R11_2
+Removed Member From Class: ClassName=MotorCtrl1 Member=R12_1
+Removed Member From Class: ClassName=MotorCtrl2 Member=R12_2
+Removed Member From Class: ClassName=MotorCtrl1 Member=R13_1
+Removed Member From Class: ClassName=MotorCtrl2 Member=R13_2
+Removed Member From Class: ClassName=MotorCtrl1 Member=R14_1
+Removed Member From Class: ClassName=MotorCtrl2 Member=R14_2
+Removed Member From Class: ClassName=MotorCtrl1 Member=R15_1
+Removed Member From Class: ClassName=MotorCtrl2 Member=R15_2
+Removed Member From Class: ClassName=MotorCtrl1 Member=R16_1
+Removed Member From Class: ClassName=MotorCtrl2 Member=R16_2
+Removed Member From Class: ClassName=MotorCtrl1 Member=R17_1
+Removed Member From Class: ClassName=MotorCtrl2 Member=R17_2
+Change Component Designator: OldDesignator=R4_1 NewDesignator=R6_1
+Change Component Designator: OldDesignator=R4_2 NewDesignator=R6_2
+Change Component Designator: OldDesignator=R5_1 NewDesignator=R7_1
+Change Component Designator: OldDesignator=R5_2 NewDesignator=R7_2
+Change Component Designator: OldDesignator=R6_1 NewDesignator=R4_1
+Change Component Designator: OldDesignator=R6_2 NewDesignator=R4_2
+Change Component Designator: OldDesignator=R7_1 NewDesignator=R5_1
+Change Component Designator: OldDesignator=R7_2 NewDesignator=R5_2
+Change Component Designator: OldDesignator=R18 NewDesignator=R10
+Add Pin To Net: Unknown Pin: Pin J1-1A
+Add Pin To Net: Unknown Pin: Pin J1-1B
+Add Pin To Net: Unknown Pin: Pin J1-2A
+Add Pin To Net: Unknown Pin: Pin J1-2B
+Add Pin To Net: Unknown Pin: Pin J1-3A
+Add Pin To Net: Unknown Pin: Pin J1-3B
+Added Pin To Net: NetName=CSB_FeedBack1 Pin=U1_1-9
+Added Pin To Net: NetName=CSB_Origin_1 Pin=U1_1-10
+Added Pin To Net: NetName=CSA_Origin_1 Pin=U1_1-12
+Added Pin To Net: NetName=CSA_FeedBack1 Pin=U1_1-13
+Added Pin To Net: NetName=CSB_FeedBack2 Pin=U1_2-9
+Added Pin To Net: NetName=CSB_Origin_2 Pin=U1_2-10
+Added Pin To Net: NetName=CSA_Origin_2 Pin=U1_2-12
+Added Pin To Net: NetName=CSA_FeedBack2 Pin=U1_2-13

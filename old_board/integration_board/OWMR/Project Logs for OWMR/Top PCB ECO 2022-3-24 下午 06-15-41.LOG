@@ -1,0 +1,4 @@
+Change Class Name : Old Net Name=Battery New Net Name=Battery_Power
+Added Class: Name=Digital_Power
+Added Rule: Name=Schematic Width Constraint_1
+Change Rule Scope 1 : Old Scope=InNetClass('Battery') New Scope=InNetClass('Battery_Power')

@@ -1,0 +1,9 @@
+Change Component Designator: OldDesignator=C? NewDesignator=C11
+Change Component Designator: OldDesignator=D? NewDesignator=D4
+Change Component Designator: OldDesignator=R? NewDesignator=R10
+Change Net Name : Old Net Name=NetD?_1 New Net Name=NetD4_1
+Change Rule Scope 1 : Old Scope=InNet('NetD4_1') New Scope=InNet('De10-Power')
+Change Rule Scope 1 : Old Scope=InNet('MB2_1') New Scope=InNet('MB2_2')
+Change Rule Scope 1 : Old Scope=InNet('A_GND') New Scope=InNet('NetC3_1')
+Change Rule Scope 1 : Old Scope=InNet('MA1_2') New Scope=InNet('MB2_2')
+Change Rule Scope 1 : Old Scope=InNet('MB2_2') New Scope=InNet('MB1_1')

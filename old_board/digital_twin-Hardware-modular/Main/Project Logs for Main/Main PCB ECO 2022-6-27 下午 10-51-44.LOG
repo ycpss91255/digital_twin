@@ -1,0 +1,18 @@
+Removed Member From Class: ClassName=IOandCommunication Member=MH1
+Removed Member From Class: ClassName=IOandCommunication Member=MH2
+Removed Member From Class: ClassName=IOandCommunication Member=MH3
+Removed Member From Class: ClassName=IOandCommunication Member=MH4
+Removed Member From Class: ClassName=IOandCommunication Member=MH5
+Removed Member From Class: ClassName=IOandCommunication Member=MH6
+Removed Member From Class: ClassName=IOandCommunication Member=MH7
+Removed Member From Class: ClassName=IOandCommunication Member=MH8
+Removed Member From Class: ClassName=IOandCommunication Member=MH9
+Added Member To Class: ClassName=Power Member=Component MH1 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH2 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH3 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH4 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH5 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH6 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH7 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH8 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH9 M3 Hole

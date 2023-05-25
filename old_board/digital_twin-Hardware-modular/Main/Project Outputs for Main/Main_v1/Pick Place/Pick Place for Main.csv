@@ -1,0 +1,123 @@
+Altium Designer Pick and Place Locations
+D:\source_code\digital_twin-hardware\Main\Project Outputs for Main\Main_v1\Pick Place\Pick Place for Main.csv
+
+========================================================================================================================
+File Design Information:
+
+Date:       28/06/22
+Time:       20:01
+Revision:   bbbd0f808a6212e50b36289ca31e4c13722e796c
+Variant:    No variations
+Units used: mm
+
+"Designator","Comment","Layer","Footprint","Center-X(mm)","Center-Y(mm)","Rotation","Description"
+"MH3","M3 Hole","TopLayer","M3_HOLE","118.3639","40.2073","0","M3 Hole"
+"S2","Digital EMS","TopLayer","ST-0-102-C03-N003-RS","12.1750","-3.2650","270","Cylindrical button handle 125V -25¢J~85¢J SPDT PCPin 40000 3A Plugin  Toggle Switches ROHS"
+"C1","220uF","TopLayer","VZT221M1ETR-0607","-0.6030","-69.4340","90","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C2","220uF","TopLayer","VZT221M1ETR-0607","73.8500","-43.0500","0","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C3","0.1uF","TopLayer","1210B104K500NT","5.7650","-73.4000","270","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C4","0.1uF","TopLayer","1210B104K500NT","72.5500","-48.8920","180","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C5","10F","TopLayer","SUPPYCAP-DIP_L33.0_W16.5","25.1350","7.2375","90","CAPACITOR 10F -10% +30% 5.5V T/H"
+"C6","10F","TopLayer","SUPPYCAP-DIP_L33.0_W16.5","42.4350","7.3375","90","CAPACITOR 10F -10% +30% 5.5V T/H"
+"C7","220uF","TopLayer","VZT221M1ETR-0607","47.6000","-21.3750","90","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C8","220uF","TopLayer","VZT221M1ETR-0607","47.6000","-42.8750","90","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C9","0.1uF","TopLayer","1210B104K500NT","46.2750","-28.5000","0","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C10","0.1uF","TopLayer","1210B104K500NT","46.2750","-50.0000","0","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C11","220uF","TopLayer","VZT221M1ETR-0607","74.6400","-58.5750","180","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C12","0.1uF","TopLayer","CL10B104KA8NNNC","82.9350","-57.8250","270","25V 100nF X7R ¡Ó10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C13","220uF","TopLayer","VZT221M1ETR-0607","139.3350","17.8750","90","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C14","220uF","TopLayer","VZT221M1ETR-0607","139.7350","-40.8500","270","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C15","0.1uF","TopLayer","1210B104K500NT","145.5350","16.6000","270","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C16","0.1uF","TopLayer","1210B104K500NT","134.2350","-39.2500","90","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C17","0.1uF","TopLayer","1210B104K500NT","159.7150","-25.4850","270","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C18","0.1uF","TopLayer","1210B104K500NT","172.1600","-35.4250","180","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C19","220uF","TopLayer","VZT221M1ETR-0607","165.3350","-24.2000","90","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C20","220uF","TopLayer","VZT221M1ETR-0607","171.2871","-42.4230","270","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C21","220uF","TopLayer","VZT221M1ETR-0607","156.9240","-9.6650","0","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C22","220uF","TopLayer","VZT221M1ETR-0607","139.3400","-9.6650","0","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C23","0.1uF","TopLayer","CL10B104KA8NNNC","155.0490","-14.1100","180","25V 100nF X7R ¡Ó10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C24","0.1uF","TopLayer","CL10B104KA8NNNC","137.4650","-14.1100","180","25V 100nF X7R ¡Ó10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C25","0.1uF","TopLayer","1210B104K500NT","148.0000","-23.0000","180","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C26","0.1uF","TopLayer","1210B104K500NT","143.0300","-23.0000","180","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C27","0.1uF","TopLayer","1210B104K500NT","137.8400","-23.0000","180","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C28","0.1uF","TopLayer","1210B104K500NT","132.8700","-23.0000","180","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C29","220uF","TopLayer","VZT221M1ETR-0607","149.0621","-35.6280","90","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C30","220uF","TopLayer","VZT221M1ETR-0607","149.0621","-53.5930","90","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS"
+"C31","0.1uF","TopLayer","CL10B104KA8NNNC","153.5071","-37.5030","270","25V 100nF X7R ¡Ó10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C32","0.1uF","TopLayer","CL10B104KA8NNNC","153.5071","-55.4680","270","25V 100nF X7R ¡Ó10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C33","0.1uF","TopLayer","1210B104K500NT","162.3971","-41.7579","270","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C34","0.1uF","TopLayer","1210B104K500NT","162.3971","-46.7280","270","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C35","0.1uF","TopLayer","1210B104K500NT","162.3971","-51.9179","270","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"C36","0.1uF","TopLayer","1210B104K500NT","162.3971","-56.8880","270","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"
+"D1","LED(G)","TopLayer","BL-HG036D-AV-TRB","36.3321","-124.1630","315","Green-yellow 0603 Light Emitting Diodes (LED) RoHS"
+"De10","De10-Nano","TopLayer","DE10-NANO","87.2489","-10.0128","90","De10-Nano"
+"De0","DE0-Nano","TopLayer","DE0-NANO","77.2159","6.7425","90","DE0-Nano"
+"F1","5A Fuse Holder","TopLayer","SMD_FUSES_HOLDER","10.8270","-80.3140","180","01550900M (Fuse Holder)
+SMD,9.73x5.03mm Fuse Holders ROHS
+-----
+0451005.MRL (Fuse)
+FastBlow 50A SMD Fuse 5A 5.566 12.5m£[ SMD  Fuses ROHS"
+"F2","10A Fuse Holder","TopLayer","SMD_FUSES_HOLDER","10.8270","-87.8070","180","01550900M (Fuse Holder)
+SMD,9.73x5.03mm Fuse Holders ROHS
+-----
+0451010.MRL (Fuse)
+FastBlow 50A SMD Fuse 10A 26.46 5.6m£[ SMD  Fuses ROHS"
+"F3","4A Fuse Holder","TopLayer","SMD_FUSES_HOLDER","-5.1350","-47.0750","270","01550900M (Fuse Holder)
+SMD,9.73x5.03mm Fuse Holders ROHS
+-----
+0451004.MRL (Fuse)
+FastBlow 50A SMD Fuse 4A 3.152 16m£[ SMD  Fuses ROHS"
+"F4","4A Fuse Holder","TopLayer","SMD_FUSES_HOLDER","0.9150","-47.0750","270","01550900M (Fuse Holder)
+SMD,9.73x5.03mm Fuse Holders ROHS
+-----
+0451004.MRL (Fuse)
+FastBlow 50A SMD Fuse 4A 3.152 16m£[ SMD  Fuses ROHS"
+"J1","DC-005-T25","TopLayer","DC-005-T25","31.6650","-116.3250","0","Shrouded DC Power Receptacle -10¢J~+60¢J 2.5mm 6.3mm 3A 30V Plugin AC/DC Power Connectors ROHS"
+"P1","Header 2","TopLayer","XT60PW-F","31.7672","-101.0386","90","XT60PW-F 500V 45A Through Hole Power Connectors ROHS"
+"P2","Header 2","TopLayer","B2B-XH-A(LF)(SN)","33.6050","-85.3940","180","1x2P XH 1 2.5mm 2 Brass Plugin,P=2.5mm  Wire To Board / Wire To Wire Connector ROHS"
+"P3","Header 2","TopLayer","B2B-XH-A(LF)(SN)","46.3750","-55.5000","180","1x2P XH 1 2.5mm 2 Brass Plugin,P=2.5mm  Wire To Board / Wire To Wire Connector ROHS"
+"P4","Header 2","TopLayer","B2B-XH-A(LF)(SN)","46.3750","-34.0000","180","1x2P XH 1 2.5mm 2 Brass Plugin,P=2.5mm  Wire To Board / Wire To Wire Connector ROHS"
+"P5","Header 3","TopLayer","B3B-XH-A(LF)(SN)","130.7350","21.5250","270","1x3P XH 1 2.5mm 3 Brass Plugin,P=2.5mm  Wire To Board / Wire To Wire Connector ROHS"
+"P6","MPU9250","TopLayer","MPU9250","94.3650","-62.3250","90","9DOF, 3 Axis Gyro, Acceleration, Magmetic"
+"P7","Header 7","TopLayer","KH-2.54FH-1X7P-H8.5","144.2450","8.7500","180","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 7 3mm 2.54mm Black 1x7P Plugin,P=2.54mm  Pin Headers ROHS"
+"P8","Header 4","TopLayer","KH-2.54FH-1X4P-H8.5","126.4650","4.9400","90","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 4 3mm 2.54mm Black 1x4P Plugin,P=2.54mm  Pin Headers ROHS"
+"P9","Header 7","TopLayer","KH-2.54FH-1X7P-H8.5","130.6471","-45.5130","270","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 7 3mm 2.54mm Black 1x7P Plugin,P=2.54mm  Pin Headers ROHS"
+"P10","Header 4","TopLayer","KH-2.54FH-1X4P-H8.5","134.4571","-63.2930","180","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 4 3mm 2.54mm Black 1x4P Plugin,P=2.54mm  Pin Headers ROHS"
+"P11","Header 12","TopLayer","KH-2.54FH-1X12P-H8.5_(PAD_LINKED)","140.4350","-26.8100","180","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 12 3mm 2.54mm Black 1x12P Plugin,P=2.54mm  Pin Headers ROHS"
+"P12","Header 12","TopLayer","KH-2.54FH-1X12P-H8.5_(PAD_LINKED)","166.2071","-49.3229","270","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 12 3mm 2.54mm Black 1x12P Plugin,P=2.54mm  Pin Headers ROHS"
+"P13","Header 6","BottomLayer","B6B-XH-A(LF)(SN)","150.6240","-16.6500","180","1x6P XH 1 2.5mm 6 Brass Plugin,P=2.5mm  Wire To Board / Wire To Wire Connector ROHS"
+"P14","Header 6","BottomLayer","B6B-XH-A(LF)(SN)","133.0400","-16.6500","180","1x6P XH 1 2.5mm 6 Brass Plugin,P=2.5mm  Wire To Board / Wire To Wire Connector ROHS"
+"P15","Header 6","BottomLayer","B6B-XH-A(LF)(SN)","156.0471","-41.9280","270","1x6P XH 1 2.5mm 6 Brass Plugin,P=2.5mm  Wire To Board / Wire To Wire Connector ROHS"
+"P16","Header 6","BottomLayer","B6B-XH-A(LF)(SN)","156.0471","-59.8930","270","1x6P XH 1 2.5mm 6 Brass Plugin,P=2.5mm  Wire To Board / Wire To Wire Connector ROHS"
+"R1","150k","TopLayer","RS-03K1503FT","37.4282","-123.1377","315","100mW 50V ¡Ó1% ¡Ó100ppm/¢J -55¢J~+155¢J 150k£[ 0603  Chip Resistor - Surface Mount ROHS"
+"R2","1k","TopLayer","RS-03K1503FT","5.9350","4.5000","90","100mW 50V ¡Ó1% ¡Ó100ppm/¢J -55¢J~+155¢J 150k£[ 0603  Chip Resistor - Surface Mount ROHS"
+"R3","150k","TopLayer","RS-03K1503FT","35.0453","35.2053","315","100mW 50V ¡Ó1% ¡Ó100ppm/¢J -55¢J~+155¢J 150k£[ 0603  Chip Resistor - Surface Mount ROHS"
+"R4","12","TopLayer","MOF3WS-12£[¡Ó5%T","43.0150","28.9250","270","Metal Oxide Resistors 12£[ 3W ¡Ó700ppm/¢J ¡Ó5% Axial Leaded  Through Hole Resistors ROHS"
+"S1","Motor EMS","TopLayer","JNQ032","23.9080","-83.9970","270","JNQ032 (Header)
+30A Short Connection Quick connect terminal Plugin  Cold-pressed?Terminals ROHS
+-----
+RT-S02-113-R42BR (Switch)
+Through Hole Rocker Switches ROHS"
+"S3","FPGA_Re","TopLayer","SKHMQLE010","-2.3350","-27.8250","180","6.2mm 3.1mm Round Button 50mA Brick nogging 6.5mm SPST 12V SMD  Tactile Switches ROHS"
+"S4","RPi_Re","TopLayer","SKHMQKE010","-2.3350","-34.8250","180","6.2mm 3.1mm Round Button 50mA Brick nogging 6.5mm SPST 12V SMD  Tactile Switches ROHS"
+"T1","XL4015 Module","TopLayer","XL4015_VOLTAGE_REGULATOR_MODULE","22.8550","-47.4250","90","XL4015E1 (Module)
+Step-down type TO-263-5  DC-DC Converters ROHS
+-----
+A2541HWV-2x2P (Header)
+2.54mm 2.54mm Gold Brass Straight 2x2P 4 2 Plugin,P=2.54mm  Female Headers ROHS"
+"T2","XL4016 Module","TopLayer","XH-M401_VOLTAGE_REGULATOR_MODULE","25.7250","-40.1750","90","NO Step-down type 1 Step-down 1.25V~36V 8V~40V 8A 180kHz TO-220-5  DC-DC Converters ROHS"
+"T3","3P3 Voltage regulator","TopLayer","SMALL_VOLTAGE_REGULATOR_MODULE","72.4950","-52.5750","180","3A Non-isolated Voltage Regulator"
+"U2","HSM3214","TopLayer","HSM3214","-3.3700","-18.8000","90","30V 10A 12m£[@10V,8A 1.5W 2.5V@250£gA 2 N-Channel SOP-8  MOSFETs ROHS"
+"R5","1k","TopLayer","RS-03K1503FT","-6.9000","-18.7750","90","100mW 50V ¡Ó1% ¡Ó100ppm/¢J -55¢J~+155¢J 150k£[ 0603  Chip Resistor - Surface Mount ROHS"
+"R6","1k","TopLayer","RS-03K1503FT","0.1000","-18.7750","90","100mW 50V ¡Ó1% ¡Ó100ppm/¢J -55¢J~+155¢J 150k£[ 0603  Chip Resistor - Surface Mount ROHS"
+"U1","HSM3214","TopLayer","HSM3214","2.5000","-1.6000","90","30V 10A 12m£[@10V,8A 1.5W 2.5V@250£gA 2 N-Channel SOP-8  MOSFETs ROHS"
+"D2","LED(G)","TopLayer","BL-HG036D-AV-TRB","33.8079","33.9679","315","Green-yellow 0603 Light Emitting Diodes (LED) RoHS"
+"RPi1","Rasbperry PI 4","TopLayer","RASPBERRY_PI_4","74.5150","-95.5750","180",""
+"MH2","M3 Hole","TopLayer","M3_HOLE","48.4547","40.2073","0","M3 Hole"
+"MH5","M3 Hole","TopLayer","M3_HOLE","167.7973","-79.1353","0","M3 Hole"
+"MH8","M3 Hole","TopLayer","M3_HOLE","-0.9787","-79.1353","0","M3 Hole"
+"MH1","M3 Hole","TopLayer","M3_HOLE","-0.9787","-9.2261","0","M3 Hole"
+"MH4","M3 Hole","TopLayer","M3_HOLE","167.7973","-9.2261","0","M3 Hole"
+"MH6","M3 Hole","TopLayer","M3_HOLE","118.3639","-128.5686","0","M3 Hole"
+"MH7","M3 Hole","TopLayer","M3_HOLE","48.4547","-128.5686","0","M3 Hole"
+"MH9","M3 Hole","TopLayer","M3_HOLE","83.4092","-44.1806","0","M3 Hole"

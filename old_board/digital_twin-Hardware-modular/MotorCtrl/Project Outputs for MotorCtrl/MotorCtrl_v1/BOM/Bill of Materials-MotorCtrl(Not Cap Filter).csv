@@ -1,0 +1,13 @@
+Designator,Comment,Description,Footprint,Quantity
+
+"C1, C3","220uF","-45¢J~+105¢J 2000hrs@105¢J 220uF 7.7mm 25V 6.3mm ¡Ó20% SMD,6.3x7.7mm  Aluminum Electrolytic Capacitors - SMD ROHS","VZT221M1ETR-0607","2"
+"C2","0.1uF","25V 100nF X7R ¡Ó10% 0603  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS","CL10B104KA8NNNC","1"
+"C4","0.1uF","50V 100nF X7R ¡Ó10% 1210  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS","1210B104K500NT","1"
+"DU1, DU2","MBRD1035CTLT4G","35V 470mV@5A 5A TO-252-2(DPAK) Schottky Barrier Diodes (SBD) ROHS","MBRD1035CTLT4G","2"
+"MD1","MD02","MD02 17A 2 cheel motor driver","MD02","1"
+"P1","Header 7","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 7 3mm 2.54mm Black 1x7P Plugin,P=2.54mm  Pin Headers ROHS","KH-2.54PH180-1X7P-L11.5","1"
+"P2","Header 12","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 12 3mm 2.54mm Black 1x12P Plugin,P=2.54mm  Pin Headers ROHS","KH-2.54PH180-1X12P-L11.5 (Pad Linked)","1"
+"P3","Header 4","3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 4 3mm 2.54mm Black 1x4P Plugin,P=2.54mm  Pin Headers ROHS","KH-2.54PH180-1X4P-L11.5","1"
+"R1, R2, R3, R4","12k","Resistor","PTFR0603B12K0N9","4"
+"R5, R6, R7, R8","3.3k","Resistor","0603WAF3301T5E","4"
+"U1","OPA4277UA/2K5","790£gA 1MHz 4 4V~36V,¡Ó2V~18V 0.8 V/us General Purpose SOIC-14  Precision OpAmps ROHS","OPA4277UA/2K5","1"

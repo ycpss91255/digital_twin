@@ -1,0 +1,48 @@
+Change Component Designator: OldDesignator=C6 NewDesignator=C7
+Change Component Designator: OldDesignator=C7 NewDesignator=C6
+Change Component Designator: OldDesignator=C8 NewDesignator=C9
+Change Component Designator: OldDesignator=C9 NewDesignator=C8
+Added Component: Designator=C12(5.5V 10F suppy cap)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Polarized Capacitor (Radial); 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "RB7.6-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=D5(0805 SMD DIode)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "08-Jul-2005"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Mech Layer 1 removed."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "LED; 2 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "LED-0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=R11(0603 SMD Res)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Axial Device, Thru-Hole; 2 Leads; 0.3 in Pin Spacing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "AXIAL-0.3"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "150K"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=5V Pin=C12-1
+Added Pin To Net: NetName=D_GND Pin=C12-2
+Added Pin To Net: NetName=D_GND Pin=D5-2
+Added Pin To Net: NetName=5V Pin=R11-2
+Added Pin To Net: NetName=NetD5_1 Pin=D5-1
+Added Pin To Net: NetName=NetD5_1 Pin=R11-1
+Added Net: Name=NetD5_1
+Added Member To Class: ClassName=Communication Member=Component C12 5.5v 10f
+Added Member To Class: ClassName=Communication Member=Component D5 0805 LED(G)
+Added Member To Class: ClassName=Communication Member=Component R11 0603
+Added Member To Class: ClassName=De10_power Member=Wire 5V
+Added Member To Class: ClassName=De10_power Member=Wire NetD4_1
+Added Member To Class: ClassName=De10_power Member=Wire NetD5_1
+Added Rule: Name=Schematic Clearance Constraint_2
+Added Rule: Name=Schematic Width Constraint_7
+Added Rule: Name=Schematic Width Constraint_8
+Change Rule Scope 1 : Old Scope=InNet('NetT1_4') New Scope=InNet('D_GND')
+Change Rule Scope 1 : Old Scope=InNet('MB2_1') New Scope=InNet('MB2_2')
+Change Rule Scope 1 : Old Scope=InNet('MB2_2') New Scope=InNet('MA2_2')
+Change Rule Scope 1 : Old Scope=InNet('A_GND') New Scope=InNet('NetC3_1')
+Change Rule Scope 1 : Old Scope=InNet('MB1_2') New Scope=InNet('MB1_1')
+Change Rule Scope 1 : Old Scope=InNet('MB1_1') New Scope=InNet('MA1_2')

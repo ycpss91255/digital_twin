@@ -1,0 +1,86 @@
+Added Member To Class: ClassName=Power Member=Component C1 220uF
+Added Member To Class: ClassName=Power Member=Component C2 220uF
+Added Member To Class: ClassName=Power Member=Component C3 0.1uF
+Added Member To Class: ClassName=Power Member=Component C4 0.1uF
+Added Member To Class: ClassName=Power Member=Component C5 10F
+Added Member To Class: ClassName=Power Member=Component C6 10F
+Added Member To Class: ClassName=Power Member=Component C7 220uF
+Added Member To Class: ClassName=Power Member=Component C8 220uF
+Added Member To Class: ClassName=Power Member=Component C9 0.1uF
+Added Member To Class: ClassName=Power Member=Component C10 0.1uF
+Added Member To Class: ClassName=IOandCommunication Member=Component C11 220uF
+Added Member To Class: ClassName=IOandCommunication Member=Component C12 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C13 220uF
+Added Member To Class: ClassName=Motor Member=Component C14 220uF
+Added Member To Class: ClassName=Motor Member=Component C15 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C16 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C17 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C18 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C19 220uF
+Added Member To Class: ClassName=Motor Member=Component C20 220uF
+Added Member To Class: ClassName=Motor Member=Component C21 220uF
+Added Member To Class: ClassName=Motor Member=Component C22 220uF
+Added Member To Class: ClassName=Motor Member=Component C23 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C24 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C25 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C26 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C27 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C28 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C29 220uF
+Added Member To Class: ClassName=Motor Member=Component C30 220uF
+Added Member To Class: ClassName=Motor Member=Component C31 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C32 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C33 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C34 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C35 0.1uF
+Added Member To Class: ClassName=Motor Member=Component C36 0.1uF
+Added Member To Class: ClassName=Power Member=Component D1 LED(G)
+Added Member To Class: ClassName=Power Member=Component D2 LED(G)
+Added Member To Class: ClassName=IOandCommunication Member=Component De0 De0-Nano
+Added Member To Class: ClassName=IOandCommunication Member=Component De10 De10-Nano
+Added Member To Class: ClassName=Power Member=Component F1 5A Fuse Holder
+Added Member To Class: ClassName=Power Member=Component F2 10A Fuse Holder
+Added Member To Class: ClassName=Power Member=Component F3 4A Fuse Holder
+Added Member To Class: ClassName=Power Member=Component F4 4A Fuse Holder
+Added Member To Class: ClassName=Power Member=Component J1 DC-005-T25
+Added Member To Class: ClassName=Power Member=Component MH1 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH2 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH3 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH4 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH5 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH6 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH7 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH8 M3 Hole
+Added Member To Class: ClassName=Power Member=Component MH9 M3 Hole
+Added Member To Class: ClassName=Power Member=Component P1 Header 2
+Added Member To Class: ClassName=Power Member=Component P2 Header 2
+Added Member To Class: ClassName=Power Member=Component P3 Header 2
+Added Member To Class: ClassName=Power Member=Component P4 Header 2
+Added Member To Class: ClassName=IOandCommunication Member=Component P5 Header 3
+Added Member To Class: ClassName=IOandCommunication Member=Component P6 MPU9250
+Added Member To Class: ClassName=Motor Member=Component P7 Header 7
+Added Member To Class: ClassName=Motor Member=Component P8 Header 4
+Added Member To Class: ClassName=Motor Member=Component P9 Header 7
+Added Member To Class: ClassName=Motor Member=Component P10 Header 4
+Added Member To Class: ClassName=Motor Member=Component P11 Header 12
+Added Member To Class: ClassName=Motor Member=Component P12 Header 12
+Added Member To Class: ClassName=Motor Member=Component P13 Header 6
+Added Member To Class: ClassName=Motor Member=Component P14 Header 6
+Added Member To Class: ClassName=Motor Member=Component P15 Header 6
+Added Member To Class: ClassName=Motor Member=Component P16 Header 6
+Added Member To Class: ClassName=Power Member=Component R1 150k
+Added Member To Class: ClassName=Power Member=Component R2 1k
+Added Member To Class: ClassName=Power Member=Component R3 150k
+Added Member To Class: ClassName=Power Member=Component R4 12
+Added Member To Class: ClassName=Power Member=Component R5 1k
+Added Member To Class: ClassName=Power Member=Component R6 1k
+Added Member To Class: ClassName=IOandCommunication Member=Component RPi1 Rasbperry PI 4
+Added Member To Class: ClassName=Power Member=Component S1 Motor EMS
+Added Member To Class: ClassName=Power Member=Component S2 Digital EMS
+Added Member To Class: ClassName=Power Member=Component S3 FPGA_Re
+Added Member To Class: ClassName=Power Member=Component S4 RPi_Re
+Added Member To Class: ClassName=Power Member=Component T1 XL4015 Module
+Added Member To Class: ClassName=Power Member=Component T2 XL4016 Module
+Added Member To Class: ClassName=Power Member=Component T3 3P3 Voltage regulator
+Added Member To Class: ClassName=Power Member=Component U1 HSM3214
+Added Member To Class: ClassName=Power Member=Component U2 HSM3214

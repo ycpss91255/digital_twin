@@ -1,0 +1,14 @@
+= README
+:toc: left
+:imagesdir: images
+
+== Reference
+
+- https://forum.digikey.com/t/simple-way-to-use-usb-type-c-to-get-5v-at-up-to-3a-15w/7016[Simple way to use USB Type-C to get 5V at up to 3A (15W)]
+
+** image:USB_Type-C/Sample_USB_Type-C_5V3A.jpeg[Sample_USB_Type-C_5V3A]
+
+- https://www.youtube.com/watch?v=W13HNsoHj7A[USB-C Power Delivery Hardware Design]
+
+** image:USB_Type-C/USB_Type-C_plug_pinout.png[USB_Type-C_plug_pinout]
+** image:USB_Type-C/USB_Type-C_Receptacle_Pinout.png[USB_Type-C_Receptacle_pinout]

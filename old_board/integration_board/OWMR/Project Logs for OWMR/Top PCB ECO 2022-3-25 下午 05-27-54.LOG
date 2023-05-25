@@ -1,0 +1,10 @@
+Removed Member From Class: ClassName=digital_power_in Member=A_GND
+Removed Member From Class: ClassName=digital_power_in Member=NetC1_1
+Removed Member From Class: ClassName=digital_power_in Member=NetC3_1
+Removed Member From Class: ClassName=digital_power_in Member=NetD3_1
+Change Class Name : Old Net Name=digital_power_in New Net Name=motor_out
+Added Class: Name=digital_power_in
+Added Rule: Name=Schematic Routing Via Style_5
+Change Rule Scope 1 : Old Scope=InNet('MA2_2') New Scope=InNetClass('motor_out')
+Change Rule Scope 1 : Old Scope=InNet('NetC1_1') New Scope=InNetClass('digital_power_in')
+Change Rule Scope 1 : Old Scope=InNet('MB1_2') New Scope=InNetClass('motor_out')

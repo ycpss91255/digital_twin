@@ -1,0 +1,16 @@
+Change Component Footprint: Designator=P3 Old Footprint=KH-2.54PH180-1X4P-L11.5 New Footprint=KH-2.54FH-1X4P-H8.5
+Change Component Footprint: Designator=P1 Old Footprint=KH-2.54PH180-1X7P-L11.5 New Footprint=KH-2.54FH-1X7P-H8.5
+Change Component Comment : Designator=P3 Old Comment=Heaader 4 New Comment=Header 4
+Change Component Comment : Designator=P1 Old Comment=Heaader 7 New Comment=Header 7
+Change component parameters: Designator = "P1" ("P1"); Footprint = "KH-2.54PH180-1X7P-L11.5"; UniqueID = "\GGRMPCGL" ("\GGRMPCGL")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P2" ("P2"); Footprint = "KH-2.54PH180-1X12P-L11.5 (PAD LINKED)"; UniqueID = "\XQFDBWGD" ("\XQFDBWGD")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P3" ("P3"); Footprint = "KH-2.54PH180-1X4P-L11.5"; UniqueID = "\SPMBDKJK" ("\SPMBDKJK")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"

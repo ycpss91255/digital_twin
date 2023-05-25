@@ -1,0 +1,10 @@
+Output: Export STEP
+Type  : ExportSTEP
+From  : Variant [Not Cap Filter] of PCB Document [MotorCtrl.PcbDoc]
+   Generated File[MotorCtrl(Not Cap Filter).step]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At ¤U¤È 08:25:37 On 2022/6/28

@@ -1,0 +1,6 @@
+[ProjectGroup]
+Version=1.0
+[Project1]
+ProjectPath=OWMR\OWMR.PrjPcb
+[Project2]
+ProjectPath=OWMR\Libraries\OWMR.LibPkg

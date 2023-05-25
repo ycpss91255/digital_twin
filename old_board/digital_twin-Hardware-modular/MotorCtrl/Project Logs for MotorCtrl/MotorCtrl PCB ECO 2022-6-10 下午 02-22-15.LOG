@@ -1,0 +1,118 @@
+Added Pin To Net: NetName=D_5V Pin=C1-1
+Added Pin To Net: NetName=A_GND Pin=C1-2
+Added Pin To Net: NetName=A_GND Pin=C2-1
+Added Pin To Net: NetName=D_5V Pin=C2-2
+Added Pin To Net: NetName=A_12V Pin=C3-1
+Added Pin To Net: NetName=A_GND Pin=C3-2
+Added Pin To Net: NetName=A_GND Pin=C4-1
+Added Pin To Net: NetName=A_12V Pin=C4-2
+Added Pin To Net: NetName=A_GND Pin=C5-1
+Added Pin To Net: NetName=MA1 Pin=C5-2
+Added Pin To Net: NetName=A_GND Pin=C6-1
+Added Pin To Net: NetName=MA2 Pin=C6-2
+Added Pin To Net: NetName=A_GND Pin=C7-1
+Added Pin To Net: NetName=MB1 Pin=C7-2
+Added Pin To Net: NetName=A_GND Pin=C8-1
+Added Pin To Net: NetName=MB2 Pin=C8-2
+Added Pin To Net: NetName=MA2 Pin=DU1-1
+Added Pin To Net: NetName=MA1 Pin=DU1-3
+Added Pin To Net: NetName=MAV_Origin Pin=DU1-4
+Added Pin To Net: NetName=MB2 Pin=DU2-1
+Added Pin To Net: NetName=MB1 Pin=DU2-3
+Added Pin To Net: NetName=MBV_Origin Pin=DU2-4
+Added Pin To Net: NetName=A_GND Pin=MD1-1
+Added Pin To Net: NetName=MA_DIR Pin=MD1-2
+Added Pin To Net: NetName=MA_PWM Pin=MD1-3
+Added Pin To Net: NetName=MB_DIR Pin=MD1-4
+Added Pin To Net: NetName=MB_PWM Pin=MD1-5
+Added Pin To Net: NetName=Drive_EN Pin=MD1-6
+Added Pin To Net: NetName=CSA_Origin Pin=MD1-7
+Added Pin To Net: NetName=CSB_Origin Pin=MD1-8
+Added Pin To Net: NetName=A_12V Pin=MD1-9
+Added Pin To Net: NetName=A_12V Pin=MD1-9
+Added Pin To Net: NetName=MA1 Pin=MD1-10
+Added Pin To Net: NetName=MA1 Pin=MD1-10
+Added Pin To Net: NetName=MA2 Pin=MD1-11
+Added Pin To Net: NetName=MA2 Pin=MD1-11
+Added Pin To Net: NetName=MB1 Pin=MD1-12
+Added Pin To Net: NetName=MB1 Pin=MD1-12
+Added Pin To Net: NetName=MB2 Pin=MD1-13
+Added Pin To Net: NetName=MB2 Pin=MD1-13
+Added Pin To Net: NetName=A_GND Pin=MD1-14
+Added Pin To Net: NetName=A_GND Pin=MD1-14
+Added Pin To Net: NetName=D_5V Pin=P1-1
+Added Pin To Net: NetName=A_GND Pin=P1-2
+Added Pin To Net: NetName=MA_DIR Pin=P1-3
+Added Pin To Net: NetName=MA_PWM Pin=P1-4
+Added Pin To Net: NetName=MB_DIR Pin=P1-5
+Added Pin To Net: NetName=MB_PWM Pin=P1-6
+Added Pin To Net: NetName=Drive_EN Pin=P1-7
+Added Pin To Net: NetName=A_12V Pin=P2-1
+Added Pin To Net: NetName=A_12V Pin=P2-2
+Added Pin To Net: NetName=MA1 Pin=P2-3
+Added Pin To Net: NetName=MA1 Pin=P2-4
+Added Pin To Net: NetName=MA2 Pin=P2-5
+Added Pin To Net: NetName=MA2 Pin=P2-6
+Added Pin To Net: NetName=MB1 Pin=P2-7
+Added Pin To Net: NetName=MB1 Pin=P2-8
+Added Pin To Net: NetName=MB2 Pin=P2-9
+Added Pin To Net: NetName=MB2 Pin=P2-10
+Added Pin To Net: NetName=A_GND Pin=P2-11
+Added Pin To Net: NetName=A_GND Pin=P2-12
+Added Pin To Net: NetName=OPA_CA Pin=P3-1
+Added Pin To Net: NetName=OPA_CB Pin=P3-2
+Added Pin To Net: NetName=OPA_VA Pin=P3-3
+Added Pin To Net: NetName=OPA_VB Pin=P3-4
+Added Pin To Net: NetName=NetR1_1 Pin=R1-1
+Added Pin To Net: NetName=MBV_Origin Pin=R1-2
+Added Pin To Net: NetName=NetR2_1 Pin=R2-1
+Added Pin To Net: NetName=MAV_Origin Pin=R2-2
+Added Pin To Net: NetName=NetR3_1 Pin=R3-1
+Added Pin To Net: NetName=A_GND Pin=R3-2
+Added Pin To Net: NetName=NetR4_1 Pin=R4-1
+Added Pin To Net: NetName=A_GND Pin=R4-2
+Added Pin To Net: NetName=NetR1_1 Pin=R5-1
+Added Pin To Net: NetName=A_GND Pin=R5-2
+Added Pin To Net: NetName=NetR2_1 Pin=R6-1
+Added Pin To Net: NetName=A_GND Pin=R6-2
+Added Pin To Net: NetName=OPA_VB Pin=R7-1
+Added Pin To Net: NetName=NetR3_1 Pin=R7-2
+Added Pin To Net: NetName=OPA_VA Pin=R8-1
+Added Pin To Net: NetName=NetR4_1 Pin=R8-2
+Added Pin To Net: NetName=OPA_CA Pin=U1-1
+Added Pin To Net: NetName=OPA_CA Pin=U1-2
+Added Pin To Net: NetName=CSA_Origin Pin=U1-3
+Added Pin To Net: NetName=D_5V Pin=U1-4
+Added Pin To Net: NetName=CSB_Origin Pin=U1-5
+Added Pin To Net: NetName=OPA_CB Pin=U1-6
+Added Pin To Net: NetName=OPA_CB Pin=U1-7
+Added Pin To Net: NetName=OPA_VB Pin=U1-8
+Added Pin To Net: NetName=NetR3_1 Pin=U1-9
+Added Pin To Net: NetName=NetR1_1 Pin=U1-10
+Added Pin To Net: NetName=A_GND Pin=U1-11
+Added Pin To Net: NetName=NetR2_1 Pin=U1-12
+Added Pin To Net: NetName=NetR4_1 Pin=U1-13
+Added Pin To Net: NetName=OPA_VA Pin=U1-14
+Added Member To Class: ClassName=MotorCtrl Member=Component C1 220uF
+Added Member To Class: ClassName=MotorCtrl Member=Component C2 0.1uF
+Added Member To Class: ClassName=MotorCtrl Member=Component C3 220uF
+Added Member To Class: ClassName=MotorCtrl Member=Component C4 0.1uF
+Added Member To Class: ClassName=MotorCtrl Member=Component C5 0.1uF
+Added Member To Class: ClassName=MotorCtrl Member=Component C6 0.1uF
+Added Member To Class: ClassName=MotorCtrl Member=Component C7 0.1uF
+Added Member To Class: ClassName=MotorCtrl Member=Component C8 0.1uF
+Added Member To Class: ClassName=MotorCtrl Member=Component DU1 MBRD1035CTLT4G
+Added Member To Class: ClassName=MotorCtrl Member=Component DU2 MBRD1035CTLT4G
+Added Member To Class: ClassName=MotorCtrl Member=Component MD1 MD02
+Added Member To Class: ClassName=MotorCtrl Member=Component P1 Heaader 7
+Added Member To Class: ClassName=MotorCtrl Member=Component P2 Header 12
+Added Member To Class: ClassName=MotorCtrl Member=Component P3 Heaader 4
+Added Member To Class: ClassName=MotorCtrl Member=Component R1 12k
+Added Member To Class: ClassName=MotorCtrl Member=Component R2 12k
+Added Member To Class: ClassName=MotorCtrl Member=Component R3 12k
+Added Member To Class: ClassName=MotorCtrl Member=Component R4 12k
+Added Member To Class: ClassName=MotorCtrl Member=Component R5 3.3k
+Added Member To Class: ClassName=MotorCtrl Member=Component R6 3.3k
+Added Member To Class: ClassName=MotorCtrl Member=Component R7 3.3k
+Added Member To Class: ClassName=MotorCtrl Member=Component R8 3.3k
+Added Member To Class: ClassName=MotorCtrl Member=Component U1 OPA4277UA/2K5
