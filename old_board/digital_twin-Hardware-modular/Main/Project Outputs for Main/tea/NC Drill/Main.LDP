@@ -1,7 +1,0 @@
-Layer Pairs Export File for PCB: E:\source_code\digital_twin-Hardware\Main\Main.PcbDoc
-LayersSetName=Top_Bot_Thru_Holes|DrillFile=main-roundholes.txt|DrillLayers=gtl,gbl
-LayersSetName=Top_Bot_Slot_Holes|DrillFile=main-slotholes.txt|DrillLayers=gtl,gbl
-LayersSetName=Top_Bot_Rect_Holes|DrillFile=main-rectholes.txt|DrillLayers=gtl,gbl
-LayersSetName=Top_Bot_Thru_Holes|DrillFile=main-roundholes.tx4|DrillLayers=gtl,gbl
-LayersSetName=Top_Bot_Slot_Holes|DrillFile=main-slotholes.tx4|DrillLayers=gtl,gbl
-LayersSetName=Top_Bot_Rect_Holes|DrillFile=main-rectholes.tx4|DrillLayers=gtl,gbl

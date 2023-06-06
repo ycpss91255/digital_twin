@@ -1,6 +1,0 @@
-Added Member To Class: ClassName=Power Member=Component R5 1k
-Added Member To Class: ClassName=Power Member=Component R6 1k
-Change Room Name: Old Name=RoomDefinition New Name=Power
-Change Room Scope: Old Scope=False New Scope=InComponentClass('Power')
-Added Room: Name=IOandCommunication
-Added Room: Name=Motor

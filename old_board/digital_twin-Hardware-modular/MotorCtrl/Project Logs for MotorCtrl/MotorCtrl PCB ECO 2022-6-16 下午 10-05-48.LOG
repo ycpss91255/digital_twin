@@ -1,9 +1,0 @@
-Change Footprint: Cannot match pads with new footprint in component :DU1 Footprint:MBRD1035CTLT4G
-Change Footprint: Cannot match pads with new footprint in component :DU2 Footprint:MBRD1035CTLT4G
-Change Component Description : Designator=P3 Old Description=KH-2.54PH180-1X4P-L11.5
-3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 4 3mm 2.54mm Black 1x4P Plugin,P=2.54mm  Pin Headers ROHS New Description=3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 4 3mm 2.54mm Black 1x4P Plugin,P=2.54mm  Pin Headers ROHS
-Change Component Description : Designator=P1 Old Description=KH-2.54PH180-1X7P-L11.5
-3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 8 3mm 2.54mm Black 1x7P Plugin,P=2.54mm  Pin Headers ROHS New Description=3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 7 3mm 2.54mm Black 1x7P Plugin,P=2.54mm  Pin Headers ROHS
-Change Component Description : Designator=P2 Old Description=KH-2.54PH180-1X12P-L11.5
-3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 12 3mm 2.54mm Black 1x12P Plugin,P=2.54mm  Pin Headers ROHS New Description=3A Straight Square Pins 2.5mm 6mm -40¢J~+105¢J 1 12 3mm 2.54mm Black 1x12P Plugin,P=2.54mm  Pin Headers ROHS
-Added Member To Class: ClassName=MotorCtrl Member=Component U1 OPA4277UA/2K5

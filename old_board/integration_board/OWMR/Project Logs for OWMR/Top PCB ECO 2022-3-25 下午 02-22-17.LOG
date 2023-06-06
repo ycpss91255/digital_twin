@@ -1,7 +1,0 @@
-Removed Member From Class: ClassName=De10_power Member=5V
-Added Rule: Name=Schematic Clearance Constraint_5
-Change Rule Scope 1 : Old Scope=InNet('MA2_2') New Scope=InNet('MB2_1')
-Change Rule Scope 1 : Old Scope=InNet('A_GND') New Scope=InNet('NetC3_1')
-Change Rule Scope 1 : Old Scope=InNet('MB1_2') New Scope=InNet('MB2_2')
-Change Rule Scope 1 : Old Scope=InNet('MB2_2') New Scope=InNet('MA1_2')
-Change Rule Scope 1 : Old Scope=InNet('MA1_2') New Scope=InNet('MB1_1')

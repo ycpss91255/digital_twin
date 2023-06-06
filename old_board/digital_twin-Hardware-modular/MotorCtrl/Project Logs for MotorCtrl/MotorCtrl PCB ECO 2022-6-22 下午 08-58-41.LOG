@@ -1,6 +1,0 @@
-Removed Pin From Net: NetName=A_GND Pin=C4-1
-Removed Pin From Net: NetName=A_12V Pin=C4-2
-Change Component Footprint: Designator=C4 Old Footprint=CL10B104KA8NNNC New Footprint=1210B104K500NT
-Added Pin To Net: NetName=A_12V Pin=C4-1
-Added Pin To Net: NetName=A_GND Pin=C4-2
-Added Member To Class: ClassName=MotorCtrl Member=Component C7 0.1uF

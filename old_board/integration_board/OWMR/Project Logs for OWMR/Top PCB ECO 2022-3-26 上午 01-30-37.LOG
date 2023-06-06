@@ -1,3 +1,0 @@
-Added Rule: Name=Schematic Clearance Constraint_4
-Added Rule: Name=Schematic Clearance Constraint_5
-Change Rule Scope 1 : Old Scope=InNet('NetC1_1') New Scope=InNet('NetD3_1')

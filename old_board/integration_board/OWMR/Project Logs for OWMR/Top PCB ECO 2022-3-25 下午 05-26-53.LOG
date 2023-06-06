@@ -1,4 +1,0 @@
-Change Rule Scope 1 : Old Scope=InNet('MB2_2') New Scope=InNet('MB2_1')
-Change Rule Scope 1 : Old Scope=InNet('NetC3_1') New Scope=InNet('A_GND')
-Change Rule Scope 1 : Old Scope=InNet('MB1_1') New Scope=InNet('MB2_2')
-Change Rule Scope 1 : Old Scope=InNet('MB2_2') New Scope=InNet('MA1_2')
