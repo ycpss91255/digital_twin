@@ -3,10 +3,10 @@ Version=1.0
 [Project1]
 ProjectPath=OWMR\OWMR.PrjPcb
 [Project2]
-ProjectPath=Power\Power.PrjPcb
-[Project3]
 ProjectPath=MotorCtrl\MotorCtrl.PrjPcb
-[Project4]
+[Project3]
 ProjectPath=Communication\Communication.PrjPcb
-[Project5]
+[Project4]
 ProjectPath=Simulation\Simulation.PrjPcb
+[Project5]
+ProjectPath=Power\USB-C Power\USB-C Power.PrjPcb
