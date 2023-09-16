@@ -1,0 +1,48 @@
+Altium Designer Pick and Place Locations
+E:\SourceCode\digital_twin_ws\Power\USB-C Power\Project Outputs for USB-C Power\Pick Place\Pick Place for USB-C Power.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       14/06/23
+Time:       10:40
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mm
+
+Designator Comment               Layer    Footprint       Center-X(mm) Center-Y(mm) Rotation Description                                                                                       
+TP2        white/Small           TopLayer TestPoint_small 4.4062       -9.6520      0        "General samll test point"                                                                        
+TP1        Red/Small             TopLayer TestPoint_small 0.1270       0.0000       0        "General samll test point"                                                                        
+Q2         40V/6.9A              TopLayer TSOP-6          20.7073      -1.2773      180      "MOSFET P Ch -40Vds 20Vgs AEC-Q101 Qualified"                                                     
+Q1         40V/6.9A              TopLayer TSOP-6          16.3283      -0.7993      90       "MOSFET P Ch -40Vds 20Vgs AEC-Q101 Qualified"                                                     
+R3         10K/62.5mW            TopLayer 0402_RES        11.9882      -10.9440     270      "62.5mW Thick Film Resistors ¡Ó100ppm/¢J ¡Ó5% 10k£[ 0402  Chip Resistor - Surface Mount ROHS"         
+R1         5.1K/62.5mW           TopLayer 0402_RES        11.2262      -10.9440     90       "62.5mW ¡Ó1% 5.1k£[ 0402  Chip Resistor - Surface Mount ROHS"                                       
+R4         10K/62.5mW            TopLayer 0402_RES        10.4642      -10.9440     270      "62.5mW Thick Film Resistors ¡Ó100ppm/¢J ¡Ó5% 10k£[ 0402  Chip Resistor - Surface Mount ROHS"         
+R2         5.1K/62.5mW           TopLayer 0402_RES        9.7022       -10.9440     90       "62.5mW ¡Ó1% 5.1k£[ 0402  Chip Resistor - Surface Mount ROHS"                                       
+R11        DNP                   TopLayer 0402_RES        15.0362      -10.9440     270      DNP                                                                                               
+R7         0R                    TopLayer 0402_RES        14.2742      -10.9440     90       "62.5mW ¡Ó300ppm/¢J ¡Ó5% 0£[ 0402 Chip Resistor - Surface Mount ROHS"                                 
+R10        DNP                   TopLayer 0402_RES        13.5122      -10.9440     270      DNP                                                                                               
+R6         0R                    TopLayer 0402_RES        12.7502      -10.9440     90       "62.5mW ¡Ó300ppm/¢J ¡Ó5% 0£[ 0402 Chip Resistor - Surface Mount ROHS"                                 
+R13        150K/62.5mW           TopLayer 0402_Res        5.6302       -11.8960     90       "62.5mW Thick Film Resistors ¡Ó100ppm/¢J ¡Ó5% 150k£[ 0402 Chip Resistor - Surface Mount ROHS"         
+R12        1K/62.5mW             TopLayer 0402_RES        6.3922       -11.8960     270      "63mW ¡Ó5% 1k£[ 0402  Chip Resistor - Surface Mount ROHS"                                           
+R14        150K/62.5mW           TopLayer 0402_Res        3.3032       -12.1920     180      "62.5mW Thick Film Resistors ¡Ó100ppm/¢J ¡Ó5% 150k£[ 0402 Chip Resistor - Surface Mount ROHS"         
+R9         1K/62.5mW             TopLayer 0402_RES        15.0583      -6.4163      90       "63mW ¡Ó5% 1k£[ 0402  Chip Resistor - Surface Mount ROHS"                                           
+R5         10K/62.5mW            TopLayer 0402_RES        15.0583      -4.4273      270      "62.5mW Thick Film Resistors ¡Ó100ppm/¢J ¡Ó5% 10k£[ 0402  Chip Resistor - Surface Mount ROHS"         
+R8         49.9K/62.5mW          TopLayer 0402_RES        18.3857      -0.8713      90       "62.5mW Thick Film Resistors ¡Ó1% 49.9k£[ 0402  Chip Resistor - Surface Mount ROHS"                 
+Q3         TNM3K60FE             TopLayer CST3-3          4.8052       -11.8670     0        "60V 0.3A 2£[@10V SOT-523  MOSFETs ROHS"                                                           
+P1         V_Output              TopLayer KF350-2P        19.2493      -9.4353      180      "10A -40¢J~+105¢J 300V Green 18~24 Straight pin 3.5mm 0.75 1 2 Plugin,P=3.5mm  Screw terminal ROHS" 
+J1         "Type-C Power Header" TopLayer TYPE-C_6_FEMALE 0.1212       -5.9670      270      "5A 1 Surface Mount 6 Female -25¢J~+85¢J Type-C SMD USB Connectors ROHS"                            
+IC1        CYPD3177-24LQXQT      TopLayer QFN-24          11.6112      -6.8700      90       "USB Interface IC USB Type-C port controller CYPD3177"                                            
+F1         24V/7A                TopLayer 2920_PTC        10.2343      -1.4343      0        "Resettable Fuses - PPTC PTC SMD RESETTABLE FUSE"                                                 
+D2         Yellow/54mW           TopLayer 0603_LED        0.9362       -11.9380     0        "590nm~590nm yellow 54mW 0603  Light Emitting Diodes (LED) ROHS"                                  
+D1         22V/100mW             TopLayer SOD-923-2       19.9073      0.8157       180      "Zener Diodes CDZV22B is the 100mW type compact (1006 size) diode for voltage regulation."        
+C7         1u/25V                TopLayer 0805_CAP        8.0262       -11.1830     90       "25V 1uF Y5V ¡Ó20% 0805  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                        
+C5         100n/50V              TopLayer 0402_CAP        8.4792       -5.9650      90       "16V 100nF -20%~+80% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                     
+C4         100n/50V              TopLayer 0402_CAP        7.5902       -5.9650      90       "16V 100nF -20%~+80% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                     
+C3         1u/25V                TopLayer 0805_CAP        8.0262       -8.3150      270      "25V 1uF Y5V ¡Ó20% 0805  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                        
+C6         1u/25V                TopLayer 0805_CAP        16.3283      -4.4033      270      "25V 1uF Y5V ¡Ó20% 0805  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                        
+C2         100n/50V              TopLayer 0402_CAP        3.0552       0.1270       180      "16V 100nF -20%~+80% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                     
+C1         10u/25V               TopLayer 0805_CAP        4.3282       -7.3630      0        "25V 10uF X5R - Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                                
+C10        100n/50V              TopLayer 0402_CAP        19.3645      -4.8785      270      "16V 100nF -20%~+80% 0402  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                     
+C9         10u/25V               TopLayer 0805_Cap        17.9793      -4.4033      270      "25V 10uF X5R - Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                                
+C8         1u/25V                TopLayer 0805_CAP        21.3293      -4.9903      0        "25V 1uF Y5V ¡Ó20% 0805  Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS"                        

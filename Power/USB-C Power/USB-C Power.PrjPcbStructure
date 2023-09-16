@@ -1,1 +1,11 @@
-Record=TopLevelDocument|FileName=USB-C Power.SchDoc|SheetNumber=1
+Record=TopLevelDocument|FileName=Top_Level.SchDoc|SheetNumber=3
+Record=SheetSymbol|SourceDocument=Top_Level.SchDoc|Designator=Designator|SchDesignator=Designator|FileName=Type-C_Connector_and_Type-C_Output_Switch.SchDoc|SheetNumber=6|SymbolType=Normal|RawFileName=Type-C_Connector_and_Type-C_Output_Switch.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Top_Level.SchDoc|Designator=Designator|SchDesignator=Designator|FileName=Manual_Controll_and_LEDs.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Manual_Controll_and_LEDs.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Top_Level.SchDoc|Designator=Designator|SchDesignator=Designator|FileName=BCR_Connections.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=BCR_Connections.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=NoMainPathDocument|SourceDocument=Top_Level.SchDoc|FileName=Battery_Charging_and_Bypass_Power_Supply.SchDoc|SheetNumber=8
+Record=NoMainPathDocument|SourceDocument=Top_Level.SchDoc|FileName=Block_Diagram.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=Top_Level.SchDoc|FileName=Cover_Page.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=Top_Level.SchDoc|FileName=MCU_and_Peripheral_Circuits.SchDoc|SheetNumber=7
+Record=NoMainPathDocument|SourceDocument=Top_Level.SchDoc|FileName=Revision_History.SchDoc|SheetNumber=10
+Record=NoMainPathDocument|SourceDocument=Top_Level.SchDoc|FileName=USB-C Power.SchDoc|SheetNumber=11
+Record=NoMainPathDocument|SourceDocument=Top_Level.SchDoc|FileName=Voltage_Regulator_and_Load_Connectors.SchDoc|SheetNumber=9

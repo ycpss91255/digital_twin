@@ -10,9 +10,9 @@ ArchiveProject=0
 TimestampOutput=0
 SeparateFolders=0
 TemplateLocationPath=
-PinSwapBy_Netlabel=1
+PinSwapBy_Netlabel=0
 PinSwapBy_Pin=1
-AllowPortNetNames=0
+AllowPortNetNames=1
 AllowSheetEntryNetNames=1
 AppendSheetNumberToLocalNets=0
 NetlistSinglePinNets=0
@@ -39,7 +39,7 @@ ManagedProjectGUID=
 IncludeDesignInRelease=0
 CrossRefSheetStyle=1
 CrossRefLocationStyle=1
-CrossRefPorts=3
+CrossRefPorts=0
 CrossRefCrossSheets=1
 CrossRefSheetEntries=0
 CrossRefFollowFromMainSettings=1
@@ -71,6 +71,176 @@ GenerateClassCluster=0
 DocumentUniqueId=ADQIGMRW
 
 [Document2]
+DocumentPath=Cover_Page.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=OKJYMPDK
+
+[Document3]
+DocumentPath=Block_Diagram.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=VACLRCRC
+
+[Document4]
+DocumentPath=Type-C_Connector_and_Type-C_Output_Switch.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=UYTFTDWQ
+
+[Document5]
+DocumentPath=Top_Level.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=QSAUUSPI
+
+[Document6]
+DocumentPath=PD_BCR_Connections.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=KHEZCGLA
+
+[Document7]
+DocumentPath=Manual_Controll_and_LEDs.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=EWDNXFII
+
+[Document8]
+DocumentPath=MCU_and_Peripheral_Circuits.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=PFQBTMRZ
+
+[Document9]
+DocumentPath=Battery_Charging_and_Bypass_Power_Supply.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=TLYRQHOM
+
+[Document10]
+DocumentPath=Voltage_Regulator_and_Load_Connectors.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=HALPTTDS
+
+[Document11]
+DocumentPath=Revision_History.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=VGBAAQKD
+
+[Document12]
 DocumentPath=USB-C Power.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -87,7 +257,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=BOOBVADC
 
-[Document3]
+[Document13]
 DocumentPath=..\..\Libraries\General_Connector.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -104,7 +274,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GKFRDTWT
 
-[Document4]
+[Document14]
 DocumentPath=..\..\Libraries\General_Connector.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -121,7 +291,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=EOIHWDFH
 
-[Document5]
+[Document15]
 DocumentPath=..\..\Libraries\General_Devices.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -136,9 +306,9 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=TYQWPQYS
 
-[Document6]
+[Document16]
 DocumentPath=..\..\Libraries\General_Devices.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -155,41 +325,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=JRRJHDXI
 
-[Document7]
-DocumentPath=..\Power.PcbLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=0
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=
-
-[Document8]
-DocumentPath=..\Power.SchLib
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=0
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=LZITQEEF
-
-[Document9]
+[Document17]
 DocumentPath=USB-C Power.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -205,6 +341,40 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
+
+[Document18]
+DocumentPath=..\Power.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=XFFXLBGH
+
+[Document19]
+DocumentPath=..\Power.SchLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=LZITQEEF
 
 [GeneratedDocument1]
 DocumentPath=Project Outputs for USB-C Power\BOM\Bill of Materials-USB-C Power.csv
@@ -322,6 +492,18 @@ DItemRevisionGUID=
 DocumentPath=Project Outputs for USB-C Power\NC Drill\USB-C Power.TXT
 DItemRevisionGUID=
 
+[Parameter1]
+Name=DrawnBy
+Value=Yun-Chien Chen
+
+[Parameter2]
+Name=Project
+Value=USB-C & Battery Power Supply
+
+[Parameter3]
+Name=Revision
+Value=01
+
 [Configuration1]
 Name=Sources
 ParameterCount=0
@@ -357,7 +539,7 @@ ActiveProfile=KBXTFGUB
 ProfileId0=KBXTFGUB
 ProfileName0=Mixed Sim Configuration
 OutputType0=AdvSimNetlist
-ConfigParameters0=OP_Analysis=True|TRAN_Analysis=True|DC_Analysis=True|AC_Analysis=True|TF_Analysis=False|PZ_Analysis=False|Noise_Analysis=False|TRAN_FourierAnalysis=False|TempSweep_Analysis=False|ParamSweep_Analysis=False|MonteCarlo_Analysis=False|TF_Enabled=False|TF_Source=|TF_Reference=0|PZ_Enabled=False|PZ_Node1=|PZ_Node2=0|PZ_Node3=|PZ_Node4=0|PZ_AnalType=PZ|PZ_TfType=VOL|AnalysesDataSavedIndex=4|DC_ShowMeasTableChart=False|DC_PrimarySource=|DC_PrimaryStart=|DC_PrimaryStop=|DC_PrimaryStep=|DC_EnableSecondary=False|DC_SecondarySource=|DC_SecondaryStart=|DC_SecondaryStop=|DC_SecondaryStep=|Noise_Enabled=False|Noise_Source=|Noise_Output=|Noise_Reference=0|Noise_Start_UserValue=|Noise_Start=1K|Noise_Stop_UserValue=|Noise_Stop=1G|Noise_TestPoints_UserValue=|Noise_TestPoints=10|Noise_PointsPerSummary=0|Noise_SweepType=DEC|AC_StartFrequency_UserValue=|AC_StartFrequency=1K|AC_StopFrequency_UserValue=|AC_StopFrequency=1G|AC_TestPoints_UserValue=|AC_TestPoints=10|AC_SweepType=DEC|AC_ShowMeasTableChart=False|TRAN_StartTime_UserValue=|TRAN_StartTime=0|TRAN_StopTime_UserValue=|TRAN_StopTime=5u|TRAN_StepTime_UserValue=|TRAN_StepTime=0.1u|TRAN_MaxStepTime_UserValue=|TRAN_MaxStepTime=0.1u|TRAN_AlwaysSetDefaults=False|TRAN_DefaultCycles_UserValue=|TRAN_DefaultCycles=5|TRAN_DefaultPointsPerCycle_UserValue=|TRAN_DefaultPointsPerCycle=25|TRAN_UseInitialConditions=False|TRAN_FourierEnabled=False|TRAN_FourierFundFreq_UserValue=|TRAN_FourierFundFreq=1Meg|TRAN_FourierNumHarmonics_UserValue=|TRAN_FourierNumHarmonics=10|TRAN_ShowMeasTableChart=False|TempSweep_Start_UserValue=|TempSweep_Start=-10|TempSweep_Stop_UserValue=|TempSweep_Stop=60|TempSweep_Step_UserValue=|TempSweep_Step=10|ParamSweep_Parameter1=|ParamSweep_Type1=LIN|ParamSweep_Start1=|ParamSweep_Stop1=|ParamSweep_Step1=|ParamSweep_SweepType1=False|ParamSweep_SecondaryEnabled=False|ParamSweep_Parameter2=|ParamSweep_Type2=LIN|ParamSweep_Start2=|ParamSweep_Stop2=|ParamSweep_Step2=|ParamSweep_SweepType2=False|MonteCarlo_NumberOfRuns=10|MonteCarlo_DistributionType=GAUSS|MonteCarlo_Seed=-1|MonteCarlo_ResistorTolerance=10%|MonteCarlo_ResistorTolerance_UserValue=10%|MonteCarlo_CapacitorTolerance=10%|MonteCarlo_CapacitorTolerance_UserValue=10%|MonteCarlo_InductorTolerance=10%|MonteCarlo_InductorTolerance_UserValue=10%|MonteCarlo_TransistorTolerance=10%|MonteCarlo_TransistorTolerance_UserValue=10%|MonteCarlo_DCSourceTolerance=10%|MonteCarlo_DCSourceTolerance_UserValue=10%|MonteCarlo_DigitalTpTolerance=10%|MonteCarlo_DigitalTpTolerance_UserValue=10%|Sensitivity_Analysis=False|Sensitivity_GroupDeviationsEnabled=False|Sensitivity_GroupResistorEnabled=True|Sensitivity_GroupResistorDeviation_UserValue=|Sensitivity_GroupResistorDeviation=1m|Sensitivity_GroupCapacitorEnabled=False|Sensitivity_GroupCapacitorDeviation_UserValue=|Sensitivity_GroupCapacitorDeviation=1m|Sensitivity_GroupInductorEnabled=False|Sensitivity_GroupInductorDeviation_UserValue=|Sensitivity_GroupInductorDeviation=1m|Sensitivity_GroupTransistorEnabled=False|Sensitivity_GroupTransistorDeviation_UserValue=|Sensitivity_GroupTransistorDeviation=1m|Sensitivity_GroupDcSourceEnabled=False|Sensitivity_GroupDcSourceDeviation_UserValue=|Sensitivity_GroupDcSourceDeviation=1m|Sensitivity_GroupGlobalParameterEnabled=False|Sensitivity_GroupGlobalParameterDeviation_UserValue=|Sensitivity_GroupGlobalParameterDeviation=1m|Sensitivity_CustomDeviationsEnabled=True|OldCfgLoaded=True|SimViewSetup=ShowActiveSignalsProbes|OPTION_Method=Trapezoidal|OPTION_SpiceRefNode_UserValue=|OPTION_SpiceRefNode=GND|OPTION_DVCC_UserValue=|OPTION_DVCC=5|OPTION_DVDD_UserValue=|OPTION_DVDD=15|SheetsToNetlist=0
+ConfigParameters0=OP_Analysis=True|TRAN_Analysis=True|DC_Analysis=True|AC_Analysis=True|TF_Analysis=False|PZ_Analysis=False|Noise_Analysis=False|TRAN_FourierAnalysis=False|TRAN_SmokeAnalysis=False|TempSweep_Analysis=False|ParamSweep_Analysis=False|MonteCarlo_Analysis=False|TF_Enabled=False|TF_Source=|TF_Reference=0|PZ_Enabled=False|PZ_Node1=|PZ_Node2=0|PZ_Node3=|PZ_Node4=0|PZ_AnalType=PZ|PZ_TfType=VOL|AnalysesDataSavedIndex=4|DC_ShowMeasTableChart=False|DC_PrimarySource=|DC_PrimaryStart=|DC_PrimaryStop=|DC_PrimaryStep=|DC_EnableSecondary=False|DC_SecondarySource=|DC_SecondaryStart=|DC_SecondaryStop=|DC_SecondaryStep=|Noise_Enabled=False|Noise_Source=|Noise_Output=|Noise_Reference=0|Noise_Start_UserValue=|Noise_Start=1K|Noise_Stop_UserValue=|Noise_Stop=1G|Noise_TestPoints_UserValue=|Noise_TestPoints=10|Noise_PointsPerSummary=0|Noise_SweepType=DEC|AC_StartFrequency_UserValue=|AC_StartFrequency=1K|AC_StopFrequency_UserValue=|AC_StopFrequency=1G|AC_TestPoints_UserValue=|AC_TestPoints=10|AC_SweepType=DEC|AC_ShowMeasTableChart=False|TRAN_StartTime_UserValue=|TRAN_StartTime=0|TRAN_StopTime_UserValue=|TRAN_StopTime=5u|TRAN_StepTime_UserValue=|TRAN_StepTime=0.1u|TRAN_MaxStepTime_UserValue=|TRAN_MaxStepTime=0.1u|TRAN_AlwaysSetDefaults=False|TRAN_DefaultCycles_UserValue=|TRAN_DefaultCycles=5|TRAN_DefaultPointsPerCycle_UserValue=|TRAN_DefaultPointsPerCycle=25|TRAN_UseInitialConditions=False|TRAN_FourierEnabled=False|TRAN_FourierFundFreq_UserValue=|TRAN_FourierFundFreq=1Meg|TRAN_FourierNumHarmonics_UserValue=|TRAN_FourierNumHarmonics=10|TRAN_SmokeEnabled=False|TRAN_ShowMeasTableChart=False|TempSweep_Start_UserValue=|TempSweep_Start=-10|TempSweep_Stop_UserValue=|TempSweep_Stop=60|TempSweep_Step_UserValue=|TempSweep_Step=10|ParamSweep_Parameter1=|ParamSweep_Type1=LIN|ParamSweep_Start1=|ParamSweep_Stop1=|ParamSweep_Step1=|ParamSweep_SweepType1=False|ParamSweep_SecondaryEnabled=False|ParamSweep_Parameter2=|ParamSweep_Type2=LIN|ParamSweep_Start2=|ParamSweep_Stop2=|ParamSweep_Step2=|ParamSweep_SweepType2=False|MonteCarlo_NumberOfRuns=10|MonteCarlo_DistributionType=GAUSS|MonteCarlo_Seed=-1|MonteCarlo_ResistorTolerance=10%|MonteCarlo_ResistorTolerance_UserValue=10%|MonteCarlo_CapacitorTolerance=10%|MonteCarlo_CapacitorTolerance_UserValue=10%|MonteCarlo_InductorTolerance=10%|MonteCarlo_InductorTolerance_UserValue=10%|MonteCarlo_TransistorTolerance=10%|MonteCarlo_TransistorTolerance_UserValue=10%|MonteCarlo_DCSourceTolerance=10%|MonteCarlo_DCSourceTolerance_UserValue=10%|MonteCarlo_DigitalTpTolerance=10%|MonteCarlo_DigitalTpTolerance_UserValue=10%|Sensitivity_Analysis=False|Sensitivity_GroupDeviationsEnabled=False|Sensitivity_GroupResistorEnabled=True|Sensitivity_GroupResistorDeviation_UserValue=|Sensitivity_GroupResistorDeviation=1m|Sensitivity_GroupCapacitorEnabled=False|Sensitivity_GroupCapacitorDeviation_UserValue=|Sensitivity_GroupCapacitorDeviation=1m|Sensitivity_GroupInductorEnabled=False|Sensitivity_GroupInductorDeviation_UserValue=|Sensitivity_GroupInductorDeviation=1m|Sensitivity_GroupTransistorEnabled=False|Sensitivity_GroupTransistorDeviation_UserValue=|Sensitivity_GroupTransistorDeviation=1m|Sensitivity_GroupDcSourceEnabled=False|Sensitivity_GroupDcSourceDeviation_UserValue=|Sensitivity_GroupDcSourceDeviation=1m|Sensitivity_GroupGlobalParameterEnabled=False|Sensitivity_GroupGlobalParameterDeviation_UserValue=|Sensitivity_GroupGlobalParameterDeviation=1m|Sensitivity_CustomDeviationsEnabled=True|OldCfgLoaded=True|SimViewSetup=ShowActiveSignalsProbes|OPTION_Method=Trapezoidal|OPTION_SpiceRefNode_UserValue=|OPTION_SpiceRefNode=GND|OPTION_DVCC_UserValue=|OPTION_DVCC=5|OPTION_DVDD_UserValue=|OPTION_DVDD=15|SheetsToNetlist=0
 
 [OutputGroup1]
 Name=Netlist Outputs
@@ -491,7 +673,7 @@ OutputDocumentPath1=
 OutputVariantName1=
 OutputDefault1=0
 Configuration1_Name1=OutputConfigurationParameter1
-Configuration1_Item1=OP_Analysis=True|TRAN_Analysis=True|DC_Analysis=True|AC_Analysis=True|TF_Analysis=False|PZ_Analysis=False|Noise_Analysis=False|TRAN_FourierAnalysis=False|TempSweep_Analysis=False|ParamSweep_Analysis=False|MonteCarlo_Analysis=False|TF_Enabled=False|TF_Source= |TF_Reference=0|PZ_Enabled=False|PZ_Node1= |PZ_Node2=0|PZ_Node3= |PZ_Node4=0|PZ_AnalType=PZ|PZ_TfType=VOL|AnalysesDataSavedIndex=4|DC_ShowMeasTableChart=False|DC_PrimarySource= |DC_PrimaryStart= |DC_PrimaryStop= |DC_PrimaryStep= |DC_EnableSecondary=False|DC_SecondarySource= |DC_SecondaryStart= |DC_SecondaryStop= |DC_SecondaryStep= |Noise_Enabled=False|Noise_Source= |Noise_Output= |Noise_Reference=0|Noise_Start_UserValue= |Noise_Start=1K|Noise_Stop_UserValue= |Noise_Stop=1G|Noise_TestPoints_UserValue= |Noise_TestPoints=10|Noise_PointsPerSummary=0|Noise_SweepType=DEC|AC_StartFrequency_UserValue= |AC_StartFrequency=1K|AC_StopFrequency_UserValue= |AC_StopFrequency=1G|AC_TestPoints_UserValue= |AC_TestPoints=10|AC_SweepType=DEC|AC_ShowMeasTableChart=False|TRAN_StartTime_UserValue= |TRAN_StartTime=0|TRAN_StopTime_UserValue= |TRAN_StopTime=5u|TRAN_StepTime_UserValue= |TRAN_StepTime=0.1u|TRAN_MaxStepTime_UserValue= |TRAN_MaxStepTime=0.1u|TRAN_AlwaysSetDefaults=False|TRAN_DefaultCycles_UserValue= |TRAN_DefaultCycles=5|TRAN_DefaultPointsPerCycle_UserValue= |TRAN_DefaultPointsPerCycle=25|TRAN_UseInitialConditions=False|TRAN_FourierEnabled=False|TRAN_FourierFundFreq_UserValue= |TRAN_FourierFundFreq=1Meg|TRAN_FourierNumHarmonics_UserValue= |TRAN_FourierNumHarmonics=10|TRAN_ShowMeasTableChart=False|TempSweep_Start_UserValue= |TempSweep_Start=-10|TempSweep_Stop_UserValue= |TempSweep_Stop=60|TempSweep_Step_UserValue= |TempSweep_Step=10|ParamSweep_Parameter1= |ParamSweep_Type1=LIN|ParamSweep_Start1= |ParamSweep_Stop1= |ParamSweep_Step1= |ParamSweep_SweepType1=False|ParamSweep_SecondaryEnabled=False|ParamSweep_Parameter2= |ParamSweep_Type2=LIN|ParamSweep_Start2= |ParamSweep_Stop2= |ParamSweep_Step2= |ParamSweep_SweepType2=False|MonteCarlo_NumberOfRuns=10|MonteCarlo_DistributionType=GAUSS|MonteCarlo_Seed=-1|MonteCarlo_ResistorTolerance=10%|MonteCarlo_ResistorTolerance_UserValue=10%|MonteCarlo_CapacitorTolerance=10%|MonteCarlo_CapacitorTolerance_UserValue=10%|MonteCarlo_InductorTolerance=10%|MonteCarlo_InductorTolerance_UserValue=10%|MonteCarlo_TransistorTolerance=10%|MonteCarlo_TransistorTolerance_UserValue=10%|MonteCarlo_DCSourceTolerance=10%|MonteCarlo_DCSourceTolerance_UserValue=10%|MonteCarlo_DigitalTpTolerance=10%|MonteCarlo_DigitalTpTolerance_UserValue=10%|Sensitivity_Analysis=False|Sensitivity_GroupDeviationsEnabled=False|Sensitivity_GroupResistorEnabled=True|Sensitivity_GroupResistorDeviation_UserValue= |Sensitivity_GroupResistorDeviation=1m|Sensitivity_GroupCapacitorEnabled=False|Sensitivity_GroupCapacitorDeviation_UserValue= |Sensitivity_GroupCapacitorDeviation=1m|Sensitivity_GroupInductorEnabled=False|Sensitivity_GroupInductorDeviation_UserValue= |Sensitivity_GroupInductorDeviation=1m|Sensitivity_GroupTransistorEnabled=False|Sensitivity_GroupTransistorDeviation_UserValue= |Sensitivity_GroupTransistorDeviation=1m|Sensitivity_GroupDcSourceEnabled=False|Sensitivity_GroupDcSourceDeviation_UserValue= |Sensitivity_GroupDcSourceDeviation=1m|Sensitivity_GroupGlobalParameterEnabled=False|Sensitivity_GroupGlobalParameterDeviation_UserValue= |Sensitivity_GroupGlobalParameterDeviation=1m|Sensitivity_CustomDeviationsEnabled=True|OldCfgLoaded=True|SimViewSetup=ShowActiveSignalsProbes|OPTION_Method=Trapezoidal|OPTION_SpiceRefNode_UserValue= |OPTION_SpiceRefNode=GND|OPTION_DVCC_UserValue= |OPTION_DVCC=5|OPTION_DVDD_UserValue= |OPTION_DVDD=15|SheetsToNetlist=0|Record=AdvSimNetlistView|SimulationName=Mixed Sim Configuration|ProfileId=KBXTFGUB
+Configuration1_Item1=OP_Analysis=True|TRAN_Analysis=True|DC_Analysis=True|AC_Analysis=True|TF_Analysis=False|PZ_Analysis=False|Noise_Analysis=False|TRAN_FourierAnalysis=False|TRAN_SmokeAnalysis=False|TempSweep_Analysis=False|ParamSweep_Analysis=False|MonteCarlo_Analysis=False|TF_Enabled=False|TF_Source= |TF_Reference=0|PZ_Enabled=False|PZ_Node1= |PZ_Node2=0|PZ_Node3= |PZ_Node4=0|PZ_AnalType=PZ|PZ_TfType=VOL|AnalysesDataSavedIndex=4|DC_ShowMeasTableChart=False|DC_PrimarySource= |DC_PrimaryStart= |DC_PrimaryStop= |DC_PrimaryStep= |DC_EnableSecondary=False|DC_SecondarySource= |DC_SecondaryStart= |DC_SecondaryStop= |DC_SecondaryStep= |Noise_Enabled=False|Noise_Source= |Noise_Output= |Noise_Reference=0|Noise_Start_UserValue= |Noise_Start=1K|Noise_Stop_UserValue= |Noise_Stop=1G|Noise_TestPoints_UserValue= |Noise_TestPoints=10|Noise_PointsPerSummary=0|Noise_SweepType=DEC|AC_StartFrequency_UserValue= |AC_StartFrequency=1K|AC_StopFrequency_UserValue= |AC_StopFrequency=1G|AC_TestPoints_UserValue= |AC_TestPoints=10|AC_SweepType=DEC|AC_ShowMeasTableChart=False|TRAN_StartTime_UserValue= |TRAN_StartTime=0|TRAN_StopTime_UserValue= |TRAN_StopTime=5u|TRAN_StepTime_UserValue= |TRAN_StepTime=0.1u|TRAN_MaxStepTime_UserValue= |TRAN_MaxStepTime=0.1u|TRAN_AlwaysSetDefaults=False|TRAN_DefaultCycles_UserValue= |TRAN_DefaultCycles=5|TRAN_DefaultPointsPerCycle_UserValue= |TRAN_DefaultPointsPerCycle=25|TRAN_UseInitialConditions=False|TRAN_FourierEnabled=False|TRAN_FourierFundFreq_UserValue= |TRAN_FourierFundFreq=1Meg|TRAN_FourierNumHarmonics_UserValue= |TRAN_FourierNumHarmonics=10|TRAN_SmokeEnabled=False|TRAN_ShowMeasTableChart=False|TempSweep_Start_UserValue= |TempSweep_Start=-10|TempSweep_Stop_UserValue= |TempSweep_Stop=60|TempSweep_Step_UserValue= |TempSweep_Step=10|ParamSweep_Parameter1= |ParamSweep_Type1=LIN|ParamSweep_Start1= |ParamSweep_Stop1= |ParamSweep_Step1= |ParamSweep_SweepType1=False|ParamSweep_SecondaryEnabled=False|ParamSweep_Parameter2= |ParamSweep_Type2=LIN|ParamSweep_Start2= |ParamSweep_Stop2= |ParamSweep_Step2= |ParamSweep_SweepType2=False|MonteCarlo_NumberOfRuns=10|MonteCarlo_DistributionType=GAUSS|MonteCarlo_Seed=-1|MonteCarlo_ResistorTolerance=10%|MonteCarlo_ResistorTolerance_UserValue=10%|MonteCarlo_CapacitorTolerance=10%|MonteCarlo_CapacitorTolerance_UserValue=10%|MonteCarlo_InductorTolerance=10%|MonteCarlo_InductorTolerance_UserValue=10%|MonteCarlo_TransistorTolerance=10%|MonteCarlo_TransistorTolerance_UserValue=10%|MonteCarlo_DCSourceTolerance=10%|MonteCarlo_DCSourceTolerance_UserValue=10%|MonteCarlo_DigitalTpTolerance=10%|MonteCarlo_DigitalTpTolerance_UserValue=10%|Sensitivity_Analysis=False|Sensitivity_GroupDeviationsEnabled=False|Sensitivity_GroupResistorEnabled=True|Sensitivity_GroupResistorDeviation_UserValue= |Sensitivity_GroupResistorDeviation=1m|Sensitivity_GroupCapacitorEnabled=False|Sensitivity_GroupCapacitorDeviation_UserValue= |Sensitivity_GroupCapacitorDeviation=1m|Sensitivity_GroupInductorEnabled=False|Sensitivity_GroupInductorDeviation_UserValue= |Sensitivity_GroupInductorDeviation=1m|Sensitivity_GroupTransistorEnabled=False|Sensitivity_GroupTransistorDeviation_UserValue= |Sensitivity_GroupTransistorDeviation=1m|Sensitivity_GroupDcSourceEnabled=False|Sensitivity_GroupDcSourceDeviation_UserValue= |Sensitivity_GroupDcSourceDeviation=1m|Sensitivity_GroupGlobalParameterEnabled=False|Sensitivity_GroupGlobalParameterDeviation_UserValue= |Sensitivity_GroupGlobalParameterDeviation=1m|Sensitivity_CustomDeviationsEnabled=True|OldCfgLoaded=True|SimViewSetup=ShowActiveSignalsProbes|OPTION_Method=Trapezoidal|OPTION_SpiceRefNode_UserValue= |OPTION_SpiceRefNode=GND|OPTION_DVCC_UserValue= |OPTION_DVCC=5|OPTION_DVDD_UserValue= |OPTION_DVDD=15|SheetsToNetlist=0|Record=AdvSimNetlistView|SimulationName=Mixed Sim Configuration|ProfileId=KBXTFGUB
 OutputType2=SIMetrixSimulation
 OutputName2=SIMetrix
 OutputDocumentPath2=
@@ -507,7 +689,7 @@ OutputDefault3=0
 Name=Documentation Outputs
 Description=
 TargetPrinter=HP Smart Printing
-PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
+PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=0
 OutputType1=Composite
 OutputName1=Composite Drawing
 OutputDocumentPath1=
@@ -556,42 +738,48 @@ OutputDocumentPath8=
 OutputVariantName8=[No Variations]
 OutputDefault8=0
 PageOptions8=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType9=PCBLIB Print
-OutputName9=PCBLIB Prints
+OutputType9=PCBDrawing
+OutputName9=Draftsman
 OutputDocumentPath9=
-OutputVariantName9=
+OutputVariantName9=[No Variations]
 OutputDefault9=0
 PageOptions9=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType10=PDF3D
-OutputName10=PDF3D
+OutputType10=PCBLIB Print
+OutputName10=PCBLIB Prints
 OutputDocumentPath10=
-OutputVariantName10=[No Variations]
+OutputVariantName10=
 OutputDefault10=0
 PageOptions10=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType11=PDF3D MBA
-OutputName11=PDF3D MBA
+OutputType11=PDF3D
+OutputName11=PDF3D
 OutputDocumentPath11=
-OutputVariantName11=
+OutputVariantName11=[No Variations]
 OutputDefault11=0
 PageOptions11=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType12=Report Print
-OutputName12=Report Prints
+OutputType12=PDF3D MBA
+OutputName12=PDF3D MBA
 OutputDocumentPath12=
 OutputVariantName12=
 OutputDefault12=0
 PageOptions12=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType13=Schematic Print
-OutputName13=Schematic Prints
+OutputType13=Report Print
+OutputName13=Report Prints
 OutputDocumentPath13=
 OutputVariantName13=
 OutputDefault13=0
 PageOptions13=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType14=SimView Print
-OutputName14=SimView Prints
+OutputType14=Schematic Print
+OutputName14=Schematic Prints
 OutputDocumentPath14=
 OutputVariantName14=
 OutputDefault14=0
 PageOptions14=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+OutputType15=SimView Print
+OutputName15=SimView Prints
+OutputDocumentPath15=
+OutputVariantName15=
+OutputDefault15=0
+PageOptions15=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
 
 [OutputGroup4]
 Name=Assembly Outputs
@@ -698,6 +886,18 @@ OutputDocumentPath1=
 OutputVariantName1=[No Variations]
 OutputDefault1=0
 PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+Configuration1_Name1=ColumnNameFormat
+Configuration1_Item1=CaptionAsName
+Configuration1_Name2=ForceUpdateSettings
+Configuration1_Item2=False
+Configuration1_Name3=General
+Configuration1_Item3=OpenExported=False|AddToProject=False|ReportBOMViolationsInMessages=False|ForceFit=False|NotFitted=False|Database=False|DatabasePriority=False|IncludePcbData=False|IncludeVaultData=False|IncludeCloudData=False|IncludeDocumentData=True|IncludeAlternatives=False|ShowExportOptions=True|TemplateFilename=|TemplateVaultGuid=|TemplateItemGuid=|TemplateRevisionGuid=|BatchMode=5|FormWidth=1200|FormHeight=710|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=USD|SolutionsPerItem=1|SuppliersPerSolution=1|ViewType=0|UseDirectApi=False|BomSetName=
+Configuration1_Name4=GroupOrder
+Configuration1_Item4=Comment=True|Footprint=True
+Configuration1_Name5=SortOrder
+Configuration1_Item5=Designator=Up|Comment=Up|Footprint=Up
+Configuration1_Name6=VisibleOrder
+Configuration1_Item6=Comment=120|Description=120|Designator=120|Footprint=120|LibRef=120|Quantity=120
 OutputType2=BOM_ReportCompare
 OutputName2=BOM Compare
 OutputDocumentPath2=
@@ -1092,6 +1292,16 @@ Type117=1
 Type118=1
 Type119=1
 Type120=1
+Type121=1
+Type122=1
+Type123=1
+Type124=1
+Type125=1
+Type126=1
+Type127=1
+Type128=1
+Type129=1
+Type130=1
 
 [Difference Levels]
 Type1=1
@@ -1162,6 +1372,12 @@ Type65=1
 Type66=1
 Type67=1
 Type68=1
+Type69=1
+Type70=1
+Type71=1
+Type72=1
+Type73=1
+Type74=1
 
 [Electrical Rules Check]
 Type1=1
@@ -1290,6 +1506,30 @@ Type124=1
 Type125=1
 Type126=1
 Type127=1
+Type128=2
+Type129=2
+Type130=2
+Type131=2
+Type132=2
+Type133=2
+Type134=2
+Type135=2
+Type136=2
+Type137=2
+Type138=1
+Type139=1
+Type140=1
+Type141=1
+Type142=1
+Type143=1
+Type144=1
+Type145=1
+Type146=1
+Type147=2
+Type148=2
+Type149=2
+Type150=2
+Type151=2
 
 [ERC Connection Matrix]
 L1=NNNNNNNNNNNWNNNWW
@@ -1332,10 +1572,16 @@ NetClassManualEnabled=1
 NetClassSeparateForBusSections=0
 
 [LibraryUpdateOptions]
-SelectedOnly=0
+SelectedOnly=1
 UpdateVariants=1
 UpdateToLatestRevision=1
 PartTypes=0
+ComponentLibIdentifierKind0=Library Name And Type
+ComponentLibraryIdentifier0=General_Connector.SchLib
+ComponentDesignItemID0=Type-C_20_Female
+ComponentSymbolReference0=Type-C_20_Female
+ComponentUpdate0=1
+ComponentIsDeviceSheet0=0
 FullReplace=1
 UpdateDesignatorLock=1
 UpdatePartIDLock=1
@@ -1349,6 +1595,24 @@ RemoveParameters=0
 AddModels=1
 RemoveModels=1
 UpdateCurrentModels=1
+ParameterName0=Comment
+ParameterUpdate0=1
+ParameterName1=Component Kind
+ParameterUpdate1=1
+ParameterName2=Datasheet
+ParameterUpdate2=1
+ParameterName3=Description
+ParameterUpdate3=1
+ParameterName4=Distributor #
+ParameterUpdate4=1
+ParameterName5=Distributor_Link
+ParameterUpdate5=1
+ParameterName6=Library Reference
+ParameterUpdate6=1
+ParameterName7=Mfr.
+ParameterUpdate7=1
+ParameterName8=MFR. #
+ParameterUpdate8=1
 
 [DatabaseUpdateOptions]
 SelectedOnly=0
@@ -1361,10 +1625,19 @@ Net1=NetName=+3V3|NetColor=$00FF6EFF
 Net2=NetName=+V_out|NetColor=$006E6EFF
 Net3=NetName=+VBUS|NetColor=$006E6EFF
 Net4=NetName=+VBUS_F|NetColor=$006E6EFF
-Net5=NetName=CC1|NetColor=$00FF6E6E
-Net6=NetName=CC2|NetColor=$00FF6E6E
-Net7=NetName=GND|NetColor=$0000BE00
-Net8=NetName=POWER_MOS_DS|NetColor=$006E6EFF
+Net5=NetName=+VBUS_OUT|NetColor=$006E6EFF
+Net6=NetName=BCR_GND|NetColor=$0000BE00
+Net7=NetName=CC1|NetColor=$00FF6E6E
+Net8=NetName=CC2|NetColor=$00FF6E6E
+Net9=NetName=D-|NetColor=$00FF6E6E
+Net10=NetName=D+|NetColor=$00FF6E6E
+Net11=NetName=DC_OUT|NetColor=$006E6EFF
+Net12=NetName=GND|NetColor=$0000BE00
+Net13=NetName=PD_VBUS_OUT|NetColor=$006E6EFF
+Net14=NetName=POWER_MOS_DS|NetColor=$006E6EFF
+Net15=NetName=V3P3|NetColor=$00FF6EFF
+Net16=NetName=VBUS_IN|NetColor=$006E6EFF
+Net17=NetName=VBUS_OUT|NetColor=$006E6EFF
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=0|UseName=-1|InclAllRules=0

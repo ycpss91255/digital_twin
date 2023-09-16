@@ -1,0 +1,419 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD23\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2023/6/20</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">¤W¤È 10:04:12</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc" class="file"><acronym title="E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc">E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">25</td></tr>
+</table>
+</td>
+</table><a name="IDH11DOHETCKCVM1VO54VW4N3HULLKKSRCKW2YB0CWTTBBRC121BYD"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNDGEXROFV5DVO0RQZN3VVTO0KDGU5MIOQADAXIOSQVY0ESY1OOKF">Clearance Constraint (Gap=5mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSPOEHQXCKC2QIQJO3LUPZNGLDE13GODAZHIT44LHY2YQCRC3JEQN">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2C3RZTTH5D0CBH3Y3YFP5OTMNKAKU101VI3CCTGMJ5JNEMHYUO4D">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4LDIHOK2V3HBOYC5YEHJ2JXYWCPPYG3SO1EXDFHE241SN1JZEL3C">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID14YRMKAFTVASO33B0WQKQKRYFTLIPMRIRY5YKPNBQJ0QSQS0BNP">Width Constraint (Min=5mil) (Max=1000mil) (Preferred=5mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEC5CNO2IUFOVB2F221ZKEBRBBJJKMQOKCUHGHJMCH21CT3BG2KOM">Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (InNet('+VBUS') Or InNet('+5V') Or InNet('+3V3') Or InNet('GND') Or InNet('+VBUS_F') Or InNet('POWER_MOS_DS') Or InNet('+V_out'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDEO1DE1SDZYRPGIEHEM4CMZSMSMPMBUBNLKJMNZEWFSHHOIE2A5NP">Power Plane Connect Rule(Relief Connect )(Expansion=11.811mil) (Conductor Width=5mil) (Air Gap=5mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3MQCUZUL2PJKO2GJ5OP3FVCEW1OFAND4E3GNHTBWGLGPOZ3A3P">Minimum Annular Ring (Minimum=5.118mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDI0VILGFMSFV1JR1YZEBABZK5SCEPBTEJME4CWRLNWTZJHLP0S3ZH">Hole Size Constraint (Min=7.874mil) (Max=248.031mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJNJJID3DQ3TSFCF1GCJRLPQ3EPLJANXJOWMCOVHNPXRV1AFXTVPF">Hole To Hole Clearance (Gap=9.842mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZNHL13KWVQCGDIKVK4R02LYSDDBI0GN4TMEYLLBEMCVKNGNMALEK">Minimum Solder Mask Sliver (Gap=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDD0ZKR0NIDXFAF0D5KH2H4JUMYCCIMTYOZGUJDCNU1TYMQEEHVIUO">Silk To Solder Mask (Clearance=5.906mil) (IsPad),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZBHWLWTWFXL1XECQ31YJUGXKEBY2D4CFMJUTEOWC1QMZ3GVE3RI">Silk to Silk (Clearance=0mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVJU3E2RZ2J5SGRFQK0EYFFQUBEUHIY1VCC1HLNW00A2YBR33BCH">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUULND4T3WEXKH3RVJJUVWTBUUOFZFASOWCDOEXBLJAEMMBMSHNYK">Board Clearance Constraint (Gap=0mil) (All)</a></td>
+<td class="column2">9</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZYJ2VHBIO43XCJEJR0BSTSXNGOCZ3R1RJYWXFON3LA40HF15B2RL">Height Constraint (Min=0mil) (Max=71497.938mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">25</td>
+</tr>
+</table><br><a name="IDD0ZKR0NIDXFAF0D5KH2H4JUMYCCIMTYOZGUJDCNU1TYMQEEHVIUO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=5.906mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1586.95mil|Location2.X=1594.105mil|Location1.Y=3207.284mil|Location2.Y=3214.44mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1586.95mil|Location2.X=1594.105mil|Location1.Y=3207.284mil|Location2.Y=3214.44mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (4.78mil &lt; 5.906mil) Between Arc (178.701mil,-495.606mil) on Top Overlay And Pad Q3-1(181.701mil,-480mil) on Top Layer [Top Overlay] to [Top Solder] clearance [4.78mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1586.95mil|Location2.X=1594.105mil|Location1.Y=3207.284mil|Location2.Y=3214.44mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1586.95mil|Location2.X=1594.105mil|Location1.Y=3207.284mil|Location2.Y=3214.44mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (4.78mil &lt; 5.906mil) Between Arc (178.701mil,-495.606mil) on Top Overlay And Pad Q3-1(181.701mil,-480mil) on Top Layer [Top Overlay] to [Top Solder] clearance [4.78mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1533.454mil|Location2.X=1540.609mil|Location1.Y=3716.613mil|Location2.Y=3723.768mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1533.454mil|Location2.X=1540.609mil|Location1.Y=3716.613mil|Location2.Y=3723.768mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (4.902mil &lt; 5.906mil) Between Pad C2-1(138mil,5mil) on Top Layer And Text "+VBUS" (61.661mil,25mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [4.902mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1509.898mil|Location2.X=1517.053mil|Location1.Y=3716.613mil|Location2.Y=3723.768mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1509.898mil|Location2.X=1517.053mil|Location1.Y=3716.613mil|Location2.Y=3723.768mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (4.902mil &lt; 5.906mil) Between Pad C2-2(102.567mil,5mil) on Top Layer And Text "+VBUS" (61.661mil,25mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [4.902mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1692.455mil|Location2.X=1699.611mil|Location1.Y=3357.266mil|Location2.Y=3364.421mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1692.455mil|Location2.X=1699.611mil|Location1.Y=3357.266mil|Location2.Y=3364.421mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.698mil &lt; 5.906mil) Between Pad C3-2(315.992mil,-359.252mil) on Top Layer And Text "+3V3" (205.548mil,-345.962mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [5.698mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2221.724mil|Location2.X=2228.879mil|Location1.Y=3721.593mil|Location2.Y=3728.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2221.724mil|Location2.X=2228.879mil|Location1.Y=3721.593mil|Location2.Y=3728.748mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.575mil &lt; 5.906mil) Between Pad D1-1(803.435mil,32.115mil) on Top Layer And Track (768.002mil,20.304mil)(813.475mil,20.304mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.575mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2201.645mil|Location2.X=2208.8mil|Location1.Y=3735.766mil|Location2.Y=3742.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2201.645mil|Location2.X=2208.8mil|Location1.Y=3735.766mil|Location2.Y=3742.921mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.575mil &lt; 5.906mil) Between Pad D1-1(803.435mil,32.115mil) on Top Layer And Track (768.002mil,43.926mil)(799.498mil,43.926mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.575mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2182.354mil|Location2.X=2189.509mil|Location1.Y=3721.593mil|Location2.Y=3728.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2182.354mil|Location2.X=2189.509mil|Location1.Y=3721.593mil|Location2.Y=3728.748mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.575mil &lt; 5.906mil) Between Pad D1-2(764.065mil,32.115mil) on Top Layer And Track (768.002mil,20.304mil)(813.475mil,20.304mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.575mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2176.251mil|Location2.X=2183.407mil|Location1.Y=3735.766mil|Location2.Y=3742.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2176.251mil|Location2.X=2183.407mil|Location1.Y=3735.766mil|Location2.Y=3742.921mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.575mil &lt; 5.906mil) Between Pad D1-2(764.065mil,32.115mil) on Top Layer And Track (768.002mil,43.926mil)(799.498mil,43.926mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.575mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.807mil|Location2.X=1989.962mil|Location1.Y=3592.262mil|Location2.Y=3599.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.807mil|Location2.X=1989.962mil|Location1.Y=3592.262mil|Location2.Y=3599.417mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (4.685mil &lt; 5.906mil) Between Pad F1-2(532.845mil,-56.467mil) on Top Layer And Track (580.837mil,-104.302mil)(580.837mil,-60.995mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [4.685mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1354.681mil|Location2.X=1359.618mil|Location1.Y=3256.908mil|Location2.Y=3261.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1354.681mil|Location2.X=1359.618mil|Location1.Y=3256.908mil|Location2.Y=3261.845mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 5.906mil) Between Pad J1-MH(-71.606mil,-405mil) on Multi-Layer And Text "F" (-26.134mil,-506.418mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1479.681mil|Location2.X=1484.618mil|Location1.Y=3260.153mil|Location2.Y=3265.09mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1479.681mil|Location2.X=1484.618mil|Location1.Y=3260.153mil|Location2.Y=3265.09mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 5.906mil) Between Pad J1-MH(78mil,-405mil) on Multi-Layer And Track (-26.134mil,-437.52mil)(70.323mil,-437.52mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.421mil|Location2.X=2124.576mil|Location1.Y=3649.348mil|Location2.Y=3656.504mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.421mil|Location2.X=2124.576mil|Location1.Y=3649.348mil|Location2.Y=3656.504mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.724mil &lt; 5.906mil) Between Pad R8-1(723.845mil,-55.955mil) on Top Layer And Track (583.317mil,-47.215mil)(702.372mil,-47.215mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [5.724mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.421mil|Location2.X=2124.576mil|Location1.Y=3654.388mil|Location2.Y=3661.543mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.421mil|Location2.X=2124.576mil|Location1.Y=3654.388mil|Location2.Y=3661.543mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.724mil &lt; 5.906mil) Between Pad R8-1(723.845mil,-55.955mil) on Top Layer And Track (702.372mil,-47.215mil)(702.372mil,-15.719mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [5.724mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.421mil|Location2.X=2124.576mil|Location1.Y=3680.844mil|Location2.Y=3688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.421mil|Location2.X=2124.576mil|Location1.Y=3680.844mil|Location2.Y=3688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.724mil &lt; 5.906mil) Between Pad R8-2(723.845mil,-12.649mil) on Top Layer And Track (583.317mil,-15.719mil)(702.372mil,-15.719mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [5.724mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.421mil|Location2.X=2124.576mil|Location1.Y=3670.136mil|Location2.Y=3677.291mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2117.421mil|Location2.X=2124.576mil|Location1.Y=3670.136mil|Location2.Y=3677.291mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (5.724mil &lt; 5.906mil) Between Pad R8-2(723.845mil,-12.649mil) on Top Layer And Track (702.372mil,-47.215mil)(702.372mil,-15.719mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [5.724mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDUULND4T3WEXKH3RVJJUVWTBUUOFZFASOWCDOEXBLJAEMMBMSHNYK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1412.265mil|Location2.X=1421.389mil|Location1.Y=3751.466mil|Location2.Y=3760.59mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1412.265mil|Location2.X=1421.389mil|Location1.Y=3751.466mil|Location2.Y=3760.59mil|Absolute=True">Board Outline Clearance(Outline Edge): (3.898mil &lt; 7.874mil) Between Arc (5mil,0mil) on Top Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1463.926mil|Location2.X=1473.05mil|Location1.Y=3749.494mil|Location2.Y=3758.618mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1463.926mil|Location2.X=1473.05mil|Location1.Y=3749.494mil|Location2.Y=3758.618mil|Absolute=True">Board Outline Clearance(Outline Edge): (7.842mil &lt; 7.874mil) Between Board Edge And Text "+VBUS" (61.661mil,25mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1257.288mil|Location2.X=1263.537mil|Location1.Y=3286.111mil|Location2.Y=3292.36mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1257.288mil|Location2.X=1263.537mil|Location1.Y=3286.111mil|Location2.Y=3292.36mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (-173.969mil,-410.906mil)(-124.756mil,-410.906mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1234.734mil|Location2.X=1240.983mil|Location1.Y=3462.096mil|Location2.Y=3468.345mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1234.734mil|Location2.X=1240.983mil|Location1.Y=3462.096mil|Location2.Y=3468.345mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (-173.969mil,-410.906mil)(-173.969mil,-58.937mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1257.288mil|Location2.X=1263.537mil|Location1.Y=3638.08mil|Location2.Y=3644.329mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1257.288mil|Location2.X=1263.537mil|Location1.Y=3638.08mil|Location2.Y=3644.329mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 7.874mil) Between Board Edge And Track (-173.969mil,-58.937mil)(-124.756mil,-58.937mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2305.286mil|Location2.X=2314.41mil|Location1.Y=3461.907mil|Location2.Y=3471.031mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2305.286mil|Location2.X=2314.41mil|Location1.Y=3461.907mil|Location2.Y=3471.031mil|Absolute=True">Board Outline Clearance(Outline Edge): (4.762mil &lt; 7.874mil) Between Board Edge And Track (622.018mil,-233.672mil)(893.672mil,-233.672mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2029.283mil|Location2.X=2038.407mil|Location1.Y=3181.381mil|Location2.Y=3190.505mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2029.283mil|Location2.X=2038.407mil|Location1.Y=3181.381mil|Location2.Y=3190.505mil|Absolute=True">Board Outline Clearance(Outline Edge): (5.935mil &lt; 7.874mil) Between Board Edge And Track (622.018mil,-509.263mil)(622.018mil,-233.672mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2305.286mil|Location2.X=2314.41mil|Location1.Y=3186.317mil|Location2.Y=3195.441mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2305.286mil|Location2.X=2314.41mil|Location1.Y=3186.317mil|Location2.Y=3195.441mil|Absolute=True">Board Outline Clearance(Outline Edge): (4.762mil &lt; 7.874mil) Between Board Edge And Track (622.018mil,-509.263mil)(893.672mil,-509.263mil) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2305.286mil|Location2.X=2314.41mil|Location1.Y=3186.317mil|Location2.Y=3195.441mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\SourceCode\digital_twin_ws\Power\USB-C Power\USB-C Power.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2305.286mil|Location2.X=2314.41mil|Location1.Y=3186.317mil|Location2.Y=3195.441mil|Absolute=True">Board Outline Clearance(Outline Edge): (4.762mil &lt; 7.874mil) Between Board Edge And Track (893.672mil,-509.263mil)(893.672mil,-233.672mil) on Top Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
