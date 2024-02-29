@@ -221,7 +221,7 @@ vector<uint8_t> BuildMsg(vector<float>& speed) {
 
 // TODO : float change to int, and change to mode function version
 vector<uint8_t> BuildMsg(vector<float>& speed, bool mode) {
-  /* Build msg */
+   test /* Build msg */
   vector<uint8_t> pub_msg(PUB_MSG_LEN, 0x00);
   // write start and end packet
   pub_msg.at(0) = PUB_START_PACKET;
