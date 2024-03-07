@@ -1,3 +1,13 @@
 [submodule "docker"]
 	path = docker
 	url = git@github.com:ycpss91255/docker_template.git
+[submodule "coppeliasim/ros2bubble_rob"]
+	path = coppeliasim/ros2bubble_rob
+	url = git@github.com:CoppeliaRobotics/ros2_bubble_rob.git
+[submodule "coppeliasim/sim_ros2_interface"]
+	path = coppeliasim/sim_ros2_interface
+	url = git@github.com:CoppeliaRobotics/simROS2.git
+[submodule "turtlebot3/ld08_driver"]
+	path = turtlebot3/ld08_driver
+	url = https://github.com/ROBOTIS-GIT/ld08_driver.git
+	branch = ros2-devel
