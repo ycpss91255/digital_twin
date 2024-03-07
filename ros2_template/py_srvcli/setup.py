@@ -1,10 +1,10 @@
 from setuptools import find_packages, setup
 
-package_name = 'py_pubsub'
+package_name = 'py_srvcli'
 
 setup(
     name=package_name,
-    version='0.0.1',
+    version='0.0.0',
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -13,16 +13,13 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='cyc',
-    maintainer_email='ycpss91255@gmail.com',
-    description='Examples of minimal publisher/subscriber using rclpy',
-    license='Apache License 2.0',
+    maintainer='iclab',
+    maintainer_email='iclab@todo.todo',
+    description='TODO: Package description',
+    license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = py_pubsub.publisher_member_function:main',
-            'listener = py_pubsub.subscriber_member_function:main',
-
         ],
     },
 )
