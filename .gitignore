@@ -80,3 +80,5 @@ de0_nano\DE0_NANO_MotorDrive/output_files/*.cdf
 de0_nano\DE0_NANO_MotorDrive//db
 de0_nano\DE0_NANO_MotorDrive//incremental_db
 de0_nano\DE0_NANO_MotorDrive//greybox_tmp
+
+tmp/
