@@ -1,0 +1,31 @@
+session_name: dt
+start_directory: "./"
+windows:
+  - window_name: dev
+    panes:
+      - shell_command:
+    start_directory: "./"
+
+  - window_name: docker
+    panes:
+      - shell_command:
+          - ./build.sh && clear && ./run.sh
+      - shell_command:
+    start_directory: "./docker"
+
+  - window_name: dockerfile
+    panes:
+      - shell_command:
+          - vim Dockerfile
+    start_directory: "./docker/"
+
+  - window_name: sys_status
+    focus: true
+    panes:
+      - shell_command:
+          - bpytop
+      - shell_command:
+          - nvitop
+      - shell_command:
+          - gpustat -i
+    start_directory: "./"
