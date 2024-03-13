@@ -10,7 +10,6 @@ file_dir=$(dirname $0)
 sudo cp ${file_dir}/*.rules /etc/udev/rules.d/
 
 # Reload usb rule
-sudo udevadm control --reload-rules
-udevadm trigger
+sudo udevadm control --reload-rules && sudo udevadm trigger
 
 echo "load usb rule complete"
