@@ -7,11 +7,10 @@ rule_list=$(ls $file_dir/*.rules)
 # Delete the created rule
 for i in $rule_list; do
     rule=${i:len}
-    sudo rm /etc/udev/rules.d/$rule
+    sudo rm -f /etc/udev/rules.d/$rule
 done
 
 # Reload usb rule
-sudo udevadm control --reload-rules
-udevadm trigger
+sudo udevadm control --reload-rules && sudo udevadm trigger
 
 echo "delete usb rule complete"
